@@ -1,0 +1,22 @@
+/* Basic */
+.slide * + h2 {
+    margin-top: 41px;
+}
+
+.slide p {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+.slide p.note {
+    color: var(--color-grey);
+}
+
+.slide figure {
+    margin: 0;
+}
+
+.slide .chart {
+    display: flex;
+    justify-content: center;
+}

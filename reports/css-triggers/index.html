@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Css-анимации. Изнутри браузера</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <style>
+      .shower {
+        --slide-ratio: calc(16 / 9);
+      }
+    </style>
+  </head>
+  <body class="shower list">
+    <header class="caption">
+      <h1>Css-анимации. Изнутри браузера</h1>
+      <p>Расторгуева Анна</p>
+    </header>
+
+    <!-- 1 -->
+    <section class="slide" id="cover">
+      <h2 class="title">
+        Css-анимации.<br />
+        Изнутри браузера
+      </h2>
+      <p>Расторгуева Анна</p>
+      <figure>
+        <img
+          class="cover"
+          src="pictures/background-2.webp"
+          alt="кибер-панк мониторы"
+        />
+        <figcaption class="copyright right white">
+          <a href="https://fusionbrain.ai/">rendered by Kandinsky</a>
+        </figcaption>
+      </figure>
+      <style>
+        #cover h2 {
+          color: white;
+          text-align: center;
+          font-size: 70px;
+          text-shadow: 0 0 6px #fff;
+        }
+
+        #cover p {
+          margin: 265px 0 0;
+          text-align: right;
+          color: white;
+          font-style: italic;
+          font-size: 20px;
+        }
+      </style>
+    </section>
+
+    <section class="slide slide--light">
+      <h2 class="title title--dark">План</h2>
+      <ul>
+        <li>Как работает браузер</li>
+        <li>Подробный разбор процессов отрисовки</li>
+        <li>
+          css-триггеры, какой набор процессов перезапускают те или иные
+          css-свойства
+        </li>
+        <li>Demo</li>
+      </ul>
+    </section>
+
+    <!-- 2 -->
+    <section class="slide slide--light">
+      <h2 class="title title--dark">О себе</h2>
+      <ul>
+        <li>Фронтенд-разработчик из Сбера</li>
+        <li>В профессии с 2019 г.</li>
+        <li>Люблю красивые анимашки</li>
+        <li>Люблю котиков</li>
+      </ul>
+      <img
+        class="place bottom right next"
+        width="500"
+        src="pictures/three-cat-azh.webp"
+        alt="котики"
+      />
+    </section>
+    <!-- 3 -->
+    <section class="slide slide--light">
+      <h2 class="title title--dark">Процент использования браузеров</h2>
+      <div
+        class="chart"
+        id="all-browser-ww-monthly-202301-202401"
+        width="600"
+        height="400"
+        style="width: 100%; height: 400px"
+      ></div>
+      <p class="copyright bottom">
+        Source:
+        <a href="https://gs.statcounter.com/browser-market-share"
+          >StatCounter Global Stats - Browser Market Share</a
+        >
+      </p>
+      <script
+        type="text/javascript"
+        src="https://www.statcounter.com/js/fusioncharts.js"
+      ></script>
+      <script
+        type="text/javascript"
+        src="https://gs.statcounter.com/chart.php?all-browser-ww-monthly-202301-202401&chartWidth=600"
+      ></script>
+    </section>
+
+    <!-- 4 -->
+    <section class="slide slide--light" id="picture">
+      <h2 class="title title--dark">Первичная загрузка страницы</h2>
+      <img
+        class="cover moved"
+        src="pictures/first-load.webp"
+        alt="Первичная загрузка полный цикл"
+      />
+    </section>
+
+    <section class="slide slide--light">
+      <h2 class="title title--dark">Процессы перерисовки</h2>
+      <img
+        class="cover moved"
+        src="pictures/browser-process.webp"
+        height="75%"
+        alt="Процессы перерисовки"
+      />
+    </section>
+
+    <!-- 5 -->
+    <section class="slide slide--white">
+      <h2 class="title title--dark">Распределение задач между потоками</h2>
+      <img
+        class="cover moved"
+        src="pictures/thread.webp"
+        height="75%"
+        alt="Распределение задач между потоками"
+      />
+      <p class="copyright bottom">
+        Источник:
+        <a
+          target="_blank"
+          href="https://developer.chrome.com/docs/chromium/renderingng"
+          >Chrome for Developers</a
+        >
+      </p>
+    </section>
+
+    <!-- 6 -->
+    <section class="slide slide--light" id="picture">
+      <h2 class="title title--hidden">Рендеринг в Chromium</h2>
+      <figure>
+        <img
+          class="cover"
+          src="pictures/diagram-the-rendering.webp"
+          alt="Рендеринг в Chromium"
+        />
+        <figcaption class="copyright bottom">
+          Источник:
+          <a
+            target="_blank"
+            href="https://developer.chrome.com/docs/chromium/renderingng-architecture"
+            >Chrome for Developers</a
+          >
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="slide slide--light" id="picture">
+      <h2 class="title title--hidden">Рендеринг в Chromium</h2>
+      <figure>
+        <img
+          class="cover"
+          src="pictures/diagram-the-rendering.webp"
+          alt="Рендеринг в Chromium"
+        />
+        <figcaption class="copyright bottom">
+          Источник:
+          <a
+            target="_blank"
+            href="https://developer.chrome.com/docs/chromium/renderingng-architecture"
+            >Chrome for Developers</a
+          >
+        </figcaption>
+      </figure>
+      <div
+        class="spotlight"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 90px;
+          --spotlight-height: 50px;
+          --spotlight-top: -170px;
+        "
+      ></div>
+    </section>
+    <section class="slide slide--white">
+      <h2 class="title title--dark">Аnimate</h2>
+      <img
+        class="cover moved"
+        src="pictures/animation-keyframe-example.webp"
+        height="75%"
+        alt="вычисляемые стили в инспекторе браузера"
+      />
+    </section>
+
+    <section class="slide slide--light">
+      <h2 class="title title--hidden">Property trees</h2>
+      <img
+        class="cover"
+        src="pictures/property-trees.webp"
+        height="100%"
+        alt="Property trees"
+      />
+    </section>
+
+    <section class="slide slide--light" id="picture">
+      <h2 class="title title--hidden">Рендеринг в Chromium</h2>
+      <figure>
+        <img
+          class="cover"
+          src="pictures/diagram-the-rendering.webp"
+          alt="Рендеринг в Chromium"
+        />
+        <figcaption class="copyright bottom">
+          Источник:
+          <a
+            target="_blank"
+            href="https://developer.chrome.com/docs/chromium/renderingng-architecture"
+            >Chrome for Developers</a
+          >
+        </figcaption>
+      </figure>
+      <div
+        class="spotlight"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 90px;
+          --spotlight-height: 50px;
+          --spotlight-top: -133px;
+        "
+      ></div>
+    </section>
+
+    <section class="slide slide--light">
+      <h2 class="title title--dark">Recalculate style</h2>
+      <img
+        class="cover moved"
+        src="pictures/computed.webp"
+        height="75%"
+        alt="вычисляемые стили в инспекторе браузера"
+      />
+    </section>
+
+    <section class="slide slide--light" id="picture">
+      <h2 class="title title--hidden">Рендеринг в Chromium</h2>
+      <figure>
+        <img
+          class="cover"
+          src="pictures/diagram-the-rendering.webp"
+          alt="Рендеринг в Chromium"
+        />
+        <figcaption class="copyright bottom">
+          Источник:
+          <a
+            target="_blank"
+            href="https://developer.chrome.com/docs/chromium/renderingng-architecture"
+            >Chrome for Developers</a
+          >
+        </figcaption>
+      </figure>
+      <div
+        class="spotlight"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 90px;
+          --spotlight-height: 50px;
+          --spotlight-top: -98px;
+        "
+      ></div>
+    </section>
+
+    <section class="slide slide--light">
+      <h2 class="title title--hidden">Layout</h2>
+      <figure>
+        <img class="cover" src="pictures/layout.webp" alt="Компоновка" />
+        <figcaption class="copyright bottom">
+          Источник:
+          <a href="https://developer.chrome.com/docs/chromium/layoutng"
+            >Chrome for Developers</a
+          >
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="slide slide--light">
+      <h2 class="title title--hidden">Layout types</h2>
+      <img
+        class="cover moved"
+        src="pictures/layout-type.webp"
+        height="100%"
+        alt="Layout types"
+      />
+    </section>
+
+    <section class="slide slide--light" id="picture">
+      <h2 class="title title--hidden">Рендеринг в Chromium</h2>
+      <figure>
+        <img
+          class="cover"
+          src="pictures/diagram-the-rendering.webp"
+          alt="Рендеринг в Chromium"
+        />
+        <figcaption class="copyright bottom">
+          Источник:
+          <a
+            target="_blank"
+            href="https://developer.chrome.com/docs/chromium/renderingng-architecture"
+            >Chrome for Developers</a
+          >
+        </figcaption>
+      </figure>
+      <div
+        class="spotlight"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 90px;
+          --spotlight-height: 50px;
+          --spotlight-top: -62px;
+        "
+      ></div>
+    </section>
+
+    <section class="slide slide--light">
+      <h2 class="title title--dark">Pre-Paint</h2>
+      <img
+        class="cover moved"
+        src="pictures/prepaint.webp"
+        height="100%"
+        alt="Pre-Paint"
+      />
+    </section>
+
+    <section class="slide slide--light">
+      <h2 class="title title--hidden">display list</h2>
+      <img
+        class="cover"
+        src="pictures/display-list.webp"
+        height="100%"
+        alt="display list"
+      />
+    </section>
+
+    <section class="slide slide--light" id="picture">
+      <h2 class="title title--hidden">Рендеринг в Chromium</h2>
+      <figure>
+        <img
+          class="cover"
+          src="pictures/diagram-the-rendering.webp"
+          alt="Рендеринг в Chromium"
+        />
+        <figcaption class="copyright bottom">
+          Источник:
+          <a
+            target="_blank"
+            href="https://developer.chrome.com/docs/chromium/renderingng-architecture"
+            >Chrome for Developers</a
+          >
+        </figcaption>
+      </figure>
+      <div
+        class="spotlight"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 90px;
+          --spotlight-height: 50px;
+          --spotlight-top: -28px;
+        "
+      ></div>
+    </section>
+
+    <section class="slide slide--light" id="picture">
+      <h2 class="title title--hidden">Рендеринг в Chromium</h2>
+      <figure>
+        <img
+          class="cover"
+          src="pictures/diagram-the-rendering.webp"
+          alt="Рендеринг в Chromium"
+        />
+        <figcaption class="copyright bottom">
+          Источник:
+          <a
+            target="_blank"
+            href="https://developer.chrome.com/docs/chromium/renderingng-architecture"
+            >Chrome for Developers</a
+          >
+        </figcaption>
+      </figure>
+      <div
+        class="spotlight"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 90px;
+          --spotlight-height: 50px;
+          --spotlight-top: 7px;
+        "
+      ></div>
+    </section>
+
+    <section class="slide slide--light">
+      <h2 class="title title--dark">Paint</h2>
+      <img class="cover" src="pictures/paint.webp" height="100%" alt="Paint" />
+    </section>
+
+    <section class="slide slide--light" id="picture">
+      <h2 class="title title--hidden">Рендеринг в Chromium</h2>
+      <figure>
+        <img
+          class="cover"
+          src="pictures/diagram-the-rendering.webp"
+          alt="Рендеринг в Chromium"
+        />
+        <figcaption class="copyright bottom">
+          Источник:
+          <a
+            target="_blank"
+            href="https://developer.chrome.com/docs/chromium/renderingng-architecture"
+            >Chrome for Developers</a
+          >
+        </figcaption>
+      </figure>
+      <div
+        class="spotlight"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 155px;
+          --spotlight-height: 250px;
+          --spotlight-top: 151px;
+        "
+      ></div>
+    </section>
+
+    <section class="slide slide--light">
+      <h2 class="title title--dark">Composite</h2>
+      <img
+        class="cover"
+        src="pictures/composite-workflow.webp"
+        height="100%"
+        alt="Composite workflow"
+      />
+    </section>
+
+    <section class="slide slide--light">
+      <h2 class="title title--dark">
+        Свойства, затрагивающие геометрию <br />или позицию элемента
+      </h2>
+      <img
+        class="cover"
+        src="pictures/box-styles-draw.webp"
+        alt="процессы перерисовки"
+      />
+      <p class="note">
+        left, max-width, border-width, margin-left, font-size и т.д.
+      </p>
+    </section>
+
+    <section class="slide slide--light">
+      <h2 class="title title--dark">
+        Свойства, не затрагивающие геометрию <br />или позицию элемента,
+      </h2>
+      <img
+        class="cover"
+        src="pictures/paint-box-draw.webp"
+        alt="процессы перерисовки"
+      />
+      <p class="note">
+        но не лежащие в отдельном слое, такие как background-color, color и т.д.
+      </p>
+    </section>
+
+    <section class="slide slide--light">
+      <h2 class="title title--dark">
+        Свойства, которые рендерятся <br />в отдельном слое
+      </h2>
+      <img
+        class="cover"
+        src="pictures/composite-draw.webp"
+        alt="процессы перерисовки"
+      />
+      <p class="note">transform, opacity</p>
+    </section>
+    <section class="slide slide--white">
+      <h2 class="title title--dark shout">
+        <a class="no-decoration" target="_blank" href="demo/index.html">Demo</a>
+      </h2>
+
+      <style>
+        a.no-decoration {
+          color: inherit;
+
+          &:hover {
+            color: var(--color-accent);
+          }
+        }
+      </style>
+    </section>
+
+    <section class="slide slide--white">
+      <h2 class="title title--dark">Полездные ссылки</h2>
+      <ul>
+        <li>
+          <a href="https://lab.skk.moe/css-triggers">CSS Triggers</a>
+        </li>
+        <li>
+          <a
+            href="https://marketplace.visualstudio.com/items?itemName=kisstkondoros.csstriggers"
+            >CSS Triggers расширение для VSCode</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://developer.chrome.com/docs/chromium/renderingng-architecture"
+            >RenderingNG - Chrome for Developers</a
+          >
+        </li>
+      </ul>
+    </section>
+    <section class="slide finish">
+      <h2 class="title">Всем добра</h2>
+      <figure>
+        <img class="cover" src="pictures/cats.jpeg" alt="caaaats" />
+        <img
+          class="place bottom right"
+          width="150"
+          src="pictures/qr.webp"
+          alt="qr"
+        />
+      </figure>
+      <style>
+        .finish h2 {
+          margin-top: 150px;
+          color: white;
+          text-align: center;
+          font-size: 70px;
+          text-shadow: 0 0 6px #000;
+        }
+      </style>
+    </section>
+
+    <script src="../shower.js"></script>
+    <!-- Copyright © 3000 Yours Truly, Famous Inc. -->
+  </body>
+</html>

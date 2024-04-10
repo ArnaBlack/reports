@@ -1,0 +1,14 @@
+.title {
+    margin-top: 0;
+    margin-bottom: 33px;
+    color: #fff;
+    font: bold 50px/1 'PT Sans Narrow', sans-serif;
+}
+
+.title--hidden {
+    opacity: 0;
+}
+
+.title--dark {
+    color: var(--color-text-dark);
+} 

@@ -1,0 +1,85 @@
+h1 {
+  text-decoration: underline;
+}
+
+button {
+  margin-bottom: 15px;
+}
+
+@keyframes move {
+  0% {
+    height: 200px;
+  }
+
+  50% {
+    height: 0px;
+  }
+
+  100% {
+    height: 200px;
+  }
+}
+
+@keyframes transformed {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(400px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes paint {
+  0% {
+    background-color: aquamarine;
+  }
+
+  50% {
+    background-color: #dc143c;
+  }
+
+  100% {
+    background-color: aquamarine;
+  }
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  animation-duration: 5s;
+  background-color: #8ec0b3;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+
+.active {
+  background-color: #dc143c;
+  animation-play-state: running;
+}
+
+.layout {
+  animation-name: move;
+}
+
+.paint {
+  animation-name: paint;
+}
+
+.composite {
+  animation-name: transformed;
+}
+
+button:has(+ .active) span:first-child {
+  display: none;
+}
+
+button:has(+ div:not(.active)) span:last-child {
+  display: none;
+}
