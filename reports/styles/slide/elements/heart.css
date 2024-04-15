@@ -1,0 +1,110 @@
+@keyframes appear {
+    0% {
+        transform: translateX(var(--x)) translateY(calc(var(--y))) rotate(var(--rotate)) scale(0);
+    }
+
+    4% {
+        transform: translateX(var(--x)) translateY(calc(var(--y) - 4px)) rotate(var(--rotate)) scale(1.5);
+    }
+
+    10% {
+        transform: translateX(var(--x)) translateY(calc(var(--y) - 10px)) rotate(var(--rotate)) scale(1);
+    }
+    
+    73% {
+        transform: translateX(var(--x)) translateY(calc(var(--y) - 22px)) rotate(var(--rotate)) scale(1.1);
+    }
+
+    75% {
+        transform: translateX(var(--x)) translateY(calc(var(--y) - 27px)) rotate(var(--rotate)) scale(1);
+    }
+
+    85% {
+        transform: translateX(var(--x)) translateY(calc(var(--y) - 33px)) rotate(var(--rotate)) scale(0);
+    }
+
+    100% {
+        transform: translateX(var(--x)) translateY(calc(var(--y) - 33px)) rotate(var(--rotate)) scale(0);
+    }
+}
+
+.heart {
+    display: inline-flex;
+    transform-origin: center;
+    transform: scale(0);
+}
+
+.slide.active .next.active ~ .place .heart {
+    animation-name: appear;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-duration: 3s;
+}
+
+.heart--red {
+    --rotate: 15deg;
+    --x: -22px;
+    --y: -25px;
+
+    animation-delay: 0.2s;
+}
+
+.heart--yellow {
+    --rotate: -35deg;
+    --x: -22px;
+    --y: 0px;
+
+    filter: hue-rotate(60deg) brightness(1.5) saturate(2);
+
+    &  svg {
+        transform: scale(0.7);
+    }
+
+}
+
+.heart--purple {
+    --rotate: -15deg;
+    --x: -22px;
+    --y: -75px;
+
+    position: absolute;
+    right: 35px;
+    filter: hue-rotate(275deg);
+    animation-delay: 0.3s;
+
+    &  svg {
+        transform: scale(0.5);
+    }
+
+}
+
+.heart--green {
+    --rotate: -25deg;
+    --x: -22px;
+    --y: -5px;
+
+    filter: hue-rotate(95deg);
+    animation-delay: 0.4s;
+
+    &  svg {
+        transform: scale(0.4);
+    }
+
+}
+
+.heart--blue {
+    --rotate: 25deg;
+    --x: -22px;
+    --y: -40px;
+
+    position: absolute;
+    right: 20px;
+    filter: hue-rotate(225deg);
+    animation-delay: 0.5s;
+
+    & svg {
+        transform: scale(0.4);
+    }
+
+}

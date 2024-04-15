@@ -1,0 +1,12 @@
+.heart-group {
+    position: absolute;
+    bottom: 0;
+}
+
+.heart-group--right {
+    right: 0;
+}
+
+.heart-group--left {
+    left: 0;
+}

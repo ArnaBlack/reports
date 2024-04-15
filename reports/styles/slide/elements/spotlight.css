@@ -18,3 +18,7 @@
         );
     pointer-events: none;
 }
+
+.shower:not(.full) .spotlight {
+    display: none;
+} 

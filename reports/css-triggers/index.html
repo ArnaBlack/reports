@@ -16,15 +16,15 @@
   </head>
   <body class="shower list">
     <header class="caption">
-      <h1>Css-анимации. Изнутри браузера</h1>
+      <h1>Css-анимации с точки зрения браузера</h1>
       <p>Расторгуева Анна</p>
     </header>
 
-    <!-- 1 -->
+    <!-- intro -->
     <section class="slide" id="cover">
       <h2 class="title">
-        Css-анимации.<br />
-        Изнутри браузера
+        Css-анимации<br />
+        с точки зрения браузера
       </h2>
       <p>Расторгуева Анна</p>
       <figure>
@@ -34,7 +34,9 @@
           alt="кибер-панк мониторы"
         />
         <figcaption class="copyright right white">
-          <a target="_blank" href="https://fusionbrain.ai/">rendered by Kandinsky</a>
+          <a target="_blank" href="https://fusionbrain.ai/"
+            >rendered by Kandinsky</a
+          >
         </figcaption>
       </figure>
       <style>
@@ -54,37 +56,138 @@
         }
       </style>
     </section>
-     <!-- 2 -->
-    <section class="slide slide--light">
-      <h2 class="title title--dark">План</h2>
-      <ul>
-        <li>Как работает браузер</li>
-        <li>Подробный разбор процессов отрисовки</li>
-        <li>
-          css-триггеры, какой набор процессов перезапускают те или иные
-          css-свойства
-        </li>
-        <li>Demo</li>
-      </ul>
-    </section>
-
-    <!-- 3 -->
+    <!-- about -->
     <section class="slide slide--light">
       <h2 class="title title--dark">О себе</h2>
       <ul>
         <li>Фронтенд-разработчик из Сбера</li>
         <li>В профессии с 2019 г.</li>
-        <li>Люблю красивые анимашки</li>
         <li>Люблю котиков</li>
+        <li>Люблю красивые анимашки</li>
       </ul>
       <img
-        class="place bottom right next"
+        class="place bottom right next animated-slide-in"
         width="500"
         src="pictures/three-cat-azh.webp"
         alt="котики"
       />
+      <div class="place bottom right heart-container">
+        <span class="heart-group heart-group--left">
+          <i class="heart heart--red">
+            <svg
+              width="64px"
+              height="64px"
+              viewBox="-15.41 0 126.74 126.74"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M51.31,27.71c3.14-4.32,5.57-7.81,8.14-11.18,3.41-4.48,8.16-7.16,13.23-9.25A13.76,13.76,0,0,1,78.5,6.22c8.49.52,16.2,8,17.14,16.56,1.14,10.28-1.35,20-5.58,29.15A156.23,156.23,0,0,1,70.73,84.24c-6.9,8.67-14.2,17.12-18.87,27.35-1.77,3.89-3.5,7.8-5.28,11.68a5.53,5.53,0,0,1-9.68,1.09A13.66,13.66,0,0,1,35,120.52c-4.77-14.21-12.35-27.06-19.62-40-5.07-9-9.77-18.2-12.59-28.13C-.75,39.72-1.63,26.93,4.32,14.62a35.18,35.18,0,0,1,6.19-9.16A17.46,17.46,0,0,1,31.8,2.27c9,5.18,16.1,11.83,18.41,22.46A28.62,28.62,0,0,0,51.31,27.71ZM47.89,50.89c-.61-.76-1.68-1.52-2-2.51-1.31-4.67-3.16-9.37-3.4-14.12-.46-9.08-4.81-15.65-11.4-21.2-5.58-4.71-10.79-4-15.29,2C11.1,21.33,10,28.51,10.39,36.13c.46,9.64,3.68,18.52,8,26.95,6.1,12,12.57,23.76,19,35.52,1.45,2.64,2.07,5.9,5.69,8.77.67-1.22,1.14-2.25,1.76-3.18,4.46-6.62,8.9-13.26,13.43-19.83S67.79,71.45,72,64.67c5-8,9.38-16.4,11.76-25.61,1.13-4.4,2.51-9,2.27-13.44-.51-9.44-5.55-12.23-13.72-7A32.7,32.7,0,0,0,61.14,31.37c-2.6,5.07-5,10.27-7.12,15.55C52.87,49.79,51,50.86,47.89,50.89Z"
+              />
+              <path
+                fill="#F76D57"
+                d="M47.89,50.89c3.11,0,5-1.1,6.13-4,2.13-5.28,4.52-10.48,7.12-15.55A32.7,32.7,0,0,1,72.33,18.65c8.17-5.26,13.21-2.47,13.72,7,.24,4.44-1.14,9-2.27,13.44C81.4,48.27,77,56.67,72,64.67c-4.23,6.78-9.18,13.11-13.73,19.69s-9,13.21-13.43,19.83c-.62.93-1.09,2-1.76,3.18-3.62-2.87-4.24-6.13-5.69-8.77-6.48-11.76-12.95-23.54-19-35.52-4.29-8.43-7.51-17.31-8-26.95C10,28.51,11.1,21.33,15.84,15c4.5-6,9.71-6.69,15.29-2,6.59,5.55,10.94,12.12,11.4,21.2.24,4.75,2.09,9.45,3.4,14.12C46.21,49.37,47.28,50.13,47.89,50.89Z"
+              />
+            </svg>
+          </i>
+          <i class="heart heart--yellow">
+            <svg
+              width="64px"
+              height="64px"
+              viewBox="-15.41 0 126.74 126.74"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M51.31,27.71c3.14-4.32,5.57-7.81,8.14-11.18,3.41-4.48,8.16-7.16,13.23-9.25A13.76,13.76,0,0,1,78.5,6.22c8.49.52,16.2,8,17.14,16.56,1.14,10.28-1.35,20-5.58,29.15A156.23,156.23,0,0,1,70.73,84.24c-6.9,8.67-14.2,17.12-18.87,27.35-1.77,3.89-3.5,7.8-5.28,11.68a5.53,5.53,0,0,1-9.68,1.09A13.66,13.66,0,0,1,35,120.52c-4.77-14.21-12.35-27.06-19.62-40-5.07-9-9.77-18.2-12.59-28.13C-.75,39.72-1.63,26.93,4.32,14.62a35.18,35.18,0,0,1,6.19-9.16A17.46,17.46,0,0,1,31.8,2.27c9,5.18,16.1,11.83,18.41,22.46A28.62,28.62,0,0,0,51.31,27.71ZM47.89,50.89c-.61-.76-1.68-1.52-2-2.51-1.31-4.67-3.16-9.37-3.4-14.12-.46-9.08-4.81-15.65-11.4-21.2-5.58-4.71-10.79-4-15.29,2C11.1,21.33,10,28.51,10.39,36.13c.46,9.64,3.68,18.52,8,26.95,6.1,12,12.57,23.76,19,35.52,1.45,2.64,2.07,5.9,5.69,8.77.67-1.22,1.14-2.25,1.76-3.18,4.46-6.62,8.9-13.26,13.43-19.83S67.79,71.45,72,64.67c5-8,9.38-16.4,11.76-25.61,1.13-4.4,2.51-9,2.27-13.44-.51-9.44-5.55-12.23-13.72-7A32.7,32.7,0,0,0,61.14,31.37c-2.6,5.07-5,10.27-7.12,15.55C52.87,49.79,51,50.86,47.89,50.89Z"
+              />
+              <path
+                fill="#F76D57"
+                d="M47.89,50.89c3.11,0,5-1.1,6.13-4,2.13-5.28,4.52-10.48,7.12-15.55A32.7,32.7,0,0,1,72.33,18.65c8.17-5.26,13.21-2.47,13.72,7,.24,4.44-1.14,9-2.27,13.44C81.4,48.27,77,56.67,72,64.67c-4.23,6.78-9.18,13.11-13.73,19.69s-9,13.21-13.43,19.83c-.62.93-1.09,2-1.76,3.18-3.62-2.87-4.24-6.13-5.69-8.77-6.48-11.76-12.95-23.54-19-35.52-4.29-8.43-7.51-17.31-8-26.95C10,28.51,11.1,21.33,15.84,15c4.5-6,9.71-6.69,15.29-2,6.59,5.55,10.94,12.12,11.4,21.2.24,4.75,2.09,9.45,3.4,14.12C46.21,49.37,47.28,50.13,47.89,50.89Z"
+              />
+            </svg>
+          </i>
+          <i class="heart heart--purple">
+            <svg
+              width="64px"
+              height="64px"
+              viewBox="-15.41 0 126.74 126.74"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M51.31,27.71c3.14-4.32,5.57-7.81,8.14-11.18,3.41-4.48,8.16-7.16,13.23-9.25A13.76,13.76,0,0,1,78.5,6.22c8.49.52,16.2,8,17.14,16.56,1.14,10.28-1.35,20-5.58,29.15A156.23,156.23,0,0,1,70.73,84.24c-6.9,8.67-14.2,17.12-18.87,27.35-1.77,3.89-3.5,7.8-5.28,11.68a5.53,5.53,0,0,1-9.68,1.09A13.66,13.66,0,0,1,35,120.52c-4.77-14.21-12.35-27.06-19.62-40-5.07-9-9.77-18.2-12.59-28.13C-.75,39.72-1.63,26.93,4.32,14.62a35.18,35.18,0,0,1,6.19-9.16A17.46,17.46,0,0,1,31.8,2.27c9,5.18,16.1,11.83,18.41,22.46A28.62,28.62,0,0,0,51.31,27.71ZM47.89,50.89c-.61-.76-1.68-1.52-2-2.51-1.31-4.67-3.16-9.37-3.4-14.12-.46-9.08-4.81-15.65-11.4-21.2-5.58-4.71-10.79-4-15.29,2C11.1,21.33,10,28.51,10.39,36.13c.46,9.64,3.68,18.52,8,26.95,6.1,12,12.57,23.76,19,35.52,1.45,2.64,2.07,5.9,5.69,8.77.67-1.22,1.14-2.25,1.76-3.18,4.46-6.62,8.9-13.26,13.43-19.83S67.79,71.45,72,64.67c5-8,9.38-16.4,11.76-25.61,1.13-4.4,2.51-9,2.27-13.44-.51-9.44-5.55-12.23-13.72-7A32.7,32.7,0,0,0,61.14,31.37c-2.6,5.07-5,10.27-7.12,15.55C52.87,49.79,51,50.86,47.89,50.89Z"
+              />
+              <path
+                fill="#F76D57"
+                d="M47.89,50.89c3.11,0,5-1.1,6.13-4,2.13-5.28,4.52-10.48,7.12-15.55A32.7,32.7,0,0,1,72.33,18.65c8.17-5.26,13.21-2.47,13.72,7,.24,4.44-1.14,9-2.27,13.44C81.4,48.27,77,56.67,72,64.67c-4.23,6.78-9.18,13.11-13.73,19.69s-9,13.21-13.43,19.83c-.62.93-1.09,2-1.76,3.18-3.62-2.87-4.24-6.13-5.69-8.77-6.48-11.76-12.95-23.54-19-35.52-4.29-8.43-7.51-17.31-8-26.95C10,28.51,11.1,21.33,15.84,15c4.5-6,9.71-6.69,15.29-2,6.59,5.55,10.94,12.12,11.4,21.2.24,4.75,2.09,9.45,3.4,14.12C46.21,49.37,47.28,50.13,47.89,50.89Z"
+              />
+            </svg>
+          </i>
+        </span>
+        <span class="heart-group heart-group--right">
+          <i class="heart heart--green">
+            <svg
+              width="64px"
+              height="64px"
+              viewBox="-15.41 0 126.74 126.74"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M51.31,27.71c3.14-4.32,5.57-7.81,8.14-11.18,3.41-4.48,8.16-7.16,13.23-9.25A13.76,13.76,0,0,1,78.5,6.22c8.49.52,16.2,8,17.14,16.56,1.14,10.28-1.35,20-5.58,29.15A156.23,156.23,0,0,1,70.73,84.24c-6.9,8.67-14.2,17.12-18.87,27.35-1.77,3.89-3.5,7.8-5.28,11.68a5.53,5.53,0,0,1-9.68,1.09A13.66,13.66,0,0,1,35,120.52c-4.77-14.21-12.35-27.06-19.62-40-5.07-9-9.77-18.2-12.59-28.13C-.75,39.72-1.63,26.93,4.32,14.62a35.18,35.18,0,0,1,6.19-9.16A17.46,17.46,0,0,1,31.8,2.27c9,5.18,16.1,11.83,18.41,22.46A28.62,28.62,0,0,0,51.31,27.71ZM47.89,50.89c-.61-.76-1.68-1.52-2-2.51-1.31-4.67-3.16-9.37-3.4-14.12-.46-9.08-4.81-15.65-11.4-21.2-5.58-4.71-10.79-4-15.29,2C11.1,21.33,10,28.51,10.39,36.13c.46,9.64,3.68,18.52,8,26.95,6.1,12,12.57,23.76,19,35.52,1.45,2.64,2.07,5.9,5.69,8.77.67-1.22,1.14-2.25,1.76-3.18,4.46-6.62,8.9-13.26,13.43-19.83S67.79,71.45,72,64.67c5-8,9.38-16.4,11.76-25.61,1.13-4.4,2.51-9,2.27-13.44-.51-9.44-5.55-12.23-13.72-7A32.7,32.7,0,0,0,61.14,31.37c-2.6,5.07-5,10.27-7.12,15.55C52.87,49.79,51,50.86,47.89,50.89Z"
+              />
+              <path
+                fill="#F76D57"
+                d="M47.89,50.89c3.11,0,5-1.1,6.13-4,2.13-5.28,4.52-10.48,7.12-15.55A32.7,32.7,0,0,1,72.33,18.65c8.17-5.26,13.21-2.47,13.72,7,.24,4.44-1.14,9-2.27,13.44C81.4,48.27,77,56.67,72,64.67c-4.23,6.78-9.18,13.11-13.73,19.69s-9,13.21-13.43,19.83c-.62.93-1.09,2-1.76,3.18-3.62-2.87-4.24-6.13-5.69-8.77-6.48-11.76-12.95-23.54-19-35.52-4.29-8.43-7.51-17.31-8-26.95C10,28.51,11.1,21.33,15.84,15c4.5-6,9.71-6.69,15.29-2,6.59,5.55,10.94,12.12,11.4,21.2.24,4.75,2.09,9.45,3.4,14.12C46.21,49.37,47.28,50.13,47.89,50.89Z"
+              />
+            </svg>
+          </i>
+          <i class="heart heart--blue">
+            <svg
+              width="64px"
+              height="64px"
+              viewBox="-15.41 0 126.74 126.74"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M51.31,27.71c3.14-4.32,5.57-7.81,8.14-11.18,3.41-4.48,8.16-7.16,13.23-9.25A13.76,13.76,0,0,1,78.5,6.22c8.49.52,16.2,8,17.14,16.56,1.14,10.28-1.35,20-5.58,29.15A156.23,156.23,0,0,1,70.73,84.24c-6.9,8.67-14.2,17.12-18.87,27.35-1.77,3.89-3.5,7.8-5.28,11.68a5.53,5.53,0,0,1-9.68,1.09A13.66,13.66,0,0,1,35,120.52c-4.77-14.21-12.35-27.06-19.62-40-5.07-9-9.77-18.2-12.59-28.13C-.75,39.72-1.63,26.93,4.32,14.62a35.18,35.18,0,0,1,6.19-9.16A17.46,17.46,0,0,1,31.8,2.27c9,5.18,16.1,11.83,18.41,22.46A28.62,28.62,0,0,0,51.31,27.71ZM47.89,50.89c-.61-.76-1.68-1.52-2-2.51-1.31-4.67-3.16-9.37-3.4-14.12-.46-9.08-4.81-15.65-11.4-21.2-5.58-4.71-10.79-4-15.29,2C11.1,21.33,10,28.51,10.39,36.13c.46,9.64,3.68,18.52,8,26.95,6.1,12,12.57,23.76,19,35.52,1.45,2.64,2.07,5.9,5.69,8.77.67-1.22,1.14-2.25,1.76-3.18,4.46-6.62,8.9-13.26,13.43-19.83S67.79,71.45,72,64.67c5-8,9.38-16.4,11.76-25.61,1.13-4.4,2.51-9,2.27-13.44-.51-9.44-5.55-12.23-13.72-7A32.7,32.7,0,0,0,61.14,31.37c-2.6,5.07-5,10.27-7.12,15.55C52.87,49.79,51,50.86,47.89,50.89Z"
+              />
+              <path
+                fill="#F76D57"
+                d="M47.89,50.89c3.11,0,5-1.1,6.13-4,2.13-5.28,4.52-10.48,7.12-15.55A32.7,32.7,0,0,1,72.33,18.65c8.17-5.26,13.21-2.47,13.72,7,.24,4.44-1.14,9-2.27,13.44C81.4,48.27,77,56.67,72,64.67c-4.23,6.78-9.18,13.11-13.73,19.69s-9,13.21-13.43,19.83c-.62.93-1.09,2-1.76,3.18-3.62-2.87-4.24-6.13-5.69-8.77-6.48-11.76-12.95-23.54-19-35.52-4.29-8.43-7.51-17.31-8-26.95C10,28.51,11.1,21.33,15.84,15c4.5-6,9.71-6.69,15.29-2,6.59,5.55,10.94,12.12,11.4,21.2.24,4.75,2.09,9.45,3.4,14.12C46.21,49.37,47.28,50.13,47.89,50.89Z"
+              />
+            </svg>
+          </i>
+        </span>
+      </div>
+      <style>
+        .heart-container {
+          width: 500px;
+        }
+      </style>
     </section>
-    <!-- 4 -->
+
+    <!-- план -->
+    <section class="slide slide--light">
+      <h2 class="title title--dark">План</h2>
+      <ul>
+        <li>
+          Что происходит при первичной загрузке страницы и сколько потоков
+          у&nbsp;браузера на странице
+        </li>
+        <li>
+          Какие задачи запускает и как анимация css-свойств влияет на
+          перерисовку страницы
+        </li>
+        <li>
+          Какие структуры строит браузер и на каких этапах они формируются
+        </li>
+        <li>Что происходит при прокрутке страницы</li>
+        <li>
+          demo с анимацией и где в devtools смотреть задачи отрисовки и
+          созданные слои
+        </li>
+      </ul>
+    </section>
+
+    <!-- Процент использования браузеров-->
     <section class="slide slide--light">
       <h2 class="title title--dark">Процент использования браузеров</h2>
       <div
@@ -96,7 +199,9 @@
       ></div>
       <p class="copyright bottom">
         Source:
-        <a target="_blank" href="https://gs.statcounter.com/browser-market-share"
+        <a
+          target="_blank"
+          href="https://gs.statcounter.com/browser-market-share"
           >StatCounter Global Stats - Browser Market Share</a
         >
       </p>
@@ -108,9 +213,18 @@
         type="text/javascript"
         src="https://gs.statcounter.com/chart.php?all-browser-ww-monthly-202301-202401&chartWidth=600"
       ></script>
+      <footer class="footer">
+        <p>
+          Так как процент использования браузеров на основе хромиума порядка
+          70%, мы более подробнее рассмотрим рендеринг именно в нем. Gecko и
+          Webkit также реализовали большинство архитектурных функций, про
+          которые я буду рассказывать. Итак, Разные браузеры используют разные
+          механизмы рендеринга, но в общих чертах следуют одинаковому алгоритму.
+        </p>
+      </footer>
     </section>
 
-    <!-- 5 -->
+    <!-- Первичная загрузка страницы -->
     <section class="slide slide--light" id="picture">
       <h2 class="title title--dark">Первичная загрузка страницы</h2>
       <img
@@ -118,8 +232,68 @@
         src="pictures/first-load.webp"
         alt="Первичная загрузка полный цикл"
       />
+      <div
+        class="spotlight next visit-hidden dom"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 430px;
+          --spotlight-height: 145px;
+          --spotlight-top: -40px;
+          --spotlight-left: -285px;
+        "
+      ></div>
+      <div
+        class="spotlight cssom visit-hidden next"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 430px;
+          --spotlight-height: 145px;
+          --spotlight-top: 125px;
+          --spotlight-left: -285px;
+        "
+      ></div>
+      <div
+        class="spotlight render-tree visit-hidden next"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 156px;
+          --spotlight-height: 145px;
+          --spotlight-top: 50px;
+          --spotlight-left: -14px;
+        "
+      ></div>
+      <div
+        class="spotlight painting visit-hidden next"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 442px;
+          --spotlight-height: 145px;
+          --spotlight-top: 50px;
+          --spotlight-left: 270px;
+        "
+      ></div>
+      <footer class="footer">
+        <p>
+          Вот что происходит при первичной загрузке страницы. Html парсится и
+          разбивается на токены; Токены преобразуются в Ноды; Ноды собираются в
+          DOM (Domain Object Model) дерево; Параллельно с этим процессом
+          происходит парссинг CSS правил и строится CSSOM (CSS Object Model );
+          CSSOM и DOM объединяются в Render Tree, похожее на DOM дерево, в
+          котором скрываются не видимые элементы (meta, script, link и display:
+          none ) и добавляются элементы которых нет в DOM (псевдоэлементы
+          :before, :after); cтроится карта стилей и применяется к DOM Елементам.
+          На этом этапе страница еще не отрисована. Далее запускаются задачи,
+          которые как раз таки и отвечают за отрисовку страницы, Layout, Paint и
+          Composite.
+        </p>
+      </footer>
     </section>
-    <!-- 6 -->
+
+    <!-- перерисовка -->
     <section class="slide slide--light">
       <h2 class="title title--dark">Процессы перерисовки</h2>
       <img
@@ -128,9 +302,19 @@
         height="75%"
         alt="Процессы перерисовки"
       />
+      <footer class="footer">
+        <p>
+          Когда на странице запущена анимация или происходит переход из одного
+          состояния в другое страница перерисовывается и запускаются разный
+          набор задач для отрисовки в зависимости от того какое css свойство
+          анимируется. Для того чтобы понять по какому принципу браузер выбирает
+          задачи для отрисовки, давайте сначала разберем как работает браузер в
+          процессе отрисовки, и чтоже происходит при выполении этих задач.
+        </p>
+      </footer>
     </section>
 
-    <!-- 7 -->
+    <!-- потоки -->
     <section class="slide slide--white">
       <h2 class="title title--dark">Распределение задач между потоками</h2>
       <img
@@ -147,9 +331,51 @@
           >Chrome for Developers</a
         >
       </p>
+      <div
+        class="spotlight painting visit-hidden next"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 442px;
+          --spotlight-height: 145px;
+          --spotlight-top: -100px;
+        "
+      ></div>
+      <div
+        class="spotlight painting visit-hidden next"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 442px;
+          --spotlight-height: 145px;
+          --spotlight-top: 45px;
+        "
+      ></div>
+      <div
+        class="spotlight painting visit-hidden next"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 442px;
+          --spotlight-height: 190px;
+          --spotlight-top: 152px;
+        "
+      ></div>
+      <footer class="footer">
+        <p>
+          Процесс отрисовки достаточно трудоемкий, поэтому в браузере
+          предусмотрено выполнение задач в разных потоках. Main tread это
+          основной поток браузера в котором происходит обработка базовых
+          процессов необходимых для отрисовки такие как Style, Layout и Paint,
+          исполняется js, Compositor Thread который группирует различные
+          элементы по слоям, делит слои на плитки и направляет эти плитки в Viz
+          Process для дальнейшего расстрирования и отрисовки на графическом
+          процессоре
+        </p>
+      </footer>
     </section>
 
-    <!-- 8 -->
+    <!-- full render -->
     <section class="slide slide--light" id="picture">
       <h2 class="title title--hidden">Рендеринг в Chromium</h2>
       <figure>
@@ -167,8 +393,24 @@
           >
         </figcaption>
       </figure>
+      <footer class="footer">
+        <p>
+          Задачи выполняются в разных потоках и процессе, на картинке можно
+          увидеть что задачи которые выполняются в главном потоке помечены
+          зеленым, в композиторе желтым, и задачи которые обрабатывает viz
+          процесс раскрашены в оранжевый. Некоторые задачи могут выполнятся в
+          нескольких местах, в зависимости от обстоятельств, поэтому некоторые
+          из них имеют два цвета. В процессе перерисовки часть задач может
+          пропускаться, если они не нужны. Например, анимация некоторых
+          визуальных эффектов и прокрутки могут пропускать layout, prepaint и
+          paint. Именно поэтому анимация и прокрутка отмечены на схеме желтым и
+          зеленым цветами. Если layout, prepaint и paint можно пропустить для
+          некоторых визуальных эффектов, их можно полностью запустить в потоке
+          композитора и пропустить основной поток
+        </p>
+      </footer>
     </section>
-<!-- 9 -->
+    <!-- highlight animate -->
     <section class="slide slide--light" id="picture">
       <h2 class="title title--hidden">Рендеринг в Chromium Animate</h2>
       <figure>
@@ -196,18 +438,28 @@
           --spotlight-top: -170px;
         "
       ></div>
+      <footer class="footer">
+        <p>
+          Animate запускает в случае если на странице запущена анимация(animation) или происходит переход css-свойства из одного состояния в другое(transition)
+        </p>
+      </footer>
     </section>
-    <!-- 10 -->
+    <!-- animate -->
     <section class="slide slide--white">
       <h2 class="title title--dark">Аnimate</h2>
       <img
         class="cover moved"
         src="pictures/animation-keyframe-example.webp"
         height="75%"
-        alt="вычисляемые стили в инспекторе браузера"
+        alt="keayframes"
       />
+      <footer class="footer">
+        <p>
+          На этом этапе происходит периодическое изменение computed styles и property threes на основе временной шкалы.
+        </p>
+      </footer>
     </section>
-<!-- 11 -->
+    <!-- property trees -->
     <section class="slide slide--light">
       <h2 class="title title--hidden">Property trees</h2>
       <img
@@ -216,8 +468,72 @@
         height="100%"
         alt="Property trees"
       />
+      <div
+        class="spotlight visit-hidden next transform"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 380px;
+          --spotlight-height: 160px;
+          --spotlight-top: 25px;
+          --spotlight-left: -200px;
+        "
+      ></div>
+      <div
+        class="spotlight visit-hidden next clip"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 380px;
+          --spotlight-height: 160px;
+          --spotlight-top: 195px;
+          --spotlight-left: -200px;
+        "
+      ></div>
+      <div
+        class="spotlight visit-hidden next effect"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 380px;
+          --spotlight-height: 160px;
+          --spotlight-top: 25px;
+          --spotlight-left: 180px;
+        "
+      ></div>
+      <div
+        class="spotlight visit-hidden next scroll"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 380px;
+          --spotlight-height: 160px;
+          --spotlight-top: 185px;
+          --spotlight-left: 180px;
+        "
+      ></div>
+      <footer class="footer">
+        <p>
+          Property threes это деревья свойств которые обьясняют браузеру какие визуальные и скролл эффекты необходимо применить к DOM элементу, где распологается элемент относительно вьюпорта. Их 4: transform, clip, effect, и scroll. 
+        </p>
+        <ul>
+          <li>Transform three содержить css трансформации и скроллинг.
+          <li>
+            Сlip three содержит представления о том как обрезаются элементы.
+          </li>
+          <li>
+            Effect three содержит другие визуальные эффекты такие как непрозрачность, фильтры, маски, режимы наложения и другие виды обрезки , такие как clip-path.
+          </li>
+          <li>
+            Scroll three содержит информацию о прокрутке, например, как прокрутки обьединяются друг с другом.</li>
+          </li>
+        </ul>
+        <p>
+          Первичное построение деревьев свойств начинается с этапа pre-paint.          
+        </p>
+      </footer>
     </section>
-<!-- 12 -->
+    <!-- Style focus -->
     <section class="slide slide--light" id="picture">
       <h2 class="title title--hidden">Рендеринг в Chromium Style</h2>
       <figure>
@@ -245,8 +561,13 @@
           --spotlight-top: -133px;
         "
       ></div>
+      <footer class="footer">
+        <p>
+          Браузер создает/обновляет computed styles Dom элементов. Их можно увидеть на вкладе в devtools
+        </p>
+      </footer>
     </section>
-<!-- 13 -->
+    <!-- Style -->
     <section class="slide slide--light">
       <h2 class="title title--dark">Style/Recalculate style</h2>
       <img
@@ -256,7 +577,7 @@
         alt="вычисляемые стили в инспекторе браузера"
       />
     </section>
-<!-- 14 -->
+    <!-- Layout focus -->
     <section class="slide slide--light" id="picture">
       <h2 class="title title--hidden">Рендеринг в Chromium Layout</h2>
       <figure>
@@ -284,21 +605,34 @@
           --spotlight-top: -98px;
         "
       ></div>
+      <footer class="footer">
+        <p>
+          После того как у браузера появилось дерево рендеринга , он начинает «расставлять» элементы на странице
+        </p>
+      </footer>
     </section>
-<!-- 15 -->
+    <!-- Layout -->
     <section class="slide slide--light">
       <h2 class="title title--hidden">Layout</h2>
       <figure>
         <img class="cover" src="pictures/layout.webp" alt="Компоновка" />
         <figcaption class="copyright bottom">
           Источник:
-          <a target="_blank" href="https://developer.chrome.com/docs/chromium/layoutng"
+          <a
+            target="_blank"
+            href="https://developer.chrome.com/docs/chromium/layoutng"
             >Chrome for Developers</a
           >
         </figcaption>
       </figure>
+      <footer class="footer">
+        <p>
+          Чтобы понимать, где какой элемент должен находиться и как он влияет на расположение других элементов, браузер рассчитывает координаты каждого элемента и пространство которое он занимает. 
+          Определение размеров и местоположений элементов происходит не за один проход по дереву, проход может происходить несколько раз, если элементы встречающиеся позже, влияют на предыдущие элементы.
+        </p>
+      </footer>
     </section>
-<!-- 16 -->
+    <!-- Layout types -->
     <section class="slide slide--light">
       <h2 class="title title--hidden">Layout types</h2>
       <img
@@ -307,18 +641,43 @@
         height="100%"
         alt="Layout types"
       />
+          <footer class="footer">
+            <p>
+              Layout бывает глобальный и инкрементальный. Глобальный Layout — это процесс просчёта всего дерева полностью, то есть каждого элемента.
+              Инкрементальный — просчитывает только часть.
+              Глобальный Layout запускается, например, при изменении размера окна, потому что браузеру требуется подогнать всю страницу под новый размер экрана. Это очень дорогой процесс.
+              Инкрементальный Layout запускает пересчёт только «грязных» элементов, то есть тех элементов которые были изменены.
+              Каждый раз когда вы меняете свойство стиля, которое отвечает за положение и размеры элемента, происходит повторный процесс расчета размеров и положений у всех элементов, на которые могут повлиять эти изменения.
+            </p>
+          </footer>
     </section>
-    <!-- 17 -->
+    <!-- Immutable fragment tree -->
     <section class="slide slide--light">
-      <h2 class="title title--hidden">Immutable fragment tree</h2>
+      <h2 class="copyright bottom title title--small title--dark">
+        Immutable fragment tree
+      </h2>
       <img
         class="cover"
         src="pictures/representation-the-fragm.webp"
         height="100%"
         alt="Immutable fragment tree"
       />
+      <style>
+        .title--small {
+          font-size: 28px;
+        }
+      </style>
+        <footer class="footer">
+          <p>
+            По результату выполнения этапа layout браузер создает immutable fragment tree,
+             который содежит в себе информацию о размерах и положении элементов без применения трансформаций, 
+             который никогда больше не поменяется, то есть при следующем вызове процесса layout браузер переиспользует часть фрагментов,
+              но создаст новое дерево. Обычно на каждый элемент приходится только один фрагмент,
+               но их может быть больше, если например внутри элемента текст разделен на несколько колонок (свойство column-count)
+          </p>
+        </footer>
     </section>
-<!-- 18 -->
+    <!-- Pre-Paint focus -->
     <section class="slide slide--light" id="picture">
       <h2 class="title title--hidden">Рендеринг в Chromium Pre-Paint</h2>
       <figure>
@@ -347,7 +706,7 @@
         "
       ></div>
     </section>
-<!-- 19 -->
+    <!-- Pre-Paint process -->
     <section class="slide slide--light">
       <h2 class="title title--dark">Pre-Paint</h2>
       <img
@@ -356,8 +715,14 @@
         height="100%"
         alt="Pre-Paint"
       />
+      <footer class="footer">
+        <p>
+          Вычисление property threes на основе immutable fragment tree и инвалидация существующих display list и плиток текстур графического процессора. 
+          Про плитки чуть позднее
+        </p>
+      </footer>
     </section>
-<!-- 20 -->
+    <!-- display list -->
     <section class="slide slide--light">
       <h2 class="title title--hidden">display list</h2>
       <img
@@ -366,8 +731,14 @@
         height="100%"
         alt="display list"
       />
+      <footer class="footer">
+        <p>
+          Display list это набор низкоуровневых команд для браузера о том как растрировать элемент.
+          Display list расчитывается на этапе, который называется Paint
+        </p>
+      </footer>
     </section>
-<!-- 21 -->
+    <!-- Scroll -->
     <section class="slide slide--light" id="picture">
       <h2 class="title title--hidden">Рендеринг в Chromium Scroll</h2>
       <figure>
@@ -395,8 +766,13 @@
           --spotlight-top: -28px;
         "
       ></div>
+      <footer class="footer">
+        <p>
+          Обновление смещения прокрутки документа и прокручиваемых DOM-элементов путем мутации property trees
+        </p>
+      </footer>
     </section>
-<!-- 22 -->
+    <!-- Paint focus -->
     <section class="slide slide--light" id="picture">
       <h2 class="title title--hidden">Рендеринг в Chromium Paint</h2>
       <figure>
@@ -424,13 +800,31 @@
           --spotlight-top: 7px;
         "
       ></div>
+      <footer class="footer">
+        <p>
+          На этапе paint происходит построение display list, браузер бежит по дереву рендеринга и записывает команды в зависимости от того, что в конкретном месте должно быть нарисовано: текст, изображение, цвет фона, тени, рамки и т. д. 
+        </p>
+      </footer>
     </section>
-<!-- 23 -->
+    <!-- Paint chunks -->
     <section class="slide slide--light">
       <h2 class="title title--hidden">Paint</h2>
-      <img class="cover" src="pictures/paint-chunks.webp" height="100%" alt="Paint" />
+      <img
+        class="cover"
+        src="pictures/paint-chunks.webp"
+        height="100%"
+        alt="Paint"
+      />
+      <footer class="footer">
+        <p>
+          Порядок отрисовки связан со стековым контекстом.
+          В общих чертах, отрисовка начинается с заднего плана и постепенно переходит к переднему: background-color; background-image; border; children; outline. 
+          Элементы display list, которые имеют одно и то же состояние в property thees, группируются в чанки по этому состоянию, которые содержат информацию об отрисовке и текущее состояние в property trees. 
+          Paint тоже бывает глобальным и инкрементальныым. Логика тут та же, как и в Layout — если изменения ограничены одним участком, то пометится «грязным» и перерисуется лишь он.
+          </p>
+      </footer>
     </section>
-<!-- 24 -->
+    <!-- Composite focus -->
     <section class="slide slide--light" id="picture">
       <h2 class="title title--hidden">Рендеринг в Chromium Composite</h2>
       <figure>
@@ -458,8 +852,13 @@
           --spotlight-top: 151px;
         "
       ></div>
+      <footer class="footer">
+        <p>
+          После того как браузер знает размеры, позицию и то в какой последовательности красить элементы наступает пора конечной отрисовки элементов на странице.
+         </p>
+      </footer>
     </section>
-<!-- 25 -->
+    <!-- Composite -->
     <section class="slide slide--light">
       <h2 class="title title--dark">Composite</h2>
       <img
@@ -468,8 +867,74 @@
         height="100%"
         alt="Composite workflow"
       />
+      <div
+        class="spotlight commit visit-hidden next"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 325px;
+          --spotlight-height: 270px;
+          --spotlight-top: 45px;
+          --spotlight-left: -355px;
+        "
+      ></div>
+      <div
+        class="spotlight layerize visit-hidden next"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 325px;
+          --spotlight-height: 300px;
+          --spotlight-top: -125px;
+          --spotlight-left: -30px;
+        "
+      ></div>
+      <div
+        class="spotlight raster visit-hidden next"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 325px;
+          --spotlight-height: 230px;
+          --spotlight-top: -83px;
+          --spotlight-left: 340px;
+        "
+      ></div>
+      <div
+        class="spotlight aggregate visit-hidden next"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 325px;
+          --spotlight-height: 255px;
+          --spotlight-top: 142px;
+          --spotlight-left: 330px;
+        "
+      ></div>
+      <div
+        class="spotlight draw visit-hidden next"
+        style="
+          --spotlight-radius: 0;
+          --spotlight-opacity: 0.2;
+          --spotlight-width: 250px;
+          --spotlight-height: 165px;
+          --spotlight-top: 183px;
+          --spotlight-left: -55px;
+        "
+      ></div>
+      <footer class="footer">
+        <p>
+          Для этого браузер копирует property threes и display list сгруппированные в чанки в поток композитора, 
+           в девтулзах мы можем увидеть этот процесс как Commit, 
+           группирует  чанки по слоям для независимой растеризации и анимации, процесс Layerize, 
+           слои определеяются засчет css-свойств, например элементы с position:fixed, указанными свойствами transform/opacity выносятся на отдельный слой.
+            Далее браузер в viz процессе растрирует эти слои и затем тамже объединяет эти слои в готовую страницу.
+             Теперь при скролле страницы достаточно просто сдвинуться в необходимый отрисованный слой.
+          Так как размеры слоев могут быть достаточно большими, поток композитора также разделяет их на плитки, которые как раз таки инвалидируются на этапе pre-paint, сохраняет их в памяти GPU и отрисовывает в первую очередь те части, которые видны в данный момент в окне браузера
+           </p>
+      </footer>
     </section>
-<!-- 26 -->
+    <!-- layout triggers -->
     <section class="slide slide--light">
       <h2 class="title title--dark">
         Свойства, затрагивающие геометрию <br />или позицию элемента
@@ -482,8 +947,14 @@
       <p class="note">
         left, max-width, border-width, margin-left, font-size и т.д.
       </p>
+      <footer class="footer">
+        <p>
+          Свойства, затрагивающие геометрию или позицию элемента, 
+          запускают весь процесс заново: новое вычисление стилей, layout и перерисовку
+        </p>
+      </footer>
     </section>
-<!-- 27 -->
+    <!-- paint triggers -->
     <section class="slide slide--light">
       <h2 class="title title--dark">
         Свойства, не затрагивающие геометрию <br />или позицию элемента,
@@ -496,8 +967,14 @@
       <p class="note">
         но не лежащие в отдельном слое, такие как background-color, color и т.д.
       </p>
+      <footer class="footer">
+        <p>
+          Если мы анимируем Свойства, не затрагивающие геометрию и позиционирование элементов, но не лежащие в отдельном слое,
+           запускают только вычисление стилей и перерисовку, но не layout
+        </p>
+      </footer>
     </section>
-<!-- 28 -->
+    <!-- composite triggers -->
     <section class="slide slide--light">
       <h2 class="title title--dark">
         Свойства, которые рендерятся <br />в отдельном слое
@@ -508,14 +985,22 @@
         alt="процессы перерисовки"
       />
       <p class="note">transform, opacity</p>
+      <footer class="footer">
+        <p>
+          Свойства, которые рендерятся в отдельном слое не запускают даже repaint, 
+          так как результат обновления обрабатывается на этапе композиции без повторной разбивки страницы по слоям и копировании свойств
+        </p>
+      </footer>
     </section>
-    <!-- 29 -->
+    <!-- demo -->
     <section class="slide slide--white">
       <h2 class="title title--dark shout">
         <a class="no-decoration" target="_blank" href="demo/index.html">Demo</a>
       </h2>
       <p class="copyright right bottom">
-        <a target="_blank" href="video-demo/index.html?full#cover">Video record</a>
+        <a target="_blank" href="video-demo/index.html?full#cover"
+          >Video record</a
+        >
       </p>
 
       <style>
@@ -528,12 +1013,52 @@
         }
       </style>
     </section>
-<!-- 30 -->
+
+    <!-- О чем был доклад? -->
+    <section class="slide slide--light">
+      <h2 class="title title--dark">О чем был доклад?</h2>
+      <ul>
+        <li>Как работает браузер</li>
+        <li>
+          Подробный разбор процессов отрисовки и какие структуры формирует
+          браузер
+        </li>
+        <li>
+          css-триггеры, какой набор задач отрисовки перезапускают те или иные
+          css-свойства
+        </li>
+      </ul>
+    </section>
+    <!-- Tips -->
+    <section class="slide slide--white">
+      <h2 class="title title--dark">Tips</h2>
+      <ul>
+        <li>
+          По воможности не используйте анимацию css-свойств, которые затрагивают
+          геометрию и позицию элемента
+        </li>
+        <li>Не создавайте слой на каждый элемент</li>
+        <li>Сначала измеряем, потом оптимизируем</li>
+      </ul>
+      <footer class="footer">
+        <ul>
+          <li>
+            По возможности не используйте анимацию свойств, затрагивающие геометрию
+          </li>
+          <li>
+            Не злоупотребляйте этапом composite, не создавайте слой на каждый элемент, так как для хранения каждого слоя используется память, которая ограничена. Не имеет смысла выносить элемент на отдельный слой если вы анимируете цвет фона, все равно процессы перерисовки в данном случае не будут отличаться от того если бы элемент не лежал в тдельном слое
+          </li>
+        </ul>
+      </footer>
+    </section>
+    <!-- Полезные ссылки -->
     <section class="slide slide--white">
       <h2 class="title title--dark">Полезные ссылки</h2>
       <ul>
         <li>
-          <a href="https://lab.skk.moe/css-triggers" target="_blank">CSS Triggers</a>
+          <a href="https://lab.skk.moe/css-triggers" target="_blank"
+            >CSS Triggers</a
+          >
         </li>
         <li>
           <a
@@ -551,7 +1076,7 @@
         </li>
       </ul>
     </section>
-    <!-- 31 -->
+    <!-- finish -->
     <section class="slide finish">
       <h2 class="title">Всем добра</h2>
       <figure>

@@ -8,3 +8,7 @@
 .shower.full .next.visited {
     visibility: visible;
 }
+
+.shower.full .next.visited.visit-hidden {
+    visibility: hidden;
+} 
