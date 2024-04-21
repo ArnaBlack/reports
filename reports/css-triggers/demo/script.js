@@ -11,14 +11,6 @@
         })
     }
 
-    const sizes = document.getElementById('size');
-
-    sizes.addEventListener('click', (e) => {
-      setTimeout(() => {
-        document.querySelector('composite').getBoundingClientRect();
-      }, 1000)
-    })
-
     SELECTORS.forEach(selector => {
         const button = document.getElementById(selector);
         const box = document.querySelector(`.${selector}`);
