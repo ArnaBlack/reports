@@ -43,6 +43,7 @@
     width: var(--slide-width);
     height: var(--slide-height);
     background-color: var(--color-background-dark);
+    color: white;
 }
 
 /* Number */
@@ -65,8 +66,15 @@
 
 .slide--light {
     background-color: var(--color-background-light);
+    color: black;
+}
+
+.slide--dark {
+    background-color: var(--color-background-dark);
+    color: white;
 }
 
 .slide--white {
     background-color: #fff;
+    color: black;
 }

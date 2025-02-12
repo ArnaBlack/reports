@@ -29,7 +29,7 @@
         auto-fill,
         calc(var(--slide-width) * var(--slide-scale))
     );
-    background-color: var(--color-grey);
+    background-color: var(--page-background);
 }
 
 /* IE & Edge Fix */

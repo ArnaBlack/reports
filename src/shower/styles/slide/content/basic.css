@@ -1,4 +1,11 @@
 /* Basic */
+
+.slide h2 {
+    margin-top: 6px;
+    margin-bottom: 34px;
+    font: bold 50px/1 'PT Sans Narrow', sans-serif;
+}
+
 .slide * + h2 {
     margin-top: 41px;
 }
@@ -14,9 +21,4 @@
 
 .slide figure {
     margin: 0;
-}
-
-.slide .chart {
-    display: flex;
-    justify-content: center;
 }

@@ -20,7 +20,7 @@
 .slide li::before {
     position: absolute;
     width: 3em;
-    color: var(--color-grey);
+    color: var(--color-accent);
     text-align: right;
     opacity: 0.75;
     transform: translateX(
