@@ -313,6 +313,7 @@ var hljsGrammar = (function () {
     'animation-name',
     'animation-play-state',
     'animation-timing-function',
+    'anchor-name',
     'appearance',
     'backface-visibility',
     'background',

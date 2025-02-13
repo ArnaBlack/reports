@@ -173,8 +173,18 @@
     </section>
     <!--  6 starting-styles + allow-discrete -->
     <section class="slide">
+      <style>
+        code {
+          display: inline-block;
+        }
+
+        code + code {
+          margin-top: 0.5em;
+        }
+      </style>
       <h2 class="shout">
         <code>@starting-style</code>
+        <br />
         +
         <code>
           transition-behavior: allow-discrete
@@ -185,16 +195,8 @@
     <section class="slide">
         <pre class="place big css">
           <code>
-            /* standalone */
             @starting-style {
-              rulesets
-            }
-
-            selector {
-              /* existing ruleset */
-              @starting-style {
-                declarations
-              }
+              /* rulesets */
             }
           </code>
         </pre>
@@ -257,12 +259,44 @@
 
     <!--  15 anchor -->
     <section class="slide">
-      <h2 class="shout">
+      <h2 class="shout anchor">
         <code>
-          anchor()
+          anchor(<span class="hljs-keyword">&lt;anchor-name&gt; &lt;anchor-side&gt;, &lt;length-percentage&gt;</span>)
         </code>
       </h2>
       <a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/anchor">css anchor()</a>
+      <style>
+        .slide .anchor {
+          font-size: 1.197em;
+        }
+      </style>
+    </section>
+
+    <!--  16  anchor name -->
+    <section class="slide">
+       <pre class="place big css">
+          <code>
+            /* Define an anchor element */
+          .anchor {
+            anchor-name: --my-anchor;
+          }
+
+          /* Anchor a target element */
+          .target {
+            position: absolute;
+            left: anchor(--my-anchor left, 0);
+          }
+          </code>
+        </pre>
+    </section>
+
+    <!--  16  anchor tabs -->
+    <section class="slide">
+      <iframe class="cover width height"  scrolling="no" title="Tab anchor" src="https://codepen.io/arnablack-the-vuer/embed/LEPwKrB?default-tab=css%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/arnablack-the-vuer/pen/LEPwKrB">
+        Tab anchor</a> by ArnaBlack (<a href="https://codepen.io/arnablack-the-vuer">@arnablack-the-vuer</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
     </section>
 
     <!-- finish -->
@@ -290,6 +324,7 @@
 
     <script src="../../src/shower/shower.js"></script>
     <script src="../../src/highlight/highlight.min.js"></script>
+    <script src="../../src/highlight/languages/css.js"></script>
     <script>hljs.highlightAll();</script>
     <script>
       (function() {
