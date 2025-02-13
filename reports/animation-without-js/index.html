@@ -173,23 +173,23 @@
     </section>
     <!--  6 starting-styles + allow-discrete -->
     <section class="slide">
+      <h2 class="shout">
+        <code class="hljs-keyword">@starting-style</code>
+        <br />
+        +
+        <code>
+          <span  class="hljs-attribute">transition-behavior:</span> allow-discrete
+        </code>
+      </h2>
       <style>
         code {
           display: inline-block;
         }
 
-        code + code {
-          margin-top: 0.5em;
+        code ~ code {
+          font-size: 0.63em;
         }
       </style>
-      <h2 class="shout">
-        <code>@starting-style</code>
-        <br />
-        +
-        <code>
-          transition-behavior: allow-discrete
-        </code>
-      </h2>
     </section>
     <!--  7 starting-style -->
     <section class="slide">
@@ -235,12 +235,12 @@
     <!--  11  ciu st -->
     <section class="slide">
       <img width="800" class="place"/>
-      <a class="copyright" href="https://caniuse.com/mdn-css_at-rules_starting-style">ciu @starting-style</a>
+      <a class="copyright" href="https://caniuse.com/mdn-css_at-rules_starting-style">caniuse</a>
     </section>
     <!-- 12 ciu allow-discrete -->
     <section class="slide">
       <img width="800" class="place"/>
-      <a class="copyright" href="https://caniuse.com/mdn-css_properties_display_is_transitionable">ciu transition-behavior: allow-discrete</a>
+      <a class="copyright" href="https://caniuse.com/mdn-css_properties_display_is_transitionable">caniuse</a>
     </section>
 
     <!-- 13 tabs -->
@@ -290,11 +290,131 @@
         </pre>
     </section>
 
-    <!--  16  anchor tabs -->
+    <!--  17  anchor tabs -->
     <section class="slide">
       <iframe class="cover width height"  scrolling="no" title="Tab anchor" src="https://codepen.io/arnablack-the-vuer/embed/LEPwKrB?default-tab=css%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
         See the Pen <a href="https://codepen.io/arnablack-the-vuer/pen/LEPwKrB">
         Tab anchor</a> by ArnaBlack (<a href="https://codepen.io/arnablack-the-vuer">@arnablack-the-vuer</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </section>
+
+    <!--  18  ciu anchor -->
+    <section class="slide">
+      <img width="800" class="place"/>
+      <a class="copyright" href="https://caniuse.com/mdn-css_types_anchor">caniuse</a>
+    </section>
+
+    <!-- 19 details -->
+    <section class="slide">
+      <h2 class="shout">Аккордеон</h2>
+    </section>
+
+    <!-- 20 pen js details -->
+    <section class="slide">
+      <iframe class="cover width height" scrolling="no" title="Animate accordions with WAAPI" src="https://codepen.io/chriscoyier/embed/XWNqxyY?default-tab=js%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/chriscoyier/pen/XWNqxyY">
+        Animate accordions with WAAPI</a> by Chris Coyier  (<a href="https://codepen.io/chriscoyier">@chriscoyier</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </section>
+
+    <!--  21 calc-size + details-content -->
+    <section class="slide">
+      <style>
+        code {
+          display: inline-block;
+        }
+
+        code + code {
+          margin-top: 0.5em;
+        }
+      </style>
+      <h2 class="shout">
+        <code>calc-size()</code>
+        <br />
+        +
+        <br />
+        <code class="hljs-selector-pseudo">
+          ::details-content
+        </code>
+      </h2>
+    </section>
+
+    <!--  22 calc-size -->
+    <section class="slide">
+      <style>
+        .slide .calc-size {
+          font-size: 1.65em;
+        }
+      </style>
+      <h2 class="shout calc-size">
+        <code>
+          calc-size(<span class="hljs-keyword">&lt;calc-size-basis&gt;, &lt;calc-sum&gt;</span>)
+        </code>
+      </h2>
+      <a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/calc-size">calc-size()</a>
+    </section>
+
+    <!--  23 details-content -->
+    <section class="slide">
+      <h2 class="shout">Псевдоэлемент <code class="hljs-selector-pseudo">::details-content</code></h2>
+    </section>
+
+    <!--  24 details-content demo -->
+    <section class="slide">
+      <iframe class="cover width height" scrolling="no" title="details-content calc-size" src="https://codepen.io/arnablack-the-vuer/embed/RNwbYwm?default-tab=css%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/arnablack-the-vuer/pen/RNwbYwm">
+        details-content calc-size</a> by ArnaBlack (<a href="https://codepen.io/arnablack-the-vuer">@arnablack-the-vuer</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </section>
+
+    <!--  25 interpolate-size: allow-keywords -->
+    <section class="slide">
+      <h2 class="shout interpolate-size">
+        <code>
+          <span class="hljs-attribute">interpolate-size:</span> allow-keywords
+        </code>
+      </h2>
+      <style>
+        .shout.interpolate-size code {
+          font-size: 0.65em;
+        }
+      </style>
+    </section>
+
+    <!--  26 details-content demo interpolate-size -->
+    <section class="slide">
+      <iframe class="cover width height" scrolling="no" title="details content interpolate-size" src="https://codepen.io/arnablack-the-vuer/embed/bNGbyEY?default-tab=css%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/arnablack-the-vuer/pen/bNGbyEY">
+        details content interpolate-size</a> by ArnaBlack (<a href="https://codepen.io/arnablack-the-vuer">@arnablack-the-vuer</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </section>
+
+    <!--  24  ciu calc-size -->
+    <section class="slide">
+      <img width="800" class="place"/>
+      <a class="copyright" href="https://caniuse.com/mdn-css_types_calc-size">caniuse</a>
+    </section>
+
+    <!--  25  ciu details content -->
+    <section class="slide">
+      <img width="800" class="place"/>
+      <a class="copyright" href="https://caniuse.com/mdn-css_selectors_details-content">caniuse</a>
+    </section>
+
+    <!-- 26 scroll -->
+    <section class="slide">
+      <h2 class="shout">Анимации, привязанные к сколлу</h2>
+    </section>
+
+    <!--  27 scroll example -->
+    <section class="slide">
+      <iframe class="cover width height" scrolling="no" title="horizontal scroll" src="https://codepen.io/arnablack-the-vuer/embed/myddrGJ?default-tab=result&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+        See the Pen <a href="https://codepen.io/arnablack-the-vuer/pen/myddrGJ">
+        horizontal scroll</a> by ArnaBlack (<a href="https://codepen.io/arnablack-the-vuer">@arnablack-the-vuer</a>)
         on <a href="https://codepen.io">CodePen</a>.
       </iframe>
     </section>
