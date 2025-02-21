@@ -17,6 +17,39 @@
     </style>
 </head>
 <body class="shower list">
+<style>
+
+
+    .slide.flex-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .slide .static-title {
+        position: static;
+        font-size: 1.15em;
+    }
+
+    .table-title {
+        color: #fb8;
+        background: none;
+        text-align: center;
+    }
+
+    .table {
+        display: grid;
+        grid-auto-flow: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    .table ul > li:lang(ru)::before {
+        content: none;
+    }
+</style>
 <header class="caption">
     <h1>Продвинутый CSS. Анимации без JS
     </h1>
@@ -169,7 +202,7 @@
     </iframe>
 </section>
 <!--  15 anchor -->
-<section class="slide">
+<section class="slide flex-container">
     <h2 class="shout anchor">
         <code>
             anchor(<span class="hljs-keyword">&lt;anchor-name&gt; &lt;anchor-side&gt;, &lt;length-percentage&gt;</span>)
@@ -199,7 +232,25 @@
           </code>
         </pre>
 </section>
-<!--  17  anchor tabs -->
+<!-- 17 anchor-center-physical-arguments-->
+<section class="slide finish">
+    <figure>
+        <img class="cover" src="./pictures/anchor-center-physical-arguments.webp" alt="caaaats"/>
+    </figure>
+</section>
+<!-- 18 anchor-logical-->
+<section class="slide finish">
+    <figure>
+        <img class="cover" src="./pictures/anchor-logical.webp" alt="caaaats"/>
+    </figure>
+</section>
+<!-- 19 anchor-length-->
+<section class="slide finish">
+    <figure>
+        <img class="cover" src="./pictures/anchor-length.webp" alt="caaaats"/>
+    </figure>
+</section>
+<!--  20  anchor tabs -->
 <section class="slide">
     <iframe class="cover width height" scrolling="no" title="Tab anchor"
             src="https://codepen.io/arnablack-the-vuer/embed/LEPwKrB?default-tab=css%2Cresult&theme-id=dark"
@@ -209,17 +260,17 @@
         on <a href="https://codepen.io">CodePen</a>.
     </iframe>
 </section>
-<!--  18  ciu anchor -->
+<!--  21  ciu anchor -->
 <section class="slide">
     img caniuse anchor()
     <img width="800" class="place"/>
     <a class="copyright" href="https://caniuse.com/mdn-css_types_anchor">caniuse</a>
 </section>
-<!-- 19 details -->
+<!-- 22 details -->
 <section class="slide">
     <h2 class="shout">Аккордеон</h2>
 </section>
-<!-- 20 pen js details -->
+<!-- 23 pen js details -->
 <section class="slide">
     <iframe class="cover width height" scrolling="no" title="Animate accordions with WAAPI"
             src="https://codepen.io/chriscoyier/embed/XWNqxyY?default-tab=js%2Cresult&theme-id=dark" frameborder="no"
@@ -229,7 +280,7 @@
         on <a href="https://codepen.io">CodePen</a>.
     </iframe>
 </section>
-<!--  21 calc-size + details-content -->
+<!--  24 calc-size + details-content -->
 <section class="slide">
     <style>
         code {
@@ -250,8 +301,8 @@
         </code>
     </h2>
 </section>
-<!--  22 calc-size -->
-<section class="slide">
+<!--  25 calc-size -->
+<section class="slide flex-container">
     <style>
         .slide .calc-size {
             font-size: 1.65em;
@@ -264,11 +315,50 @@
     </h2>
     <a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/calc-size">calc-size()</a>
 </section>
-<!--  23 details-content -->
+<!--  26 calc-size -->
+<section class="slide">
+    <article class="table">
+        <div>
+            <h3 class="table-title">calc-size-basis</h3>
+            <ul>
+                <li>auto, min-content, max-content,<br /> fit-content</li>
+                <li>content</li>
+                <li>calc-size()</li>
+                <li><code>&lt;calc-sum&gt;</code><i>(300px + 2rem)</i></li>
+                <li><code>any</code></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="table-title">calc-sum</h3>
+            <ul>
+                <li>Математические функции <br/><i>(calc-size(), round()...)</i></li>
+                <li><code>size</code></li>
+                <li>+, -, *, /</li>
+            </ul>
+        </div>
+    </article>
+    <a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/calc-size">calc-size()</a>
+</section>
+<!--  27 keyframes resize-->
+<section class="slide">
+         <pre class="place big css">
+          <code>
+          @keyframes resize {
+            from {
+                width: calc-size(fit-content, size);
+            }
+            to {
+                width: calc-size(fit-content, size * 0.5);
+            }
+          }
+          </code>
+        </pre>
+</section>
+<!--  28 details-content -->
 <section class="slide">
     <h2 class="shout">Псевдоэлемент <code class="hljs-selector-pseudo">::details-content</code></h2>
 </section>
-<!--  24 details-content demo -->
+<!--  29 details-content demo -->
 <section class="slide">
     <iframe class="cover width height" scrolling="no" title="details-content calc-size"
             src="https://codepen.io/arnablack-the-vuer/embed/RNwbYwm?default-tab=css%2Cresult&theme-id=dark"
@@ -279,7 +369,7 @@
         on <a href="https://codepen.io">CodePen</a>.
     </iframe>
 </section>
-<!--  25 interpolate-size: allow-keywords -->
+<!--  30 interpolate-size: allow-keywords -->
 <section class="slide">
     <h2 class="shout interpolate-size">
         <code>
@@ -292,7 +382,7 @@
         }
     </style>
 </section>
-<!--  26 details-content demo interpolate-size -->
+<!--  31 details-content demo interpolate-size -->
 <section class="slide">
     <iframe class="cover width height" scrolling="no" title="details content interpolate-size"
             src="https://codepen.io/arnablack-the-vuer/embed/bNGbyEY?default-tab=css%2Cresult&theme-id=dark"
@@ -302,23 +392,23 @@
         on <a href="https://codepen.io">CodePen</a>.
     </iframe>
 </section>
-<!--  24  ciu calc-size -->
+<!--  32  ciu calc-size -->
 <section class="slide">
     img caniuse calc-size
     <img width="800" class="place"/>
     <a class="copyright" href="https://caniuse.com/mdn-css_types_calc-size">caniuse</a>
 </section>
-<!--  28  ciu details content -->
+<!--  33  ciu details content -->
 <section class="slide">
     img caniuse ::details-content
     <img width="800" class="place"/>
     <a class="copyright" href="https://caniuse.com/mdn-css_selectors_details-content">caniuse</a>
 </section>
-<!-- 29 scroll -->
+<!-- 34 scroll -->
 <section class="slide">
     <h2 class="shout">Анимации, привязанные к сколлу</h2>
 </section>
-<!--  30 scroll example -->
+<!--  35 scroll example -->
 <section class="slide">
     <iframe class="cover width height" scrolling="no" title="horizontal scroll"
             src="https://codepen.io/arnablack-the-vuer/embed/myddrGJ?default-tab=result&theme-id=dark" frameborder="no"
@@ -328,7 +418,7 @@
         on <a href="https://codepen.io">CodePen</a>.
     </iframe>
 </section>
-<!--  31 animation-timeline scroll()-->
+<!--  36 animation-timeline scroll()-->
 <section class="slide flex-container">
     <h2 class="shout static-title">
         <code>
@@ -356,39 +446,8 @@
     </article>
     <a class="copyright"
        href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline/scroll">scroll()</a>
-    <style>
-        .slide.flex-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-left: 0;
-            padding-right: 0;
-        }
-
-        .slide .static-title {
-            position: static;
-            font-size: 1.15em;
-        }
-
-        .table-title {
-            color: #fb8;
-            background: none;
-            text-align: center;
-        }
-
-        .table {
-            display: grid;
-            grid-auto-flow: column;
-            width: 100%;
-            text-align: center;
-        }
-
-        .table ul > li:lang(ru)::before {
-            content: none;
-        }
-    </style>
 </section>
-<!--  32 animation-timeline scroll-timeline-name-->
+<!--  37 animation-timeline scroll-timeline-name-->
 <section class="slide">
          <pre class="place big css">
           <code>
@@ -404,7 +463,7 @@
           </code>
         </pre>
 </section>
-<!--  33 animation-timeline view-->
+<!--  38 animation-timeline view-->
 <section class="slide flex-container">
     <h2 class="shout static-title">
         <code>
@@ -432,7 +491,7 @@
     <a class="copyright"
        href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline/view">view()</a>
 </section>
-<!--34 view demo-->
+<!--39 view demo-->
 <section class="slide">
     <iframe class="cover width height" scrolling="no" title="view(inset)"
             src="https://codepen.io/arnablack-the-vuer/embed/JojYqZm?default-tab=css%2Cresult&theme-id=dark"
@@ -442,7 +501,7 @@
         on <a href="https://codepen.io">CodePen</a>.
     </iframe>
 </section>
-<!--  35 animation-timeline view-timeline-->
+<!--  40 animation-timeline view-timeline-->
 <section class="slide">
          <pre class="place big css">
           <code>
@@ -457,7 +516,7 @@
           </code>
         </pre>
 </section>
-<!--  36  ciu anination-timeline -->
+<!--  41  ciu anination-timeline -->
 <section class="slide">
     img caniuse animation-timeline
     <img width="800" class="place"/>
