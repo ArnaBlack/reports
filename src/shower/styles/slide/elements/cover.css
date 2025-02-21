@@ -24,6 +24,10 @@
     max-width: none;
 }
 
+.cover.img-cover {
+    object-fit: cover;
+}
+
 .cover.moved {
     top: 55%;
 }
