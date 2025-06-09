@@ -590,5 +590,25 @@
         };
     })();
 </script>
+<script>
+    document.querySelectorAll('video').forEach(video => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Видео в viewport - воспроизводим с начала
+                video.currentTime = 0;
+                video.play();
+            } else {
+                // Видео вне viewport - приостанавливаем
+                video.pause();
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    observer.observe(video);
+});
+</script>
 </body>
 </html>
