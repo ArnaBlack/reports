@@ -1,0 +1,74 @@
+@layer base, themes;
+
+@layer base {
+    :root {
+        /* Colors */
+        --primary: #5a4a7c;
+        --primary-hover: #7a6ba0;
+        --primary-light: #c0b9dd;
+        --secondary: #4a8f8e;
+        --secondary-light: #50B9B7;
+        --text-01: oklch(.373 .034 259.733);
+        --text-02: oklch(.446 .03 256.802);
+        --text-03: #6b7280;
+        --foreground: oklch(.145 0 0);
+        --header-gradient-from: #f7f4ea;
+        --header-gradient-center: #ded9e2;
+        --header-gradient-to: var(--primary-light);
+        --header-gradient: linear-gradient(to right, var(--header-gradient-from) 0%, var(--header-gradient-center) 50%, var(--header-gradient-to) 100%);
+        --body-background: #fff;
+        --footer-background: var(--primary);
+
+
+        /* spacing */
+        --spacing: 2px;
+        --spacing-8: calc(var(--spacing) * 4);
+        --spacing-16: calc(var(--spacing) * 8);
+        --spacing-28: calc(var(--spacing) * 14);
+        --spacing-42: calc(var(--spacing) * 12);
+        --spacing-56: calc(var(--spacing) * 28);
+        --container-max-width:  1010px;
+
+        /*fonts*/
+        --default-font-family: 'PT Sans';
+
+        /*transition*/
+        --default-transition: 0.3s ease;
+    }
+}
+
+@layer themes {
+    /* Темная тема по атрибуту */
+    [data-theme="dark"] {
+        --primary: #AB9FD0;
+        --primary-hover: #8475BD;
+        --primary-light: #CEC8E4;
+        --text-01: oklch(.872 .01 258.338);
+        --text-02: oklch(.707 .022 261.325);
+        --text-03: #d1d5db;
+        --foreground: oklch(.985 0 0);
+        --header-gradient-from: #1f2937;
+        --header-gradient-center: #374151;
+        --header-gradient-to: #4b5563;
+        --body-background: oklch(.145 0 0);
+        --footer-background: #4b5563;
+    }
+
+    /* Темная тема по системным настройкам */
+    @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+            --primary: #AB9FD0;
+            --primary-hover: #8475BD;
+            --primary-light: #CEC8E4;
+            --text-01: oklch(.872 .01 258.338);
+            --text-02: oklch(.707 .022 261.325);
+            --text-03: #d1d5db;
+            --foreground: oklch(.985 0 0);
+            --header-gradient-from: #1f2937;
+            --header-gradient-center: #374151;
+            --header-gradient-to: #4b5563;
+            --body-background: #262626;
+            --footer-background: #4b5563;
+        }
+    }
+}

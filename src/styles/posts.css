@@ -1,0 +1,14 @@
+.post-list {
+    display: grid;
+    padding-block-start: var(--spacing-28);
+    gap: var(--spacing-28);
+    list-style: none;
+
+    @media (width >= 768px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.post-item {
+    height: 100%;
+}
