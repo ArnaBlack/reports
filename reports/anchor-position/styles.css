@@ -1,0 +1,9 @@
+@import 'styles/code.css';
+
+.shower {
+    --page-background: #D1EFBE;
+    --color-accent: #ABE188;
+    --page-caption-color: #fff;
+    --slide-active-0: #58A22A;
+    --slide-active-1: #468221;
+}

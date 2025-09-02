@@ -22,3 +22,7 @@
 .slide figure {
     margin: 0;
 }
+
+.accent-text {
+    color: var(--color-accent);
+}

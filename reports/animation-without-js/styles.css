@@ -3,7 +3,3 @@
     --color-accent: #5770AE;
     --page-caption-color: #fff;
 }
-
-.slide::after {
-    filter: hue-rotate(45deg);
-}

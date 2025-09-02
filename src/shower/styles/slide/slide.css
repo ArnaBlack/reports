@@ -49,6 +49,7 @@
 /* Number */
 
 .slide::after {
+    --data-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='100' fill='black'%3E%3Cpath d='M0 0h50v100L25 80 0 100'/%3E%3C/svg%3E");
     position: absolute;
     top: 0;
     right: 20px;
@@ -56,8 +57,11 @@
     padding-top: 15px;
     width: var(--ribbon-size);
     height: calc(var(--ribbon-size) * 2);
-    background-image: url('ribbon.svg');
-    background-size: cover;
+    -webkit-mask: var(--data-image) no-repeat center;
+    mask: var(--data-image) no-repeat center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    background-color: var(--color-accent);
     color: white;
     counter-increment: slide;
     content: counter(slide);

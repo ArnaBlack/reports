@@ -91,3 +91,7 @@
 pre code.hljs {
     padding: 0 0 0 var(--slide-side);
 }
+
+pre code.hljs.right-side {
+    padding: 0 var(--slide-side) 0 0;
+}

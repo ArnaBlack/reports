@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Css-анимации. Изнутри браузера</title>
+	<meta charset="utf-8"/>
+	<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, viewport-fit=cover"
+	/>
+	<link rel="stylesheet" href="../../src/shower/styles/styles.css"/>
+	<link rel="stylesheet" href="../../src/highlight/styles/base16/hardcore.min.css">
+	<link rel="stylesheet" href="./styles.css"/>
+	<style>
+		.shower {
+			--slide-ratio: calc(16 / 9);
+		}
+	</style>
+</head>
+<body class="shower list">
+<style>
+	.slide.flex-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	
+	.slide .static-title {
+		position: static;
+		font-size: 1.15em;
+	}
+	
+	.table-title {
+		color: #fb8;
+		background: none;
+		text-align: center;
+	}
+	
+	.table {
+		display: grid;
+		grid-auto-flow: column;
+		width: 100%;
+		text-align: center;
+	}
+	
+	.table ul > li:lang(ru)::before {
+		content: none;
+	}
+</style>
+<header class="caption">
+	<h1>Бросаем якорь: Новая эра нативных тултипов и поповеров
+	</h1>
+	<p>Расторгуева Анна</p>
+</header>
+<!--1 intro -->
+<section class="slide" id="cover">
+	<h2 class="title">
+		Бросаем якорь: <br/>
+		Новая эра нативных тултипов и поповеров
+	</h2>
+	<p>Расторгуева Анна</p>
+	<figure>
+		<img class="cover" src="pictures/preview.png"/>
+	</figure>
+	<style>
+		#cover h2 {
+			font-size: 2.5em;
+		}
+	</style>
+</section>
+<!-- 2 about -->
+<section class="slide">
+	<h2 class="title">О себе</h2>
+	<ul>
+		<li>Фронтенд-разработчик из Сбера</li>
+		<li>В профессии с 2019 г.</li>
+		<li>Люблю котиков</li>
+		<li>Люблю красивые анимашки</li>
+	</ul>
+	<img
+			class="place bottom right"
+			width="500"
+			src="../../src/picture/three-cat-azh.webp"
+			alt="котики"
+	/>
+</section>
+<!-- 3 -->
+<section class="slide">
+	<h2 class="shout"> Боль: Как это было раньше?</h2>
+</section>
+<!--    4 -->
+<section class="slide">
+	<h2 class="shout"> Решение: CSS Anchor Positioning API</h2>
+</section>
+<!--  5 -->
+<section class="slide slide-5">
+	<h2 class="slide-5__title">Anchor</h2>
+	<p>Элемент-ориентир. К нему привязываются другие</p>
+	<p>
+		<code>
+			<span class="hljs-attribute">anchor-name:</span> <span class="hljs-attr">--my-anchor</span>;
+		</code>
+	</p>
+	<h2 class="slide-5__title">Target</h2>
+	<p>Абсолютно позиционированный элемент, который нужно разместить</p>
+	<p>
+		<code>
+			<span class="hljs-attribute">position:</span> absolute;<br/>
+			<span class="hljs-comment">/*(Привязываем цель к якорю)*/</span><br/>
+			<span class="hljs-attribute">position-anchor:</span> <span class="hljs-attr">--my-anchor</span>;
+		</code>
+	</p>
+	<style>
+		.slide .slide-5__title {
+			margin-bottom: 0px;
+		}
+	</style>
+</section>
+<!-- 6 -->
+<section class="slide slide-6">
+	<figure>
+		<img class="cover" src="./pictures/anchor-target.webp" alt="anchor target"/>
+	</figure>
+	<div class="place bottom right flex-container">
+		<pre class="xml">
+			<code class="right-side">
+				&lt;div class="anchor"&gt;anchor&lt;/div&gt; <br/>
+				&lt;div class="target">target&lt;/div&gt;
+			</code>
+		</pre>
+		<pre>
+			<code class="right-side">
+				.anchor {
+  					anchor-name: <span class="hljs-var">--my-anchor</span>;
+				}
+				.target {
+				  position: absolute;
+				  position-anchor: <span class="hljs-var">--my-anchor</span>;
+				}
+			</code>
+		</pre>
+	</div>
+	<style>
+		.slide-6 pre code {
+			line-height: 1.6;
+		}
+	</style>
+</section>
+
+<!--  7 -->
+<section class="slide">
+	<h2 class="shout"><p>Сетка позиций:</p> <code><span class="hljs-attribute">position-area</span></code><br/></h2>
+</section>
+
+<!--  8 -->
+<section class="slide">
+	<figure>
+		<img class="cover" src="./pictures/grid.webp" alt="anchor position grid"/>
+	</figure>
+</section>
+
+<!--  9 -->
+<section class="slide">
+	<figure>
+		<img class="cover" src="./pictures/top-right.webp" alt="anchor position top right"/>
+	</figure>
+	
+	<pre class="place right center">
+		<code class="right-side">
+			.target {
+			   position-area: top right;
+			   /* или */
+			   position-area: start end;
+			}
+		</code>
+	</pre>
+</section>
+
+<!--  10 -->
+<section class="slide slide-right-code">
+	<figure>
+		<img class="cover" src="./pictures/right-center.webp" alt="anchor position right center"/>
+	</figure>
+	<pre class="place center right">
+		<code class="right-side">
+			.target {
+			   position-area: center right;
+			   /* или */
+			   position-area: start center;
+			}
+		</code>
+	</pre>
+	<style>
+		.slide-right-code pre {
+			width: 59%;
+		}
+	</style>
+</section>
+
+<!--  11 -->
+<section class="slide slide-right-code">
+	<figure>
+		<img class="cover" src="./pictures/span.webp" alt="anchor position span"/>
+	</figure>
+	<pre class="place center right">
+		<code class="right-side">
+			.target {
+			   position-area: span-top left;
+			   /* или */
+			   position-area: span-start start;
+			}
+		</code>
+	</pre>
+</section>
+
+<!--  12 -->
+<section class="slide slide-right-code">
+	<figure>
+		<img class="cover" src="./pictures/span-all.webp" alt="anchor position span-all"/>
+	</figure>
+	<pre class="place center right">
+		<code class="right-side">
+			.target {
+			   position-area: bottom span-all;
+			   /* или */
+			   position-area: end span-all;
+			}
+		</code>
+	</pre>
+</section>
+
+<!--  13 all position -->
+<section class="slide">
+	<video src="./video/position-area.mp4" autoplay muted loop playsinline class="cover width"></video>
+	<a class="copyright" href="https://chrome.dev/anchor-tool/">
+		position area
+	</a>
+</section>
+
+<!--  14 position visibility -->
+<section class="slide">
+	<h2 class="shout"><p>Контроль видимости:</p> <code><span
+			class="hljs-attribute">position-visibility</span></code><br/></h2>
+</section>
+
+<!--  15 always-->
+<section class="slide slide-right-code">
+	<figure>
+		<img class="cover" src="./pictures/always.webp" alt="anchor visibility always"/>
+	</figure>
+	<pre class="place center right">
+		<code class="right-side">
+			.target {
+			   position-visibility: always;
+			}
+		</code>
+	</pre>
+</section>
+
+
+<!--  15 anchors-visible-->
+<section class="slide slide-right-code">
+	<figure>
+		<img class="cover" src="./pictures/anchors-visible.webp" alt="anchor visibility anchors-visible"/>
+	</figure>
+	<pre class="place center right">
+		<code class="right-side" style="font-size: 22px">
+			.target {
+			   position-visibility: anchors-visible;
+			}
+		</code>
+	</pre>
+</section>
+
+<!--  16 no-overflow -->
+<section class="slide slide-right-code">
+	<figure>
+		<img class="cover" src="./pictures/no-overflow.webp" alt="anchor visibility no-overflow"/>
+	</figure>
+	<pre class="place center right">
+		<code class="right-side" style="font-size: 22px">
+			.target {
+			   position-visibility: no-overflow;
+			}
+		</code>
+	</pre>
+</section>
+
+<!--  17 position-try-* -->
+<section class="slide">
+	<h2 class="shout"><p>Умные fallbacks:</p> <code><span class="hljs-attribute">position-try-*</span></code><br/></h2>
+</section>
+
+<!--  18 position-try-fallbacks -->
+<section class="slide">
+	<figure>
+		<img class="cover" src="./pictures/try-fallbacks.webp" alt="position-try-fallbacks"/>
+	</figure>
+</section>
+
+<!--  18 position-try-fallbacks all variant-->
+<section class="slide flex-container">
+	<h2 class="shout static-title">
+		<code>
+			position-try-fallbacks: <br/><span class="hljs-keyword">&lt;dashed-ident&gt; || &lt;try-tactic&gt; | &lt;"position-area"&gt;</span>
+		</code>
+	</h2>
+	<article class="table">
+		<div>
+			<h3 class="table-title">dashed-ident</h3>
+			<ul>
+				<li>custom <code><span class="hljs-keyword">@position-try</span></code></li>
+			</ul>
+		</div>
+		<div>
+			<h3 class="table-title">try-tactic</h3>
+			<ul>
+				<li>flip-block</li>
+				<li>flip-inline</li>
+				<li>flip-start</li>
+			</ul>
+		</div>
+		<div>
+			<h3 class="table-title">"position-area"</h3>
+			<ul>
+				<li>top/left/right/bottom</li>
+				<li>start/end/center</li>
+				<li>span-*</li>
+			</ul>
+		</div>
+	</article>
+</section>
+
+<!--  19 try order-->
+<section class="slide slide-right-code">
+	<figure>
+		<img class="cover" src="./pictures/try-order.webp" alt="anchor try order"/>
+	</figure>
+	<div class="place center right">
+		<code class="right-side" style="font-size: 22px">
+			<span class="hljs-attribute">position-try-order</span>: <br/>normal | <br/>most-width | most-height | <br/>
+			most-block-size | most-inline-size
+		</code>
+	</div>
+</section>
+
+<!--  20 Кастомные fallbacks -->
+<section class="slide">
+	<h2 class="shout"><p>Кастомные fallbacks: </p> <code><span class="hljs-attribute">@position-try</span></code><br/>
+	</h2>
+</section>
+
+<!--  21 Кастомные fallbacks -->
+<section class="slide">
+<pre class="place big css">
+          <code>
+          @position-try &lt;dashed-ident&gt; {
+			  &lt;declaration-list&gt;
+			}
+          </code>
+        </pre>
+</section>
+
+<!--  22 Кастомные fallbacks -->
+<section class="slide">
+<pre class="place big css" style="font-size: 22px">
+          <code>
+			@position-try --my-custom-position {
+  			  position-area: top left;
+			  width: 50px;
+			}
+			  
+         .target {
+			  position: absolute;
+			  position-area: top right;
+			  position-try-fallbacks: --my-custom-position, bottom left;
+			  position-try-order: most-width;
+			  width: 100px;
+			}
+          </code>
+        </pre>
+</section>
+
+<!--  23 func anchor -->
+<section class="slide">
+	<h2 class="shout">Функция <code><span class="hljs-attribute">anchor()</span></code>
+	</h2>
+</section>
+
+<!--  24 func anchor -->
+<section class="slide flex-container">
+	<h2 class="shout anchor">
+		<code>
+			anchor(<span class="hljs-keyword">&lt;anchor-name&gt; &lt;anchor-side&gt;, &lt;length-percentage&gt;</span>)
+		</code>
+	</h2>
+	<a class="copyright" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/anchor">css anchor()</a>
+	<style>
+		.slide .anchor {
+			font-size: 1.197em;
+		}
+	</style>
+</section>
+
+<!--  25  anchor name -->
+<section class="slide">
+         <pre class="place big css">
+          <code>
+            /* Define an anchor element */
+          .anchor {
+            anchor-name: --my-anchor;
+          }
+
+          /* Anchor a target element */
+          .target {
+            position: absolute;
+            left: anchor(--my-anchor left, 0);
+          }
+          </code>
+        </pre>
+</section>
+
+<!-- 26 anchor-center-physical-arguments-->
+<section class="slide finish">
+	<figure>
+		<img class="cover" src="./pictures/anchor-center-physical-arguments.webp" alt="anchor center physical arguments"/>
+	</figure>
+</section>
+
+<!-- 27 anchor-logical-->
+<section class="slide finish">
+	<figure>
+		<img class="cover" src="./pictures/anchor-logical.webp" alt="anchor logical"/>
+	</figure>
+</section>
+<!-- 28 anchor-length-->
+<section class="slide finish">
+	<figure>
+		<img class="cover" src="./pictures/anchor-length.webp" alt="anchor length"/>
+	</figure>
+</section>
+<!-- 29 two anchor -->
+<section class="slide">
+	<video src="./video/two-anchor.mp4" autoplay muted loop playsinline class="cover width"></video>
+	<a class="copyright" href="https://codepen.io/geoffgraham/pen/abgxBoj">
+		CodePen
+	</a>
+</section>
+
+<!--  30 func anchor-size -->
+<section class="slide">
+	<h2 class="shout">Функция <code><span class="hljs-attribute">anchor-size()</span></code>
+	</h2>
+</section>
+
+<!--  31 func anchor-size -->
+<section class="slide flex-container">
+	<h2 class="shout anchor-size static-title">
+		<code>
+			anchor-size(<span class="hljs-keyword">[ &lt;anchor-element&gt; || &lt;anchor-size&gt; ]? , &lt;length-percentage&gt;</span>)
+		</code>
+	</h2>
+	<article class="table">
+		<div>
+			<h3 class="table-title">anchor-element</h3>
+			<ul>
+				<li>custom <code><span class="hljs-keyword">--other-anchor</span></code></li>
+			</ul>
+		</div>
+		<div>
+			<h3 class="table-title">anchor-size</h3>
+			<ul>
+				<li>block/inline</li>
+				<li>self-block/self-inline</li>
+				<li>width/height</li>
+				<li>и другие</li>
+			</ul>
+		</div>
+	</article>
+	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/anchor-size">
+		anchor-size()
+	</a>
+	<style>
+		.slide .anchor-size {
+			font-size: 22px;
+		}
+	</style>
+</section>
+
+<!--  32 func anchor-size exemple -->
+<section class="slide">
+         <pre class="place big css">
+          <code>
+           .target {
+			  width: anchor-size(width, 20%); /* uses default anchor */`
+			  height: anchor-size(--other-anchor inline-size, 100px);
+			}
+          </code>
+        </pre>
+</section>
+
+<!--  33 supports -->
+<section class="slide">
+	<h2 class="shout">А что с поддержкой?</h2>
+</section>
+
+<!--  34 supports -->
+<section class="slide">
+	<h2>Поддержка</h2>
+	<ul>
+		<li><span class="hljs-keyword">anchor-name</span> Chrome 125+, Safari 26<sup>*</sup> </li>
+		<li><span class="hljs-keyword">anchor-position</span> Chrome 125+, Safari 26<sup>*</sup> </li>
+		<li><span class="hljs-keyword">position-visibility</span> Chrome 125+ </li>
+		<li><span class="hljs-keyword">position-try-fallbacks</span> Chrome 128+, Safari 26<sup>*</sup> </li>
+		<li><span class="hljs-keyword">position-try-order</span> Chrome 125+, Safari 26<sup>*</sup> </li>
+		<li><span class="hljs-keyword">@position-try</span> Chrome 125+ </li>
+	</ul>
+</section>
+<!--  35 supports -->
+<section class="slide">
+	<h2>Итоги и выводы Anchor Position API</h2>
+	<ul>
+		<li>
+			<b class="accent-text">Что это?</b> <br />Мощнейший API для позиционирования на чистом CSS
+		</li>
+		<li>
+			<b class="accent-text">Что решает?</b> <br />Избавляет от тонн хрупкого JS-кода для поповеров, тултипов, меню
+		</li>
+		<li>
+			<b class="accent-text">В чем преимущество? </b> <br />Производительность, надежность, декларативность
+		</li>
+		<li>
+			<b class="accent-text">Когда использовать?</b> <br />Уже сейчас для прогрессивного улучшения в Chrome.<br /> В будущем — как стандартный подход
+		</li>
+	</ul>
+</section>
+
+<!-- что еще почитать -->
+<section class="slide">
+	<h2 class="title">Полезные ссылки</h2>
+	<ul>
+		<li>
+			<a href="https://developer.chrome.com/blog/anchor-positioning-api"
+			   target="_blank">Introducing the CSS anchor positioning API</a>
+		</li>
+		<li>
+			<a href="https://developer.chrome.com/docs/css-ui/anchor-positioning-api"
+			   target="_blank">The CSS anchor positioning API</a>
+		</li>
+		<li>
+			<a href="https://developer.chrome.com/blog/popover-hint"
+			   target="_blank">Popover = hint</a>
+		</li>
+		<li>
+			<a href="https://frontendmasters.com/blog/custom-range-slider-using-anchor-positioning-scroll-driven-animations/"
+			   target="_blank">Custom Range Slider Using Anchor Positioning & Scroll-Driven Animations</a>
+		</li>
+		<li>
+			<a href="https://web-standards.ru/"
+			   target="_blank">Подкаст "Веб-стандарты"</a>
+		</li>
+	</ul>
+</section>
+<!-- finish -->
+<section class="slide finish">
+	<h2 class="title">
+		Всем спасибо!
+		<br/>Fin
+	</h2>
+	<figure>
+		<img class="cover" src="../../src/picture/heart-cats.webp" alt="qr"/>
+		<img
+				class="place bottom right"
+				width="150"
+				src="./pictures/qr.webp"
+				alt="qr"
+		/>
+	</figure>
+	<style>
+		.finish h2 {
+			margin-top: 150px;
+			color: white;
+			text-align: center;
+			font-size: 70px;
+			text-shadow: 0 0 6px #000;
+		}
+	</style>
+</section>
+<script src="../../src/shower/shower.js"></script>
+<script src="../../src/highlight/highlight.min.js"></script>
+<script src="../../src/highlight/languages/css.js"></script>
+<script src="../../src/highlight/languages/xml.js"></script>
+<script>hljs.highlightAll();</script>
+<script>
+	(function () {
+		var mouseTimer = null, cursorVisible = true;
+		
+		function disappearCursor() {
+			mouseTimer = null;
+			document.body.style.cursor = "none";
+			cursorVisible = false;
+		}
+		
+		document.onmousemove = function () {
+			if (mouseTimer) {
+				window.clearTimeout(mouseTimer);
+			}
+			if (!cursorVisible) {
+				document.body.style.cursor = "default";
+				cursorVisible = true;
+			}
+			mouseTimer = window.setTimeout(disappearCursor, 3000);
+		};
+	})();
+</script>
+<script>
+	document.querySelectorAll('video').forEach(video => {
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					// Видео в viewport - воспроизводим с начала
+					video.currentTime = 0;
+					video.play();
+				} else {
+					// Видео вне viewport - приостанавливаем
+					video.pause();
+				}
+			});
+		}, {
+			threshold: 0.5
+		});
+		
+		observer.observe(video);
+	});
+</script>
+</body>
+</html>
