@@ -1,7 +1,11 @@
 .hljs-selector-class {
-    color: #fb8;
+    color: #5AA329;
 }
 
 .hljs-var {
     color: #aa7ee1;
+}
+
+.hljs-comment {
+    color: #8A8A8A;
 }

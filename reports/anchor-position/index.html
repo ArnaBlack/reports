@@ -49,15 +49,15 @@
 	}
 </style>
 <header class="caption">
-	<h1>Бросаем якорь: Новая эра нативных тултипов и поповеров
+	<h1>Бросаем якорь. Новая эра нативных тултипов и поповеров
 	</h1>
 	<p>Расторгуева Анна</p>
 </header>
 <!--1 intro -->
 <section class="slide" id="cover">
 	<h2 class="title">
-		Бросаем якорь: <br/>
-		Новая эра <br /> нативных тултипов <br /> и поповеров
+		Бросаем якорь. <br/>
+		<p class="accent-text">Новая эра <br /> нативных тултипов <br /> и поповеров</p>
 	</h2>
 	<p>Расторгуева Анна</p>
 	<figure>
@@ -87,22 +87,25 @@
 </section>
 <!-- 3 -->
 <section class="slide">
-	<h2 class="shout"> Боль: Как это было раньше?</h2>
+	<h2 class="shout"> Как это было раньше?</h2>
 </section>
 <!--    4 -->
 <section class="slide">
-	<h2 class="shout"> Решение: CSS Anchor Positioning API</h2>
+	<h2 class="shout"> CSS Anchor Positioning API</h2>
 </section>
 <!--  5 -->
-<section class="slide slide-5">
-	<h2 class="slide-5__title">Anchor</h2>
+<section class="slide slide--center">
+	<h2>Anchor</h2>
 	<p>Элемент-ориентир. К нему привязываются другие</p>
 	<p>
 		<code>
 			<span class="hljs-attribute">anchor-name:</span> <span class="hljs-attr">--my-anchor</span>;
 		</code>
 	</p>
-	<h2 class="slide-5__title">Target</h2>
+</section>
+<!-- 6 -->
+<section class="slide slide--center">
+	<h2>Target</h2>
 	<p>Абсолютно позиционированный элемент, который нужно разместить</p>
 	<p>
 		<code>
@@ -111,24 +114,22 @@
 			<span class="hljs-attribute">position-anchor:</span> <span class="hljs-attr">--my-anchor</span>;
 		</code>
 	</p>
-	<style>
-		.slide .slide-5__title {
-			margin-bottom: 0px;
-		}
-	</style>
 </section>
-<!-- 6 -->
-<section class="slide slide-6">
-	<figure>
-		<img class="cover" src="./pictures/anchor-target.webp" alt="anchor target"/>
-	</figure>
-	<div class="place bottom right flex-container">
-		<pre class="xml">
-			<code class="right-side">
+<!-- 7 -->
+<section class="slide">
+	<pre class="place big">
+			<code  style="margin-left: calc(var(--slide-side) * -2.5);">
 				&lt;div class="anchor"&gt;anchor&lt;/div&gt; <br/>
 				&lt;div class="target">target&lt;/div&gt;
 			</code>
 		</pre>
+</section>
+<!-- 8 -->
+<section class="slide">
+	<figure>
+		<img class="cover" src="./pictures/anchor-target.webp" alt="anchor target"/>
+	</figure>
+	<div class="place center right">
 		<pre>
 			<code class="right-side">
 				.anchor {
@@ -141,33 +142,32 @@
 			</code>
 		</pre>
 	</div>
+</section>
+<!--  9 -->
+<section class="slide">
+	<h2 class="shout"><p class="subtitle">Сетка позиций</p> <code><span class="hljs-attribute">position-area</span></code><br/></h2>
 	<style>
-		.slide-6 pre code {
-			line-height: 1.6;
+		p.subtitle {
+			margin-bottom: 0.4em;
 		}
 	</style>
 </section>
 
-<!--  7 -->
-<section class="slide">
-	<h2 class="shout"><p>Сетка позиций:</p> <code><span class="hljs-attribute">position-area</span></code><br/></h2>
-</section>
-
-<!--  8 -->
+<!--  10 -->
 <section class="slide">
 	<figure>
 		<img class="cover" src="./pictures/grid.webp" alt="anchor position grid"/>
 	</figure>
 </section>
 
-<!--  9 -->
-<section class="slide">
+<!--  11 -->
+<section class="slide slide-right-code">
 	<figure>
 		<img class="cover" src="./pictures/top-right.webp" alt="anchor position top right"/>
 	</figure>
 	
 	<pre class="place right center">
-		<code class="right-side">
+		<code class="right-side text-23">
 			.target {
 			   position-area: top right;
 			   /* или */
@@ -175,15 +175,20 @@
 			}
 		</code>
 	</pre>
+	<style>
+		.text-23 {
+			font-size: 23px;
+		}
+	</style>
 </section>
 
-<!--  10 -->
+<!--  12 -->
 <section class="slide slide-right-code">
 	<figure>
-		<img class="cover" src="./pictures/right-center.webp" alt="anchor position right center"/>
+		<img class="cover" src="./pictures/center-right.webp" alt="anchor position right center"/>
 	</figure>
 	<pre class="place center right">
-		<code class="right-side">
+		<code class="right-side text-23">
 			.target {
 			   position-area: center right;
 			   /* или */
@@ -198,13 +203,13 @@
 	</style>
 </section>
 
-<!--  11 -->
+<!--  13 -->
 <section class="slide slide-right-code">
 	<figure>
 		<img class="cover" src="./pictures/span.webp" alt="anchor position span"/>
 	</figure>
 	<pre class="place center right">
-		<code class="right-side">
+		<code class="right-side text-23">
 			.target {
 			   position-area: span-top left;
 			   /* или */
@@ -214,13 +219,13 @@
 	</pre>
 </section>
 
-<!--  12 -->
+<!--  14 -->
 <section class="slide slide-right-code">
 	<figure>
 		<img class="cover" src="./pictures/span-all.webp" alt="anchor position span-all"/>
 	</figure>
 	<pre class="place center right">
-		<code class="right-side">
+		<code class="right-side text-23">
 			.target {
 			   position-area: bottom span-all;
 			   /* или */
@@ -229,129 +234,162 @@
 		</code>
 	</pre>
 </section>
-
-<!--  13 all position -->
+<!--  15 all position -->
 <section class="slide">
 	<video src="./video/position-area.mp4" autoplay muted loop playsinline class="cover width"></video>
 	<a class="copyright" href="https://chrome.dev/anchor-tool/">
 		position area
 	</a>
 </section>
-
-<!--  14 position visibility -->
+<!--  16 position visibility -->
 <section class="slide">
-	<h2 class="shout"><p>Контроль видимости:</p> <code><span
+	<h2 class="shout"><p class="subtitle">Контроль видимости</p> <code><span
 			class="hljs-attribute">position-visibility</span></code><br/></h2>
 </section>
-
-<!--  15 always-->
+<!--  17 always-->
 <section class="slide slide-right-code">
 	<figure>
 		<img class="cover" src="./pictures/always.webp" alt="anchor visibility always"/>
 	</figure>
 	<pre class="place center right">
-		<code class="right-side">
+		<code class="right-side text-22">
 			.target {
 			   position-visibility: always;
 			}
 		</code>
 	</pre>
+	<style>
+		.text-22 {
+			font-size: 22px;
+		}
+		
+		.slide-right-code pre {
+			width: 62%;
+		}
+	</style>
 </section>
-
-
-<!--  15 anchors-visible-->
+<!--  18 anchors-visible-->
 <section class="slide slide-right-code">
 	<figure>
 		<img class="cover" src="./pictures/anchors-visible.webp" alt="anchor visibility anchors-visible"/>
 	</figure>
 	<pre class="place center right">
-		<code class="right-side" style="font-size: 22px">
+		<code class="right-side text-22">
 			.target {
 			   position-visibility: anchors-visible;
 			}
 		</code>
 	</pre>
 </section>
-
-<!--  16 no-overflow -->
+<!--  19 no-overflow -->
 <section class="slide slide-right-code">
 	<figure>
 		<img class="cover" src="./pictures/no-overflow.webp" alt="anchor visibility no-overflow"/>
 	</figure>
 	<pre class="place center right">
-		<code class="right-side" style="font-size: 22px">
+		<code class="right-side text-22">
 			.target {
 			   position-visibility: no-overflow;
 			}
 		</code>
 	</pre>
 </section>
-
-<!--  17 position-try-* -->
+<!--  20 position-try-* -->
 <section class="slide">
-	<h2 class="shout"><p>Умные fallbacks:</p> <code><span class="hljs-attribute">position-try-*</span></code><br/></h2>
+	<h2 class="shout"><p class="subtitle">Умные fallbacks:</p> <code><span class="hljs-attribute">position-try-*</span></code><br/></h2>
 </section>
 
-<!--  18 position-try-fallbacks -->
+<!-- 21 position-try-fallbacks exp-->
 <section class="slide">
-	<figure>
-		<img class="cover" src="./pictures/try-fallbacks.webp" alt="position-try-fallbacks"/>
-	</figure>
+	<pre class="place big css">
+			<code>
+				.target {
+					position-try-fallbacks: --my-custom-position,
+					--my-custom-position flip-block,
+					bottom left;
+				}
+			</code>
+		</pre>
 </section>
-
-<!--  18 position-try-fallbacks all variant-->
+<!--  22 position-try-fallbacks-->
 <section class="slide flex-container">
-	<h2 class="shout static-title">
+	<h2 class="shout" style="font-size: 28px; line-height: 2.5">
 		<code>
-			position-try-fallbacks: <br/><span class="hljs-keyword">&lt;dashed-ident&gt; || &lt;try-tactic&gt; | &lt;"position-area"&gt;</span>
+			position-try-fallbacks: <br/><span class="hljs-keyword">&lt;dashed-ident&gt; <br/>|| &lt;try-tactic&gt; <br/>| &lt;"position-area"&gt;</span>
 		</code>
 	</h2>
-	<article class="table">
-		<div>
-			<h3 class="table-title">dashed-ident</h3>
-			<ul>
-				<li>custom <code><span class="hljs-keyword">@position-try</span></code></li>
-			</ul>
-		</div>
-		<div>
-			<h3 class="table-title">try-tactic</h3>
-			<ul>
-				<li>flip-block</li>
-				<li>flip-inline</li>
-				<li>flip-start</li>
-			</ul>
-		</div>
-		<div>
-			<h3 class="table-title">"position-area"</h3>
-			<ul>
-				<li>top/left/right/bottom</li>
-				<li>start/end/center</li>
-				<li>span-*</li>
-			</ul>
-		</div>
-	</article>
+</section>
+<!-- 23 position-try-fallbacks try-tactic-->
+<section class="slide">
+	<pre class="place big css">
+			<code>
+				.target {
+					/*dashed-ident*/
+					position-try-fallbacks: --my-custom-position;
+				}
+			</code>
+		</pre>
 </section>
 
-<!--  19 try order-->
+<!-- 24 position-try-fallbacks dashed-ident-->
+<section class="slide">
+	<pre class="place big css">
+			<code>
+				.target {
+					/*try-tactic*/
+					position-try-fallbacks: flip-block;
+				}
+			</code>
+		</pre>
+</section>
+<!--  25 position-try-fallbacks block -->
+<section class="slide">
+	<figure>
+		<img class="cover" src="./pictures/try-fallbacks-flip-block.webp"/>
+	</figure>
+</section>
+<!--  26 position-try-fallbacks block -->
+<section class="slide">
+	<figure>
+		<img class="cover" src="./pictures/try-fallbacks-flip-inline.webp"/>
+	</figure>
+</section>
+<!--  27 position-try-fallbacks start -->
+<section class="slide">
+	<figure>
+		<img class="cover" src="./pictures/try-fallbacks-flip-start.webp"/>
+	</figure>
+</section>
+<!-- 28 position-try-fallbacks position-area-->
+<section class="slide">
+	<pre class="place big css">
+			<code>
+				.target {
+					/*position-area*/
+					position-try-fallbacks: bottom left;
+				}
+			</code>
+		</pre>
+</section>
+<!--  29 try order-->
 <section class="slide slide-right-code">
 	<figure>
 		<img class="cover" src="./pictures/try-order.webp" alt="anchor try order"/>
 	</figure>
-	<div class="place center right">
+	<div class="place center right" style="padding-right: 20%;">
 		<code class="right-side" style="font-size: 22px">
-			<span class="hljs-attribute">position-try-order</span>: <br/>normal | <br/>most-width | most-height | <br/>
-			most-block-size | most-inline-size
+			<span class="hljs-attribute">position-try-order</span>: <br/>normal | <br/>most-width | <br/>most-height | <br/>
+			most-block-size | <br/>most-inline-size
 		</code>
 	</div>
 </section>
-
-<!--  20 Кастомные fallbacks -->
+<!--  30 Кастомные fallbacks -->
 <section class="slide">
-	<h2 class="shout"><p>Кастомные fallbacks: </p> <code><span class="hljs-attribute">@position-try</span></code><br/>
+	<h2 class="shout"><p class="subtitle">Кастомные fallbacks </p> <code><span class="hljs-attribute">@position-try</span></code><br/>
 	</h2>
 </section>
 
-<!--  21 Кастомные fallbacks -->
+<!--  31 Кастомные fallbacks -->
 <section class="slide">
 <pre class="place big css">
           <code>
@@ -361,8 +399,7 @@
           </code>
         </pre>
 </section>
-
-<!--  22 Кастомные fallbacks -->
+<!--  32 Кастомные fallbacks -->
 <section class="slide">
 <pre class="place big css" style="font-size: 22px">
           <code>
@@ -370,7 +407,13 @@
   			  position-area: top left;
 			  width: 50px;
 			}
-			  
+          </code>
+        </pre>
+</section>
+<!--  33 Кастомные fallbacks -->
+<section class="slide">
+<pre class="place big css" style="font-size: 22px">
+          <code>
          .target {
 			  position: absolute;
 			  position-area: top right;
@@ -384,7 +427,7 @@
 
 <!--  23 func anchor -->
 <section class="slide">
-	<h2 class="shout">Функция <code><span class="hljs-attribute">anchor()</span></code>
+	<h2 class="shout"><p class="subtitle">Функция</p> <code><span class="hljs-attribute">anchor()</span></code>
 	</h2>
 </section>
 
@@ -450,7 +493,7 @@
 
 <!--  30 func anchor-size -->
 <section class="slide">
-	<h2 class="shout">Функция <code><span class="hljs-attribute">anchor-size()</span></code>
+	<h2 class="shout"><p class="subtitle">Функция</p> <code><span class="hljs-attribute">anchor-size()</span></code>
 	</h2>
 </section>
 

@@ -807,7 +807,8 @@
             modes.HEXCOLOR,
             modes.IMPORTANT,
             modes.CSS_NUMBER_MODE,
-            ...STRINGS,
+            modes.CSS_VARIABLE,
+              ...STRINGS,
             // needed to highlight these as strings and to avoid issues with
             // illegal characters that might be inside urls that would tigger the
             // languages illegal stack

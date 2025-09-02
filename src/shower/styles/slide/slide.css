@@ -62,10 +62,21 @@
     -webkit-mask-size: contain;
     mask-size: contain;
     background-color: var(--color-accent);
-    color: white;
+    color: var(--ribbon-text, white);
     counter-increment: slide;
     content: counter(slide);
     text-align: center;
+}
+
+#cover:after {
+    visibility: hidden;
+}
+
+.slide--center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .slide--light {
