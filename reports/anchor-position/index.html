@@ -294,6 +294,21 @@
 		</code>
 	</pre>
 </section>
+
+<!--  20 position-try-fallbacks tooltip -->
+<section class="slide">
+	<figure>
+		<img class="cover" src="./pictures/tooltip-without-flip.webp"/>
+	</figure>
+</section>
+
+<!--  21 position-try-fallbacks tooltip flip -->
+<section class="slide">
+	<figure>
+		<img class="cover" src="./pictures/tooltip-flip.webp"/>
+	</figure>
+</section>
+
 <!--  20 position-try-* -->
 <section class="slide">
 	<h2 class="shout"><p class="subtitle">Умные fallbacks:</p> <code><span class="hljs-attribute">position-try-*</span></code><br/></h2>
@@ -383,13 +398,30 @@
 		</code>
 	</div>
 </section>
-<!--  30 Кастомные fallbacks -->
+
+<!-- 30 position try-->
+<section class="slide finish">
+	<figure>
+		<img class="cover" src="./pictures/anchor-physical-side-arguments.webp"/>
+	</figure>
+	<a class="copyright" target="_blank" href="https://ishadeed.com/article/anchor-positioning/">Источник</a>
+</section>
+
+<!-- 31 position try-->
+<section class="slide finish">
+	<figure>
+		<img class="cover" src="./pictures/anchor-physical-side-arguments.webp"/>
+	</figure>
+	<a class="copyright" target="_blank" href="https://ishadeed.com/article/anchor-positioning/">Источник</a>
+</section>
+
+<!--  32 Кастомные fallbacks -->
 <section class="slide">
 	<h2 class="shout"><p class="subtitle">Кастомные fallbacks </p> <code><span class="hljs-attribute">@position-try</span></code><br/>
 	</h2>
 </section>
 
-<!--  31 Кастомные fallbacks -->
+<!--  33 Кастомные fallbacks -->
 <section class="slide">
 <pre class="place big css">
           <code>
@@ -399,7 +431,7 @@
           </code>
         </pre>
 </section>
-<!--  32 Кастомные fallbacks -->
+<!--  34 Кастомные fallbacks -->
 <section class="slide">
 <pre class="place big css" style="font-size: 22px">
           <code>
@@ -410,7 +442,7 @@
           </code>
         </pre>
 </section>
-<!--  33 Кастомные fallbacks -->
+<!--  35 Кастомные fallbacks -->
 <section class="slide">
 <pre class="place big css" style="font-size: 22px">
           <code>
@@ -425,28 +457,29 @@
         </pre>
 </section>
 
-<!--  23 func anchor -->
+<!--  36 func anchor -->
 <section class="slide">
 	<h2 class="shout"><p class="subtitle">Функция</p> <code><span class="hljs-attribute">anchor()</span></code>
 	</h2>
 </section>
 
-<!--  24 func anchor -->
+<!--  37 func anchor -->
 <section class="slide flex-container">
 	<h2 class="shout anchor">
 		<code>
-			anchor(<span class="hljs-keyword">&lt;anchor-name&gt; &lt;anchor-side&gt;, &lt;length-percentage&gt;</span>)
+			anchor(<span class="hljs-keyword"><br/>&lt;anchor-name&gt;<br/> &lt;anchor-side&gt;,<br/> &lt;length-percentage&gt;</span>)
 		</code>
 	</h2>
 	<a class="copyright" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/anchor">css anchor()</a>
 	<style>
 		.slide .anchor {
-			font-size: 1.197em;
+			font-size: 2em;
+			line-height: 1.5;
 		}
 	</style>
 </section>
 
-<!--  25  anchor name -->
+<!--  38  anchor name -->
 <section class="slide">
          <pre class="place big css">
           <code>
@@ -454,6 +487,14 @@
           .anchor {
             anchor-name: --my-anchor;
           }
+          </code>
+        </pre>
+</section>
+
+<!--  39  anchor name -->
+<section class="slide">
+         <pre class="place big css">
+          <code>
 
           /* Anchor a target element */
           .target {
@@ -464,71 +505,84 @@
         </pre>
 </section>
 
-<!-- 26 anchor-center-physical-arguments-->
+<!-- 40 anchor-center-physical-arguments-->
 <section class="slide finish">
 	<figure>
-		<img class="cover" src="./pictures/anchor-center-physical-arguments.webp" alt="anchor center physical arguments"/>
+		<img class="cover" src="./pictures/anchor-physical-side-arguments.webp"/>
 	</figure>
 </section>
 
-<!-- 27 anchor-logical-->
+<!-- 39 anchor-center-physical-arguments-->
 <section class="slide finish">
 	<figure>
-		<img class="cover" src="./pictures/anchor-logical.webp" alt="anchor logical"/>
+		<img class="cover" src="./pictures/anchor-center-physical-arguments.webp"/>
 	</figure>
 </section>
-<!-- 28 anchor-length-->
+
+<!-- 40 anchor-logical-->
+<section class="slide finish">
+	<figure>
+		<img class="cover" src="./pictures/logical-side.webp"/>
+	</figure>
+</section>
+
+<!-- 41 anchor-logical-->
+<section class="slide finish">
+	<figure>
+		<img class="cover" src="./pictures/logical.webp"/>
+	</figure>
+</section>
+
+<!-- 42 anchor-length-->
 <section class="slide finish">
 	<figure>
 		<img class="cover" src="./pictures/anchor-length.webp" alt="anchor length"/>
 	</figure>
 </section>
-<!-- 29 two anchor -->
+<!-- 43 two anchor -->
 <section class="slide">
 	<video src="./video/two-anchor.mp4" autoplay muted loop playsinline class="cover width"></video>
-	<a class="copyright" href="https://codepen.io/geoffgraham/pen/abgxBoj">
+	<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/XJmGdRW">
 		CodePen
 	</a>
 </section>
-
-<!--  30 func anchor-size -->
+<!--  44 func anchor-size -->
 <section class="slide">
 	<h2 class="shout"><p class="subtitle">Функция</p> <code><span class="hljs-attribute">anchor-size()</span></code>
 	</h2>
 </section>
 
-<!--  31 func anchor-size -->
+<!--  45 func anchor-size -->
 <section class="slide flex-container">
-	<h2 class="shout anchor-size static-title">
+	<h2 class="shout anchor">
 		<code>
-			anchor-size(<span class="hljs-keyword">[ &lt;anchor-element&gt; || &lt;anchor-size&gt; ]? , &lt;length-percentage&gt;</span>)
+			anchor-size(<span class="hljs-keyword"><br/>[ &lt;anchor-element&gt; <br/>|| &lt;anchor-size&gt; ],<br/> <span class="hljs-selector-class">&lt;length-percentage&gt;</span></span>)
 		</code>
 	</h2>
-	<article class="table">
-		<div>
-			<h3 class="table-title">anchor-element</h3>
-			<ul>
-				<li>custom <code><span class="hljs-keyword">--other-anchor</span></code></li>
-			</ul>
-		</div>
-		<div>
-			<h3 class="table-title">anchor-size</h3>
-			<ul>
-				<li>block/inline</li>
-				<li>self-block/self-inline</li>
-				<li>width/height</li>
-				<li>и другие</li>
-			</ul>
-		</div>
-	</article>
 	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/anchor-size">
 		anchor-size()
 	</a>
-	<style>
-		.slide .anchor-size {
-			font-size: 22px;
-		}
-	</style>
+</section>
+
+<!--  46 anchor-element -->
+<section class="slide flex-container">
+	<h2 class="shout" style="line-height: 1.5">
+		anchor-element <br />
+		<code><span class="hljs-keyword">--other-anchor</span></code>
+	</h2>
+</section>
+
+<!--  47 anchor-size -->
+<section class="slide slide-right-code">
+	<figure>
+		<img class="cover" src="./pictures/anchor-size.webp"/>
+	</figure>
+	<div class="place center right" style="padding-right: 20%;">
+		<code class="right-side" style="font-size: 22px">
+			<span class="hljs-attribute">anchor-size</span>: <br/>block | <br/>inline | <br/>width | <br/>
+			height | <br/>self-block  | <br/>self-inline | <br/> и другие
+		</code>
+	</div>
 </section>
 
 <!--  32 func anchor-size exemple -->
@@ -536,7 +590,8 @@
          <pre class="place big css">
           <code>
            .target {
-			  width: anchor-size(width, 20%); /* uses default anchor */`
+			  /* uses default anchor */
+			  width: anchor-size(width, 20%);
 			  height: anchor-size(--other-anchor inline-size, 100px);
 			}
           </code>
@@ -552,13 +607,16 @@
 <section class="slide">
 	<h2>Поддержка</h2>
 	<ul>
-		<li><span class="hljs-keyword">anchor-name</span> Chrome 125+, Safari 26<sup>*</sup> </li>
-		<li><span class="hljs-keyword">anchor-position</span> Chrome 125+, Safari 26<sup>*</sup> </li>
-		<li><span class="hljs-keyword">position-visibility</span> Chrome 125+ </li>
-		<li><span class="hljs-keyword">position-try-fallbacks</span> Chrome 128+, Safari 26<sup>*</sup> </li>
-		<li><span class="hljs-keyword">position-try-order</span> Chrome 125+, Safari 26<sup>*</sup> </li>
-		<li><span class="hljs-keyword">@position-try</span> Chrome 125+ </li>
+		<li><span class="hljs-keyword">anchor-name</span> Chrome <span class="hljs-attr">125+</span>, Safari <span class="hljs-attr">26<sup>*</sup></span> </li>
+		<li><span class="hljs-keyword">anchor-position</span> Chrome <span class="hljs-attr">125+</span>, Safari <span class="hljs-attr">26<sup>*</sup></span> </li>
+		<li><span class="hljs-keyword">position-visibility</span> Chrome <span class="hljs-attr">125+</span> </li>
+		<li><span class="hljs-keyword">position-try-fallbacks</span> Chrome <span class="hljs-attr">128+</span>, Safari <span class="hljs-attr">26<sup>*</sup></span> </li>
+		<li><span class="hljs-keyword">position-try-order</span> Chrome <span class="hljs-attr">125+</span>, Safari <span class="hljs-attr">26<sup>*</sup></span> </li>
+		<li><span class="hljs-keyword">@position-try</span> Chrome <span class="hljs-attr">125+</span> </li>
+		<li><span class="hljs-keyword">anchor()</span> Chrome <span class="hljs-attr">125+</span>, Safari <span class="hljs-attr">26<sup>*</sup></span>  </li>
+		<li><span class="hljs-keyword">anchor-size()</span> Chrome <span class="hljs-attr">125+</span>, Safari <span class="hljs-attr">26<sup>*</sup></span>  </li>
 	</ul>
+	<p class="note"><sup>*</sup> - Preview browser support</p>
 </section>
 <!--  35 supports -->
 <section class="slide">
@@ -594,6 +652,10 @@
 		<li>
 			<a href="https://developer.chrome.com/blog/popover-hint"
 			   target="_blank">Popover = hint</a>
+		</li>
+		<li>
+			<a href="https://ishadeed.com/article/anchor-positioning/"
+			   target="_blank">The Basics of Anchor Positioning</a>
 		</li>
 		<li>
 			<a href="https://frontendmasters.com/blog/custom-range-slider-using-anchor-positioning-scroll-driven-animations/"
