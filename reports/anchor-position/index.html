@@ -89,6 +89,19 @@
 <section class="slide">
 	<h2 class="shout"> Как это было раньше?</h2>
 </section>
+
+<!-- 4 -->
+<section class="slide">
+	<video src="video/tooltip-js.mp4" autoplay muted loop playsinline class="cover width"></video>
+</section>
+
+<!--  5 popper js-->
+<section class="slide slide-right-code">
+	<figure>
+		<img class="cover" src="./pictures/popper.webp"/>
+	</figure>
+	<a class="copyright" href="https://popper.js.org/docs/v2/">Popper js</a>
+</section>
 <!--    4 -->
 <section class="slide">
 	<h2 class="shout"> CSS Anchor Positioning API</h2>
@@ -151,6 +164,7 @@
 			margin-bottom: 0.4em;
 		}
 	</style>
+	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position-area" target="_blank">MDN</a>
 </section>
 
 <!--  10 -->
@@ -245,6 +259,7 @@
 <section class="slide">
 	<h2 class="shout"><p class="subtitle">Контроль видимости</p> <code><span
 			class="hljs-attribute">position-visibility</span></code><br/></h2>
+	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position-visibility" target="_blank">MDN</a>
 </section>
 <!--  17 always-->
 <section class="slide slide-right-code">
@@ -362,6 +377,8 @@
 			position-try-fallbacks: <br/><span class="hljs-keyword">&lt;dashed-ident&gt; <br/>|| &lt;try-tactic&gt; <br/>| &lt;"position-area"&gt;</span>
 		</code>
 	</h2>
+	</div>
+	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position-try-fallbacks" target="_blank">MDN</a>
 </section>
 <!-- 25 position-try-fallbacks try-tactic-->
 <section class="slide">
@@ -415,6 +432,15 @@
 			</code>
 		</pre>
 </section>
+
+<!--  31 flip-block video-->
+<section class="slide">
+	<video src="./video/flip-block.mp4" autoplay muted loop playsinline class="cover width"></video>
+	<a class="copyright" href="https://ishadeed.com/article/anchor-positioning/" target="_blank">
+		Источник
+	</a>
+</section>
+
 <!--  31 try order-->
 <section class="slide slide-right-code">
 	<figure>
@@ -425,13 +451,14 @@
 			<span class="hljs-attribute">position-try-order</span>: <br/>normal | <br/>most-width | <br/>most-height | <br/>
 			most-block-size | <br/>most-inline-size
 		</code>
-	</div>
+	</div><a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position-try-order" target="_blank">MDN</a>
 </section>
 
 <!--  32 Кастомные fallbacks -->
 <section class="slide">
 	<h2 class="shout"><p class="subtitle">Кастомные fallbacks </p> <code><span class="hljs-attribute">@position-try</span></code><br/>
 	</h2>
+	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@position-try" target="_blank">MDN</a>
 </section>
 
 <!--  33 Кастомные fallbacks -->
@@ -450,7 +477,7 @@
           <code>
 			@position-try --my-custom-position {
   			  position-area: top left;
-			  width: 50px;
+			  width: 100px;
 			}
           </code>
         </pre>
@@ -464,10 +491,38 @@
 			  position-area: top right;
 			  position-try-fallbacks: --my-custom-position, bottom left;
 			  position-try-order: most-width;
-			  width: 100px;
+			  width: 150px;
 			}
           </code>
         </pre>
+</section>
+
+<!--  31 @position-try video-->
+<section class="slide">
+	<video src="./video/position-try.mp4" autoplay muted loop playsinline class="cover width"></video>
+	<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/zxvbypm" target="_blank">
+		CodePen
+	</a>
+</section>
+
+<!--  35 Кастомные fallbacks declaration-list-->
+<section class="slide">
+	<h2>declaration-list</h2>
+	<div class="columns two">
+		<ul>
+			<li>position-area</li>
+			<li>anchor()</li>
+			<li>position-anchor</li>
+			<li>anchor-size()</li>
+			<li>anchor-center для align-self и justify-self</li>
+		</ul>
+		<ul>
+			<li>Inset property</li>
+			<li>Margin property</li>
+			<li>Sizing property</li>
+		</ul>
+	</div>
+	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@position-try#descriptors" target="_blank">MDN</a>
 </section>
 
 <!--  36 func anchor -->
@@ -663,10 +718,6 @@
 			   target="_blank">The CSS anchor positioning API</a>
 		</li>
 		<li>
-			<a href="https://developer.chrome.com/blog/popover-hint"
-			   target="_blank">Popover = hint</a>
-		</li>
-		<li>
 			<a href="https://ishadeed.com/article/anchor-positioning/"
 			   target="_blank">The Basics of Anchor Positioning</a>
 		</li>
@@ -761,8 +812,7 @@
 
 <!--todo-->
 <!--demo tooltip with js-->
-<!--add slide popover js-->
-<!--demo position-try-fallbacks-->
+<!--add slide popover js?-->
 <!--demo position-try-order-->
-<!--demo @position-try-->
 <!--demo anchor-size-->
+<!--demo anchor + popover + popover target-->

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8" />
+	<title>Tooltip (vanilla JS) with flipping and scrollable bounds</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<style>
+		:root {
+			--tt-bg: #111;
+			--tt-fg: #fff;
+			--tt-border: #333;
+			--tt-shadow: 0 8px 24px rgba(0,0,0,.25);
+			--tt-radius: 8px;
+			--tt-padding: 8px 10px;
+			--tt-font: 13px/1.35 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+			--tt-z: 100000;
+			--tt-arrow-size: 8px;
+			--tt-maxw: 320px;
+		}
+		
+		body {
+			font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial;
+			margin: 0;
+			padding: 24px;
+			color: #222;
+			background: #fafafa;
+		}
+		
+		h1 { margin: 0 0 16px; }
+		p { margin: 0 0 12px; }
+		
+		/* Демонстрационные контейнеры прокрутки */
+		.scroll-box {
+			border: 1px solid #ccc;
+			border-radius: 10px;
+			height: 200px;
+			overflow: auto;
+			padding: 16px;
+			background: #fff;
+			margin-bottom: 24px;
+			position: relative;
+		}
+		
+		.spacer {
+			height: 600px;
+			background: linear-gradient(180deg, #fff, #f0f8ff);
+			border-radius: 8px;
+			padding: 8px;
+		}
+		
+		/* Стили тултипа */
+		.vtp-tooltip {
+			position: fixed; /* фиксируем относительно окна для простоты; будем компенсировать вычислениями */
+			z-index: var(--tt-z);
+			pointer-events: none; /* мышь через тултип */
+			background: var(--tt-bg);
+			color: var(--tt-fg);
+			border: 1px solid var(--tt-border);
+			border-radius: var(--tt-radius);
+			padding: var(--tt-padding);
+			font: var(--tt-font);
+			box-shadow: var(--tt-shadow);
+			max-width: var(--tt-maxw);
+			opacity: 0;
+			transform: translate3d(0,0,0) scale(.98);
+			transition: opacity .12s ease, transform .12s ease;
+			will-change: transform;
+		}
+		
+		.vtp-tooltip[data-state="visible"] {
+			opacity: 1;
+			transform: translate3d(0,0,0) scale(1);
+		}
+		
+		.vtp-tooltip__arrow {
+			position: absolute;
+			width: var(--tt-arrow-size);
+			height: var(--tt-arrow-size);
+			background: var(--tt-bg);
+			border-left: 1px solid var(--tt-border);
+			border-top: 1px solid var(--tt-border);
+			transform: rotate(45deg);
+			box-shadow: var(--tt-shadow);
+		}
+		
+		/* Скрытие нативного title (если был) */
+		[data-tooltip][data-tooltip-original-title] {
+			/* Ничего не нужно, просто маркер, что title перенесён в data-атрибут */
+		}
+		
+		/* Кнопки для примера */
+		.btn {
+			display: inline-block;
+			padding: 8px 12px;
+			border-radius: 6px;
+			border: 1px solid #999;
+			background: #f8f8f8;
+			cursor: pointer;
+			margin: 8px 6px 8px 0;
+			user-select: none;
+		}
+		.btn:hover { background: #f1f1f1; }
+	</style>
+</head>
+<body>
+<h1>Vanilla Tooltip: flip внутри прокручиваемой области</h1>
+<p>Наведи курсор или фокус на элементы ниже. Тултип будет переворачиваться, если упирается в границы ближайшего скроллируемого контейнера.</p>
+
+<div class="scroll-box" id="scroll1">
+	<div class="spacer">
+		<button class="btn" data-tooltip="Простой тултип сверху по умолчанию">Hover me (top)</button>
+		<button class="btn" data-tooltip="Длинный тултип демонстрирует перенос строк и ограничение по ширине. Здесь довольно много текста, чтобы посмотреть, как он ведёт себя у краёв и при перевороте.">
+			Long tooltip
+		</button>
+		<button class="btn" data-tooltip="Я предпочитаю появляться снизу" data-tooltip-preferred="bottom">Prefer bottom</button>
+		<button class="btn" data-tooltip="Я бы хотел справа, но перевернусь при необходимости" data-tooltip-preferred="right">Prefer right</button>
+		<button class="btn" data-tooltip="Слева, если влезу" data-tooltip-preferred="left">Prefer left</button>
+	</div>
+</div>
+
+<div class="scroll-box" id="scroll2">
+	<div style="height: 16px"></div>
+	<div style="display:flex; justify-content:flex-end;">
+		<button class="btn" data-tooltip="Стою у правого края и люблю flip" data-tooltip-preferred="right">Right edge</button>
+	</div>
+	<div style="height: 360px"></div>
+	<div style="display:flex; justify-content:flex-start;">
+		<button class="btn" data-tooltip="Стою у левого края и люблю flip" data-tooltip-preferred="left">Left edge</button>
+	</div>
+	<div style="height: 24px"></div>
+</div>
+
+<button class="btn" data-tooltip="Этот элемент снаружи скролл-боксов" data-tooltip-preferred="top">Outside</button>
+
+<script>
+(function () {
+  "use strict";
+
+  const DEFAULTS = {
+    preferred: "top", // top | bottom | left | right
+    gap: 8,
+    arrow: true,
+    arrowSize: 8,
+    fallbacks: {
+      top:    ["top", "bottom", "left", "right"],
+      bottom: ["bottom", "top", "left", "right"],
+      left:   ["left", "right", "top", "bottom"],
+      right:  ["right", "left", "top", "bottom"]
+    },
+    inlineAlign: "center", // start|center|end
+    blockAlign: "center"   // start|center|end
+  };
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+
+  const isScrollable = (el) => {
+    if (!el || el === document.body) return false;
+    const style = getComputedStyle(el);
+    return /(auto|scroll|overlay)/.test(style.overflowY) ||
+           /(auto|scroll|overlay)/.test(style.overflowX);
+  };
+
+  const getScrollParents = (el) => {
+    const arr = [];
+    let node = el.parentElement;
+    while (node) {
+      if (isScrollable(node)) {
+        arr.push(node);
+        break; // ближайшего достаточно как «границы»
+      }
+      node = node.parentElement;
+    }
+    arr.push(window); // всегда последний — окно
+    return arr;
+  };
+
+  const getBoundsOfContainer = (container) => {
+    if (container === window) {
+      return {
+        left: 0, top: 0,
+        right: window.innerWidth, bottom: window.innerHeight,
+        width: window.innerWidth, height: window.innerHeight
+      };
+    }
+    const r = container.getBoundingClientRect();
+    return {
+      left: r.left, top: r.top, right: r.right, bottom: r.bottom,
+      width: r.width, height: r.height
+    };
+  };
+
+  class TooltipManager {
+    constructor() {
+      this.tooltipEl = null;
+      this.arrowEl = null;
+      this.currentTarget = null;
+      this.scrollParents = [];
+      this.visible = false;
+
+      this.rafId = 0;
+      this.rafScheduled = false;
+
+      this.targetObserver = null;
+      this.ro = null;
+
+      this.onPointerOver = this.onPointerOver.bind(this);
+      this.onPointerOut = this.onPointerOut.bind(this);
+      this.onFocusIn = this.onFocusIn.bind(this);
+      this.onFocusOut = this.onFocusOut.bind(this);
+      this.onScrollOrResize = this.onScrollOrResize.bind(this);
+      this.onDocumentTouchStart = this.onDocumentTouchStart.bind(this);
+
+      this.init();
+    }
+
+    init() {
+      const tip = document.createElement("div");
+      tip.className = "vtp-tooltip";
+      tip.setAttribute("role", "tooltip");
+      tip.setAttribute("aria-hidden", "true");
+      this.tooltipEl = tip;
+
+      if (DEFAULTS.arrow) {
+        const arrow = document.createElement("div");
+        arrow.className = "vtp-tooltip__arrow";
+        tip.appendChild(arrow);
+        this.arrowEl = arrow;
+      }
+
+      document.body.appendChild(tip);
+
+      document.addEventListener("pointerover", this.onPointerOver, true);
+      document.addEventListener("pointerout", this.onPointerOut, true);
+      document.addEventListener("focusin", this.onFocusIn, true);
+      document.addEventListener("focusout", this.onFocusOut, true);
+      document.addEventListener("touchstart", this.onDocumentTouchStart, { passive: true, capture: true });
+
+      // Перепозиционирование при изменении размеров самого тултипа
+      this.ro = new ResizeObserver(() => this.scheduleReposition());
+      this.ro.observe(tip);
+    }
+
+    destroy() {
+      document.removeEventListener("pointerover", this.onPointerOver, true);
+      document.removeEventListener("pointerout", this.onPointerOut, true);
+      document.removeEventListener("focusin", this.onFocusIn, true);
+      document.removeEventListener("focusout", this.onFocusOut, true);
+      document.removeEventListener("touchstart", this.onDocumentTouchStart, true);
+
+      if (this.ro) this.ro.disconnect();
+      this.teardownTargetObserver();
+      this.detachScrollListeners();
+      this.hide(true);
+
+      if (this.tooltipEl) this.tooltipEl.remove();
+      this.tooltipEl = null;
+      this.arrowEl = null;
+      this.currentTarget = null;
+    }
+
+    onPointerOver(e) {
+      const target = this.findTooltipTarget(e.target);
+      if (target) this.showFor(target);
+    }
+
+    onPointerOut(e) {
+      if (!this.currentTarget) return;
+      const related = e.relatedTarget;
+      const tip = this.tooltipEl;
+      if (related !== tip && !(tip && tip.contains(related))) {
+        this.hide();
+      }
+    }
+
+    onFocusIn(e) {
+      const target = this.findTooltipTarget(e.target);
+      if (target) this.showFor(target);
+    }
+
+    onFocusOut(e) {
+      if (!this.currentTarget) return;
+      const related = e.relatedTarget;
+      const tip = this.tooltipEl;
+      if (related !== tip && !(tip && tip.contains(related))) {
+        this.hide();
+      }
+    }
+
+    onDocumentTouchStart(e) {
+      const target = this.findTooltipTarget(e.target);
+      if (target) {
+        this.showFor(target);
+      } else if (this.visible) {
+        const node = e.target;
+        const tip = this.tooltipEl;
+        if (node !== tip && !(tip && tip.contains(node))) {
+          this.hide();
+        }
+      }
+    }
+
+    onScrollOrResize() {
+      if (!this.visible) return;
+      this.scheduleReposition();
+    }
+
+    scheduleReposition() {
+      if (this.rafScheduled) return;
+      this.rafScheduled = true;
+      this.rafId = requestAnimationFrame(() => {
+        this.rafScheduled = false;
+        this.reposition();
+      });
+    }
+
+    findTooltipTarget(node) {
+      if (!node || node.nodeType !== 1) return null;
+      return node.closest("[data-tooltip]");
+    }
+
+    showFor(target) {
+      const text = this.getTooltipText(target);
+      if (!text) return;
+
+      const el = this.tooltipEl;
+      if (!el) return;
+
+      if (!el.id) el.id = "vtp-" + Math.random().toString(36).slice(2);
+      target.setAttribute("aria-describedby", el.id);
+
+      // Если цель меняется — убираем старые подписки
+      if (this.currentTarget && this.currentTarget !== target) {
+        this.teardownTargetObserver();
+        this.detachScrollListeners();
+      }
+
+      this.currentTarget = target;
+
+      // Контент
+      el.textContent = "";
+      const content = document.createElement("div");
+      content.textContent = text;
+      el.appendChild(content);
+      if (DEFAULTS.arrow && this.arrowEl && !el.contains(this.arrowEl)) {
+        el.appendChild(this.arrowEl);
+      }
+
+      el.setAttribute("aria-hidden", "false");
+      el.dataset.state = "visible";
+      this.visible = true;
+
+      this.attachScrollListeners();
+      this.setupTargetObserver(target);
+      this.reposition();
+    }
+	
+	clearText() {
+		if (!this.tooltipEl) {
+			return;
+		}
+		// Очистка контента, но возвращаем стрелку
+		const arrow = this.arrowEl;
+		this.tooltipEl.textContent = "";
+		if (DEFAULTS.arrow && arrow) this.tooltipEl.appendChild(arrow);
+	}
+
+    hide(immediate = false) {
+      if (!this.visible) return;
+      this.visible = false;
+
+      if (this.currentTarget) {
+        this.currentTarget.removeAttribute("aria-describedby");
+      }
+
+      const el = this.tooltipEl;
+      if (el) {
+		  el.addEventListener("ontransitionend", this.clearText);
+		  
+        el.setAttribute("aria-hidden", "true");
+        el.removeAttribute("data-placement");
+        if (immediate) {
+          el.removeAttribute("data-state");
+        } else {
+          el.dataset.state = "hiding";
+          requestAnimationFrame(() => {
+            if (this.tooltipEl) this.tooltipEl.removeAttribute("data-state");
+          });
+        }
+		  
+		  el.removeEventListener("ontransitionend", this.clearText);
+      }
+
+      this.detachScrollListeners();
+      this.teardownTargetObserver();
+      this.currentTarget = null;
+    }
+
+    setupTargetObserver(target) {
+      this.teardownTargetObserver();
+      this.targetObserver = new MutationObserver(() => this.scheduleReposition());
+      this.targetObserver.observe(target, {
+        attributes: true,
+        childList: true,
+        subtree: true,
+        characterData: true
+      });
+    }
+
+    teardownTargetObserver() {
+      if (this.targetObserver) {
+        this.targetObserver.disconnect();
+        this.targetObserver = null;
+      }
+    }
+
+    attachScrollListeners() {
+      this.detachScrollListeners();
+      if (!this.currentTarget) return;
+
+      this.scrollParents = getScrollParents(this.currentTarget);
+      const fn = this.onScrollOrResize;
+
+      this.scrollParents.forEach((sp) => {
+        if (sp === window) {
+          window.addEventListener("scroll", fn, { passive: true });
+          window.addEventListener("resize", fn);
+        } else {
+          sp.addEventListener("scroll", fn, { passive: true });
+        }
+      });
+    }
+
+    detachScrollListeners() {
+      const fn = this.onScrollOrResize;
+      this.scrollParents.forEach((sp) => {
+        if (sp === window) {
+          window.removeEventListener("scroll", fn);
+          window.removeEventListener("resize", fn);
+        } else {
+          sp.removeEventListener("scroll", fn);
+        }
+      });
+      this.scrollParents = [];
+    }
+
+    reposition() {
+      const target = this.currentTarget;
+      const el = this.tooltipEl;
+      if (!target || !el) return;
+
+      // Убираем в сторону для измерений
+      el.style.left = "-9999px";
+      el.style.top = "-9999px";
+
+      const tipRect = el.getBoundingClientRect();
+      const anchorRect = target.getBoundingClientRect();
+
+      const scrollParents = getScrollParents(target);
+      const boundary = getBoundsOfContainer(scrollParents[0] || window);
+
+      const preferred = (target.getAttribute("data-tooltip-preferred") || DEFAULTS.preferred).toLowerCase();
+      const order = (DEFAULTS.fallbacks[preferred] || DEFAULTS.fallbacks.top).slice(0);
+
+      const { x, y, placement, arrowPos } = this.computeBestPlacement(
+        anchorRect, tipRect, boundary, order
+      );
+
+      el.style.left = `${x}px`;
+      el.style.top = `${y}px`;
+      el.dataset.placement = placement;
+
+      // Стрелка
+      if (this.arrowEl) {
+        const s = DEFAULTS.arrowSize;
+        const a = this.arrowEl;
+        a.style.left = a.style.top = a.style.right = a.style.bottom = "";
+        switch (placement) {
+          case "top":
+            a.style.bottom = `${-s/2 + 1}px`;
+            a.style.left = `${arrowPos}px`;
+            break;
+          case "bottom":
+            a.style.top = `${-s/2 + 1}px`;
+            a.style.left = `${arrowPos}px`;
+            break;
+          case "left":
+            a.style.right = `${-s/2 + 1}px`;
+            a.style.top = `${arrowPos}px`;
+            break;
+          case "right":
+            a.style.left = `${-s/2 + 1}px`;
+            a.style.top = `${arrowPos}px`;
+            break;
+        }
+      }
+    }
+
+    computeBestPlacement(anchorRect, tipRect, boundary, order) {
+      const gap = DEFAULTS.gap;
+      const arrowSize = DEFAULTS.arrow ? DEFAULTS.arrowSize : 0;
+
+      const minX = boundary.left;
+      const minY = boundary.top;
+      const maxX = boundary.right - tipRect.width;
+      const maxY = boundary.bottom - tipRect.height;
+
+      const alignInline = () => {
+        const align = DEFAULTS.inlineAlign;
+        let x;
+        if (align === "start") x = anchorRect.left;
+        else if (align === "end") x = anchorRect.right - tipRect.width;
+        else x = anchorRect.left + (anchorRect.width - tipRect.width) / 2;
+        return clamp(x, minX, maxX);
+      };
+
+      const alignBlock = () => {
+        const align = DEFAULTS.blockAlign;
+        let y;
+        if (align === "start") y = anchorRect.top;
+        else if (align === "end") y = anchorRect.bottom - tipRect.height;
+        else y = anchorRect.top + (anchorRect.height - tipRect.height) / 2;
+        return clamp(y, minY, maxY);
+      };
+
+      const placeFns = {
+        top: () => ({ x: alignInline(), y: anchorRect.top - tipRect.height - gap - arrowSize, placement: "top" }),
+        bottom: () => ({ x: alignInline(), y: anchorRect.bottom + gap + arrowSize, placement: "bottom" }),
+        left: () => ({ x: anchorRect.left - tipRect.width - gap - arrowSize, y: alignBlock(), placement: "left" }),
+        right: () => ({ x: anchorRect.right + gap + arrowSize, y: alignBlock(), placement: "right" })
+      };
+
+      const fits = (pos) =>
+        pos.x >= minX &&
+        pos.y >= minY &&
+        pos.x + tipRect.width <= boundary.right &&
+        pos.y + tipRect.height <= boundary.bottom;
+
+      let best = null;
+      for (const p of order) {
+        const candidate = placeFns[p]();
+        const clamped = {
+          x: clamp(candidate.x, minX, maxX),
+          y: clamp(candidate.y, minY, maxY),
+          placement: candidate.placement
+        };
+        if (fits(clamped)) {
+          best = clamped;
+          break;
+        }
+      }
+
+      if (!best) {
+        const p = order[0];
+        const fallback = placeFns[p]();
+        best = {
+          x: clamp(fallback.x, minX, maxX),
+          y: clamp(fallback.y, minY, maxY),
+          placement: p
+        };
+      }
+
+      // Позиция стрелки
+      let arrowPos = 0;
+      switch (best.placement) {
+        case "top":
+        case "bottom":
+          arrowPos = clamp(
+            (anchorRect.left + anchorRect.width / 2) - best.x - DEFAULTS.arrowSize / 2,
+            8, Math.max(8, tipRect.width - 8 - DEFAULTS.arrowSize)
+          );
+          break;
+        case "left":
+        case "right":
+          arrowPos = clamp(
+            (anchorRect.top + anchorRect.height / 2) - best.y - DEFAULTS.arrowSize / 2,
+            8, Math.max(8, tipRect.height - 8 - DEFAULTS.arrowSize)
+          );
+          break;
+      }
+
+      return { ...best, arrowPos };
+    }
+
+    getTooltipText(el) {
+      if (!el.hasAttribute("data-tooltip") && el.hasAttribute("title")) {
+        el.setAttribute("data-tooltip", el.getAttribute("title") || "");
+        el.setAttribute("data-tooltip-original-title", "true");
+        el.removeAttribute("title");
+      }
+      return el.getAttribute("data-tooltip") || "";
+    }
+  }
+
+  const manager = new TooltipManager();
+  window.addEventListener("beforeunload", () => manager.destroy());
+})();
+</script>
+</body>
+</html>
