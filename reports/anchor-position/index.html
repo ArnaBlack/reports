@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 	<title>Css-анимации. Изнутри браузера</title>
-	<meta charset="utf-8"/>
-	<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1, viewport-fit=cover"
-	/>
-	<link rel="stylesheet" href="../../src/shower/styles/styles.css"/>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+	<link rel="stylesheet" href="../../src/shower/styles/styles.css" />
 	<link rel="stylesheet" href="../../src/highlight/styles/base16/hardcore.min.css">
-	<link rel="stylesheet" href="./styles.css"/>
+	<link rel="stylesheet" href="./styles.css" />
 	<script type="module" src="../../src/baseline/baseline-status.min.js"></script>
 	<style>
 		.shower {
@@ -17,148 +15,151 @@
 		}
 	</style>
 </head>
+
 <body class="shower list">
-<style>
-	.slide.flex-container {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		padding-left: 0;
-		padding-right: 0;
-	}
-	
-	.slide .static-title {
-		position: static;
-		font-size: 1.15em;
-	}
-	
-	.table-title {
-		color: #fb8;
-		background: none;
-		text-align: center;
-	}
-	
-	.table {
-		display: grid;
-		grid-auto-flow: column;
-		width: 100%;
-		text-align: center;
-	}
-	
-	.table ul > li:lang(ru)::before {
-		content: none;
-	}
-</style>
-<header class="caption">
-	<h1>Бросаем якорь. Новая эра нативных тултипов и поповеров
-	</h1>
-	<p>Расторгуева Анна</p>
-</header>
-<!-- 1 intro -->
-<section class="slide" id="cover">
-	<h2 class="title">
-		Бросаем якорь. <br/>
-		<p class="accent-text">Новая эра <br /> нативных тултипов <br /> и поповеров</p>
-	</h2>
-	<p>Анна Расторгуева</p>
-	<figure>
-		<img class="cover" src="pictures/hero.webp" alt="Папай"/>
-	</figure>
 	<style>
-		#cover h2 {
-			font-size: 2.5em;
+		.slide.flex-container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		.slide .static-title {
+			position: static;
+			font-size: 1.15em;
+		}
+
+		.table-title {
+			color: #fb8;
+			background: none;
+			text-align: center;
+		}
+
+		.table {
+			display: grid;
+			grid-auto-flow: column;
+			width: 100%;
+			text-align: center;
+		}
+
+		.table ul>li:lang(ru)::before {
+			content: none;
 		}
 	</style>
-</section>
-<!-- 2 about -->
-<section class="slide">
-	<h2 class="title">О себе</h2>
-	<ul>
-		<li>Фронтенд-разработчик из бигТеха</li>
-		<li>В профессии 7+ лет</li>
-		<li>Люблю котиков</li>
-		<li>Люблю красивые анимашки</li>
-	</ul>
-	<img
-			class="place bottom right"
-			width="500"
-			src="../../src/picture/three-cat-azh.webp"
-			alt="котики"
-	/>
-</section>
-<!-- 3 baseline explain -->
-<section class="slide">
-	<figure>
-		<img class="cover" src="./pictures/base-line.webp"/>
-	</figure>
-	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility" target="_blank">MDN</a>
-</section>
-<!-- 4 -->
-<section class="slide">
-	<h2 class="shout"> Как это было раньше?</h2>
-</section>
+	<header class="caption">
+		<h1>Бросаем якорь. Новая эра нативных тултипов и поповеров
+		</h1>
+		<p>Расторгуева Анна</p>
+	</header>
+	<!-- 1 intro -->
+	<section class="slide" id="cover">
+		<h2 class="title">
+			Бросаем якорь. <br />
+			<p class="accent-text">Новая эра <br /> нативных тултипов <br /> и поповеров</p>
+		</h2>
+		<p>Анна Расторгуева</p>
+		<figure>
+			<img class="cover" src="pictures/hero.webp" alt="Папай" />
+		</figure>
+		<style>
+			#cover h2 {
+				font-size: 2.5em;
+			}
+		</style>
+	</section>
+	<!-- 2 about -->
+	<section class="slide">
+		<h2 class="title">О себе</h2>
+		<ul>
+			<li>Фронтенд-разработчик из бигТеха</li>
+			<li>В профессии 7+ лет</li>
+			<li>Люблю котиков</li>
+			<li>Люблю красивые анимашки</li>
+		</ul>
+		<img class="place bottom right" width="500" src="../../src/picture/three-cat-azh.webp" alt="котики" />
+	</section>
+	<!-- 3 no -->
+	<section class="slide">
+		<figure>
+			<img class="cover height" src="./pictures/no-js.png" />
+		</figure>
+	</section>
+	<!-- 4 baseline explain -->
+	<section class="slide">
+		<figure>
+			<img class="cover" src="./pictures/base-line.webp" />
+		</figure>
+		<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility"
+			target="_blank">MDN</a>
+	</section>
+	<!-- 5 -->
+	<section class="slide">
+		<h2 class="shout"> Как это было раньше?</h2>
+	</section>
 
-<!-- 5 -->
-<section class="slide">
-	<video src="video/tooltip-js.mp4" autoplay muted loop playsinline class="cover width"></video>
-</section>
+	<!-- 6 -->
+	<section class="slide">
+		<video src="video/tooltip-js.mp4" autoplay muted loop playsinline class="cover width"></video>
+	</section>
 
-<!-- 6 popper js-->
-<section class="slide slide-right-code">
-	<figure>
-		<img class="cover" src="./pictures/popper.webp"/>
-	</figure>
-	<a class="copyright" href="https://popper.js.org/docs/v2/">Popper js</a>
-</section>
-<!-- 7 -->
-<section class="slide">
-	<h2 class="shout"> CSS Anchor Positioning API</h2>
-</section>
+	<!-- 7 popper js-->
+	<section class="slide slide-right-code">
+		<figure>
+			<img class="cover" src="./pictures/popper.webp" />
+		</figure>
+		<a class="copyright" href="https://popper.js.org/docs/v2/">Popper js</a>
+	</section>
+	<!-- 8 -->
+	<section class="slide">
+		<h2 class="shout"> CSS Anchor Positioning API</h2>
+	</section>
 
-<!-- 8 position-try-fallbacks tooltip flip -->
-<section class="slide">
-	<figure>
-		<img class="cover" src="./pictures/tooltip-flip.webp"/>
-	</figure>
-</section>
-<!-- 9 -->
-<section class="slide slide--center">
-	<h2>Anchor</h2>
-	<p>Элемент-ориентир. К нему привязываются другие</p>
-	<p>
-		<code>
+	<!-- 9 position-try-fallbacks tooltip flip -->
+	<section class="slide">
+		<figure>
+			<img class="cover" src="./pictures/tooltip-flip.webp" />
+		</figure>
+	</section>
+	<!-- 10 -->
+	<section class="slide slide--center">
+		<h2>Anchor</h2>
+		<p>Элемент-ориентир. К нему привязываются другие</p>
+		<p>
+			<code>
 			<span class="hljs-attribute">anchor-name:</span> <span class="hljs-attr">--my-anchor</span>;
 		</code>
-	</p>
-</section>
-<!-- 10 -->
-<section class="slide slide--center">
-	<h2>Target</h2>
-	<p>Cпозиционированный элемент, который нужно разместить</p>
-	<p>
-		<code>
+		</p>
+	</section>
+	<!-- 11 -->
+	<section class="slide slide--center">
+		<h2>Target</h2>
+		<p>Cпозиционированный элемент, который нужно разместить</p>
+		<p>
+			<code>
 			<span class="hljs-attribute">position:</span> absolute; <span class="hljs-comment">/*or fixed*/</span><br/>
 			<span class="hljs-comment">/*(Привязываем цель к якорю)*/</span><br/>
 			<span class="hljs-attribute">position-anchor:</span> <span class="hljs-attr">--my-anchor</span>;
 		</code>
-	</p>
-</section>
-<!-- 11 -->
-<section class="slide">
-	<pre class="place big">
+		</p>
+	</section>
+	<!-- 12 -->
+	<section class="slide">
+		<pre class="place big">
 			<code  style="margin-left: calc(var(--slide-side) * -2.5);">
 				&lt;div class="anchor"&gt;anchor&lt;/div&gt; <br/>
 				&lt;div class="target">target&lt;/div&gt;
 			</code>
 		</pre>
-</section>
-<!-- 12 -->
-<section class="slide">
-	<figure>
-		<img class="cover" src="./pictures/anchor-target.webp" alt="anchor target"/>
-	</figure>
-	<div class="place center right">
-		<pre>
+	</section>
+	<!-- 13 -->
+	<section class="slide">
+		<figure>
+			<img class="cover" src="./pictures/anchor-target.webp" alt="anchor target" />
+		</figure>
+		<div class="place center right">
+			<pre>
 			<code class="right-side">
 				.anchor {
   				  anchor-name: <span class="hljs-var">--my-anchor</span>;
@@ -170,12 +171,12 @@
 				}
 			</code>
 		</pre>
-	</div>
-</section>
+		</div>
+	</section>
 
-<!-- 13 -->
-<section class="slide">
-         <pre class="place big css text-19">
+	<!-- 14 -->
+	<section class="slide">
+		<pre class="place big css text-19">
           <code>
           .anchor {
             anchor-name: --one, --two;
@@ -193,77 +194,82 @@
           </code>
         </pre>
 		<style>
-		.text-19 {
-			font-size: 19px;
-		}
-	</style>
-</section>
+			.text-19 {
+				font-size: 19px;
+			}
+		</style>
+	</section>
 
-<!-- 14 -->
-<section class="slide">
-	<h2 class="shout">Невидимый якорь - не якорь</h2>
-</section>
+	<!-- 15 -->
+	<section class="slide">
+		<h2 class="shout">Невидимый якорь - не якорь</h2>
+	</section>
 
-<!-- 15 -->
-<section class="slide">
-	<pre class="place big css">
+	<!-- 16 -->
+	<section class="slide">
+		<pre class="place big css">
 			<code class="right-side">
 				.target {
 					position-anchor: auto;
 				}
 			</code>
 		</pre>
-</section>
+	</section>
 
-<!-- 16 -->
-<section class="slide black">
-	<video src="./video/position-anchor-auto-menu.mp4" autoplay muted loop playsinline class="cover height"></video>
-	<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/bNBamRj" target="_blank">
-		CodePen
-	</a>
-</section>
+	<!-- 17 -->
+	<section class="slide black">
+		<video src="./video/position-anchor-auto-menu.mp4" autoplay muted loop playsinline class="cover height"></video>
+		<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/bNBamRj" target="_blank">
+			CodePen
+		</a>
+	</section>
 
-<!-- 17 -->
-<section class="slide">
-	<figure>
-		<img class="cover" src="./pictures/support-anchor-name.webp" alt=""/>
-	</figure>
-	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/anchor-name">MDN</a>
-</section>
+	<!-- 18 -->
+	<section class="slide">
+		<figure>
+			<img class="cover" src="./pictures/support-anchor-name.webp" alt="" />
+		</figure>
+		<a class="copyright"
+			href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/anchor-name">MDN</a>
+	</section>
 
-<!-- 18 -->
-<section class="slide">
-	<figure>
-		<img class="cover" src="./pictures/support-position-anchor.webp" alt=""/>
-	</figure>
-	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position-anchor">MDN</a>
-</section>
+	<!-- 19 -->
+	<section class="slide">
+		<figure>
+			<img class="cover" src="./pictures/support-position-anchor.webp" alt="" />
+		</figure>
+		<a class="copyright"
+			href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position-anchor">MDN</a>
+	</section>
 
-<!-- 19 -->
-<section class="slide">
-	<h2 class="shout"><p class="subtitle">Сетка позиций</p> <code><span class="hljs-attribute">position-area</span></code><br/></h2>
-	<style>
-		p.subtitle {
-			margin-bottom: 0.4em;
-		}
-	</style>
-	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position-area" target="_blank">MDN</a>
-</section>
+	<!-- 20 -->
+	<section class="slide">
+		<h2 class="shout">
+			<p class="subtitle">Сетка позиций</p> <code><span class="hljs-attribute">position-area</span></code><br />
+		</h2>
+		<style>
+			p.subtitle {
+				margin-bottom: 0.4em;
+			}
+		</style>
+		<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position-area"
+			target="_blank">MDN</a>
+	</section>
 
-<!-- 20 -->
-<section class="slide">
-	<figure>
-		<img class="cover" src="./pictures/grid.webp" alt=""/>
-	</figure>
-</section>
+	<!-- 21 -->
+	<section class="slide">
+		<figure>
+			<img class="cover" src="./pictures/grid.webp" alt="" />
+		</figure>
+	</section>
 
-<!-- 21 -->
-<section class="slide slide-right-code">
-	<figure>
-		<img class="cover" src="./pictures/top-left.webp" alt="anchor position top right"/>
-	</figure>
-	
-	<pre class="place area right center">
+	<!-- 22 -->
+	<section class="slide slide-right-code">
+		<figure>
+			<img class="cover" src="./pictures/top-left.webp" alt="anchor position top right" />
+		</figure>
+
+		<pre class="place area right center">
 		<code class="right-side text-23">
 			.target {
 			   position-area: left top;
@@ -272,23 +278,23 @@
 			}
 		</code>
 	</pre>
-	<style>
-		.text-23 {
-			font-size: 23px;
-		}
+		<style>
+			.text-23 {
+				font-size: 23px;
+			}
 
-		.area {
-			width: 57%;
-		}
-	</style>
-</section>
+			.area {
+				width: 57%;
+			}
+		</style>
+	</section>
 
-<!-- 22 -->
-<section class="slide slide-right-code">
-	<figure>
-		<img class="cover" src="./pictures/center-right.webp" alt="anchor position right center"/>
-	</figure>
-	<pre class="place area right center">
+	<!-- 23 -->
+	<section class="slide slide-right-code">
+		<figure>
+			<img class="cover" src="./pictures/center-right.webp" alt="anchor position right center" />
+		</figure>
+		<pre class="place area right center">
 		<code class="right-side text-23">
 			.target {
 			   position-area: center right;
@@ -297,14 +303,14 @@
 			}
 		</code>
 	</pre>
-</section>
+	</section>
 
-<!-- 23 -->
-<section class="slide slide-right-code">
-	<figure>
-		<img class="cover" src="./pictures/span.webp" alt="anchor position span"/>
-	</figure>
-	<pre class="place area center right">
+	<!-- 24 -->
+	<section class="slide slide-right-code">
+		<figure>
+			<img class="cover" src="./pictures/span.webp" alt="anchor position span" />
+		</figure>
+		<pre class="place area center right">
 		<code class="right-side target text-23">
 			.target {
 			   position-area: span-top left;
@@ -313,14 +319,14 @@
 			}
 		</code>
 	</pre>
-</section>
+	</section>
 
-<!-- 24 -->
-<section class="slide target slide-right-code">
-	<figure>
-		<img class="cover" src="./pictures/span-all.webp" alt="anchor position span-all"/>
-	</figure>
-	<pre class="place area center right">
+	<!-- 25 -->
+	<section class="slide target slide-right-code">
+		<figure>
+			<img class="cover" src="./pictures/span-all.webp" alt="anchor position span-all" />
+		</figure>
+		<pre class="place area center right">
 		<code class="right-side text-23">
 			.target {
 			   position-area: bottom;
@@ -329,32 +335,34 @@
 			}
 		</code>
 	</pre>
-</section>
-<!-- 25 all position -->
-<section class="slide">
-	<video src="./video/position-area.mp4" autoplay muted loop playsinline class="cover width"></video>
-	<a class="copyright" href="https://chrome.dev/anchor-tool/" target="_blank">
-		position area
-	</a>
-</section>
+	</section>
+	<!-- 26 all position -->
+	<section class="slide">
+		<video src="./video/position-area.mp4" autoplay muted loop playsinline class="cover width"></video>
+		<a class="copyright" href="https://chrome.dev/anchor-tool/" target="_blank">
+			position area
+		</a>
+	</section>
 
-<!-- 26 sup-->
-<section class="slide">
-	<figure>
-		<img class="cover" src="./pictures/support-position-area.webp"/>
-	</figure>
-	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position-area">MDN</a>
-</section>
+	<!-- 27 sup-->
+	<section class="slide">
+		<figure>
+			<img class="cover" src="./pictures/support-position-area.webp" />
+		</figure>
+		<a class="copyright"
+			href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position-area">MDN</a>
+	</section>
 
-<!-- 27 func anchor -->
-<section class="slide">
-	<h2 class="shout"><p class="subtitle">Функция</p> <code><span class="hljs-attribute">anchor()</span></code>
-	</h2>
-</section>
+	<!-- 28 func anchor -->
+	<section class="slide">
+		<h2 class="shout">
+			<p class="subtitle">Функция</p> <code><span class="hljs-attribute">anchor()</span></code>
+		</h2>
+	</section>
 
-<!-- 28 anchor() -->
-<section class="slide">
-         <pre class="place big css slide-right-code">
+	<!-- 29 anchor() -->
+	<section class="slide">
+		<pre class="place big css slide-right-code">
           <code>
 		.anchor {
             anchor-name: --my-anchor;
@@ -366,12 +374,12 @@
 		}
           </code>
         </pre>
-</section>
+	</section>
 
 
-<!-- 29 anchor() position-anchor -->
-<section class="slide">
-         <pre class="place big css slide-right-code">
+	<!-- 30 anchor() position-anchor -->
+	<section class="slide">
+		<pre class="place big css slide-right-code">
           <code>
 		.anchor {
             anchor-name: --my-anchor;
@@ -384,170 +392,177 @@
 		}
           </code>
         </pre>
-</section>
+	</section>
 
-<!-- 30 anchor-center-physical-arguments-->
-<section class="slide finish">
-	<figure>
-		<img class="cover" src="./pictures/anchor-physical-side-arguments.webp"/>
-	</figure>
-</section>
+	<!-- 31 anchor-center-physical-arguments-->
+	<section class="slide finish">
+		<figure>
+			<img class="cover" src="./pictures/anchor-physical-side-arguments.webp" />
+		</figure>
+	</section>
 
-<!-- 31 anchor-center-physical-arguments-->
-<section class="slide finish">
-	<figure>
-		<img class="cover" src="./pictures/anchor-center-physical-arguments.webp"/>
-	</figure>
-</section>
+	<!-- 32 anchor-center-physical-arguments-->
+	<section class="slide finish">
+		<figure>
+			<img class="cover" src="./pictures/anchor-center-physical-arguments.webp" />
+		</figure>
+	</section>
 
-<!-- 32 anchor-logical-->
-<section class="slide finish">
-	<figure>
-		<img class="cover" src="./pictures/logical-side.webp"/>
-	</figure>
-</section>
+	<!-- 33 anchor-logical-->
+	<section class="slide finish">
+		<figure>
+			<img class="cover" src="./pictures/logical-side.webp" />
+		</figure>
+	</section>
 
-<!-- 33 anchor-logical-->
-<section class="slide finish">
-	<figure>
-		<img class="cover" src="./pictures/logical.webp"/>
-	</figure>
-</section>
+	<!-- 34 anchor-logical-->
+	<section class="slide finish">
+		<figure>
+			<img class="cover" src="./pictures/logical.webp" />
+		</figure>
+	</section>
 
-<!-- 34 anchor-length-->
-<section class="slide finish">
-	<figure>
-		<img class="cover" src="./pictures/anchor-length.webp" alt="anchor length"/>
-	</figure>
-</section>
-<!-- 35 two anchor -->
-<section class="slide">
-	<video src="./video/two-anchor.mp4" autoplay muted loop playsinline class="cover width"></video>
-	<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/XJmGdRW" target="_blank">
-		CodePen
-	</a>
-</section>
+	<!-- 35 anchor-length-->
+	<section class="slide finish">
+		<figure>
+			<img class="cover" src="./pictures/anchor-length.webp" alt="anchor length" />
+		</figure>
+	</section>
+	<!-- 36 two anchor -->
+	<section class="slide">
+		<video src="./video/two-anchor.mp4" autoplay muted loop playsinline class="cover width"></video>
+		<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/XJmGdRW" target="_blank">
+			CodePen
+		</a>
+	</section>
 
-<!-- 36 sup-->
-<section class="slide">
-	<figure>
-		<img class="cover" src="./pictures/support-func-anchor.webp"/>
-	</figure>
-	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/anchor">MDN</a>
-</section>
+	<!-- 37 sup-->
+	<section class="slide">
+		<figure>
+			<img class="cover" src="./pictures/support-func-anchor.webp" />
+		</figure>
+		<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/anchor">MDN</a>
+	</section>
 
 
-<!-- 37 position visibility -->
-<section class="slide">
-	<h2 class="shout"><p class="subtitle">Контроль видимости</p> <code><span
-			class="hljs-attribute">position-visibility</span></code><br/></h2>
-	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position-visibility" target="_blank">MDN</a>
-</section>
-<!-- 38 always-->
-<section class="slide slide-right-code">
-	<figure>
-		<img class="cover" src="./pictures/always.webp" alt="anchor visibility always"/>
-	</figure>
-	<pre class="place center visibility right">
+	<!-- 38 position visibility -->
+	<section class="slide">
+		<h2 class="shout">
+			<p class="subtitle">Контроль видимости</p> <code><span
+			class="hljs-attribute">position-visibility</span></code><br />
+		</h2>
+		<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position-visibility"
+			target="_blank">MDN</a>
+	</section>
+	<!-- 39 always-->
+	<section class="slide slide-right-code">
+		<figure>
+			<img class="cover" src="./pictures/always.webp" alt="anchor visibility always" />
+		</figure>
+		<pre class="place center visibility right">
 		<code class="right-side text-22">
 			.target {
 			   position-visibility: always;
 			}
 		</code>
 	</pre>
-	<style>
-		.text-22 {
-			font-size: 22px;
-		}
-		
-		.visibility {
-			width: 62%;
-		}
-	</style>
-</section>
-<!-- 39 always video-->
-<section class="slide">
-	<video src="./video/always.mp4" autoplay muted loop playsinline class="cover width"></video>
-</section>
-<!-- 40 anchors-visible-->
-<section class="slide slide-right-code">
-	<figure>
-		<img class="cover" src="./pictures/anchors-visible.webp" alt="anchor visibility anchors-visible"/>
-	</figure>
-	<pre class="place center visibility right">
+		<style>
+			.text-22 {
+				font-size: 22px;
+			}
+
+			.visibility {
+				width: 62%;
+			}
+		</style>
+	</section>
+	<!-- 40 always video-->
+	<section class="slide">
+		<video src="./video/always.mp4" autoplay muted loop playsinline class="cover width"></video>
+	</section>
+	<!-- 41 anchors-visible-->
+	<section class="slide slide-right-code">
+		<figure>
+			<img class="cover" src="./pictures/anchors-visible.webp" alt="anchor visibility anchors-visible" />
+		</figure>
+		<pre class="place center visibility right">
 		<code class="right-side text-22">
 			.target {
 			   position-visibility: anchors-visible;
 			}
 		</code>
 	</pre>
-</section>
+	</section>
 
-<!-- 41 anchors-visible video-->
-<section class="slide">
-	<video src="./video/achors-visible.mp4" autoplay muted loop playsinline class="cover width"></video>
-	<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/vENPzOw" target="_blank">
-		CodePen
-	</a>
-</section>
+	<!-- 42 anchors-visible video-->
+	<section class="slide">
+		<video src="./video/achors-visible.mp4" autoplay muted loop playsinline class="cover width"></video>
+		<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/vENPzOw" target="_blank">
+			CodePen
+		</a>
+	</section>
 
-<!-- 42 anchors-visible video hack-->
-<section class="slide">
-	<video src="./video/anchors-visible-hack.mp4" autoplay muted loop playsinline class="cover width"></video>
-	<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/XJmGPmE" target="_blank">
-		CodePen
-	</a>
-</section>
+	<!-- 43 anchors-visible video hack-->
+	<section class="slide">
+		<video src="./video/anchors-visible-hack.mp4" autoplay muted loop playsinline class="cover width"></video>
+		<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/XJmGPmE" target="_blank">
+			CodePen
+		</a>
+	</section>
 
-<!-- 43 no-overflow -->
-<section class="slide slide-right-code">
-	<figure>
-		<img class="cover" src="./pictures/no-overflow.webp" alt="anchor visibility no-overflow"/>
-	</figure>
-	<pre class="place center visibility right">
+	<!-- 44 no-overflow -->
+	<section class="slide slide-right-code">
+		<figure>
+			<img class="cover" src="./pictures/no-overflow.webp" alt="anchor visibility no-overflow" />
+		</figure>
+		<pre class="place center visibility right">
 		<code class="right-side text-22">
 			.target {
 			   position-visibility: no-overflow;
 			}
 		</code>
 	</pre>
-</section>
+	</section>
 
-<!-- 44 no-overflow video-->
-<section class="slide">
-	<video src="./video/no-overflow.mp4" autoplay muted loop playsinline class="cover width"></video>
-	<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/qEOvyXp" target="_blank">
-		CodePen
-	</a>
-</section>
+	<!-- 45 no-overflow video-->
+	<section class="slide">
+		<video src="./video/no-overflow.mp4" autoplay muted loop playsinline class="cover width"></video>
+		<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/qEOvyXp" target="_blank">
+			CodePen
+		</a>
+	</section>
 
-<!-- 45 anchor-valid -->
-<section class="slide slide-right-code">
-	<pre class="place big csst">
+	<!-- 46 anchor-valid -->
+	<section class="slide slide-right-code">
+		<pre class="place big csst">
 		<code>
 			.target {
 			   position-visibility: anchor-valid;
 			}
 		</code>
 	</pre>
-</section>
+	</section>
 
-<!-- 46 sup-->
-<section class="slide">
-	<figure>
-		<img class="cover" src="./pictures/support-position-visibility.webp"/>
-	</figure>
-	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position-visibility">MDN</a>
-</section>
+	<!-- 47 sup-->
+	<section class="slide">
+		<figure>
+			<img class="cover" src="./pictures/support-position-visibility.webp" />
+		</figure>
+		<a class="copyright"
+			href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position-visibility">MDN</a>
+	</section>
 
-<!-- 47 position-try-* -->
-<section class="slide">
-	<h2 class="shout"><p class="subtitle">Умные fallbacks:</p> <code><span class="hljs-attribute">position-try-*</span></code><br/></h2>
-</section>
+	<!-- 48 position-try-* -->
+	<section class="slide">
+		<h2 class="shout">
+			<p class="subtitle">Умные fallbacks:</p>
+			<code><span class="hljs-attribute">position-try-*</span></code><br />
+		</h2>
+	</section>
 
-<!-- 48 position-try-fallbacks exp-->
-<section class="slide">
-	<pre class="place big css">
+	<!-- 49 position-try-fallbacks exp-->
+	<section class="slide">
+		<pre class="place big css">
 			<code>
 				.target {
 					position: fixed;
@@ -557,11 +572,11 @@
 				}
 			</code>
 		</pre>
-</section>
+	</section>
 
-<!-- 49 position-try-fallbacks dashed-ident-->
-<section class="slide">
-	<pre class="place big css">
+	<!-- 50 position-try-fallbacks dashed-ident-->
+	<section class="slide">
+		<pre class="place big css">
 			<code>
 				.target {
 					/*try-tactic*/
@@ -569,28 +584,28 @@
 				}
 			</code>
 		</pre>
-</section>
-<!-- 50 position-try-fallbacks block -->
-<section class="slide">
-	<figure>
-		<img class="cover" src="./pictures/try-fallbacks-flip-block.webp"/>
-	</figure>
-</section>
-<!-- 51 position-try-fallbacks block -->
-<section class="slide">
-	<figure>
-		<img class="cover" src="./pictures/try-fallbacks-flip-inline.webp"/>
-	</figure>
-</section>
-<!-- 52 position-try-fallbacks start -->
-<section class="slide">
-	<figure>
-		<img class="cover" src="./pictures/try-fallbacks-flip-start.webp"/>
-	</figure>
-</section>
-<!-- 53 position-try-fallbacks position-area-->
-<section class="slide">
-	<pre class="place big css">
+	</section>
+	<!-- 51 position-try-fallbacks block -->
+	<section class="slide">
+		<figure>
+			<img class="cover" src="./pictures/try-fallbacks-flip-block.webp" />
+		</figure>
+	</section>
+	<!-- 52 position-try-fallbacks block -->
+	<section class="slide">
+		<figure>
+			<img class="cover" src="./pictures/try-fallbacks-flip-inline.webp" />
+		</figure>
+	</section>
+	<!-- 53 position-try-fallbacks start -->
+	<section class="slide">
+		<figure>
+			<img class="cover" src="./pictures/try-fallbacks-flip-start.webp" />
+		</figure>
+	</section>
+	<!-- 54 position-try-fallbacks position-area-->
+	<section class="slide">
+		<pre class="place big css">
 			<code>
 				.target {
 					/*position-area*/
@@ -598,27 +613,28 @@
 				}
 			</code>
 		</pre>
-</section>
+	</section>
 
-<!-- 54 Важно-->
-<section class="slide">
-	<h2>Поведение</h2>
-	<ul>
-		<li>
-			<code>position: fixed</code> — фолбэк срабатывает у <b>края экрана</b>
-		</li>
-		<li>
-			<code>position: absolute</code> — фолбэк срабатывает у <b>края родителя</b>
-		</li>
-		<li>
-			Для <code>absolute</code> родителю нужно указать overflow,  иначе фолбэки (<code>position-try</code>) не запустятся
-		</li>
-	</ul>
-</section>
+	<!-- 55 Важно-->
+	<section class="slide">
+		<h2>Поведение</h2>
+		<ul>
+			<li>
+				<code>position: fixed</code> — фолбэк срабатывает у <b>края экрана</b>
+			</li>
+			<li>
+				<code>position: absolute</code> — фолбэк срабатывает у <b>края родителя</b>
+			</li>
+			<li>
+				Для <code>absolute</code> родителю нужно указать overflow, иначе фолбэки (<code>position-try</code>) не
+				запустятся
+			</li>
+		</ul>
+	</section>
 
-<!-- 55 position-try-fallbacks position-area-->
-<section class="slide">
-	<pre class="place big css">
+	<!-- 56 position-try-fallbacks position-area-->
+	<section class="slide">
+		<pre class="place big css">
 			<code>
 				.target {
 					position-area: top;
@@ -628,58 +644,86 @@
 				}
 			</code>
 		</pre>
-</section>
+	</section>
 
-<!-- 56 flip-block video-->
-<section class="slide">
-	<video src="./video/flip-block.mp4" autoplay muted loop playsinline class="cover width"></video>
-</section>
+	<!-- 57 flip-block video-->
+	<section class="slide">
+		<video src="./video/flip-block.mp4" autoplay muted loop playsinline class="cover width"></video>
+	</section>
 
-<!-- 57 try order-->
-<section class="slide slide-right-code">
-	<figure>
-		<img class="cover" src="./pictures/try-order.webp" alt="anchor try order"/>
-	</figure>
-	<div class="place center right" style="padding-right: 20%;">
-		<code class="right-side" style="font-size: 22px">
+	<!-- 58 try order-->
+	<section class="slide slide-right-code">
+		<figure>
+			<img class="cover" src="./pictures/try-order.webp" alt="anchor try order" />
+		</figure>
+		<div class="place center right" style="padding-right: 20%;">
+			<code class="right-side" style="font-size: 22px">
 			<span class="hljs-attribute">position-try-order</span>: <br/>normal | <br/>most-width | <br/>most-height | <br/>
 			most-block-size | <br/>most-inline-size
 		</code>
-	</div><a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position-try-order" target="_blank">MDN</a>
-</section>
+		</div><a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position-try-order"
+			target="_blank">MDN</a>
+	</section>
 
-<!-- 58 sup-->
-<section class="slide">
-	<figure>
-		<img class="cover" src="./pictures/support-position-try.webp"/>
-	</figure>
-	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position-try-fallbacks">MDN</a>
-</section>
+	<!-- 59 sup-->
+	<section class="slide">
+		<figure>
+			<img class="cover" src="./pictures/support-position-try.webp" />
+		</figure>
+		<a class="copyright"
+			href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position-try-fallbacks">MDN</a>
+	</section>
 
-<!-- 59 Кастомные fallbacks -->
-<section class="slide">
-	<h2 class="shout"><p class="subtitle">Кастомные fallbacks </p> <code><span class="hljs-attribute">@position-try</span></code><br/>
-	</h2>
-	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@position-try" target="_blank">MDN</a>
-</section>
+	<!-- 60 Кастомные fallbacks -->
+	<section class="slide">
+		<h2 class="shout">
+			<p class="subtitle">Кастомные fallbacks </p>
+			<code><span class="hljs-attribute">@position-try</span></code><br />
+		</h2>
+		<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@position-try"
+			target="_blank">MDN</a>
+	</section>
 
-<!-- 60 Кастомные fallbacks -->
-<section class="slide">
-<pre class="place big css">
+	<!-- 61 Кастомные fallbacks -->
+	<section class="slide">
+		<pre class="place big css">
           <code>
           @position-try &lt;dashed-ident&gt; {
 			  &lt;declaration-list&gt;
 			}
           </code>
         </pre>
-</section>
+	</section>
 
-<!-- 61 Кастомные fallbacks -->
-<section class="slide">
-<pre class="place big css" style="font-size: 22px">
+	<!-- 62 Кастомные fallbacks declaration-list-->
+	<section class="slide">
+		<h2>declaration-list</h2>
+		<div class="columns two">
+			<ul>
+				<li>position-area</li>
+				<li>position-anchor</li>
+				<li>anchor-center для align-self и justify-self</li>
+			</ul>
+			<ul>
+				<li>Inset property ( + anchor() )</li>
+				<li>Margin property</li>
+				<li>Sizing property ( + anchor-size() )</li>
+			</ul>
+		</div>
+		<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@position-try#descriptors"
+			target="_blank">MDN</a>
+	</section>
+
+	<!-- 63 Кастомные fallbacks -->
+	<section class="slide">
+		<pre class="place big css" style="font-size: 22px">
           <code>
 			.target {
-			  /*dashed-ident*/
+			  position: fixed;
+			  position-anchor: --my-anchor;
+			  position-area: top;
+			  width: 150px;
+
 			  position-try-fallbacks: --my-custom-position;
 			}
 
@@ -689,78 +733,46 @@
 			}
           </code>
         </pre>
-</section>
+	</section>
 
-<!-- 62 Кастомные fallbacks -->
-<section class="slide">
-<pre class="place big css" style="font-size: 22px">
-          <code>
-         .target {
-			  position: fixed;
-			  position-anchor: --my-anchor;
-			  position-area: top;
-			  position-try-fallbacks: --my-custom-position, left;
-			  width: 150px;
-			}
-          </code>
-        </pre>
-</section>
+	<!-- 64 @position-try video-->
+	<section class="slide black">
+		<video src="./video/position-try-flip.mp4" autoplay muted loop playsinline class="cover height"></video>
+		<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/YPpGEjB" target="_blank">
+			CodePen
+		</a>
+	</section>
 
-<!-- 61 @position-try video-->
-<section class="slide black">
-	<video src="./video/position-try-flip.mp4" autoplay muted loop playsinline class="cover height"></video>
-	<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/YPpGEjB" target="_blank">
-		CodePen
-	</a>
-</section>
+	<!-- 65 sup-->
+	<section class="slide">
+		<figure>
+			<img class="cover" src="./pictures/support-at-rule-position-try.webp" />
+		</figure>
+		<a class="copyright"
+			href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@position-try">MDN</a>
+	</section>
 
-<!-- 62 Кастомные fallbacks declaration-list-->
-<section class="slide">
-	<h2>declaration-list</h2>
-	<div class="columns two">
-		<ul>
-			<li>position-area</li>
-			<li>anchor()</li>
-			<li>position-anchor</li>
-			<li>anchor-size()</li>
-			<li>anchor-center для align-self и justify-self</li>
-		</ul>
-		<ul>
-			<li>Inset property</li>
-			<li>Margin property</li>
-			<li>Sizing property</li>
-		</ul>
-	</div>
-	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@position-try#descriptors" target="_blank">MDN</a>
-</section>
+	<!-- 66 проблема container anchored-->
+	<section class="slide">
+		<h2 class="shout">Проблема: <br /> тултип умный, а стрелка — нет</h2>
+	</section>
 
-<!-- 63 sup-->
-<section class="slide">
-	<figure>
-		<img class="cover" src="./pictures/support-at-rule-position-try.webp"/>
-	</figure>
-	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@position-try">MDN</a>
-</section>
+	<!-- 67 проблема-->
+	<section class="slide black">
+		<video src="./video/arrow-not-move.mp4" autoplay muted loop playsinline class="cover height"></video>
+	</section>
 
-<!-- 64 проблема-->
-<section class="slide black">
-	<video src="./video/arrow-not-move.mp4" autoplay muted loop playsinline class="cover height"></video>
-</section>
+	<!-- 68 решение -->
+	<section class="slide">
+		<h2 class="shout">
+			<p class="subtitle">Решение</p> <code
+				style="font-size: 50px;"><span class="hljs-attribute">@container</span> anchored(fallback)</code>
+		</h2>
+	</section>
 
-<!-- 65 проблема container anchored-->
-<section class="slide">
-	<h2 class="shout">Проблема: <br /> тултип умный, а стрелка — нет</h2>
-</section>
-
-<!-- 66 решение -->
-<section class="slide">
-	<h2 class="shout"><p class="subtitle">Решение</p> <code style="font-size: 50px;"><span class="hljs-attribute">@container</span> anchored(fallback)</code>
-	</h2>
-</section>
-
-<!-- 66 container-type: anchored-->
-<section class="slide">
-	<pre class="place big css">
+	<!-- 69 container-type: anchored-->
+	<section class="slide">
+		<pre class="place big css">
 			<code>
 				.target {
 					/* тут стили для позиционирования */
@@ -775,11 +787,11 @@
 				}
 			</code>
 		</pre>
-</section>
+	</section>
 
-<!-- 67 @container -->
-<section class="slide">
-	<pre class="place big css">
+	<!-- 70 @container -->
+	<section class="slide">
+		<pre class="place big css">
 			<code>
 				@container anchored(fallback: flip-block) {
 					.target::before {
@@ -790,240 +802,151 @@
 				}
 			</code>
 		</pre>
-</section>
+	</section>
 
-<!-- 68 @container example-->
-<section class="slide black">
-	<video src="./video/arrow-move.mp4" autoplay muted loop playsinline class="cover height"></video>
-	<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/EaNgWRJ" target="_blank">
-		CodePen
-	</a>
-</section>
+	<!-- 71 @container example-->
+	<section class="slide black">
+		<video src="./video/arrow-move.mp4" autoplay muted loop playsinline class="cover height"></video>
+		<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/EaNgWRJ" target="_blank">
+			CodePen
+		</a>
+	</section>
 
-<!-- 69 sup-->
-<section class="slide">
-	<figure>
-		<img class="cover" src="./pictures/support-container-anchored.webp"/>
-	</figure>
-	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning/Anchored_container_queries">MDN</a>
-</section>
+	<!-- 72 sup-->
+	<section class="slide">
+		<figure>
+			<img class="cover" src="./pictures/support-container-anchored.webp" />
+		</figure>
+		<a class="copyright"
+			href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning/Anchored_container_queries">MDN</a>
+	</section>
 
-<!-- 70 func anchor-size -->
-<section class="slide">
-	<h2 class="shout"><p class="subtitle">Функция</p> <code><span class="hljs-attribute">anchor-size()</span></code>
-	</h2>
-</section>
+	<!-- 73 other -->
+	<section class="slide">
+		<h2>Дополнительные возможности</h2>
+		<li><span class="hljs-keyword">anchor-size()</span> - функция, значение для свойств
+			<code>width</code>/
+			<code>height</code>/
+			<code>inset</code>/
+			<code>margin</code>; подстраивает размеры и отступы таргета под габариты якоря
+		</li>
+		<li><span class="hljs-keyword">anchor-scope</span> - свойство, изолирует область поиска якоря (защита от
+			конфликтов имен)</li>
+		<li><span class="hljs-keyword">anchor-center</span> - значение для свойств
+			<code>justify-self</code>/
+			<code>align-self</code>/
+			<code>place-self</code>; центрирует таргет относительно якоря
+		</li>
+	</section>
 
-<!-- 71 func anchor-size -->
-<section class="slide flex-container">
-	<h2 class="shout anchor">
-		<code>
-			anchor-size(<span class="hljs-keyword"><br/>[ &lt;anchor-element&gt; <br/>|| &lt;anchor-size&gt; ],<br/> <span class="hljs-selector-class">&lt;length-percentage&gt;</span></span>)
-		</code>
-	</h2>
-	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/anchor-size" target="_blank">
-		anchor-size()
-	</a>
-</section>
+	<!-- 74 -->
+	<section class="slide">
+		<h2>Итоги и выводы Anchor Position API</h2>
+		<ul>
+			<li>
+				<b class="accent-text">Что это?</b> <br />Мощнейший API для позиционирования на чистом CSS
+			</li>
+			<li>
+				<b class="accent-text">Что решает?</b> <br />Избавляет от тонн хрупкого JS-кода для поповеров, тултипов,
+				меню
+			</li>
+			<li>
+				<b class="accent-text">В чем преимущество? </b> <br />Производительность, надежность, декларативность
+			</li>
+			<li>
+				<b class="accent-text">Когда использовать?</b> <br />Уже сейчас для прогрессивного улучшения.<br /> В
+				будущем — как стандартный подход
+			</li>
+		</ul>
+	</section>
 
-<!-- 72 anchor-element -->
-<section class="slide flex-container">
-	<h2 class="shout" style="line-height: 1.5">
-		anchor-element <br />
-		<code><span class="hljs-keyword">--other-anchor</span></code>
-	</h2>
-</section>
-
-<!-- 73 anchor-size -->
-<section class="slide slide-right-code">
-	<figure>
-		<img class="cover" src="./pictures/anchor-size.webp"/>
-	</figure>
-	<div class="place center right" style="padding-right: 20%;">
-		<code class="right-side" style="font-size: 22px">
-			<span class="hljs-attribute">anchor-size</span>: <br/>block | <br/>inline | <br/>width | <br/>
-			height | <br/>self-block  | <br/>self-inline | <br/> и другие
-		</code>
-	</div>
-</section>
-
-<!--  74 func anchor-size exemple -->
-<section class="slide">
-         <pre class="place big css">
-          <code>
-           .target {
-			  left: anchor-size(width);
-
-			  width: anchor-size(width, 20%);
-			  height: anchor-size(--other-anchor inline-size, 100px);
-
-			  margin-left: calc(anchor-size(width) / 4);
+	<!-- 75 что еще почитать -->
+	<section class="slide">
+		<h2 class="title">Полезные ссылки</h2>
+		<ul>
+			<li>
+				<a href="https://github.com/oddbird/css-anchor-positioning" target="_blank">Polyfill for CSS Anchor
+					Positioning</a>
+			</li>
+			<li>
+				<a href="https://frontendmasters.com/blog/custom-range-slider-using-anchor-positioning-scroll-driven-animations/"
+					target="_blank">Custom Range Slider Using Anchor Positioning & Scroll-Driven Animations</a>
+			</li>
+			<li>
+				<a href="https://github.com/furtivite/i-love-frontend-2025?tab=readme-ov-file" target="_blank">Егор
+					Левченко. Нативные всплывающие окна с Popover API</a>
+			</li>
+		</ul>
+	</section>
+	<!-- 76 finish -->
+	<section class="slide finish">
+		<h2 class="title">
+			Любите котиков!
+			<br />Fin
+		</h2>
+		<figure>
+			<img class="cover" src="../../src/picture/heart-cats.webp" alt="cats" />
+			<img class="place bottom right" width="150" src="./pictures/qr.webp" alt="qr" />
+		</figure>
+		<style>
+			.finish h2 {
+				margin-top: 150px;
+				color: white;
+				text-align: center;
+				font-size: 70px;
+				text-shadow: 0 0 6px #000;
 			}
-          </code>
-        </pre>
-</section>
+		</style>
+	</section>
+	<script src="../../src/shower/shower.js"></script>
+	<script src="../../src/highlight/highlight.min.js"></script>
+	<script src="../../src/highlight/languages/css.js"></script>
+	<script src="../../src/highlight/languages/xml.js"></script>
+	<script>hljs.highlightAll();</script>
+	<script>
+		(function () {
+			var mouseTimer = null, cursorVisible = true;
 
-<!-- 75 func anchor-size video -->
-<section class="slide">
-	<video src="./video/anchor-size.mp4" autoplay muted loop playsinline class="cover width"></video>
-	<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/Byobbba" target="_blank">
-		CodePen
-	</a>
-</section>
-
-<!-- 76 sup-->
-<section class="slide">
-	<figure>
-		<img class="cover" src="./pictures/support-anchor-size.webp"/>
-	</figure>
-	<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/anchor-size">MDN</a>
-</section>
-
-<!-- 77 other -->
-<section class="slide">
-	<h2>Дополнительные возможности</h2>
-		<li><span class="hljs-keyword">anchor-scope</span> - свойство, ограничивает поиск якоря (решает проблему вложенных компонентов)</li>
-		<li><span class="hljs-keyword">anchor-center</span> - значение для свойств justify-*/align-*/place-*;  центрирует target относительно якоря</li>
-</section>
-
-<!-- 78 тултип через anchor -->
-<section class="slide">
-	<video src="./video/.mp4" autoplay muted loop playsinline class="cover width"></video>
-	<a class="copyright" href="" target="_blank">
-		CodePen
-	</a>
-</section>
-
-<!-- 79 поповер через anchor -->
-<section class="slide">
-	<video src="./video/.mp4" autoplay muted loop playsinline class="cover width"></video>
-	<a class="copyright" href="" target="_blank">
-		CodePen
-	</a>
-</section>
-
-<!-- 78 -->
-<section class="slide">
-	<h2>Итоги и выводы Anchor Position API</h2>
-	<ul>
-		<li>
-			<b class="accent-text">Что это?</b> <br />Мощнейший API для позиционирования на чистом CSS
-		</li>
-		<li>
-			<b class="accent-text">Что решает?</b> <br />Избавляет от тонн хрупкого JS-кода для поповеров, тултипов, меню
-		</li>
-		<li>
-			<b class="accent-text">В чем преимущество? </b> <br />Производительность, надежность, декларативность
-		</li>
-		<li>
-			<b class="accent-text">Когда использовать?</b> <br />Уже сейчас для прогрессивного улучшения.<br /> В будущем — как стандартный подход
-		</li>
-	</ul>
-</section>
-
-<!-- 79 что еще почитать -->
-<section class="slide">
-	<h2 class="title">Полезные ссылки</h2>
-	<ul>
-		<li>
-			<a href="https://developer.chrome.com/blog/anchor-positioning-api"
-			   target="_blank">Introducing the CSS anchor positioning API</a>
-		</li>
-		<li>
-			<a href="https://developer.chrome.com/docs/css-ui/anchor-positioning-api"
-			   target="_blank">The CSS anchor positioning API</a>
-		</li>
-		<li>
-			<a href="https://ishadeed.com/article/anchor-positioning/"
-			   target="_blank">The Basics of Anchor Positioning</a>
-		</li>
-		<li>
-			<a href="https://github.com/oddbird/css-anchor-positioning"
-			   target="_blank">Polyfill for CSS Anchor Positioning</a>
-		</li>
-		<li>
-			<a href="https://frontendmasters.com/blog/custom-range-slider-using-anchor-positioning-scroll-driven-animations/"
-			   target="_blank">Custom Range Slider Using Anchor Positioning & Scroll-Driven Animations</a>
-		</li>
-		<li>
-			<a href="https://web-standards.ru/"
-			   target="_blank">Подкаст "Веб-стандарты"</a>
-		</li>
-	</ul>
-</section>
-<!-- 80 finish -->
-<section class="slide finish">
-	<h2 class="title">
-		Всем спасибо!
-		<br/>Fin
-	</h2>
-	<figure>
-		<img class="cover" src="../../src/picture/heart-cats.webp" alt="cats"/>
-		<img
-				class="place bottom right"
-				width="150"
-				src="./pictures/qr.webp"
-				alt="qr"
-		/>
-	</figure>
-	<style>
-		.finish h2 {
-			margin-top: 150px;
-			color: white;
-			text-align: center;
-			font-size: 70px;
-			text-shadow: 0 0 6px #000;
-		}
-	</style>
-</section>
-<script src="../../src/shower/shower.js"></script>
-<script src="../../src/highlight/highlight.min.js"></script>
-<script src="../../src/highlight/languages/css.js"></script>
-<script src="../../src/highlight/languages/xml.js"></script>
-<script>hljs.highlightAll();</script>
-<script>
-	(function () {
-		var mouseTimer = null, cursorVisible = true;
-		
-		function disappearCursor() {
-			mouseTimer = null;
-			document.body.style.cursor = "none";
-			cursorVisible = false;
-		}
-		
-		document.onmousemove = function () {
-			if (mouseTimer) {
-				window.clearTimeout(mouseTimer);
+			function disappearCursor() {
+				mouseTimer = null;
+				document.body.style.cursor = "none";
+				cursorVisible = false;
 			}
-			if (!cursorVisible) {
-				document.body.style.cursor = "default";
-				cursorVisible = true;
-			}
-			mouseTimer = window.setTimeout(disappearCursor, 3000);
-		};
-	})();
-</script>
-<script>
-	document.querySelectorAll('video').forEach(video => {
-		const observer = new IntersectionObserver((entries) => {
-			entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					// Видео в viewport - воспроизводим с начала
-					video.currentTime = 0;
-					video.play();
-				} else {
-					// Видео вне viewport - приостанавливаем
-					video.pause();
+
+			document.onmousemove = function () {
+				if (mouseTimer) {
+					window.clearTimeout(mouseTimer);
 				}
+				if (!cursorVisible) {
+					document.body.style.cursor = "default";
+					cursorVisible = true;
+				}
+				mouseTimer = window.setTimeout(disappearCursor, 3000);
+			};
+		})();
+	</script>
+	<script>
+		document.querySelectorAll('video').forEach(video => {
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						// Видео в viewport - воспроизводим с начала
+						video.currentTime = 0;
+						video.play();
+					} else {
+						// Видео вне viewport - приостанавливаем
+						video.pause();
+					}
+				});
+			}, {
+				threshold: 0.5
 			});
-		}, {
-			threshold: 0.5
+
+			observer.observe(video);
 		});
-		
-		observer.observe(video);
-	});
-</script>
+	</script>
 </body>
+
 </html>
 
 <!--todo-->
