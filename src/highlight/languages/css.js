@@ -317,6 +317,7 @@
     'animation-timing-function',
     'animation-timeline',
     'anchor-name',
+    'anchor-scope',
     'appearance',
     'backface-visibility',
     'background',
