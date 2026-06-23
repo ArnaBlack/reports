@@ -205,9 +205,67 @@
 		</style>
 	</section>
 
+
 	<!-- 15 -->
 	<section class="slide">
 		<h2 class="shout">Невидимый якорь - не якорь</h2>
+	</section>
+
+
+	<!-- 15 -->
+	<section class="slide">
+		<pre class="place big css text-19">
+          <code>
+          .anchor-one {
+            anchor-name: --my-anchor;
+          }
+
+		  .anchor-two {
+            anchor-name: --my-anchor;
+          }
+          </code>
+        </pre>
+		<style>
+			.text-19 {
+				font-size: 19px;
+			}
+		</style>
+	</section>
+
+	<!-- 16 -->
+	<section class="slide">
+		<figure>
+			<img class="cover" src="./pictures/search-anchor.webp" alt="" />
+		</figure>
+		<a class="copyright" href="https://css-tip.com/anchor-issues/">Valid anchor</a>
+		</div>
+	</section>
+
+	<!-- 17 -->
+	<section class="slide">
+		<pre class="place big html text-19">
+          <code>
+          &lt;div class="parent"&gt;<br/>
+			&lt;span style="anchor-name: --my-anchor;">Якорь&lt;/span&gt;<br/><br/>
+			&lt;!-- 🛑 Улетит к оранжевому блоку! --&gt;<br/>
+			&lt;div style="position-anchor: --my-anchor; position: fixed;">target&lt;/div&gt;<br/>
+		  &lt;/div&gt;<br/> <br/>
+
+			&lt;!-- Элемент ниже по коду "украл" якорь --&gt;
+		  &lt;div style="anchor-name: --my-anchor; background: orange;">&lt;/div&gt;
+          </code>
+        </pre>
+	</section>
+
+		<!-- 18 -->
+	<section class="slide">
+		<pre class="place big css">
+			<code class="right-side">
+				.parent {
+					anchor-scope: --my-anchor;
+				}
+			</code>
+		</pre>
 	</section>
 
 	<!-- 16 -->
@@ -920,6 +978,9 @@
 			<li>
 				<a href="https://github.com/oddbird/css-anchor-positioning" target="_blank">Polyfill for CSS Anchor
 					Positioning</a>
+			</li>
+			<li>
+				<a href="https://css-tip.com/anchor-issues/" target="_blank">Why is Anchor Positioning not working?</a>
 			</li>
 			<li>
 				<a href="https://frontendmasters.com/blog/custom-range-slider-using-anchor-positioning-scroll-driven-animations/"
