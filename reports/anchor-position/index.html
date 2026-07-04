@@ -792,17 +792,13 @@
 
 	<!-- 55 Важно-->
 	<section class="slide">
-		<h2>Поведение</h2>
-		<ul>
-			<li>
-				<code>position: fixed</code> — фолбэк срабатывает у <b>края вьюпорта</b>
+		<h2>Когда сработает фоллбэк?</h2>
+		<ul style="line-height: 2;">
+			<li style="white-space: nowrap;">
+				<code>position: <span style="color: var(--color-accent);">fixed</span></code> <br/>  фолбэк срабатывает у <b>края вьюпорта</b>
 			</li>
 			<li>
-				<code>position: absolute</code> — фолбэк срабатывает у <b>края предка</b>
-			</li>
-			<li>
-				Для <code>absolute</code> предку нужно указать overflow, иначе фолбэки (<code>position-try</code>) не
-				запустятся
+				<code>position: <span  style="color: var(--color-accent);">absolute</span></code> <br/> у <b>края ближайшего предка</b> с <code>position</code> != <code>static</code>
 			</li>
 		</ul>
 	</section>
