@@ -181,26 +181,16 @@
         </pre>
 	</section>
 
-	<!-- 15 -->
-	<section class="slide">
-		<h2 class="shout" style="top: 35%;">Один контекст позиционирования</h2>
-
-		<figure class="place center" style="width: 300px; height: 300px;top: 70%;">
-			<img class="cover" width="512" height="512" src="./pictures/cat-loading.webp" alt="" />
-		</figure>
-	</section>
-
 	<!-- 12 -->
 	<section class="slide">
 		<pre class="place big html text-19">
           <code>
-			&lt;!-- ✅ Работает! --&gt;
-			&lt;div class="anchor" style="positon:relative | static | sticky"&gt;anchor&lt;/div&gt; <br/>
-			&lt;div class="target">target&lt;/div&gt;<br />
+			&lt;!-- ❌ Не работает! --&gt;
+			&lt;div class="target" &gt;target&lt;/div&gt; <br/>
 
-			&lt;!-- ✅ И так тоже! --&gt;
-			&lt;div class="target">target&lt;/div&gt;
-			&lt;div class="anchor" style="positon:relative | static | sticky"&gt;anchor&lt;/div&gt; <br/>
+			&lt;dialog&gt;
+				&lt;div class="anchor">anchor&lt;/div&gt;<br/>
+			&lt;/dialog&gt;	
           </code>
         </pre>
 	</section>
@@ -224,6 +214,21 @@
 	<section class="slide">
 		<pre class="place big html text-19">
           <code>
+			&lt;!-- ✅ Работает! --&gt;
+			&lt;div class="anchor" style="positon:relative | static | sticky"&gt;anchor&lt;/div&gt; <br/>
+			&lt;div class="target">target&lt;/div&gt;<br />
+
+			&lt;!-- ✅ И так тоже! --&gt;
+			&lt;div class="target">target&lt;/div&gt;
+			&lt;div class="anchor" style="positon:relative | static | sticky"&gt;anchor&lt;/div&gt; <br/>
+          </code>
+        </pre>
+	</section>
+
+	<!-- 12 -->
+	<section class="slide">
+		<pre class="place big html text-19">
+          <code>
 			&lt;!-- ❌ Не работает! --&gt;
 			&lt;div class="anchor" style="display: none;"&gt;anchor&lt;/div&gt; <br/>
 			&lt;div class="target">target&lt;/div&gt;<br/>
@@ -235,10 +240,6 @@
         </pre>
 	</section>
 
-	<!-- 15 -->
-	<section class="slide">
-		<h2 class="shout">Невидимый якорь - не якорь</h2>
-	</section>
 
 	<!-- 13 -->
 	<section class="slide">
