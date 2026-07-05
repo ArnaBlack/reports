@@ -763,12 +763,26 @@
 		<h2>Когда сработает фоллбэк?</h2>
 		<ul style="line-height: 2;">
 			<li style="white-space: nowrap;">
-				<code>position: <span style="color: var(--color-accent);">fixed</span></code> <br/> у <b>края вьюпорта</b>
+				<code>position: <span style="color: var(--color-accent);">fixed</span></code> <br/> если элемент не помещается во <b>viewport</b>
 			</li>
 			<li>
-				<code>position: <span  style="color: var(--color-accent);">absolute</span></code> <br/> у <b>края ближайшего предка</b> с <code>position</code> != <code>static</code>
+				<code>position: <span  style="color: var(--color-accent);">absolute</span></code> <br/> <span style="white-space: nowrap;">если элемент не помещается в области ближайшего <b>контейнера позиционирования</b></span><br/>
+				(обычно это ближайший предок с position != static)
 			</li>
 		</ul>
+	</section>
+
+	<!-- position-try-fallbacks not-work-->
+	<section class="slide black">
+		<video src="./video/position-try-fallbacks-not-work.mp4" autoplay muted loop playsinline class="cover height"></video>
+	</section>
+
+		<!-- position-try-fallbacks abs-->
+	<section class="slide black">
+		<video src="./video/	position-try-fallbacks-abs.mp4" autoplay muted loop playsinline class="cover height"></video>
+
+		<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/JoYzwyx"
+			target="_blank">codepen</a>
 	</section>
 
 	<!-- 15 -->
