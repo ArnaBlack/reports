@@ -5,6 +5,16 @@ import './components/theme-toggle.js';
 
 // Данные постов
 const blogPosts = [
+     {
+        id: 3,
+        title: "Бросаем якорь. Новая эра нативных тултипов и поповеров",
+        date: "26 июня 2025",
+        imageUrl: "src/picture/posts/post3.webp",
+        excerpt: "Поговорим о том, как Anchor Position API навсегда избавляет нас от вычислений координат и сторонних библиотек для позиционирования всплывающих элементов.",
+        links: [
+            { label: "Слайды", url: "reports/anchor-position/index.html" },
+        ]
+    },
     {
         id: 2,
         title: "Анимации без js",
