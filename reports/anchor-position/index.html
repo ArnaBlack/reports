@@ -8,7 +8,6 @@
 	<link rel="stylesheet" href="../../src/shower/styles/styles.css" />
 	<link rel="stylesheet" href="../../src/highlight/styles/base16/hardcore.min.css">
 	<link rel="stylesheet" href="./styles.css" />
-	<script type="module" src="../../src/baseline/baseline-status.min.js"></script>
 	<style>
 		.shower {
 			--slide-ratio: calc(16 / 9);
@@ -61,7 +60,7 @@
 		</h2>
 		<p>Анна Расторгуева</p>
 		<figure>
-			<img class="cover" src="pictures/hero-background.webp" alt="Папай" />
+			<img class="cover" src="pictures/hero.webp" alt="Папай" />
 		</figure>
 		<style>
 			#cover h2 {
@@ -86,18 +85,6 @@
 		<figure>
 			<img class="cover height" src="./pictures/no-js.png" />
 		</figure>
-	</section>
-	<!-- 4 baseline explain -->
-	<section class="slide">
-		<h2 class="shout">А можно в прод?</h2>
-	</section>
-	<!-- 4 baseline explain -->
-	<section class="slide">
-		<figure>
-			<img class="cover" src="./pictures/base-line.webp" />
-		</figure>
-		<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility"
-			target="_blank">MDN</a>
 	</section>
 	<section class="slide black">
 		<video src="./video/position-try-flip.mp4" autoplay muted loop playsinline class="cover height"></video>
@@ -320,21 +307,13 @@
 
 	<!-- 17 -->
 	<section class="slide">
-		<pre class="place big html text-19">
-          <code>
-          &lt;div class="parent"&gt;<br/>
-			&lt;span style="anchor-name: --my-anchor;">Якорь&lt;/span&gt;<br/><br/>
-			&lt;!-- 🛑 Улетит к оранжевому блоку! --&gt;<br/>
-			&lt;div style="position-anchor: --my-anchor; position: fixed;">target&lt;/div&gt;<br/>
-		  &lt;/div&gt;<br/> <br/>
-
-			&lt;!-- Элемент ниже по коду "украл" якорь --&gt;
-		  &lt;div style="anchor-name: --my-anchor; background: orange;">&lt;/div&gt;
-          </code>
-        </pre>
+		<figure>
+			<img class="cover" src="./pictures/stolen-anchor.webp" alt="" />
+		</figure>
+		</div>
 	</section>
 
-		<!-- 18 -->
+	<!-- 18 -->
 	<section class="slide">
 		<pre class="place big css">
 			<code class="right-side">
@@ -343,6 +322,15 @@
 				}
 			</code>
 		</pre>
+	</section>
+
+	<!-- 17 -->
+	<section class="slide">
+		<figure>
+			<img class="cover" src="./pictures/anchor-scope.webp" alt="" />
+		</figure>
+		<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/WbRMbyP"
+			target="_blank">CodePen</a>
 	</section>
 
 	<!-- 16 -->
@@ -362,24 +350,6 @@
 		<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/bNBamRj" target="_blank">
 			CodePen
 		</a>
-	</section>
-
-	<!-- 18 -->
-	<section class="slide">
-		<figure>
-			<img class="cover" src="./pictures/support-anchor-name.webp" alt="" />
-		</figure>
-		<a class="copyright"
-			href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/anchor-name">MDN</a>
-	</section>
-
-	<!-- 19 -->
-	<section class="slide">
-		<figure>
-			<img class="cover" src="./pictures/support-position-anchor.webp" alt="" />
-		</figure>
-		<a class="copyright"
-			href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position-anchor">MDN</a>
 	</section>
 
 	<!-- 20 -->
@@ -484,15 +454,6 @@
 		</a>
 	</section>
 
-	<!-- 27 sup-->
-	<section class="slide">
-		<figure>
-			<img class="cover" src="./pictures/support-position-area.webp" />
-		</figure>
-		<a class="copyright"
-			href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position-area">MDN</a>
-	</section>
-
 	<!-- 28 func anchor -->
 	<section class="slide">
 		<h2 class="shout">
@@ -574,14 +535,6 @@
 		<a class="copyright" href="https://codepen.io/arnablack-the-vuer/pen/XJmGdRW" target="_blank">
 			CodePen
 		</a>
-	</section>
-
-	<!-- 37 sup-->
-	<section class="slide">
-		<figure>
-			<img class="cover" src="./pictures/support-func-anchor.webp" />
-		</figure>
-		<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/anchor">MDN</a>
 	</section>
 
 
@@ -684,15 +637,6 @@
 			}
 		</code>
 	</pre>
-	</section>
-
-	<!-- 47 sup-->
-	<section class="slide">
-		<figure>
-			<img class="cover" src="./pictures/supports-po-visibility-anchors.webp" />
-		</figure>
-		<a class="copyright"
-			href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position-visibility">MDN</a>
 	</section>
 
 	<!-- 48 position-try-* -->
@@ -827,15 +771,6 @@
 			target="_blank">MDN</a>
 	</section>
 
-	<!-- 59 sup-->
-	<section class="slide">
-		<figure>
-			<img class="cover" src="./pictures/support-position-try.webp" />
-		</figure>
-		<a class="copyright"
-			href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position-try-fallbacks">MDN</a>
-	</section>
-
 	<!-- 60 Кастомные fallbacks -->
 	<section class="slide">
 		<h2 class="shout">
@@ -905,15 +840,6 @@
 		</a>
 	</section>
 
-	<!-- 65 sup-->
-	<section class="slide">
-		<figure>
-			<img class="cover" src="./pictures/support-at-rule-position-try.webp" />
-		</figure>
-		<a class="copyright"
-			href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@position-try">MDN</a>
-	</section>
-
 	<!-- 15 -->
 	<section class="slide">
 		<h2 class="shout">Какой fallback сработал?</h2>
@@ -979,15 +905,6 @@
 		</a>
 	</section>
 
-	<!-- 72 sup-->
-	<section class="slide">
-		<figure>
-			<img class="cover" src="./pictures/support-container-anchored.webp" />
-		</figure>
-		<a class="copyright"
-			href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning/Anchored_container_queries">MDN</a>
-	</section>
-
 	<!-- 73 other -->
 	<section class="slide">
 		<h2 class="shout">Дополнительные возможности</h2>
@@ -1020,9 +937,20 @@
 		</p>
 	</section>
 
+	<section class="slide">
+		<h2 class="shout">А что с поддержкой?</h2>
+	</section>
+
+	<section class="slide">
+		<figure>
+			<img class="cover" src="./pictures/support-all.webp" alt="" />
+		</figure>
+		<p class="copyright">Июль 2026 года</a>
+	</section>
+
 	<!-- 79 -->
 	<section class="slide">
-		<h2>Итоги и выводы Anchor Positioning API</h2>
+		<h2>Итоги и выводы</h2>
 		<ul>
 			<li>
 				<b class="accent-text">Что это?</b> <br />Мощнейший API для позиционирования на чистом CSS
