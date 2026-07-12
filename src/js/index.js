@@ -13,6 +13,7 @@ const blogPosts = [
         excerpt: "Поговорим о том, как Anchor Position API навсегда избавляет нас от вычислений координат и сторонних библиотек для позиционирования всплывающих элементов.",
         links: [
             { label: "Слайды", url: "reports/anchor-position/index.html" },
+            {label: "Видео", url: "https://vkvideo.ru/video-227426787_456239094?list=ln-NWInPGARaZEWfpHcQq"}
         ]
     },
     {
