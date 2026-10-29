@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	<title>Даты в JavaScript: от боли к Temporal</title>
+	<link rel="stylesheet" href="../../src/shower/styles/styles.css">
+	<link rel="stylesheet" href="../../src/highlight/styles/base16/hardcore.min.css">
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body class="shower list">
+<header class="caption"><h1>Даты в JavaScript: от боли к Temporal</h1>
+	<p>Анна Расторгуева · 30 минут</p></header>
+<section class="slide hero" id="slide-01" aria-label="1. Даты — это сложнее, чем кажется">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<h2>Даты — это сложнее,<br>чем кажется</h2>
+	<p class="lead">Даты в JavaScript: от боли к <em>Temporal</em></p>
+	<div class="hero-art" aria-hidden="true">
+		<div class="calendar"><small>ДЕКАБРЬ</small><b>22</b><span>2026</span></div>
+		<div class="clock"></div>
+	</div>
+	<pre><code class="language-javascript">new Date()</code></pre>
+	<p class="byline">Анна Расторгуева </p>
+	<div class="slide-footer"><span>01 / 41</span></div>
+	<!--
+	Текст спикера · 0:00–0:25
+	Кажется, что сохранить дату заказа или показать время встречи — задача на пару строк. Но код может годами работать правильно, пока не изменится часовой пояс или не наступит особый день. Сегодня пройдём путь от реальных ошибок к их причинам, а затем разберём, как выразить смысл времени через Temporal. Но прежде чем перейти к примерам, представлюсь и обозначу наш маршрут.
+	-->
+	<footer class="notes" hidden><p>Время: 0:00–0:25</p>
+		<p>Кажется, что сохранить дату заказа или показать время встречи — задача на пару строк. Но код может годами
+			работать правильно, пока не изменится часовой пояс или не наступит особый день. Сегодня пройдём путь от
+			реальных ошибок к их причинам, а затем разберём, как выразить смысл времени через Temporal. Но прежде чем
+			перейти к примерам, представлюсь и обозначу наш маршрут.</p></footer>
+</section>
+<section class="slide intro-slide" id="about" aria-label="2. Обо мне">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">Знакомство</div>
+	<h2>Обо мне</h2>
+	<ul class="about-list">
+		<li>Fullstack из Сбера</li>
+		<li>В профессии 7 лет</li>
+		<li>Люблю котиков</li>
+	</ul>
+	<img class="place bottom right" width="500" src="../../src/picture/three-cat-azh.webp" alt="котики">
+	<div class="slide-footer"><span>02 / 41</span></div>
+	<!--
+	Текст спикера · 0:25–0:40
+	Сначала познакомимся: меня зовут Анна, я fullstack-разработчик из Сбера, в профессии семь лет. И, как видно на слайде, люблю котиков. Теперь коротко расскажу, как будет устроен доклад.
+	-->
+	<footer class="notes" hidden><p>Время: 0:25–0:40</p>
+		<p>Сначала познакомимся: меня зовут Анна, я fullstack-разработчик из Сбера, в профессии семь лет. И, как видно
+			на слайде, люблю котиков. Теперь коротко расскажу, как будет устроен доклад.</p></footer>
+</section>
+<section class="slide intro-slide" id="agenda" aria-label="3. План доклада">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">Знакомство</div>
+	<h2>План доклада</h2>
+	<div class="agenda-grid">
+		<article><span>01</span>
+			<h3>Почему даты — это боль</h3>
+			<p>Реальные кейсы и цена ошибки</p></article>
+		<article><span>02</span>
+			<h3>Как устроен Date</h3>
+			<p>Ловушки, мини-квиз и форматирование</p></article>
+		<article><span>03</span>
+			<h3>Новая модель Temporal</h3>
+			<p>Типы, арифметика и граничные случаи</p></article>
+		<article><span>04</span>
+			<h3>Внедрение и code review</h3>
+			<p>Поддержка, миграция и код от LLM</p></article>
+	</div>
+	<div class="slide-footer"><span>03 / 41</span></div>
+	<!--
+	Текст спикера · 0:40–1:05
+	Пройдём четыре раздела. Сначала — реальные кейсы: где ошибки времени становятся проблемой продукта. Затем разберём Date, проверим интуицию мини-квизом и посмотрим на форматирование. После этого перейдём к типам и операциям Temporal. В конце обсудим поддержку, постепенную миграцию и проверку кода, в том числе сгенерированного LLM. Начнём с истории, где проблема была заложена в самом способе хранения года.
+	-->
+	<footer class="notes" hidden><p>Время: 0:40–1:05</p>
+		<p>Пройдём четыре раздела. Сначала — реальные кейсы: где ошибки времени становятся проблемой продукта. Затем
+			разберём Date, проверим интуицию мини-квизом и посмотрим на форматирование. После этого перейдём к типам и
+			операциям Temporal. В конце обсудим поддержку, постепенную миграцию и проверку кода, в том числе
+			сгенерированного LLM. Начнём с истории, где проблема была заложена в самом способе хранения года.</p>
+	</footer>
+</section>
+<section class="slide case-slide" id="case-y2k" aria-label="4. Y2K: две цифры на весь год">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">01 / Почему даты — это боль</div>
+	<h2>Y2K: две цифры на весь год</h2>
+	<div class="case-layout">
+		<div class="case-metric"><strong>≈ $100 млрд</strong><span>оценка затрат в США</span></div>
+		<div class="case-description"><p class="case-chain">1999 → <em>00</em> → 1900?</p>
+			<p>Год хранили двумя цифрами.<br>Смена века ломала интерпретацию.</p></div>
+	</div>
+	<p class="callout">Это расходы на подготовку и исправления, а не сумма ущерба.</p>
+	<div class="slide-sources"><a class="copyright"
+								  href="https://www.govinfo.gov/content/pkg/GOVPUB-Y1_3-PURL-LPS90964/pdf/GOVPUB-Y1_3-PURL-LPS90964.pdf"
+								  target="_blank" rel="noopener noreferrer">Отчёт комитета Сената США · 2000</a></div>
+	<div class="slide-footer"><span>04 / 41</span></div>
+	<!--
+	Текст спикера · 1:05–1:40
+	В Y2K год часто сохраняли двумя цифрами: после 99 приходил 00, который программа могла прочитать как 1900. В отчёте комитета Сената приведена оценка примерно в сто миллиардов долларов на подготовку в США. Это расходы на предотвращение и исправление проблем, а не ущерб от одной аварии. Урок здесь простой: мы сэкономили на представлении и потеряли часть смысла. Но ошибки бывают и тогда, когда год хранится полностью: достаточно неверно определить срок.
+	-->
+	<footer class="notes" hidden><p>Время: 1:05–1:40</p>
+		<p>В Y2K год часто сохраняли двумя цифрами: после 99 приходил 00, который программа могла прочитать как 1900. В
+			отчёте комитета Сената приведена оценка примерно в сто миллиардов долларов на подготовку в США. Это расходы
+			на предотвращение и исправление проблем, а не ущерб от одной аварии. Урок здесь простой: мы сэкономили на
+			представлении и потеряли часть смысла. Но ошибки бывают и тогда, когда год хранится полностью: достаточно
+			неверно определить срок.</p></footer>
+</section>
+<section class="slide case-slide" id="case-coop" aria-label="5. Co-op Bank: цена трёх дней">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">01 / Почему даты — это боль</div>
+	<h2>Co-op Bank: цена трёх дней</h2>
+	<div class="case-layout">
+		<div class="case-metric"><strong>£110 млн</strong><span>резерв на возврат процентов</span></div>
+		<div class="case-description"><p class="case-chain">365 → <em>368 дней</em></p>
+			<p>По сообщению прессы, выписки<br>отправлялись с опозданием.</p></div>
+	</div>
+	<p class="callout">Связь с ошибкой кода — версия публикации, не подтверждение банка.</p>
+	<div class="slide-sources"><a class="copyright"
+								  href="https://www.theregister.com/2014/04/15/co_op_bank_programming_error_fine/"
+								  target="_blank" rel="noopener noreferrer">The Register · 15.04.2014</a></div>
+	<div class="slide-footer"><span>05 / 41</span></div>
+	<!--
+	Текст спикера · 1:40–2:20
+	Co-op Bank предусмотрел 110 миллионов фунтов на возврат процентов в связи с нарушениями Consumer Credit Act. The Register связывал это с отправкой выписок через 368 дней вместо 365, ссылаясь на The Grocer. Сам банк не подтвердил журналистам причину в коде, поэтому техническая версия остаётся предположением прессы. Но вопрос о сроках вполне практический: что именно означает «раз в год» в требованиях? У Azure похожая формулировка привела к конкретной календарной ошибке.
+	-->
+	<footer class="notes" hidden><p>Время: 1:40–2:20</p>
+		<p>Co-op Bank предусмотрел 110 миллионов фунтов на возврат процентов в связи с нарушениями Consumer Credit Act.
+			The Register связывал это с отправкой выписок через 368 дней вместо 365, ссылаясь на The Grocer. Сам банк не
+			подтвердил журналистам причину в коде, поэтому техническая версия остаётся предположением прессы. Но вопрос
+			о сроках вполне практический: что именно означает «раз в год» в требованиях? У Azure похожая формулировка
+			привела к конкретной календарной ошибке.</p></footer>
+</section>
+<section class="slide case-slide" id="case-azure" aria-label="6. Azure: «через год» не так просто">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">01 / Почему даты — это боль</div>
+	<h2>Azure: «через год» не так просто</h2>
+	<div class="case-layout">
+		<div class="case-metric"><strong>29.02</strong><span>2012 → 2013</span></div>
+		<div class="case-description"><p>При расчёте срока сертификата<br>к году прибавили единицу.</p>
+			<p class="case-chain">29.02.2013 <em>не существует</em></p></div>
+	</div>
+	<p class="callout">Сертификат не создан → агент не стартует → восстановление усиливает сбой.</p>
+	<div class="slide-sources"><a class="copyright"
+								  href="https://azure.microsoft.com/en-us/blog/summary-of-windows-azure-service-disruption-on-feb-29th-2012/"
+								  target="_blank" rel="noopener noreferrer">Microsoft · разбор инцидента</a></div>
+	<div class="slide-footer"><span>06 / 41</span></div>
+	<!--
+	Текст спикера · 2:20–3:05
+	В феврале 2012 года агент Azure создавал сертификат сроком на год и просто увеличивал номер года. Из 29 февраля 2012 получилось 29 февраля 2013 — несуществующая дата. Сертификат не создавался, агент не запускался, а перенос виртуальных машин повторял проблему на других серверах. Это описано в разборе Microsoft. Для операции «через год» понадобилось явное правило обработки граничной даты. Но есть ещё один уровень: даже правильная арифметика опирается на достоверный источник времени.
+	-->
+	<footer class="notes" hidden><p>Время: 2:20–3:05</p>
+		<p>В феврале 2012 года агент Azure создавал сертификат сроком на год и просто увеличивал номер года. Из 29
+			февраля 2012 получилось 29 февраля 2013 — несуществующая дата. Сертификат не создавался, агент не
+			запускался, а перенос виртуальных машин повторял проблему на других серверах. Это описано в разборе
+			Microsoft. Для операции «через год» понадобилось явное правило обработки граничной даты. Но есть ещё один
+			уровень: даже правильная арифметика опирается на достоверный источник времени.</p></footer>
+</section>
+<section class="slide case-slide" id="case-telstra" aria-label="7. Telstra: сеть вернулась в 2006-й">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">01 / Почему даты — это боль</div>
+	<h2>Telstra: сеть вернулась в 2006-й</h2>
+	<div class="case-layout">
+		<div class="case-metric"><strong>2026<br>↓ 2006</strong><span>8 июля 2026</span></div>
+		<div class="case-description"><p>После обслуживания GPS-карта<br>начала передавать неверную дату.</p>
+			<p>Не было критического обновления<br>прошивки против GPS rollover.</p></div>
+	</div>
+	<p class="callout">Ошибочная дата распространилась по системе синхронизации.</p>
+	<div class="slide-sources"><a class="copyright"
+								  href="https://www.telstra.com.au/content/dam/tcom/dynamic-media-projects/luke-campbell/TAPFindingsforTelstraOutage.pdf"
+								  target="_blank" rel="noopener noreferrer">TAP · независимый разбор для Telstra</a>
+	</div>
+	<div class="slide-footer"><span>07 / 41</span></div>
+	<!--
+	Текст спикера · 3:05–3:45
+	В Telstra в июле 2026 года проблема возникла именно на этом уровне. По отчёту TAP, после обслуживания узла GPS-карта начала отправлять дату из 2006 года. На ней отсутствовало критическое обновление прошивки против GPS rollover. Неверная дата распространилась по системе синхронизации и вызвала отказы. Новый API дат не исправит часы инфраструктуры: источник времени тоже нужно проверять. А теперь приблизимся к нашему коду и посмотрим, какие риски остаются даже с готовой библиотекой.
+	-->
+	<footer class="notes" hidden><p>Время: 3:05–3:45</p>
+		<p>В Telstra в июле 2026 года проблема возникла именно на этом уровне. По отчёту TAP, после обслуживания узла
+			GPS-карта начала отправлять дату из 2006 года. На ней отсутствовало критическое обновление прошивки против
+			GPS rollover. Неверная дата распространилась по системе синхронизации и вызвала отказы. Новый API дат не
+			исправит часы инфраструктуры: источник времени тоже нужно проверять. А теперь приблизимся к нашему коду и
+			посмотрим, какие риски остаются даже с готовой библиотекой.</p></footer>
+</section>
+<section class="slide case-slide" id="case-moment" aria-label="8. Moment.js: парсинг может быть дорогим">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">01 / Почему даты — это боль</div>
+	<h2>Moment.js: парсинг может быть дорогим</h2>
+	<div class="case-layout">
+		<div class="case-metric"><strong>O(n²)</strong><span>CVE-2022-31129</span></div>
+		<div class="case-description"><p>Специальные строки вызывали<br>квадратичную сложность парсинга.</p>
+			<p>Исправление — <em>Moment 2.29.4</em>.</p></div>
+	</div>
+	<p class="callout">Ограничивайте длину ввода и обновляйте зависимости.</p>
+	<div class="slide-sources"><a class="copyright" href="https://security-tracker.debian.org/tracker/CVE-2022-31129"
+								  target="_blank" rel="noopener noreferrer">Debian Security Tracker · Moment</a></div>
+	<div class="slide-footer"><span>08 / 41</span></div>
+	<!--
+	Текст спикера · 3:45–4:20
+	В Moment обнаружили алгоритм разбора дат с квадратичной сложностью на некоторых строках. Длинный пользовательский ввод без ограничений мог привести к отказу в обслуживании. Исправление вошло в версию 2.29.4. Это отдельный класс проблемы: здесь важны ограничения на ввод и обновление зависимости. Дальше сосредоточимся на семантике дат — ошибках, при которых программа успешно работает, но показывает неверный для пользователя день.
+	-->
+	<footer class="notes" hidden><p>Время: 3:45–4:20</p>
+		<p>В Moment обнаружили алгоритм разбора дат с квадратичной сложностью на некоторых строках. Длинный
+			пользовательский ввод без ограничений мог привести к отказу в обслуживании. Исправление вошло в версию
+			2.29.4. Это отдельный класс проблемы: здесь важны ограничения на ввод и обновление зависимости. Дальше
+			сосредоточимся на семантике дат — ошибках, при которых программа успешно работает, но показывает неверный
+			для пользователя день.</p></footer>
+</section>
+<section class="slide case-slide" id="case-blockscout" aria-label="9. Blockscout: транзакции на день раньше">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">01 / Почему даты — это боль</div>
+	<h2>Blockscout: транзакции на день раньше</h2>
+	<pre><code class="language-javascript">const date = new Date(&quot;2025-10-31&quot;);
+
+new Intl.DateTimeFormat(&quot;en-CA&quot;, {
+  timeZone: &quot;America/Sao_Paulo&quot;
+}).format(date);
+// &quot;2025-10-30&quot;</code></pre>
+	<p class="callout">Дата из API → полночь UTC → предыдущий день в UTC−03:00.</p>
+	<div class="slide-sources"><a class="copyright" href="https://github.com/blockscout/frontend/issues/3101"
+								  target="_blank" rel="noopener noreferrer">Blockscout · issue #3101</a></div>
+	<div class="slide-footer"><span>09 / 41</span></div>
+	<!--
+	Текст спикера · 4:20–5:05
+	В issue Blockscout описан такой случай: транзакции за 31-е отображались на графике под 30-м. API отдавал календарную дату, а фронтенд превращал её в Date. Строка только с датой читается как полночь UTC. В Сан-Паулу тот же момент — ещё предыдущий вечер. На слайде зона указана явно, поэтому пример не зависит от настроек ноутбука. Данные не исчезли: календарную дату интерпретировали как момент, а затем показали в другой зоне. Возможен и обратный переход — из локального времени в UTC.
+	-->
+	<footer class="notes" hidden><p>Время: 4:20–5:05</p>
+		<p>В issue Blockscout описан такой случай: транзакции за 31-е отображались на графике под 30-м. API отдавал
+			календарную дату, а фронтенд превращал её в Date. Строка только с датой читается как полночь UTC. В
+			Сан-Паулу тот же момент — ещё предыдущий вечер. На слайде зона указана явно, поэтому пример не зависит от
+			настроек ноутбука. Данные не исчезли: календарную дату интерпретировали как момент, а затем показали в
+			другой зоне. Возможен и обратный переход — из локального времени в UTC.</p></footer>
+</section>
+<section class="slide case-slide dense" id="case-iso" aria-label="10. Одна строка — уже другой месяц">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">01 / Почему даты — это боль</div>
+	<h2>Одна строка — уже другой месяц</h2>
+	<pre><code class="language-javascript">const localMidnight =
+  new Date(&quot;2026-09-01T00:00:00+03:00&quot;);
+
+localMidnight.toISOString();
+// &quot;2026-08-31T21:00:00.000Z&quot;
+localMidnight.toISOString().split(&quot;T&quot;)[0];
+// &quot;2026-08-31&quot;</code></pre>
+	<p class="callout">Воспроизводимый пример: toISOString() всегда возвращает UTC.</p>
+	<div class="slide-footer"><span>10 / 41</span></div>
+	<!--
+	Текст спикера · 5:05–5:45
+	Здесь задана полночь первого сентября со смещением плюс три часа. В UTC это ещё 31 августа. toISOString работает правильно, но после split мы берём календарную дату из представления в UTC, а не из исходного локального времени. Если эта строка выбирает отчётный месяц, ошибка уже влияет на бизнес-логику. При отрицательном смещении локальный поздний вечер, наоборот, может стать следующим днём UTC. Чтобы разобраться, разделим два понятия: момент времени и календарную дату.
+	-->
+	<footer class="notes" hidden><p>Время: 5:05–5:45</p>
+		<p>Здесь задана полночь первого сентября со смещением плюс три часа. В UTC это ещё 31 августа. toISOString
+			работает правильно, но после split мы берём календарную дату из представления в UTC, а не из исходного
+			локального времени. Если эта строка выбирает отчётный месяц, ошибка уже влияет на бизнес-логику. При
+			отрицательном смещении локальный поздний вечер, наоборот, может стать следующим днём UTC. Чтобы разобраться,
+			разделим два понятия: момент времени и календарную дату.</p></footer>
+</section>
+<section class="slide " id="slide-02" aria-label="11. Одна дата — разные значения">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">01 / Почему даты — это боль</div>
+	<h2>Одна дата — разные значения</h2>
+	<div class="time-pair">
+		<article><span>UTC</span><b>28 октября</b><strong>00:30</strong></article>
+		<span class="equals">=</span>
+		<article><span>America/New_York</span><b>27 октября</b><strong>20:30</strong></article>
+	</div>
+	<p class="callout">Один момент времени. Разные календарные даты.</p>
+	<div class="slide-footer"><span>11 / 41</span></div>
+	<!--
+	Текст спикера · 5:45–6:10
+	Вот один момент времени в двух зонах: в UTC уже 28 октября, а в Нью-Йорке ещё 27-е. Оба представления правильные. Если мы фиксируем оплату, нам нужен момент. Если пользователь выбрал день доставки, нам может быть нужна именно календарная дата. Ошибка начинается, когда одно незаметно подменяется другим. Посмотрим, как эта путаница проявляется в обычных задачах приложения.
+	-->
+	<footer class="notes" hidden><p>Время: 5:45–6:10</p>
+		<p>Вот один момент времени в двух зонах: в UTC уже 28 октября, а в Нью-Йорке ещё 27-е. Оба представления
+			правильные. Если мы фиксируем оплату, нам нужен момент. Если пользователь выбрал день доставки, нам может
+			быть нужна именно календарная дата. Ошибка начинается, когда одно незаметно подменяется другим. Посмотрим,
+			как эта путаница проявляется в обычных задачах приложения.</p></footer>
+</section>
+<section class="slide " id="slide-03" aria-label="12. Три бага, одна общая проблема">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">01 / Почему даты — это боль</div>
+	<h2>Три бага, одна общая проблема</h2>
+	<div class="cards">
+		<article class="card"><span class="card-index">01</span>
+			<h3>Дата заказа</h3>
+			<p>Показывается на день раньше.</p></article>
+		<article class="card"><span class="card-index">02</span>
+			<h3>Таймер</h3>
+			<p>Показывает неверный остаток.</p></article>
+		<article class="card"><span class="card-index">03</span>
+			<h3>Встреча</h3>
+			<p>Оказывается не в то время.</p></article>
+	</div>
+	<p class="callout">Что именно означает значение, с которым мы работаем?</p>
+	<div class="slide-footer"><span>12 / 41</span></div>
+	<!--
+	Текст спикера · 6:10–6:35
+	Дата заказа, таймер акции и время встречи выглядят как задачи из одной категории. Но дата — календарное значение, таймер отсчитывает продолжительность, а для встречи важен часовой пояс. Причины багов различаются, поэтому одной универсальной поправкой смещения их не устранить. Сначала нужно назвать смысл каждого значения. Было бы удобно, если бы это различие было видно прямо из типа.
+	-->
+	<footer class="notes" hidden><p>Время: 6:10–6:35</p>
+		<p>Дата заказа, таймер акции и время встречи выглядят как задачи из одной категории. Но дата — календарное
+			значение, таймер отсчитывает продолжительность, а для встречи важен часовой пояс. Причины багов различаются,
+			поэтому одной универсальной поправкой смещения их не устранить. Сначала нужно назвать смысл каждого
+			значения. Было бы удобно, если бы это различие было видно прямо из типа.</p></footer>
+</section>
+<section class="slide " id="slide-04" aria-label="13. А если типы будут говорить за нас?">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">01 / Почему даты — это боль</div>
+	<h2>А если типы будут говорить за нас?</h2>
+	<div class="rows">
+		<div><span>Момент времени</span><strong>Instant</strong></div>
+		<div><span>Календарная дата</span><strong>PlainDate</strong></div>
+		<div><span>Время на часах</span><strong>PlainTime</strong></div>
+		<div><span>Дата + часовой пояс</span><strong>ZonedDateTime</strong></div>
+	</div>
+	<p class="callout">Разные понятия — разные типы.</p>
+	<div class="slide-footer"><span>13 / 41</span></div>
+	<!--
+	Текст спикера · 6:35–6:55
+	Это и есть центральная идея Temporal: момент, календарная дата и время на часах получают отдельные типы. Пока запомним только сам принцип. Чтобы понять, зачем понадобился новый API, вернёмся к Date и проследим путь значения: как оно создаётся, что хранит и как показывается пользователю.
+	-->
+	<footer class="notes" hidden><p>Время: 6:35–6:55</p>
+		<p>Это и есть центральная идея Temporal: момент, календарная дата и время на часах получают отдельные типы. Пока
+			запомним только сам принцип. Чтобы понять, зачем понадобился новый API, вернёмся к Date и проследим путь
+			значения: как оно создаётся, что хранит и как показывается пользователю.</p></footer>
+</section>
+<section class="slide " id="slide-05" aria-label="14. Похожий формат. Разная семантика.">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">01 / Почему даты — это боль</div>
+	<h2>Похожий формат.<br>Разная семантика.</h2>
+	<pre><code class="language-javascript">new Date(&quot;2026-10-28&quot;);
+// Только дата → полночь UTC
+
+new Date(&quot;2026-10-28T00:00:00&quot;);
+// Дата и время без смещения → локальное время</code></pre>
+	<p class="callout">Локальное время зависит от среды выполнения.</p>
+	<div class="slide-footer"><span>14 / 41</span></div>
+	<!--
+	Текст спикера · 6:55–8:05
+	Начнём с создания. В первой строке указана только дата, и стандартный парсер интерпретирует её как полночь UTC. Во второй есть время, но нет смещения: используется локальный часовой пояс среды. Почти одинаковые строки поэтому могут задавать разные моменты. Именно этот переход мы видели в кейсе Blockscout. Чтобы поведение стало понятнее, посмотрим внутрь самого Date.
+	-->
+	<footer class="notes" hidden><p>Время: 6:55–8:05</p>
+		<p>Начнём с создания. В первой строке указана только дата, и стандартный парсер интерпретирует её как полночь
+			UTC. Во второй есть время, но нет смещения: используется локальный часовой пояс среды. Почти одинаковые
+			строки поэтому могут задавать разные моменты. Именно этот переход мы видели в кейсе Blockscout. Чтобы
+			поведение стало понятнее, посмотрим внутрь самого Date.</p></footer>
+</section>
+<section class="slide " id="slide-06" aria-label="15. Что на самом деле хранит Date">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">02 / Как устроен Date</div>
+	<h2>Что на самом деле хранит Date</h2>
+	<pre><code class="language-javascript">const now = new Date();
+
+now.getTime();      // Миллисекунды от Unix epoch
+now.toISOString();  // Представление в UTC
+now.toString();     // Локальное представление</code></pre>
+	<p class="callout">Один момент. Несколько представлений. Исходная зона не хранится.</p>
+	<div class="slide-footer"><span>15 / 41</span></div>
+	<!--
+	Текст спикера · 8:05–8:50
+	Date хранит числовое значение момента с точностью до миллисекунды. getTime возвращает миллисекунды от начала 1970 года в UTC; исходный часовой пояс объект не сохраняет. toISOString и toString — разные представления того же момента. Первое использует UTC, второе — локальную зону. Проверим эту модель коротким вопросом: что произойдёт, если передать конструктору одно число?
+	-->
+	<footer class="notes" hidden><p>Время: 8:05–8:50</p>
+		<p>Date хранит числовое значение момента с точностью до миллисекунды. getTime возвращает миллисекунды от начала
+			1970 года в UTC; исходный часовой пояс объект не сохраняет. toISOString и toString — разные представления
+			того же момента. Первое использует UTC, второе — локальную зону. Проверим эту модель коротким вопросом: что
+			произойдёт, если передать конструктору одно число?</p></footer>
+</section>
+<section class="slide date-surprise" id="date-quiz" aria-label="16. Мини-квиз: что означает число?">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">02 / Как устроен Date</div>
+	<h2>Мини-квиз: что означает число?</h2>
+	<pre><code class="language-javascript">new Date(0).toISOString();
+new Date(13).toISOString();</code></pre>
+	<div class="next quiz-answer"><pre><code class="language-javascript">// 1970-01-01T00:00:00.000Z
+// 1970-01-01T00:00:00.013Z</code></pre>
+		<p class="callout">Один числовой аргумент — миллисекунды от Unix epoch.</p></div>
+	<a class="copyright" href="https://jsdate.wtf/" target="_blank" rel="noopener noreferrer">Больше вопросов ·
+		jsdate.wtf</a>
+	<div class="slide-footer"><span>16 / 41</span></div>
+	<!--
+	Текст спикера · 8:50–9:35
+	Что вернут эти две строки? Дадим себе несколько секунд на ответ. Число 13 здесь легко принять за год или день, но у конструктора с одним числовым аргументом другая семантика. Показываем ответ: ноль — начало Unix epoch, а тринадцать — всего тринадцать миллисекунд спустя. Обе даты находятся в 1970 году. toISOString выбран специально, чтобы ответ не зависел от локального часового пояса. Это предсказуемо, если знать контракт конструктора. У вызова с несколькими аргументами контракт уже другой.
+	-->
+	<footer class="notes" hidden><p>Время: 8:50–9:35</p>
+		<p>Что вернут эти две строки? Дадим себе несколько секунд на ответ. Число 13 здесь легко принять за год или
+			день, но у конструктора с одним числовым аргументом другая семантика. Показываем ответ: ноль — начало Unix
+			epoch, а тринадцать — всего тринадцать миллисекунд спустя. Обе даты находятся в 1970 году. toISOString
+			выбран специально, чтобы ответ не зависел от локального часового пояса. Это предсказуемо, если знать
+			контракт конструктора. У вызова с несколькими аргументами контракт уже другой.</p></footer>
+</section>
+<section class="slide date-surprise" id="date-overflow" aria-label="17. А существует ли 31 февраля?">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">02 / Как устроен Date</div>
+	<h2>А существует ли 31 февраля?</h2>
+	<pre><code class="language-javascript">const date = new Date(2026, 1, 31);
+// Индекс месяца 1 — февраль. Будет ошибка?</code></pre>
+	<div class="next quiz-answer"><pre><code class="language-javascript">date.getFullYear(); // 2026
+date.getMonth();    // 2 → март
+date.getDate();     // 3</code></pre>
+		<p class="callout">Date нормализует компоненты: 31 февраля → 3 марта.</p></div>
+	<a class="copyright" href="https://jsdate.wtf/" target="_blank" rel="noopener noreferrer">Больше вопросов ·
+		jsdate.wtf</a>
+	<div class="slide-footer"><span>17 / 41</span></div>
+	<!--
+	Текст спикера · 9:35–10:20
+	Теперь передаём год, индекс месяца и день. Месяцы в этом конструкторе считаются с нуля, поэтому единица — февраль. Но 31 февраля не вызывает ошибку: лишние дни переносятся в март, и мы получаем третье число. Это нормализация компонентов, а не проверка пользовательской даты. Для вычислений она бывает полезной, для валидации формы — неожиданной. Позже сравним её с явным overflow в Temporal. Больше подобных вопросов есть в квизе по ссылке; его автор фиксирует версию Node и часовой пояс, что важно при воспроизведении ответов. А сейчас вернёмся к самому частому входу в приложение — строкам из API.
+	-->
+	<footer class="notes" hidden><p>Время: 9:35–10:20</p>
+		<p>Теперь передаём год, индекс месяца и день. Месяцы в этом конструкторе считаются с нуля, поэтому единица —
+			февраль. Но 31 февраля не вызывает ошибку: лишние дни переносятся в март, и мы получаем третье число. Это
+			нормализация компонентов, а не проверка пользовательской даты. Для вычислений она бывает полезной, для
+			валидации формы — неожиданной. Позже сравним её с явным overflow в Temporal. Больше подобных вопросов есть в
+			квизе по ссылке; его автор фиксирует версию Node и часовой пояс, что важно при воспроизведении ответов. А
+			сейчас вернёмся к самому частому входу в приложение — строкам из API.</p></footer>
+</section>
+<section class="slide " id="slide-07" aria-label="18. Парсинг: четыре похожие строки">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">02 / Как устроен Date</div>
+	<h2>Парсинг: четыре похожие строки</h2>
+	<pre><code class="language-javascript">new Date(&quot;2026-10-28&quot;);                // UTC
+new Date(&quot;2026-10-28T00:00:00&quot;);       // Локально
+new Date(&quot;2026-10-28T00:00:00Z&quot;);      // UTC явно
+new Date(&quot;2026-10-28T00:00:00+03:00&quot;); // Смещение</code></pre>
+	<p class="callout">Валидируйте входные данные. Договаривайтесь о формате.</p>
+	<div class="slide-footer"><span>18 / 41</span></div>
+	<!--
+	Текст спикера · 10:20–11:05
+	У чисел и компонентов мы увидели разные правила. У строк тоже нужно читать формат целиком. Первые два случая уже знакомы: дата без времени даёт UTC, дата-время без смещения — локальное время. Z делает UTC явным, а плюс три задаёт конкретное смещение. Произвольные нестандартные строки могут разбираться по-разному в разных реализациях. Поэтому договариваемся о формате на границе приложения и валидируем вход. После этого можно выбирать, как показать результат человеку.
+	-->
+	<footer class="notes" hidden><p>Время: 10:20–11:05</p>
+		<p>У чисел и компонентов мы увидели разные правила. У строк тоже нужно читать формат целиком. Первые два случая
+			уже знакомы: дата без времени даёт UTC, дата-время без смещения — локальное время. Z делает UTC явным, а
+			плюс три задаёт конкретное смещение. Произвольные нестандартные строки могут разбираться по-разному в разных
+			реализациях. Поэтому договариваемся о формате на границе приложения и валидируем вход. После этого можно
+			выбирать, как показать результат человеку.</p></footer>
+</section>
+<section class="slide formatting" id="slide-08" aria-label="19. Форматирование: методы Date">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">02 / Как устроен Date</div>
+	<h2>Форматирование: методы Date</h2>
+	<pre><code class="language-javascript">const date = new Date(&quot;2026-10-28T12:30:00Z&quot;);
+
+date.toLocaleDateString(&quot;ru-RU&quot;, {
+  dateStyle: &quot;long&quot;,
+  timeZone: &quot;Europe/Berlin&quot;
+});
+// 28 октября 2026 г.</code></pre>
+	<div class="format-methods"><p><code>toLocaleTimeString()</code><span>Только время</span></p>
+		<p><code>toLocaleString()</code><span>Дата и время</span></p></div>
+	<a class="copyright"
+	   href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString"
+	   target="_blank" rel="noopener noreferrer">MDN · Date.toLocaleDateString()</a>
+	<div class="slide-footer"><span>19 / 41</span></div>
+	<!--
+	Текст спикера · 11:05–11:45
+	Для вывода начнём со знакомых методов Date. toLocaleDateString показывает дату, toLocaleTimeString — время, а toLocaleString — дату и время вместе. Здесь ru-RU определяет оформление, Europe/Berlin — часовой пояс. Мы задаём их явно, чтобы не зависеть от настроек среды. Эти методы не устарели и в современных реализациях используют Intl. Для одного значения такой вызов удобен. Для целого списка дат можно вынести настройки в отдельный форматтер.
+	-->
+	<footer class="notes" hidden><p>Время: 11:05–11:45</p>
+		<p>Для вывода начнём со знакомых методов Date. toLocaleDateString показывает дату, toLocaleTimeString — время, а
+			toLocaleString — дату и время вместе. Здесь ru-RU определяет оформление, Europe/Berlin — часовой пояс. Мы
+			задаём их явно, чтобы не зависеть от настроек среды. Эти методы не устарели и в современных реализациях
+			используют Intl. Для одного значения такой вызов удобен. Для целого списка дат можно вынести настройки в
+			отдельный форматтер.</p></footer>
+</section>
+<section class="slide formatting" id="slide-08-intl" aria-label="20. Форматирование: Intl.DateTimeFormat">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">02 / Как устроен Date</div>
+	<h2>Форматирование: Intl.DateTimeFormat</h2>
+	<pre><code class="language-javascript">const date = new Date(&quot;2026-10-28T12:30:00Z&quot;);
+const formatter = new Intl.DateTimeFormat(&quot;ru-RU&quot;, {
+  dateStyle: &quot;long&quot;,
+  timeZone: &quot;Europe/Berlin&quot;
+});
+
+formatter.format(date); // 28 октября 2026 г.</code></pre>
+	<p class="callout">Один форматтер для списка дат с общими настройками.</p>
+	<p class="format-extra"><code>formatToParts()</code> — компоненты · <code>formatRange()</code> — диапазон</p>
+	<a class="copyright"
+	   href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat"
+	   target="_blank" rel="noopener noreferrer">MDN · Intl.DateTimeFormat</a>
+	<div class="slide-footer"><span>20 / 41</span></div>
+	<!--
+	Текст спикера · 11:45–12:30
+	Создаём Intl.DateTimeFormat один раз, затем вызываем format для каждой даты. При тех же настройках результат совпадает с предыдущим слайдом. formatToParts пригодится для отдельных компонентов интерфейса, formatRange — для диапазона. Мы решили задачу представления, но пока не получили удобной модели для календарных операций. Эту часть работы долго брали на себя библиотеки.
+	-->
+	<footer class="notes" hidden><p>Время: 11:45–12:30</p>
+		<p>Создаём Intl.DateTimeFormat один раз, затем вызываем format для каждой даты. При тех же настройках результат
+			совпадает с предыдущим слайдом. formatToParts пригодится для отдельных компонентов интерфейса, formatRange —
+			для диапазона. Мы решили задачу представления, но пока не получили удобной модели для календарных операций.
+			Эту часть работы долго брали на себя библиотеки.</p></footer>
+</section>
+<section class="slide " id="slide-09" aria-label="21. Эпоха библиотек">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">02 / Как устроен Date</div>
+	<h2>Эпоха библиотек</h2>
+	<div class="cards">
+		<article class="card"><span class="card-index">01</span>
+			<h3>Moment.js</h3>
+			<p>Богатый API.<br>Изменяемые объекты.<br>Режим поддержки.</p></article>
+		<article class="card"><span class="card-index">02</span>
+			<h3>date-fns</h3>
+			<p>Функциональный подход.<br>Модульность.<br>Отдельные операции.</p></article>
+		<article class="card"><span class="card-index">03</span>
+			<h3>Luxon</h3>
+			<p>Часовые пояса.<br>Форматирование.<br>Опора на Intl.</p></article>
+	</div>
+	<p class="callout">Библиотека не выбирает бизнес-смысл данных за нас.</p>
+	<div class="slide-footer"><span>21 / 41</span></div>
+	<!--
+	Текст спикера · 12:30–13:15
+	Moment предлагал богатый API, но его объекты изменяемы; сейчас проект находится в режиме поддержки. date-fns использует функциональный подход и отдельные функции, а Luxon уделяет внимание зонам и возможностям Intl. Подходы разные, общий вопрос остаётся прежним: что означает значение и какую операцию требует бизнес? Это приходится проверять и тогда, когда код пишет человек, и когда его предлагает LLM.
+	-->
+	<footer class="notes" hidden><p>Время: 12:30–13:15</p>
+		<p>Moment предлагал богатый API, но его объекты изменяемы; сейчас проект находится в режиме поддержки. date-fns
+			использует функциональный подход и отдельные функции, а Luxon уделяет внимание зонам и возможностям Intl.
+			Подходы разные, общий вопрос остаётся прежним: что означает значение и какую операцию требует бизнес? Это
+			приходится проверять и тогда, когда код пишет человек, и когда его предлагает LLM.</p></footer>
+</section>
+<section class="slide " id="slide-10" aria-label="22. Старые паттерны в новом коде">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">02 / Как устроен Date</div>
+	<h2>Старые паттерны в новом коде</h2>
+	<pre><code class="language-javascript">// AI-generated code
+const tomorrow = new Date();
+tomorrow.setDate(tomorrow.getDate() + 1);</code></pre>
+	<p class="question">Завтра — это через <em>24 часа</em><br>или следующий <em>календарный день</em>?</p>
+	<div class="slide-footer"><span>22 / 41</span></div>
+	<!--
+	Текст спикера · 13:15–13:50
+	Предположим, модель предложила этот код для слова «завтра». setDate меняет календарный день в локальной зоне и мутирует объект. Для одного требования это подойдёт, для другого — нет: следующий календарный день и ровно 24 часа спустя могут различаться. Значит, ревью начинается с уточнения задачи. Вернёмся к идее отдельных типов и посмотрим, как Temporal помогает записать это намерение в коде.
+	-->
+	<footer class="notes" hidden><p>Время: 13:15–13:50</p>
+		<p>Предположим, модель предложила этот код для слова «завтра». setDate меняет календарный день в локальной зоне
+			и мутирует объект. Для одного требования это подойдёт, для другого — нет: следующий календарный день и ровно
+			24 часа спустя могут различаться. Значит, ревью начинается с уточнения задачи. Вернёмся к идее отдельных
+			типов и посмотрим, как Temporal помогает записать это намерение в коде.</p></footer>
+</section>
+<section class="slide " id="slide-11" aria-label="23. Temporal: смысл становится типом">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">03 / Новая модель Temporal</div>
+	<h2>Temporal: смысл становится типом</h2>
+	<p class="lead">Namespace, а не один универсальный класс.</p>
+	<div class="type-grid">
+		<div><code>Instant</code><span>Момент</span></div>
+		<div><code>PlainDate</code><span>Дата</span></div>
+		<div><code>PlainTime</code><span>Время</span></div>
+		<div><code>PlainDateTime</code><span>Дата и время</span></div>
+		<div><code>ZonedDateTime</code><span>Дата, время и зона</span></div>
+		<div><code>Duration</code><span>Продолжительность</span></div>
+	</div>
+	<div class="slide-footer"><span>23 / 41</span></div>
+	<!--
+	Текст спикера · 13:50–14:35
+	Temporal — пространство имён с несколькими типами, а не один универсальный класс. Пройдём по задачам небольшого приложения: зафиксировать оплату, сохранить день рождения, принять время встречи и вычислить продолжительность. Для каждой задачи выберем ровно ту информацию, которая ей нужна. Начнём с уже произошедшего события.
+	-->
+	<footer class="notes" hidden><p>Время: 13:50–14:35</p>
+		<p>Temporal — пространство имён с несколькими типами, а не один универсальный класс. Пройдём по задачам
+			небольшого приложения: зафиксировать оплату, сохранить день рождения, принять время встречи и вычислить
+			продолжительность. Для каждой задачи выберем ровно ту информацию, которая ей нужна. Начнём с уже
+			произошедшего события.</p></footer>
+</section>
+<section class="slide " id="slide-12" aria-label="24. Instant">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">03 / Новая модель Temporal</div>
+	<h2>Instant</h2>
+	<p class="lead">Точная точка на временной шкале.</p>
+	<pre><code class="language-javascript">const paidAt = Temporal.Instant.from(
+  &quot;2026-10-28T12:30:00Z&quot;
+);</code></pre>
+	<div class="timeline"><span>До оплаты</span><b>● paidAt</b><span>После оплаты →</span></div>
+	<p class="callout">Событие одно. Часовой пояс выбираем при отображении.</p>
+	<div class="slide-footer"><span>24 / 41</span></div>
+	<!--
+	Текст спикера · 14:35–15:20
+	Заказ оплачен в определённый момент. Для такого события подходит Instant: это точка на временной шкале, общая для пользователей во всех регионах. В строке смещение Z явно указывает UTC. Когда покажем оплату человеку, выберем его часовой пояс и формат. Но не все данные в приложении описывают событие на временной шкале.
+	-->
+	<footer class="notes" hidden><p>Время: 14:35–15:20</p>
+		<p>Заказ оплачен в определённый момент. Для такого события подходит Instant: это точка на временной шкале, общая
+			для пользователей во всех регионах. В строке смещение Z явно указывает UTC. Когда покажем оплату человеку,
+			выберем его часовой пояс и формат. Но не все данные в приложении описывают событие на временной шкале.</p>
+	</footer>
+</section>
+<section class="slide " id="slide-13" aria-label="25. PlainDate и PlainTime">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">03 / Новая модель Temporal</div>
+	<h2>PlainDate и PlainTime</h2>
+	<div class="split">
+		<div><h3>Дата без времени</h3>
+			<pre><code class="language-javascript">const birthday =
+  Temporal.PlainDate.from(
+    &quot;1995-06-15&quot;
+  );</code></pre>
+		</div>
+		<div><h3>Время без даты</h3>
+			<pre><code class="language-javascript">const openingTime =
+  Temporal.PlainTime.from(
+    &quot;09:30&quot;
+  );</code></pre>
+		</div>
+	</div>
+	<p class="callout">Не требуют часового пояса. Не задают момент времени.</p>
+	<div class="slide-footer"><span>25 / 41</span></div>
+	<!--
+	Текст спикера · 15:20–16:05
+	Дата рождения — обычно просто календарная дата. Ей не нужно становиться полуночью UTC, которая в другой зоне может оказаться предыдущим днём. Для неё берём PlainDate. Время открытия магазина — например, 09:30 — можно представить PlainTime. Само по себе оно не задаёт момент: ещё нужны дата и зона. А если пользователь ввёл дату и время вместе, но зону пока не выбрал?
+	-->
+	<footer class="notes" hidden><p>Время: 15:20–16:05</p>
+		<p>Дата рождения — обычно просто календарная дата. Ей не нужно становиться полуночью UTC, которая в другой зоне
+			может оказаться предыдущим днём. Для неё берём PlainDate. Время открытия магазина — например, 09:30 — можно
+			представить PlainTime. Само по себе оно не задаёт момент: ещё нужны дата и зона. А если пользователь ввёл
+			дату и время вместе, но зону пока не выбрал?</p></footer>
+</section>
+<section class="slide " id="slide-14" aria-label="26. PlainDateTime">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">03 / Новая модель Temporal</div>
+	<h2>PlainDateTime</h2>
+	<p class="lead">Дата и время без привязки к часовому поясу.</p>
+	<pre><code class="language-javascript">const appointment =
+  Temporal.PlainDateTime.from(
+    &quot;2026-10-28T10:00&quot;
+  );</code></pre>
+	<p class="callout">«28 октября в 10:00». Где? Пока не определено.</p>
+	<div class="slide-footer"><span>26 / 41</span></div>
+	<!--
+	Текст спикера · 16:05–16:50
+	Такое промежуточное значение представляет PlainDateTime. Пользователь указал встречу 28 октября в десять утра, но ещё не уточнил регион. Мы сохраняем именно введённые компоненты. Это пока не однозначный момент: нельзя сказать, какому времени UTC соответствует эта встреча. Следующий шаг — связать значение с часовым поясом.
+	-->
+	<footer class="notes" hidden><p>Время: 16:05–16:50</p>
+		<p>Такое промежуточное значение представляет PlainDateTime. Пользователь указал встречу 28 октября в десять
+			утра, но ещё не уточнил регион. Мы сохраняем именно введённые компоненты. Это пока не однозначный момент:
+			нельзя сказать, какому времени UTC соответствует эта встреча. Следующий шаг — связать значение с часовым
+			поясом.</p></footer>
+</section>
+<section class="slide " id="slide-15" aria-label="27. ZonedDateTime">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">03 / Новая модель Temporal</div>
+	<h2>ZonedDateTime</h2>
+	<p class="lead">Локальное время связано с зоной и моментом.</p>
+	<pre><code class="language-javascript">const meeting = Temporal.ZonedDateTime.from(
+  &quot;2026-10-28T10:00+01:00[Europe/Berlin]&quot;
+);</code></pre>
+	<div class="rows">
+		<div><span>+01:00</span><strong>Смещение на эту дату</strong></div>
+		<div><span>Europe/Berlin</span><strong>Правила часового пояса</strong></div>
+	</div>
+	<div class="slide-footer"><span>27 / 41</span></div>
+	<!--
+	Текст спикера · 16:50–17:50
+	ZonedDateTime связывает локальные дату и время с зоной и конкретным моментом. В строке есть и плюс один, и Europe/Berlin. Смещение описывает эту дату, региональная зона задаёт правила, в том числе переходы сезонного времени. Для встречи по берлинскому времени важно сохранять зону. Теперь можем не только назначить встречу, но и выразить, насколько её нужно перенести.
+	-->
+	<footer class="notes" hidden><p>Время: 16:50–17:50</p>
+		<p>ZonedDateTime связывает локальные дату и время с зоной и конкретным моментом. В строке есть и плюс один, и
+			Europe/Berlin. Смещение описывает эту дату, региональная зона задаёт правила, в том числе переходы сезонного
+			времени. Для встречи по берлинскому времени важно сохранять зону. Теперь можем не только назначить встречу,
+			но и выразить, насколько её нужно перенести.</p></footer>
+</section>
+<section class="slide " id="slide-16" aria-label="28. Duration">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">03 / Новая модель Temporal</div>
+	<h2>Duration</h2>
+	<pre><code class="language-javascript">const duration = Temporal.Duration.from({
+  days: 1
+});</code></pre>
+	<p class="equation">1 день <em>≠</em> всегда 24 часа</p>
+	<p class="callout">Единицы продолжительности — часть требований.</p>
+	<div class="slide-footer"><span>28 / 41</span></div>
+	<!--
+	Текст спикера · 17:50–18:25
+	Для величины переноса есть Duration. Он сохраняет единицы: дни, часы, месяцы и так далее. Один календарный день нельзя автоматически заменить 24 часами: результат зависит от контекста, особенно от часового пояса. Вспомним вопрос «завтра» из примера с LLM и сравним обе операции на конкретной дате.
+	-->
+	<footer class="notes" hidden><p>Время: 17:50–18:25</p>
+		<p>Для величины переноса есть Duration. Он сохраняет единицы: дни, часы, месяцы и так далее. Один календарный
+			день нельзя автоматически заменить 24 часами: результат зависит от контекста, особенно от часового пояса.
+			Вспомним вопрос «завтра» из примера с LLM и сравним обе операции на конкретной дате.</p></footer>
+</section>
+<section class="slide dense" id="slide-17" aria-label="29. Следующий день или 24 часа?">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">03 / Новая модель Temporal</div>
+	<h2>Следующий день или 24 часа?</h2>
+	<pre><code class="language-javascript">const date = Temporal.ZonedDateTime.from(
+  &quot;2026-03-28T12:00+01:00[Europe/Berlin]&quot;
+);
+
+date.add({ days: 1 }).toString();
+// 2026-03-29T12:00:00+02:00[Europe/Berlin]
+date.add({ hours: 24 }).toString();
+// 2026-03-29T13:00:00+02:00[Europe/Berlin]</code></pre>
+	<p class="callout">При переходе на летнее время результаты различаются.</p>
+	<div class="slide-footer"><span>29 / 41</span></div>
+	<!--
+	Текст спикера · 18:25–19:10
+	Исходное значение — полдень 28 марта в Берлине, перед переходом на летнее время. Прибавляем один день и получаем полдень 29 марта: по часам прошло 23 часа. Если прибавить ровно 24 часа, получим уже 13:00. Оба результата корректны для своих требований. Выбор days или hours должен следовать из задачи. Но переход часов влияет не только на арифметику: он может сделать само введённое время неоднозначным.
+	-->
+	<footer class="notes" hidden><p>Время: 18:25–19:10</p>
+		<p>Исходное значение — полдень 28 марта в Берлине, перед переходом на летнее время. Прибавляем один день и
+			получаем полдень 29 марта: по часам прошло 23 часа. Если прибавить ровно 24 часа, получим уже 13:00. Оба
+			результата корректны для своих требований. Выбор days или hours должен следовать из задачи. Но переход часов
+			влияет не только на арифметику: он может сделать само введённое время неоднозначным.</p></footer>
+</section>
+<section class="slide dense" id="slide-18" aria-label="30. Локальное время бывает неоднозначным">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">03 / Новая модель Temporal</div>
+	<h2>Локальное время бывает неоднозначным</h2>
+	<div class="split">
+		<div><h3>Весна · пропуск</h3>
+			<p class="clock-line">01:59 → <em>03:00</em></p>
+			<p>Некоторые значения не существуют.</p></div>
+		<div><h3>Осень · повтор</h3>
+			<p class="clock-line">02:59 → <em>02:00</em></p>
+			<p>Некоторые значения встречаются дважды.</p></div>
+	</div>
+	<pre><code class="language-javascript">Temporal.ZonedDateTime.from(
+  &quot;2026-10-25T02:30[Europe/Berlin]&quot;,
+  { disambiguation: &quot;reject&quot; }
+); // RangeError: время неоднозначно</code></pre>
+	<div class="slide-footer"><span>30 / 41</span></div>
+	<!--
+	Текст спикера · 19:10–19:45
+	Весной некоторые локальные значения пропускаются, осенью — повторяются. На слайде 02:30 в Берлине в день осеннего перехода соответствует двум моментам. Мы явно выбрали disambiguation: reject, поэтому получим RangeError и сможем попросить пользователя уточнить выбор. Это политика приложения, а не единственно возможный способ обработки. Помимо таких правил полезно знать, что операции делают с уже созданными объектами.
+	-->
+	<footer class="notes" hidden><p>Время: 19:10–19:45</p>
+		<p>Весной некоторые локальные значения пропускаются, осенью — повторяются. На слайде 02:30 в Берлине в день
+			осеннего перехода соответствует двум моментам. Мы явно выбрали disambiguation: reject, поэтому получим
+			RangeError и сможем попросить пользователя уточнить выбор. Это политика приложения, а не единственно
+			возможный способ обработки. Помимо таких правил полезно знать, что операции делают с уже созданными
+			объектами.</p></footer>
+</section>
+<section class="slide " id="slide-19" aria-label="31. Новое значение. Исходное не меняется.">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">03 / Новая модель Temporal</div>
+	<h2>Новое значение. Исходное не меняется.</h2>
+	<pre><code class="language-javascript">const date = Temporal.PlainDate.from(&quot;2026-10-28&quot;);
+const nextDay = date.add({ days: 1 });
+
+date.toString();    // &quot;2026-10-28&quot;
+nextDay.toString(); // &quot;2026-10-29&quot;</code></pre>
+	<p class="callout">Неизменяемость делает работу с данными предсказуемее.</p>
+	<div class="slide-footer"><span>31 / 41</span></div>
+	<!--
+	Текст спикера · 19:45–20:05
+	В Temporal операции возвращают новые значения. После add исходная дата остаётся 28 октября, а nextDay содержит 29-е. Поэтому вычисление в одной функции не меняет объект, который использует другая. С изменением значений разобрались; осталось проверить, что происходит при некорректном входе.
+	-->
+	<footer class="notes" hidden><p>Время: 19:45–20:05</p>
+		<p>В Temporal операции возвращают новые значения. После add исходная дата остаётся 28 октября, а nextDay
+			содержит 29-е. Поэтому вычисление в одной функции не меняет объект, который использует другая. С изменением
+			значений разобрались; осталось проверить, что происходит при некорректном входе.</p></footer>
+</section>
+<section class="slide dense" id="slide-20" aria-label="32. Некорректная дата — явная ошибка">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">03 / Новая модель Temporal</div>
+	<h2>Некорректная дата — явная ошибка</h2>
+	<pre><code class="language-javascript">Temporal.PlainDate.from(&quot;2026-02-31&quot;);
+// RangeError
+
+Temporal.PlainDate.from(
+  { year: 2026, month: 2, day: 31 },
+  { overflow: &quot;reject&quot; }
+);
+// RangeError</code></pre>
+	<p class="callout">Для объекта по умолчанию — constrain. Для строгой проверки — reject.</p>
+	<div class="slide-footer"><span>32 / 41</span></div>
+	<!--
+	Текст спикера · 20:05–20:25
+	Помните, как 31 февраля у Date превратилось в март? Невалидная строка в PlainDate.from вызывает RangeError. Для объекта с компонентами есть отдельная настройка overflow. По умолчанию constrain ограничит 31 февраля последним днём февраля; для строгой проверки нужен reject, как во втором примере. Значит, даже с Temporal важно выбрать политику валидации. Когда значение корректно, остаётся показать его пользователю.
+	-->
+	<footer class="notes" hidden><p>Время: 20:05–20:25</p>
+		<p>Помните, как 31 февраля у Date превратилось в март? Невалидная строка в PlainDate.from вызывает RangeError.
+			Для объекта с компонентами есть отдельная настройка overflow. По умолчанию constrain ограничит 31 февраля
+			последним днём февраля; для строгой проверки нужен reject, как во втором примере. Значит, даже с Temporal
+			важно выбрать политику валидации. Когда значение корректно, остаётся показать его пользователю.</p></footer>
+</section>
+<section class="slide " id="slide-21" aria-label="33. Temporal + Intl">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">03 / Новая модель Temporal</div>
+	<h2>Temporal + Intl</h2>
+	<div class="flow">
+		<div><b>Temporal</b><span>Смысл и операции</span></div>
+		<i>→</i>
+		<div><b>Intl</b><span>Язык и представление</span></div>
+		<i>→</i>
+		<div><b>Человек</b><span>Понятная дата</span></div>
+	</div>
+	<pre><code class="language-javascript">const date = Temporal.PlainDate.from(&quot;2026-10-28&quot;);
+date.toLocaleString(&quot;ru-RU&quot;, { dateStyle: &quot;long&quot; });
+// &quot;28 октября 2026 г.&quot;</code></pre>
+	<div class="slide-footer"><span>33 / 41</span></div>
+	<!--
+	Текст спикера · 20:25–21:00
+	Здесь мы возвращаемся к знакомому Intl, но теперь у исходных данных есть точный смысл. PlainDate хранит календарную дату, а toLocaleString формирует её локализованное представление. Temporal отвечает за тип и операции, Intl — за оформление. Вместе они дают более понятный путь от данных до интерфейса. Однако за пределами этого пути остаются задачи, которые новый API не решает.
+	-->
+	<footer class="notes" hidden><p>Время: 20:25–21:00</p>
+		<p>Здесь мы возвращаемся к знакомому Intl, но теперь у исходных данных есть точный смысл. PlainDate хранит
+			календарную дату, а toLocaleString формирует её локализованное представление. Temporal отвечает за тип и
+			операции, Intl — за оформление. Вместе они дают более понятный путь от данных до интерфейса. Однако за
+			пределами этого пути остаются задачи, которые новый API не решает.</p></footer>
+</section>
+<section class="slide " id="slide-22" aria-label="34. Чего Temporal не решает">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">03 / Новая модель Temporal</div>
+	<h2>Чего Temporal не решает</h2>
+	<div class="cards">
+		<article class="card"><span class="card-index">01</span>
+			<h3>Бизнес-смысл</h3>
+			<p>Не решает, что означает дата в вашем продукте.</p></article>
+		<article class="card"><span class="card-index">02</span>
+			<h3>Потерянные данные</h3>
+			<p>Не восстанавливает исходный часовой пояс.</p></article>
+		<article class="card"><span class="card-index">03</span>
+			<h3>Правила зон</h3>
+			<p>Не отменяет обновление данных часовых поясов.</p></article>
+	</div>
+	<p class="callout">Более точные инструменты. Ответственность остаётся у нас.</p>
+	<div class="slide-footer"><span>34 / 41</span></div>
+	<!--
+	Текст спикера · 21:00–21:35
+	Temporal не угадает, что бизнес имел в виду под датой, и не восстановит потерянный часовой пояс. Он также не исправит неверные часы сервера — вспомним Telstra — и не заменит обновление зависимостей и данных зон. Его польза в том, что выбранную модель можно выразить точнее. Остался практический вопрос: как этот API приходит в реальные среды выполнения?
+	-->
+	<footer class="notes" hidden><p>Время: 21:00–21:35</p>
+		<p>Temporal не угадает, что бизнес имел в виду под датой, и не восстановит потерянный часовой пояс. Он также не
+			исправит неверные часы сервера — вспомним Telstra — и не заменит обновление зависимостей и данных зон. Его
+			польза в том, что выбранную модель можно выразить точнее. Остался практический вопрос: как этот API приходит
+			в реальные среды выполнения?</p></footer>
+</section>
+<section class="slide " id="slide-23" aria-label="35. От боли Date к стандарту">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">04 / Внедрение и code review</div>
+	<h2>От боли Date к стандарту</h2>
+	<div class="steps">
+		<div><b>01</b>
+			<h3>Date</h3>
+			<p>Накопленные ограничения</p></div>
+		<div><b>02</b>
+			<h3>TC39</h3>
+			<p>Проектирование Temporal</p></div>
+		<div><b>03</b>
+			<h3>ECMAScript</h3>
+			<p>Спецификация поведения</p></div>
+		<div><b>04</b>
+			<h3>Движки</h3>
+			<p>Реализации и совместимость</p></div>
+	</div>
+	<p class="callout">Статус стандарта и поддержка среды — разные вопросы.</p>
+	<div class="slide-sources"><a class="copyright" href="https://github.com/tc39/proposal-temporal">TC39 / Temporal ·
+		актуальный статус</a></div>
+	<div class="slide-footer"><span>35 / 41</span></div>
+	<!--
+	Текст спикера · 21:35–22:20
+	Путь проходит через разработку в TC39, согласование спецификации и реализации в движках. Наличие описанного API и его доступность в конкретном приложении — разные вещи: браузеры и серверные среды выпускают обновления независимо. Поэтому от истории стандартизации перейдём к версиям, в которых код со слайдов можно запускать нативно.
+	-->
+	<footer class="notes" hidden><p>Время: 21:35–22:20</p>
+		<p>Путь проходит через разработку в TC39, согласование спецификации и реализации в движках. Наличие описанного
+			API и его доступность в конкретном приложении — разные вещи: браузеры и серверные среды выпускают обновления
+			независимо. Поэтому от истории стандартизации перейдём к версиям, в которых код со слайдов можно запускать
+			нативно.</p></footer>
+</section>
+<section class="slide support-slide dense" id="temporal-support" aria-label="36. Где Temporal уже работает?">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">04 / Внедрение и code review</div>
+	<h2>Где Temporal уже работает?</h2>
+	<p class="support-date">Нативный Temporal · проверено 29 октября 2026</p>
+	<div class="split support-columns">
+		<div><h3>Браузеры</h3>
+			<table>
+				<tbody>
+				<tr>
+					<td>Chrome / Edge</td>
+					<td class="supported">144+</td>
+				</tr>
+				<tr>
+					<td>Firefox</td>
+					<td class="supported">139+</td>
+				</tr>
+				<tr>
+					<td>Safari</td>
+					<td class="preview-status">Technology Preview</td>
+				</tr>
+				<tr>
+					<td>Safari iOS</td>
+					<td class="preview-status">Нет в stable</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<div><h3>Серверные среды</h3>
+			<table>
+				<tbody>
+				<tr>
+					<td>Node.js · V8</td>
+					<td class="supported">26.0.0+</td>
+				</tr>
+				<tr>
+					<td>Bun · JavaScriptCore</td>
+					<td class="supported">1.4.0+</td>
+				</tr>
+				<tr>
+					<td>Deno · V8</td>
+					<td class="supported">2.7+</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<pre><code
+			class="language-javascript">typeof globalThis.Temporal !== &quot;undefined&quot;; // Проверка среды</code></pre>
+	<div class="slide-sources"><a class="copyright"
+								  href="https://github.com/mdn/browser-compat-data/blob/main/javascript/builtins/Temporal.json"
+								  target="_blank" rel="noopener noreferrer">MDN BCD</a><a class="copyright"
+																						  href="https://nodejs.org/en/blog/release/v26.0.0"
+																						  target="_blank"
+																						  rel="noopener noreferrer">Node.js
+		26</a><a class="copyright" href="https://bun.com/blog/bun-v1.4" target="_blank" rel="noopener noreferrer">Bun
+		1.4</a></div>
+	<div class="slide-footer"><span>36 / 41</span></div>
+	<!--
+	Текст спикера · 22:20–23:05
+	До этого мы обсуждали, что даёт API. Теперь проверим, где его можно запустить без polyfill. По данным совместимости на 29 октября 2026 года это Chrome и Edge с версии 144, Firefox с 139, Node.js с 26, Bun с 1.4 и Deno с 2.7. Для Safari указан Technology Preview, а не стабильный релиз; на iOS стабильной поддержки в этой таблице пока нет. Node.js и Bun — среды выполнения: первый использует V8, второй JavaScriptCore. Версия браузера сама по себе не определяет версию серверного рантайма. Поэтому проверяем именно окружение проекта, включая CI и production. Дальше обсудим, как поступить со старыми средами и как оценить polyfill.
+	-->
+	<footer class="notes" hidden><p>Время: 22:20–23:05</p>
+		<p>До этого мы обсуждали, что даёт API. Теперь проверим, где его можно запустить без polyfill. По данным
+			совместимости на 29 октября 2026 года это Chrome и Edge с версии 144, Firefox с 139, Node.js с 26, Bun с 1.4
+			и Deno с 2.7. Для Safari указан Technology Preview, а не стабильный релиз; на iOS стабильной поддержки в
+			этой таблице пока нет. Node.js и Bun — среды выполнения: первый использует V8, второй JavaScriptCore. Версия
+			браузера сама по себе не определяет версию серверного рантайма. Поэтому проверяем именно окружение проекта,
+			включая CI и production. Дальше обсудим, как поступить со старыми средами и как оценить polyfill.</p>
+	</footer>
+</section>
+<section class="slide dense" id="slide-24" aria-label="37. Перед внедрением проверьте среду">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">04 / Внедрение и code review</div>
+	<h2>Перед внедрением проверьте среду</h2>
+	<table>
+		<thead>
+		<tr>
+			<th>Что проверить</th>
+			<th>Почему это важно</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>Браузеры</td>
+			<td>Поддержка в целевых версиях</td>
+		</tr>
+		<tr>
+			<td>Node.js</td>
+			<td>Сервер и клиент могут отличаться</td>
+		</tr>
+		<tr>
+			<td>Polyfill</td>
+			<td>Размер, производительность, тесты</td>
+		</tr>
+		</tbody>
+	</table>
+	<pre><code
+			class="language-javascript">const hasTemporal = typeof globalThis.Temporal !== &quot;undefined&quot;;</code></pre>
+	<div class="slide-sources"><a class="copyright"
+								  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal#browser_compatibility">Таблица
+		совместимости MDN</a><a class="copyright" href="https://github.com/js-temporal/temporal-polyfill">@js-temporal/polyfill</a>
+	</div>
+	<div class="slide-footer"><span>37 / 41</span></div>
+	<!--
+	Текст спикера · 23:05–23:50
+	Если среди целевых сред есть версии без Temporal, можно рассмотреть polyfill. Его нужно включить в поставку приложения и отдельно оценить размер, производительность и поведение нужных операций. Проверяем не только ноутбук разработчика, но и браузеры пользователей, сервер и CI. После выбора способа запуска можно планировать миграцию: начинать её удобнее с границ данных и одной конкретной функции.
+	-->
+	<footer class="notes" hidden><p>Время: 23:05–23:50</p>
+		<p>Если среди целевых сред есть версии без Temporal, можно рассмотреть polyfill. Его нужно включить в поставку
+			приложения и отдельно оценить размер, производительность и поведение нужных операций. Проверяем не только
+			ноутбук разработчика, но и браузеры пользователей, сервер и CI. После выбора способа запуска можно
+			планировать миграцию: начинать её удобнее с границ данных и одной конкретной функции.</p></footer>
+</section>
+<section class="slide " id="slide-25" aria-label="38. Миграция начинается со смысла">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">04 / Внедрение и code review</div>
+	<h2>Миграция начинается со смысла</h2>
+	<div class="migration">
+		<span>Входные данные</span><i>→</i><span>Явная интерпретация</span><i>→</i><span>Temporal</span></div>
+	<div class="migration"><span>Бизнес-логика</span><i>→</i><span>Форматирование / сериализация</span></div>
+	<pre><code class="language-javascript">const legacy = new Date(&quot;2026-10-28T12:30:00Z&quot;);
+const instant = Temporal.Instant.fromEpochMilliseconds(
+  legacy.getTime()
+);</code></pre>
+	<p class="callout">Начните с новой функции. Сохраните адаптеры на границах.</p>
+	<div class="slide-footer"><span>38 / 41</span></div>
+	<!--
+	Текст спикера · 23:50–24:35
+	На входе сначала определяем смысл значения. В примере старый Date уже представляет момент оплаты, поэтому переносим его миллисекунды в Instant. Для строки с днём рождения такой адаптер был бы неверным выбором: там нужен PlainDate. Дальше постепенно переносим бизнес-логику, сохраняя адаптеры на границах существующих API. Разберём маленький участок, где это различие сразу видно.
+	-->
+	<footer class="notes" hidden><p>Время: 23:50–24:35</p>
+		<p>На входе сначала определяем смысл значения. В примере старый Date уже представляет момент оплаты, поэтому
+			переносим его миллисекунды в Instant. Для строки с днём рождения такой адаптер был бы неверным выбором: там
+			нужен PlainDate. Дальше постепенно переносим бизнес-логику, сохраняя адаптеры на границах существующих API.
+			Разберём маленький участок, где это различие сразу видно.</p></footer>
+</section>
+<section class="slide comparison" id="slide-26" aria-label="39. Переписываем: календарная дата">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">04 / Внедрение и code review</div>
+	<h2>Переписываем: календарная дата</h2>
+	<div class="split">
+		<div><h3>Было · Date</h3>
+			<pre><code class="language-javascript">const date =
+  new Date(&quot;2026-10-28&quot;);
+const nextDay = new Date(date);
+
+nextDay.setDate(
+  date.getDate() + 1
+);</code></pre>
+		</div>
+		<div><h3>Стало · PlainDate</h3>
+			<pre><code class="language-javascript">const date =
+  Temporal.PlainDate.from(
+    &quot;2026-10-28&quot;
+  );
+const nextDay =
+  date.add({ days: 1 });</code></pre>
+		</div>
+	</div>
+	<p class="callout">Намерение читается прямо из типа.</p>
+	<div class="slide-footer"><span>39 / 41</span></div>
+	<!--
+	Текст спикера · 24:35–26:05
+	Задача здесь — получить следующий календарный день. В варианте с Date мы создаём момент из строки, копируем объект и меняем день через локальные методы. Эта цепочка несёт лишнюю зависимость от зоны. В варианте с PlainDate намерение записано прямо: календарная дата плюс один день. Если бы задача звучала «через 24 часа после оплаты», мы выбрали бы другой тип и другие единицы. Такую развилку и нужно искать на code review.
+	-->
+	<footer class="notes" hidden><p>Время: 24:35–26:05</p>
+		<p>Задача здесь — получить следующий календарный день. В варианте с Date мы создаём момент из строки, копируем
+			объект и меняем день через локальные методы. Эта цепочка несёт лишнюю зависимость от зоны. В варианте с
+			PlainDate намерение записано прямо: календарная дата плюс один день. Если бы задача звучала «через 24 часа
+			после оплаты», мы выбрали бы другой тип и другие единицы. Такую развилку и нужно искать на code review.</p>
+	</footer>
+</section>
+<section class="slide " id="slide-27" aria-label="40. Code review: проверяем смысл">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">04 / Внедрение и code review</div>
+	<h2>Code review: проверяем смысл</h2>
+	<div class="checklist">
+		<div><b>01</b><span>Что означает значение: момент, дата или время?</span></div>
+		<div><b>02</b><span>Указан ли часовой пояс, если он нужен?</span></div>
+		<div><b>03</b><span>Что происходит с данными в момент перевода часов на летнее или зимнее время?</span></div>
+		<div><b>04</b><span>Валидируется ли входной формат?</span></div>
+		<div><b>05</b><span>Проверены ли границы месяца, года и невалидные даты?</span></div>
+		<div><b>06</b><span>Совпадает ли поведение с бизнес-требованиями?</span></div>
+	</div>
+	<p class="callout">LLM генерирует код. Корректность подтверждают требования и тесты.</p>
+	<div class="slide-footer"><span>40 / 41</span></div>
+	
+    
+	<footer class="notes" hidden><p>Время: 26:05–28:25</p>
+		<p>Сначала называем смысл значения: момент, дата или локальное время. Затем проверяем, откуда взялся часовой
+			пояс, как разбирается вход и что должно происходить на границах. Если вы работаете над продуктом где есть перевод
+            часов на летнее или зимнее время для примера с переносом встречи нужны на это нужны тесты; для срока — на конец месяца и високосный год; для даты из формы — на несуществующий день и смену
+			зоны. Возьмём кейс Blockscout: проверка только в UTC могла не показать сдвиг, поэтому нужна и зона с
+			отрицательным смещением. Эти вопросы одинаково полезны для человеческого кода и результата LLM. Модель может
+			помочь написать тесты, но ожидания для них должны следовать из требований. Теперь соберём всё в три
+			вывода.</p></footer>
+</section>
+<section class="slide finale" id="slide-28" aria-label="41. Temporal делает намерения явнее">
+	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">04 / Внедрение и code review</div>
+	<h2>Temporal делает<br>намерения явнее</h2>
+	<div class="takeaways"><p><b>01</b> Различайте момент времени и календарную дату.</p>
+		<p><b>02</b> Разделяйте календарные дни и прошедшие часы.</p>
+		<p><b>03</b> Проверяйте зоны, границы и код от LLM.</p></div>
+	<p class="thanks">Спасибо! <em>Вопросы?</em></p>
+	<div class="slide-footer"><span>41 / 41</span></div>
+	<!--
+	Текст спикера · 28:25–30:00
+	Мы начали с дорогих инцидентов и дошли до нескольких строк JavaScript. Общая нить — точный смысл данных. Первое: различайте момент, календарную дату и время на часах. Второе: выбирайте календарные дни или прошедшие часы по требованиям. Третье: проверяйте форматы, зоны и граничные случаи. Temporal делает эти решения заметнее в коде, но сами решения остаются за разработчиком. Это особенно полезно, когда код легко получить от LLM: его всё равно нужно сопоставить с задачей. Спасибо! Давайте обсудим вопросы.
+	-->
+	<footer class="notes" hidden><p>Время: 28:25–30:00</p>
+		<p>Мы начали с дорогих инцидентов и дошли до нескольких строк JavaScript. Общая нить — точный смысл данных.
+			Первое: различайте момент, календарную дату и время на часах. Второе: выбирайте календарные дни или
+			прошедшие часы по требованиям. Третье: проверяйте форматы, зоны и граничные случаи. Temporal делает эти
+			решения заметнее в коде, но сами решения остаются за разработчиком. Это особенно полезно, когда код легко
+			получить от LLM: его всё равно нужно сопоставить с задачей. Спасибо! Давайте обсудим вопросы.</p></footer>
+</section>
+<div class="progress"></div>
+<script src="../../src/shower/shower.js"></script>
+<script src="../../src/highlight/highlight.min.js"></script>
+<script src="../../src/highlight/languages/javascript.min.js"></script>
+<script>hljs.highlightAll();</script>
+</body>
+</html>
