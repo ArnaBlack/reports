@@ -10,7 +10,7 @@
 </head>
 <body class="shower list">
 <header class="caption"><h1>Даты в JavaScript: от боли к Temporal</h1>
-	<p>Анна Расторгуева · около 35 минут</p></header>
+	<p>Анна Расторгуева · около 44 минут</p></header>
 <section class="slide hero" id="slide-01" aria-label="1. Даты — это сложнее, чем кажется">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
 	<h2>Даты — это сложнее,<br>чем кажется</h2>
@@ -21,7 +21,7 @@
 	</div>
 	<pre><code class="language-javascript">new Date()</code></pre>
 	<p class="byline">Анна Расторгуева </p>
-	<div class="slide-footer"><span>01 / 48</span></div>
+	<div class="slide-footer"><span>01 / 57</span></div>
 
 </section>
 <section class="slide intro-slide" id="about" aria-label="2. Обо мне">
@@ -34,7 +34,7 @@
 		<li>Люблю котиков</li>
 	</ul>
 	<img class="place bottom right" width="500" src="../../src/picture/three-cat-azh.webp" alt="котики">
-	<div class="slide-footer"><span>02 / 48</span></div>
+	<div class="slide-footer"><span>02 / 57</span></div>
 	
 </section>
 <section class="slide intro-slide" id="agenda" aria-label="3. План доклада">
@@ -53,9 +53,9 @@
 			<p>Типы, арифметика и граничные случаи</p></article>
 		<article><span>04</span>
 			<h3>Внедрение и code review</h3>
-			<p>Поддержка, миграция и код от LLM</p></article>
+			<p>Поддержка, миграция и проверка кода</p></article>
 	</div>
-	<div class="slide-footer"><span>03 / 48</span></div>
+	<div class="slide-footer"><span>03 / 57</span></div>
 	
 </section>
 <section class="slide case-slide dense" id="case-novu" aria-label="4. Novu: дата остановила деплой">
@@ -68,9 +68,9 @@ const oneMonthAhead = addMonths(startDate, 1);
 const result = subMonths(oneMonthAhead, 1);
 
 // 31 августа → 30 сентября → 30 августа</code></pre>
-	<p class="callout">Два упавших теста блокировали новые деплои.</p>
+	<p class="callout">Два упавших теста блокировали новые деплои</p>
 	<div class="slide-sources"><a class="copyright" href="https://dev.to/novu/we-had-a-date-bug-that-happened-two-times-a-year-and-we-didnt-know-you-might-have-it-too-56o6" target="_blank" rel="noopener noreferrer">Novu · разбор команды, 2023</a></div>
-	<div class="slide-footer"><span>04 / 48</span></div>
+	<div class="slide-footer"><span>04 / 57</span></div>
 </section>
 <section class="slide case-slide dense" id="case-novu-fix" aria-label="5. Novu: срок хранения задали в днях">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
@@ -82,9 +82,9 @@ let expireAtOneMonth = addMonths(now, 1);
 
 // После
 let expireAtOneMonth = addDays(now, 30);</code></pre>
-	<p class="callout">30 дней — выбранный срок хранения, а не универсальная замена месяца.</p>
+	<p class="callout">30 дней — выбранный срок хранения, а не универсальная замена месяца</p>
 	<div class="slide-sources"><a class="copyright" href="https://github.com/novuhq/novu/pull/4071/files" target="_blank" rel="noopener noreferrer">Novu · исходный патч #4071</a></div>
-	<div class="slide-footer"><span>05 / 48</span></div>
+	<div class="slide-footer"><span>05 / 57</span></div>
 </section>
 <section class="slide case-slide dense" id="case-medusa" aria-label="6. Medusa: сумма стала годом">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
@@ -99,9 +99,9 @@ if (isDate(contextValue) &amp;&amp; isDate(ruleValue)) {
   return new Date(contextValue) &gt;= new Date(ruleValue)
 }
 return Number(contextValue) &gt;= Number(ruleValue)</code></pre>
-	<p class="callout">Строки с числами проходят проверку «это дата».</p>
+	<p class="callout">Строки с числами проходят проверку «это дата»</p>
 	<div class="slide-sources"><a class="copyright" href="https://github.com/medusajs/medusa/blob/v2.18.0/packages/modules/fulfillment/src/utils/utils.ts" target="_blank" rel="noopener noreferrer">Medusa · исходник v2.18.0</a></div>
-	<div class="slide-footer"><span>06 / 48</span></div>
+	<div class="slide-footer"><span>06 / 57</span></div>
 </section>
 <section class="slide case-slide dense" id="case-medusa-result" aria-label="7. Medusa: доставка не проходит правило">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
@@ -113,9 +113,9 @@ Number(&quot;100&quot;) &gt;= Number(&quot;50&quot;); // true
 
 new Date(&quot;100&quot;) &gt;= new Date(&quot;50&quot;); // false
 // Сравниваются годы 0100 и 1950</code></pre>
-	<p class="callout">Корзина на 100 не проходит порог 50: опция доставки отфильтрована.</p>
+	<p class="callout">Корзина на 100 не проходит порог 50: опция доставки отфильтрована</p>
 	<div class="slide-sources"><a class="copyright" href="https://github.com/medusajs/medusa/issues/16300" target="_blank" rel="noopener noreferrer">Medusa · issue #16300</a></div>
-	<div class="slide-footer"><span>07 / 48</span></div>
+	<div class="slide-footer"><span>07 / 57</span></div>
 </section>
 <section class="slide case-slide" id="case-moment" aria-label="8. Moment.js: парсинг может быть дорогим">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
@@ -127,9 +127,9 @@ new Date(&quot;100&quot;) &gt;= new Date(&quot;50&quot;); // false
 
 // После исправления · Moment 2.29.4
 .replace(/\([^()]*\)|[\n\t]/g, ' ')</code></pre>
-	<p class="callout">Добавили запрет на «(» внутри группы: убрали причину O(n²).</p>
+	<p class="callout">Добавили запрет на «(» внутри группы: убрали причину O(n²)</p>
 	<div class="slide-sources"><a class="copyright" href="https://github.com/moment/moment/pull/6015/files" target="_blank" rel="noopener noreferrer">Moment.js · патч CVE-2022-31129</a></div>
-	<div class="slide-footer"><span>08 / 48</span></div>
+	<div class="slide-footer"><span>08 / 57</span></div>
 	
 </section>
 <section class="slide case-slide" id="case-blockscout" aria-label="9. Blockscout: транзакции на день раньше">
@@ -143,9 +143,9 @@ console.log(&quot;Parsed Date:&quot;, parsed.toString());
 // 1 ноября, 21:00 · GMT−03:00
 console.log(&quot;ISO Date:&quot;, parsed.toISOString());
 // 2025-11-02T00:00:00.000Z</code></pre>
-	<p class="callout">Один момент: в UTC — 2 ноября, в локальной зоне — ещё 1-е.</p>
+	<p class="callout">Один момент: в UTC — 2 ноября, в локальной зоне — ещё 1-е</p>
 	<div class="slide-sources"><a class="copyright" href="https://github.com/blockscout/frontend/issues/3101" target="_blank" rel="noopener noreferrer">Blockscout · воспроизведение автора issue</a></div>
-	<div class="slide-footer"><span>09 / 48</span></div>
+	<div class="slide-footer"><span>09 / 57</span></div>
 	
 </section>
 <section class="slide case-slide dense" id="case-iso" aria-label="10. Одна строка — уже другой месяц">
@@ -159,8 +159,8 @@ localMidnight.toISOString();
 // &quot;2026-08-31T21:00:00.000Z&quot;
 localMidnight.toISOString().split(&quot;T&quot;)[0];
 // &quot;2026-08-31&quot;</code></pre>
-	<p class="callout">Воспроизводимый пример: toISOString() всегда возвращает UTC.</p>
-	<div class="slide-footer"><span>10 / 48</span></div>
+	<p class="callout">Воспроизводимый пример: toISOString() всегда возвращает UTC</p>
+	<div class="slide-footer"><span>10 / 57</span></div>
 	
 </section>
 <section class="slide " id="slide-02" aria-label="11. Одна дата — разные значения">
@@ -173,7 +173,7 @@ localMidnight.toISOString().split(&quot;T&quot;)[0];
 		<article><span>America/New_York</span><b>27 октября</b><strong>20:30</strong></article>
 	</div>
 	<p class="callout">Один момент времени. Разные календарные даты.</p>
-	<div class="slide-footer"><span>11 / 48</span></div>
+	<div class="slide-footer"><span>11 / 57</span></div>
 	
 </section>
 <section class="slide " id="slide-03" aria-label="12. Три бага, одна общая проблема">
@@ -183,16 +183,16 @@ localMidnight.toISOString().split(&quot;T&quot;)[0];
 	<div class="cards">
 		<article class="card"><span class="card-index">01</span>
 			<h3>Дата заказа</h3>
-			<p>Показывается на день раньше.</p></article>
+			<p>Показывается на день раньше</p></article>
 		<article class="card"><span class="card-index">02</span>
 			<h3>Таймер</h3>
-			<p>Показывает неверный остаток.</p></article>
+			<p>Показывает неверный остаток</p></article>
 		<article class="card"><span class="card-index">03</span>
 			<h3>Встреча</h3>
-			<p>Оказывается не в то время.</p></article>
+			<p>Оказывается не в то время</p></article>
 	</div>
 	<p class="callout">Что именно означает значение, с которым мы работаем?</p>
-	<div class="slide-footer"><span>12 / 48</span></div>
+	<div class="slide-footer"><span>12 / 57</span></div>
 	
 </section>
 <section class="slide " id="slide-04" aria-label="13. А если типы будут говорить за нас?">
@@ -205,8 +205,8 @@ localMidnight.toISOString().split(&quot;T&quot;)[0];
 		<div><span>Время на часах</span><strong>PlainTime</strong></div>
 		<div><span>Дата + часовой пояс</span><strong>ZonedDateTime</strong></div>
 	</div>
-	<p class="callout">Разные понятия — разные типы.</p>
-	<div class="slide-footer"><span>13 / 48</span></div>
+	<p class="callout">Разные понятия — разные типы</p>
+	<div class="slide-footer"><span>13 / 57</span></div>
 </section>
 <section class="slide " id="slide-05" aria-label="14. Похожий формат. Разная семантика.">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
@@ -217,8 +217,8 @@ localMidnight.toISOString().split(&quot;T&quot;)[0];
 
 new Date(&quot;2026-10-28T00:00:00&quot;);
 // Дата и время без смещения → локальное время</code></pre>
-	<p class="callout">Локальное время зависит от среды выполнения.</p>
-	<div class="slide-footer"><span>14 / 48</span></div>
+	<p class="callout">Локальное время зависит от среды выполнения</p>
+	<div class="slide-footer"><span>14 / 57</span></div>
 
 </section>
 <section class="slide " id="slide-06" aria-label="15. Что на самом деле хранит Date">
@@ -231,7 +231,7 @@ now.getTime();      // Миллисекунды от Unix epoch
 now.toISOString();  // Представление в UTC
 now.toString();     // Локальное представление</code></pre>
 	<p class="callout">Один момент. Несколько представлений. Исходная зона не хранится.</p>
-	<div class="slide-footer"><span>15 / 48</span></div>
+	<div class="slide-footer"><span>15 / 57</span></div>
 	
 </section>
 <section class="slide date-surprise" id="date-quiz" aria-label="16. Мини-квиз: что означает число?">
@@ -242,10 +242,10 @@ now.toString();     // Локальное представление</code></pre
 new Date(13).toISOString();</code></pre>
 	<div class="next quiz-answer"><pre><code class="language-javascript">// 1970-01-01T00:00:00.000Z
 // 1970-01-01T00:00:00.013Z</code></pre>
-		<p class="callout">Один числовой аргумент — миллисекунды от Unix epoch.</p></div>
+		<p class="callout">Один числовой аргумент — миллисекунды от Unix epoch</p></div>
 	<a class="copyright" href="https://jsdate.wtf/" target="_blank" rel="noopener noreferrer">Больше вопросов ·
 		jsdate.wtf</a>
-	<div class="slide-footer"><span>16 / 48</span></div>
+	<div class="slide-footer"><span>16 / 57</span></div>
 	
 </section>
 <section class="slide extra-date" id="date-string-quiz" aria-label="17. А если число стало строкой?">
@@ -256,7 +256,7 @@ new Date(13).toISOString();</code></pre>
 new Date(&quot;13&quot;);
 new Date(&quot;10&quot;);</code></pre><div class="next string-answers"><div><span>V8 · часовой пояс UTC</span><code>new Date("0").toISOString()</code><strong>2000-01-01T00:00:00.000Z</strong></div><div><span>V8</span><code>new Date("13").toString()</code><strong>Invalid Date</strong></div><div><span>V8 · Europe/Moscow</span><code>new Date("10").toString()</code><strong>Mon Oct 01 2001 00:00:00 GMT+0400</strong><small>Москва, летнее время · название зоны зависит от среды</small></div></div>
 <a class="copyright" href="https://jsdate.wtf/" target="_blank" rel="noopener noreferrer">Больше вопросов · jsdate.wtf</a>
-<div class="slide-footer"><span>17 / 48</span></div>
+<div class="slide-footer"><span>17 / 57</span></div>
 </section>
 <section class="slide date-surprise" id="date-overflow" aria-label="18. А существует ли 31 февраля?">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
@@ -267,10 +267,10 @@ new Date(&quot;10&quot;);</code></pre><div class="next string-answers"><div><spa
 	<div class="next quiz-answer"><pre><code class="language-javascript">date.getFullYear(); // 2026
 date.getMonth();    // 2 → март
 date.getDate();     // 3</code></pre>
-		<p class="callout">Date нормализует компоненты: 31 февраля → 3 марта.</p></div>
+		<p class="callout">Date нормализует компоненты: 31 февраля → 3 марта</p></div>
 	<a class="copyright" href="https://jsdate.wtf/" target="_blank" rel="noopener noreferrer">Больше вопросов ·
 		jsdate.wtf</a>
-	<div class="slide-footer"><span>18 / 48</span></div>
+	<div class="slide-footer"><span>18 / 57</span></div>
 	
 </section>
 <section class="slide " id="slide-07" aria-label="19. Парсинг: четыре похожие строки">
@@ -282,7 +282,7 @@ new Date(&quot;2026-10-28T00:00:00&quot;);       // Локально
 new Date(&quot;2026-10-28T00:00:00Z&quot;);      // UTC явно
 new Date(&quot;2026-10-28T00:00:00+03:00&quot;); // Смещение</code></pre>
 	<p class="callout">Валидируйте входные данные. Договаривайтесь о формате.</p>
-	<div class="slide-footer"><span>19 / 48</span></div>
+	<div class="slide-footer"><span>19 / 57</span></div>
 	
 </section>
 <section class="slide formatting" id="slide-08" aria-label="20. Форматирование: методы Date">
@@ -301,7 +301,7 @@ date.toLocaleDateString(&quot;ru-RU&quot;, {
 	<a class="copyright"
 	   href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString"
 	   target="_blank" rel="noopener noreferrer">MDN · Date.toLocaleDateString()</a>
-	<div class="slide-footer"><span>20 / 48</span></div>
+	<div class="slide-footer"><span>20 / 57</span></div>
 	
 </section>
 <section class="slide formatting" id="slide-08-intl" aria-label="21. Форматирование: Intl.DateTimeFormat">
@@ -315,12 +315,12 @@ const formatter = new Intl.DateTimeFormat(&quot;ru-RU&quot;, {
 });
 
 formatter.format(date); // 28 октября 2026 г.</code></pre>
-	<p class="callout">Один форматтер для списка дат с общими настройками.</p>
+	<p class="callout">Один форматтер для списка дат с общими настройками</p>
 	<p class="format-extra"><code>formatToParts()</code> — компоненты · <code>formatRange()</code> — диапазон</p>
 	<a class="copyright"
 	   href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat"
 	   target="_blank" rel="noopener noreferrer">MDN · Intl.DateTimeFormat</a>
-	<div class="slide-footer"><span>21 / 48</span></div>
+	<div class="slide-footer"><span>21 / 57</span></div>
 	
 </section>
 <section class="slide " id="slide-09" aria-label="22. Эпоха библиотек">
@@ -338,19 +338,18 @@ formatter.format(date); // 28 октября 2026 г.</code></pre>
 			<h3>Luxon</h3>
 			<p>Часовые пояса.<br>Форматирование.<br>Опора на Intl.</p></article>
 	</div>
-	<p class="callout">Библиотека не выбирает бизнес-смысл данных за нас.</p>
-	<div class="slide-footer"><span>22 / 48</span></div>
+	<p class="callout">Библиотека не выбирает бизнес-смысл данных за нас</p>
+	<div class="slide-footer"><span>22 / 57</span></div>
 	
 </section>
-<section class="slide " id="slide-10" aria-label="23. Старые паттерны в новом коде">
+<section class="slide " id="slide-10" aria-label="23. Что значит «завтра»?">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">02 / Как устроен Date</div>
-	<h2>Старые паттерны в новом коде</h2>
-	<pre><code class="language-javascript">// AI-generated code
-const tomorrow = new Date();
+	<h2>Что значит «завтра»?</h2>
+	<pre><code class="language-javascript">const tomorrow = new Date();
 tomorrow.setDate(tomorrow.getDate() + 1);</code></pre>
 	<p class="question">Завтра — это через <em>24 часа</em><br>или следующий <em>календарный день</em>?</p>
-	<div class="slide-footer"><span>23 / 48</span></div>
+	<div class="slide-footer"><span>23 / 57</span></div>
 	
 </section>
 <section class="slide extra-date" id="date-limitations" aria-label="24. Где Date усложняет работу">
@@ -358,105 +357,249 @@ tomorrow.setDate(tomorrow.getDate() + 1);</code></pre>
 <div class="eyebrow">02 / Как устроен Date</div>
 <h2>Где Date усложняет работу</h2>
 <div class="date-limitations-grid">
-<article><h3>Мутабельность</h3><p>setDate(), setMonth(), setHours()<br>меняют исходный объект.</p></article>
+<article><h3>Мутабельность</h3><p>setDate(), setMonth(), setHours()<br>меняют исходный объект</p></article>
 <article><h3>Исходная зона теряется</h3><p>Хранится момент, а не Europe/Moscow.<br>Зону приходится сохранять отдельно.</p></article>
-<article><h3>Нет отдельных типов</h3><p>Для даты без времени, времени<br>на часах и продолжительности.</p></article>
-<article><h3>Неявные правила</h3><p>Нестандартный парсинг, нормализация,<br>локальные методы.</p></article>
-</div><p class="callout">Нужны типы и операции, которые явно выражают смысл.</p>
-<div class="slide-footer"><span>24 / 48</span></div>
+<article><h3>Нет отдельных типов</h3><p>Для даты без времени, времени<br>на часах и продолжительности</p></article>
+<article><h3>Неявные правила</h3><p>Нестандартный парсинг, нормализация,<br>локальные методы</p></article>
+</div><p class="callout">Нужны типы и операции, которые явно выражают смысл</p>
+<div class="slide-footer"><span>24 / 57</span></div>
 </section>
-<section class="slide " id="slide-11" aria-label="25. Temporal: смысл становится типом">
+<section class="slide " id="slide-11" aria-label="25. Как выбрать тип Temporal?">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">03 / Новая модель Temporal</div>
-	<h2>Temporal: смысл становится типом</h2>
-	<p class="lead">Namespace, а не один универсальный класс.</p>
-	<div class="type-grid">
-		<div><code>Instant</code><span>Момент</span></div>
-		<div><code>PlainDate</code><span>Дата</span></div>
-		<div><code>PlainTime</code><span>Время</span></div>
-		<div><code>PlainDateTime</code><span>Дата и время</span></div>
-		<div><code>ZonedDateTime</code><span>Дата, время и зона</span></div>
-		<div><code>Duration</code><span>Продолжительность</span></div>
+	<h2>Как выбрать тип Temporal?</h2>
+	<p class="lead">Сначала называем задачу, затем выбираем тип</p>
+	<div class="type-grid type-choices">
+		<div><span>Когда прошла оплата?</span><code>Instant</code></div>
+		<div><span>На какой день назначена доставка?</span><code>PlainDate</code></div>
+		<div><span>Во сколько открывается магазин?</span><code>PlainTime</code></div>
+		<div><span>Дата и время из формы, пока без зоны</span><code>PlainDateTime</code></div>
+		<div><span>Встреча в определённом часовом поясе</span><code>ZonedDateTime</code></div>
+		<div><span>На сколько перенести встречу?</span><code>Duration</code></div>
 	</div>
-	<div class="slide-footer"><span>25 / 48</span></div>
+	<div class="slide-footer"><span>25 / 57</span></div>
 	
 </section>
-<section class="slide " id="slide-12" aria-label="26. Instant">
+<section class="slide from-formats " id="slide-12" aria-label="26. Instant">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">03 / Новая модель Temporal</div>
 	<h2>Instant</h2>
-	<p class="lead">Точная точка на временной шкале.</p>
-	<pre><code class="language-javascript">const paidAt = Temporal.Instant.from(
-  &quot;2026-10-28T12:30:00Z&quot;
-);</code></pre>
-	<div class="timeline"><span>До оплаты</span><b>● paidAt</b><span>После оплаты →</span></div>
-	<p class="callout">Событие одно. Часовой пояс выбираем при отображении.</p>
-	<div class="slide-footer"><span>26 / 48</span></div>
+<pre><code class="language-javascript">const paidAt = Temporal.Instant.from(
+  &quot;2026-10-28T12:30:00Z&quot; // или 15:30:00+03:00
+);
+Temporal.Instant.from(paidAt); // новый Instant
+
+// Число миллисекунд — отдельный метод:
+Temporal.Instant.fromEpochMilliseconds(0);</code></pre>
+<p class="callout">from(): строка с датой, временем и Z / смещением или Instant.<br>Объект { year, month, day } и число не подходят.</p>
+<a class="copyright" href="https://tc39.es/proposal-temporal/docs/instant.html#from" target="_blank" rel="noopener noreferrer">Temporal · from()</a>
+	<div class="slide-footer"><span>26 / 57</span></div>
 	
 </section>
-<section class="slide " id="slide-13" aria-label="27. PlainDate и PlainTime">
+<section class="slide from-formats " id="slide-13" aria-label="27. PlainDate и PlainTime">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">03 / Новая модель Temporal</div>
 	<h2>PlainDate и PlainTime</h2>
-	<div class="split">
-		<div><h3>Дата без времени</h3>
-			<pre><code class="language-javascript">const birthday =
-  Temporal.PlainDate.from(
-    &quot;1995-06-15&quot;
-  );</code></pre>
-		</div>
-		<div><h3>Время без даты</h3>
-			<pre><code class="language-javascript">const openingTime =
-  Temporal.PlainTime.from(
-    &quot;09:30&quot;
-  );</code></pre>
-		</div>
-	</div>
-	<p class="callout">Не требуют часового пояса. Не задают момент времени.</p>
-	<div class="slide-footer"><span>27 / 48</span></div>
+<div class="split"><div><h3>PlainDate.from()</h3><pre><code class="language-javascript">Temporal.PlainDate.from(
+  &quot;1995-06-15&quot;
+);
+Temporal.PlainDate.from({
+  year: 1995, month: 6,
+  day: 15
+});</code></pre></div><div><h3>PlainTime.from()</h3><pre><code class="language-javascript">Temporal.PlainTime.from(
+  &quot;09:30:00&quot;
+);
+Temporal.PlainTime.from({
+  hour: 9, minute: 30
+});</code></pre></div></div>
+<p class="callout">Строка, объект с полями или экземпляр того же типа.<br>Месяцы: 1–12. У времени пропущенные поля равны 0.</p>
+<a class="copyright" href="https://tc39.es/proposal-temporal/docs/plaindate.html#from" target="_blank" rel="noopener noreferrer">Temporal · from()</a>
+	<div class="slide-footer"><span>27 / 57</span></div>
 	
 </section>
-<section class="slide " id="slide-14" aria-label="28. PlainDateTime">
+<section class="slide from-formats " id="slide-14" aria-label="28. PlainDateTime">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">03 / Новая модель Temporal</div>
 	<h2>PlainDateTime</h2>
-	<p class="lead">Дата и время без привязки к часовому поясу.</p>
-	<pre><code class="language-javascript">const appointment =
-  Temporal.PlainDateTime.from(
-    &quot;2026-10-28T10:00&quot;
-  );</code></pre>
-	<p class="callout">«28 октября в 10:00». Где? Пока не определено.</p>
-	<div class="slide-footer"><span>28 / 48</span></div>
+<pre><code class="language-javascript">const appointment = Temporal.PlainDateTime.from(
+  &quot;2026-10-28T10:00&quot;
+);
+Temporal.PlainDateTime.from({
+  year: 2026, month: 10, day: 28, hour: 10
+});
+Temporal.PlainDateTime.from(appointment);</code></pre><p class="callout">Строка, поля даты и времени или PlainDateTime.<br>Дата обязательна; время можно опустить — будет 00:00.</p>
+<a class="copyright" href="https://tc39.es/proposal-temporal/docs/plaindatetime.html#from" target="_blank" rel="noopener noreferrer">Temporal · from()</a>
+	<div class="slide-footer"><span>28 / 57</span></div>
 	
 </section>
-<section class="slide " id="slide-15" aria-label="29. ZonedDateTime">
+<section class="slide from-formats " id="slide-15" aria-label="29. ZonedDateTime">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">03 / Новая модель Temporal</div>
 	<h2>ZonedDateTime</h2>
-	<p class="lead">Локальное время связано с зоной и моментом.</p>
-	<pre><code class="language-javascript">const meeting = Temporal.ZonedDateTime.from(
+<pre><code class="language-javascript">const meeting = Temporal.ZonedDateTime.from(
   &quot;2026-10-28T10:00+03:00[Europe/Moscow]&quot;
-);</code></pre>
-	<div class="rows">
-		<div><span>+03:00</span><strong>Смещение на эту дату</strong></div>
-		<div><span>Europe/Moscow</span><strong>Правила часового пояса</strong></div>
-	</div>
-	<div class="slide-footer"><span>29 / 48</span></div>
+);
+Temporal.ZonedDateTime.from({
+  year: 2026, month: 10, day: 28, hour: 10,
+  timeZone: &quot;Europe/Moscow&quot;
+});</code></pre><p class="callout">Зона в строке: [Europe/Moscow] или [+03:00]. В объекте — timeZone.<br>Также принимает ZonedDateTime. Смещение без [зоны] не подходит.</p>
+<a class="copyright" href="https://tc39.es/proposal-temporal/docs/zoneddatetime.html#from" target="_blank" rel="noopener noreferrer">Temporal · from()</a>
+	<div class="slide-footer"><span>29 / 57</span></div>
 	
 </section>
-<section class="slide " id="slide-16" aria-label="30. Duration">
+<section class="slide dense" id="fixed-offset-zone" aria-label="30. Москва и UTC+3 — не одно и то же">
+<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+<div class="eyebrow">03 / Новая модель Temporal</div>
+<h2>Москва и UTC+3 — не одно и то же</h2>
+<pre><code class="language-javascript">Temporal.ZonedDateTime.from(
+  "2010-07-01T12:00[Europe/Moscow]"
+).toInstant().toString(); // "2010-07-01T08:00:00Z"
+
+Temporal.ZonedDateTime.from(
+  "2010-07-01T12:00[+03:00]"
+).toInstant().toString(); // "2010-07-01T09:00:00Z"</code></pre>
+<p class="callout">Europe/Moscow — правила региона; летом 2010 действовало +04:00.<br>[+03:00] — постоянное смещение для любой даты, без перевода часов.</p>
+<a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/ZonedDateTime" target="_blank" rel="noopener noreferrer">MDN · зоны и смещения</a>
+<div class="slide-footer"><span>30 / 57</span></div>
+</section>
+<section class="slide from-formats " id="slide-16" aria-label="31. Duration">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">03 / Новая модель Temporal</div>
 	<h2>Duration</h2>
-	<pre><code class="language-javascript">const duration = Temporal.Duration.from({
-  days: 1
-});</code></pre>
-	<p class="equation">1 день <em>≠</em> всегда 24 часа</p>
-	<p class="callout">Единицы продолжительности — часть требований.</p>
-	<div class="slide-footer"><span>30 / 48</span></div>
+<pre><code class="language-javascript">const duration = Temporal.Duration.from({ days: 1 });
+Temporal.Duration.from(&quot;P1D&quot;);   // 1 день
+Temporal.Duration.from(&quot;PT24H&quot;); // 24 часа
+Temporal.Duration.from(duration); // новый Duration</code></pre><p class="callout">ISO-строка длительности, объект с единицами или Duration.<br>P1M — месяц, PT1M — минута. День не всегда равен 24 часам.</p>
+<a class="copyright" href="https://tc39.es/proposal-temporal/docs/duration.html#from" target="_blank" rel="noopener noreferrer">Temporal · from()</a>
+	<div class="slide-footer"><span>31 / 57</span></div>
 	
 </section>
-<section class="slide nuance-slide" id="duration-relative-to" aria-label="31. Один месяц — сколько это дней?">
+<section class="slide dense" id="meeting-conversions" aria-label="32. От формы до момента встречи">
+<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+<div class="eyebrow">03 / Новая модель Temporal</div>
+<h2>От формы до момента встречи</h2>
+<pre><code class="language-javascript">const local = Temporal.PlainDateTime.from(&quot;2026-10-28T10:00&quot;);
+const timeZone = Temporal.Now.timeZoneId(); // зона устройства
+const meeting = local.toZonedDateTime(timeZone);
+const start = meeting.toInstant();
+
+// Если timeZone === &quot;Europe/Moscow&quot;:
+start.toString(); // &quot;2026-10-28T07:00:00Z&quot;
+meeting.withTimeZone(&quot;UTC&quot;).hour; // 7</code></pre>
+<p class="callout">В браузере: дата и время из формы + зона устройства → момент встречи.<br>withTimeZone() меняет представление, сохраняя момент.</p>
+<a class="copyright" href="https://tc39.es/proposal-temporal/docs/plaindatetime.html#toZonedDateTime" target="_blank" rel="noopener noreferrer">Temporal · документация</a>
+<div class="slide-footer"><span>32 / 57</span></div>
+</section>
+<section class="slide dense" id="meeting-duration" aria-label="33. Сколько длилась встреча?">
+<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+<div class="eyebrow">03 / Новая модель Temporal</div>
+<h2>Сколько длилась встреча?</h2>
+<pre><code class="language-javascript">// start — Instant из предыдущего примера
+const end = start.add({ hours: 1, minutes: 30 });
+const elapsed = start.until(end);
+elapsed.toString(); // &quot;PT5400S&quot;
+elapsed.total({ unit: &quot;minutes&quot; }); // 90
+
+end.since(start).total({ unit: &quot;minutes&quot; }); // 90
+end.until(start).total({ unit: &quot;minutes&quot; }); // -90</code></pre>
+<p class="callout">start.until(end) и end.since(start) → 90 минут.<br>Меняем начало и конец местами → −90 минут.</p>
+<a class="copyright" href="https://tc39.es/proposal-temporal/docs/instant.html#until" target="_blank" rel="noopener noreferrer">Temporal · документация</a>
+<div class="slide-footer"><span>33 / 57</span></div>
+</section>
+<section class="slide api-contract" id="api-instant" aria-label="34. Instant: напоминание">
+<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+<div class="eyebrow">03 / Новая модель Temporal · PostgreSQL → API → UI → API → PostgreSQL</div>
+<h2>Instant: напоминание</h2>
+<p class="api-storage"><strong>PostgreSQL:</strong> <code>remind_at timestamptz</code><br><span>2026-10-28 07:00:00+00 → 07:15:00+00</span></p>
+<pre><code class="language-javascript">const api = { remindAt: &quot;2026-10-28T07:00:00Z&quot; };
+const reminder = Temporal.Instant.from(api.remindAt);
+const updated = reminder.add({ minutes: 15 });
+const body = JSON.stringify({ remindAt: updated.toString() });
+// → {&quot;remindAt&quot;:&quot;2026-10-28T07:15:00Z&quot;}</code></pre>
+<p class="callout">Момент передаём с Z / смещением. Бэкенд записывает его в timestamptz.</p>
+<a class="copyright" href="https://www.postgresql.org/docs/current/datatype-datetime.html" target="_blank" rel="noopener noreferrer">PostgreSQL · типы даты и времени</a>
+<div class="slide-footer"><span>34 / 57</span></div>
+</section>
+<section class="slide api-contract" id="api-plaindate" aria-label="35. PlainDate: день доставки">
+<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+<div class="eyebrow">03 / Новая модель Temporal · PostgreSQL → API → UI → API → PostgreSQL</div>
+<h2>PlainDate: день доставки</h2>
+<p class="api-storage"><strong>PostgreSQL:</strong> <code>delivery_date date</code><br><span>2026-10-28 → 2026-10-29</span></p>
+<pre><code class="language-javascript">const api = { deliveryDate: &quot;2026-10-28&quot; };
+const delivery = Temporal.PlainDate.from(api.deliveryDate);
+const updated = delivery.add({ days: 1 });
+const body = JSON.stringify({ deliveryDate: updated.toString() });
+// → {&quot;deliveryDate&quot;:&quot;2026-10-29&quot;}</code></pre>
+<p class="callout">Календарный день проходит весь путь без полуночи, UTC и смены зоны</p>
+<a class="copyright" href="https://www.postgresql.org/docs/current/datatype-datetime.html" target="_blank" rel="noopener noreferrer">PostgreSQL · типы даты и времени</a>
+<div class="slide-footer"><span>35 / 57</span></div>
+</section>
+<section class="slide api-contract" id="api-plaintime" aria-label="36. PlainTime: время открытия">
+<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+<div class="eyebrow">03 / Новая модель Temporal · PostgreSQL → API → UI → API → PostgreSQL</div>
+<h2>PlainTime: время открытия</h2>
+<p class="api-storage"><strong>PostgreSQL:</strong> <code>opens_at time without time zone</code><br><span>09:30:00 → 10:00:00</span></p>
+<pre><code class="language-javascript">const api = { opensAt: &quot;09:30:00&quot; };
+const opening = Temporal.PlainTime.from(api.opensAt);
+const updated = opening.add({ minutes: 30 });
+const body = JSON.stringify({ opensAt: updated.toString() });
+// → {&quot;opensAt&quot;:&quot;10:00:00&quot;}</code></pre>
+<p class="callout">Это часы работы, а не момент. Зону магазина храним отдельно, если нужна.</p>
+<a class="copyright" href="https://www.postgresql.org/docs/current/datatype-datetime.html" target="_blank" rel="noopener noreferrer">PostgreSQL · типы даты и времени</a>
+<div class="slide-footer"><span>36 / 57</span></div>
+</section>
+<section class="slide api-contract" id="api-plaindatetime" aria-label="37. PlainDateTime: черновик встречи">
+<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+<div class="eyebrow">03 / Новая модель Temporal · PostgreSQL → API → UI → API → PostgreSQL</div>
+<h2>PlainDateTime: черновик встречи</h2>
+<p class="api-storage"><strong>PostgreSQL:</strong> <code>local_start timestamp without time zone</code><br><span>2026-10-28 10:00:00 → 11:00:00</span></p>
+<pre><code class="language-javascript">const api = { localStart: &quot;2026-10-28T10:00:00&quot; };
+const draft = Temporal.PlainDateTime.from(api.localStart);
+const updated = draft.add({ hours: 1 });
+const body = JSON.stringify({ localStart: updated.toString() });
+// → {&quot;localStart&quot;:&quot;2026-10-28T11:00:00&quot;}</code></pre>
+<p class="callout">Пока это черновик без зоны. По нему ещё нельзя запускать напоминание.</p>
+<a class="copyright" href="https://www.postgresql.org/docs/current/datatype-datetime.html" target="_blank" rel="noopener noreferrer">PostgreSQL · типы даты и времени</a>
+<div class="slide-footer"><span>37 / 57</span></div>
+</section>
+<section class="slide api-contract" id="api-zoneddatetime" aria-label="38. ZonedDateTime: встреча с зоной">
+<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+<div class="eyebrow">03 / Новая модель Temporal · PostgreSQL → API → UI → API → PostgreSQL</div>
+<h2>ZonedDateTime: встреча с зоной</h2>
+<p class="api-storage"><strong>PostgreSQL:</strong> <code>starts_at timestamptz + time_zone text</code><br><span>07:00:00+00 → 08:00:00+00; Europe/Moscow сохраняется</span></p>
+<pre><code class="language-javascript">const api = { startsAt: &quot;2026-10-28T07:00:00Z&quot;,
+              timeZone: &quot;Europe/Moscow&quot; };
+const meeting = Temporal.ZonedDateTime.from(
+  `${api.startsAt}[${api.timeZone}]`
+);
+const updated = meeting.add({ hours: 1 });
+const body = JSON.stringify({
+  startsAt: updated.toInstant().toString(), // 08:00:00Z
+  timeZone: updated.timeZoneId
+});</code></pre>
+<p class="callout">В JSON и БД — два поля. timestamptz сам не сохраняет Europe/Moscow.</p>
+<a class="copyright" href="https://www.postgresql.org/docs/current/datatype-datetime.html" target="_blank" rel="noopener noreferrer">PostgreSQL · типы даты и времени</a>
+<div class="slide-footer"><span>38 / 57</span></div>
+</section>
+<section class="slide api-contract" id="api-duration" aria-label="39. Duration: длительность занятия">
+<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+<div class="eyebrow">03 / Новая модель Temporal · PostgreSQL → API → UI → API → PostgreSQL</div>
+<h2>Duration: длительность занятия</h2>
+<p class="api-storage"><strong>PostgreSQL:</strong> <code>duration_minutes integer</code><br><span>90 → 105</span></p>
+<pre><code class="language-javascript">const api = { durationMinutes: 90 };
+const lesson = Temporal.Duration.from({
+  minutes: api.durationMinutes
+});
+const updated = lesson.add({ minutes: 15 });
+const body = JSON.stringify({
+  durationMinutes: updated.total({ unit: &quot;minutes&quot; })
+});
+// → {&quot;durationMinutes&quot;:105}</code></pre>
+<p class="callout">БД и API хранят число минут. Duration используем для вычислений на фронтенде.</p>
+<a class="copyright" href="https://www.postgresql.org/docs/current/datatype-datetime.html" target="_blank" rel="noopener noreferrer">PostgreSQL · типы даты и времени</a>
+<div class="slide-footer"><span>39 / 57</span></div>
+</section>
+<section class="slide nuance-slide" id="duration-relative-to" aria-label="40. Один месяц — сколько это дней?">
 <img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
 <div class="eyebrow">03 / Новая модель Temporal</div>
 <h2>Один месяц — сколько это дней?</h2>
@@ -468,11 +611,11 @@ month.total({
 
 month.total({
   unit: &quot;days&quot;, relativeTo: &quot;2026-03-01&quot;
-}); // 31</code></pre><p class="callout">relativeTo задаёт дату, от которой отсчитываем месяц.</p>
+}); // 31</code></pre><p class="callout">relativeTo задаёт дату, от которой отсчитываем месяц</p>
 <a class="copyright" href="https://tc39.es/proposal-temporal/docs/duration.html#total" target="_blank" rel="noopener noreferrer">Temporal · документация</a>
-<div class="slide-footer"><span>31 / 48</span></div>
+<div class="slide-footer"><span>40 / 57</span></div>
 </section>
-<section class="slide nuance-slide" id="month-arithmetic" aria-label="32. Прибавить месяц ≠ задать расписание">
+<section class="slide nuance-slide" id="month-arithmetic" aria-label="41. Прибавить месяц ≠ задать расписание">
 <img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
 <div class="eyebrow">03 / Новая модель Temporal</div>
 <h2>Прибавить месяц ≠ задать расписание</h2>
@@ -481,11 +624,11 @@ const next = start.add({ months: 1 });
 
 next.toString();                        // &quot;2026-02-28&quot;
 next.add({ months: 1 }).toString();      // &quot;2026-03-28&quot;
-next.subtract({ months: 1 }).toString(); // &quot;2026-01-28&quot;</code></pre><p class="callout">Для подписки храните правило: исходное число или последний день месяца.</p>
+next.subtract({ months: 1 }).toString(); // &quot;2026-01-28&quot;</code></pre><p class="callout">Для подписки храните правило: исходное число или последний день месяца</p>
 <a class="copyright" href="https://tc39.es/proposal-temporal/docs/plaindate.html#add" target="_blank" rel="noopener noreferrer">Temporal · документация</a>
-<div class="slide-footer"><span>32 / 48</span></div>
+<div class="slide-footer"><span>41 / 57</span></div>
 </section>
-<section class="slide dense" id="slide-17" aria-label="33. Следующий день или 24 часа?">
+<section class="slide dense" id="slide-17" aria-label="42. Следующий день или 24 часа?">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">03 / Новая модель Temporal</div>
 	<h2>Следующий день или 24 часа?</h2>
@@ -498,10 +641,10 @@ date.add({ days: 1 }).toString();
 date.add({ hours: 24 }).toString();
 // 2010-03-28T13:00:00+04:00[Europe/Moscow]</code></pre>
 	<p class="callout">Москва, март 2010: переход на летнее время. В 2026 году DST нет.</p>
-	<div class="slide-footer"><span>33 / 48</span></div>
+	<div class="slide-footer"><span>42 / 57</span></div>
 	
 </section>
-<section class="slide dense dst-policy" id="slide-18" aria-label="34. Локальное время бывает неоднозначным">
+<section class="slide dense dst-policy" id="slide-18" aria-label="43. Локальное время бывает неоднозначным">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">03 / Новая модель Temporal</div>
 	<h2>Локальное время бывает неоднозначным</h2>
@@ -517,11 +660,11 @@ date.add({ hours: 24 }).toString();
   &quot;2010-10-31T02:30[Europe/Moscow]&quot;,
   { disambiguation: &quot;reject&quot; }
 ); // RangeError: время неоднозначно</code></pre>
-	<p class="callout">disambiguation определяет, как разрешить пропуск или повтор времени.</p>
-<div class="slide-footer"><span>34 / 48</span></div>
+	<p class="callout">disambiguation определяет, как разрешить пропуск или повтор времени</p>
+<div class="slide-footer"><span>43 / 57</span></div>
 	
 </section>
-<section class="slide disambiguation-slide" id="disambiguation-options" aria-label="35. disambiguation: четыре стратегии">
+<section class="slide disambiguation-slide" id="disambiguation-options" aria-label="44. disambiguation: четыре стратегии">
 <img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
 <div class="eyebrow">03 / Новая модель Temporal</div>
 <h2>disambiguation: четыре стратегии</h2>
@@ -530,11 +673,11 @@ date.add({ hours: 24 }).toString();
 <tr><td><code>later</code></td><td>Второе наступление</td><td>Сдвиг вперёд на величину пропуска</td></tr>
 <tr class="default-policy"><td><code>compatible</code><small>По умолчанию</small></td><td>Как earlier</td><td>Как later</td></tr>
 <tr><td><code>reject</code></td><td>RangeError</td><td>RangeError</td></tr>
-</tbody></table><p class="callout">Если время однозначно, все четыре варианта дают один результат.</p>
+</tbody></table><p class="callout">Если время однозначно, все четыре варианта дают один результат</p>
 <a class="copyright" href="https://tc39.es/proposal-temporal/docs/timezone.html" target="_blank" rel="noopener noreferrer">Temporal · разрешение неоднозначностей</a>
-<div class="slide-footer"><span>35 / 48</span></div>
+<div class="slide-footer"><span>44 / 57</span></div>
 </section>
-<section class="slide disambiguation-slide" id="disambiguation-moscow" aria-label="36. Одни и те же 02:30 — разные решения">
+<section class="slide disambiguation-slide" id="disambiguation-moscow" aria-label="45. Одни и те же 02:30 — разные решения">
 <img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
 <div class="eyebrow">03 / Новая модель Temporal</div>
 <h2>Одни и те же 02:30 — разные решения</h2>
@@ -546,11 +689,11 @@ date.add({ hours: 24 }).toString();
 <tr><td><code>later</code></td><td>03:30 · UTC+04:00</td><td>02:30 · UTC+03:00</td></tr>
 <tr class="default-policy"><td><code>compatible</code></td><td>03:30 · UTC+04:00</td><td>02:30 · UTC+04:00</td></tr>
 <tr><td><code>reject</code></td><td>RangeError</td><td>RangeError</td></tr>
-</tbody></table><p class="disambiguation-note">Москва, 2010 год · вход: 02:30 без явного UTC-смещения.</p>
+</tbody></table><p class="disambiguation-note">Москва, 2010 год · вход: 02:30 без явного UTC-смещения</p>
 <a class="copyright" href="https://tc39.es/proposal-temporal/docs/timezone.html" target="_blank" rel="noopener noreferrer">Temporal · разрешение неоднозначностей</a>
-<div class="slide-footer"><span>36 / 48</span></div>
+<div class="slide-footer"><span>45 / 57</span></div>
 </section>
-<section class="slide " id="slide-19" aria-label="37. Новое значение. Исходное не меняется.">
+<section class="slide " id="slide-19" aria-label="46. Новое значение. Исходное не меняется.">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">03 / Новая модель Temporal</div>
 	<h2>Новое значение. Исходное не меняется.</h2>
@@ -558,12 +701,15 @@ date.add({ hours: 24 }).toString();
 const nextDay = date.add({ days: 1 });
 
 date.toString();    // &quot;2026-10-28&quot;
-nextDay.toString(); // &quot;2026-10-29&quot;</code></pre>
-	<p class="callout">Неизменяемость делает работу с данными предсказуемее.</p>
-	<div class="slide-footer"><span>37 / 48</span></div>
+nextDay.toString(); // &quot;2026-10-29&quot;
+
+const firstDay = date.with({ day: 1 });
+firstDay.toString(); // &quot;2026-10-01&quot;</code></pre>
+	<p class="callout">add() прибавляет, with() заменяет поля. Оба возвращают новый объект.</p>
+	<div class="slide-footer"><span>46 / 57</span></div>
 	
 </section>
-<section class="slide nuance-slide" id="temporal-comparison" aria-label="38. Одинаковая дата ≠ тот же объект">
+<section class="slide nuance-slide" id="temporal-comparison" aria-label="47. Одинаковая дата ≠ тот же объект">
 <img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
 <div class="eyebrow">03 / Новая модель Temporal</div>
 <h2>Одинаковая дата ≠ тот же объект</h2>
@@ -575,9 +721,9 @@ a.equals(b);                     // true
 Temporal.PlainDate.compare(a, b); // 0
 a &lt; b;                          // TypeError</code></pre><p class="callout">Для сортировки: <code>dates.sort(Temporal.PlainDate.compare)</code></p>
 <a class="copyright" href="https://tc39.es/proposal-temporal/docs/plaindate.html#compare" target="_blank" rel="noopener noreferrer">Temporal · документация</a>
-<div class="slide-footer"><span>38 / 48</span></div>
+<div class="slide-footer"><span>47 / 57</span></div>
 </section>
-<section class="slide dense" id="slide-20" aria-label="39. Некорректная дата — явная ошибка">
+<section class="slide dense" id="slide-20" aria-label="48. Некорректная дата — явная ошибка">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">03 / Новая модель Temporal</div>
 	<h2>Некорректная дата — явная ошибка</h2>
@@ -590,10 +736,10 @@ Temporal.PlainDate.from(
 );
 // RangeError</code></pre>
 	<p class="callout">Для объекта по умолчанию — constrain. Для строгой проверки — reject.</p>
-	<div class="slide-footer"><span>39 / 48</span></div>
+	<div class="slide-footer"><span>48 / 57</span></div>
 	
 </section>
-<section class="slide " id="slide-21" aria-label="40. Temporal + Intl">
+<section class="slide " id="slide-21" aria-label="49. Temporal + Intl">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">03 / Новая модель Temporal</div>
 	<h2>Temporal + Intl</h2>
@@ -607,29 +753,36 @@ Temporal.PlainDate.from(
 	<pre><code class="language-javascript">const date = Temporal.PlainDate.from(&quot;2026-10-28&quot;);
 date.toLocaleString(&quot;ru-RU&quot;, { dateStyle: &quot;long&quot; });
 // &quot;28 октября 2026 г.&quot;</code></pre>
-	<div class="slide-footer"><span>40 / 48</span></div>
+	<div class="slide-footer"><span>49 / 57</span></div>
 	
 </section>
-<section class="slide " id="slide-22" aria-label="41. Чего Temporal не решает">
+<section class="slide temporal-tradeoffs" id="slide-22" aria-label="50. Что даёт Temporal и что учесть">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">03 / Новая модель Temporal</div>
-	<h2>Чего Temporal не решает</h2>
-	<div class="cards">
-		<article class="card"><span class="card-index">01</span>
-			<h3>Бизнес-смысл</h3>
-			<p>Не решает, что означает дата в вашем продукте.</p></article>
-		<article class="card"><span class="card-index">02</span>
-			<h3>Потерянные данные</h3>
-			<p>Не восстанавливает исходный часовой пояс.</p></article>
-		<article class="card"><span class="card-index">03</span>
-			<h3>Правила зон</h3>
-			<p>Не отменяет обновление данных часовых поясов.</p></article>
+	<h2>Что даёт Temporal и что учесть</h2>
+	<div class="tradeoff-grid">
+		<article>
+			<h3>Что получаем</h3>
+			<ul>
+				<li>Отдельные типы для разных задач</li>
+				<li>Расчёты с календарём и зонами</li>
+				<li>Операции без изменения исходного объекта</li>
+			</ul>
+		</article>
+		<article>
+			<h3>Что потребуется</h3>
+			<ul>
+				<li>Освоить типы и правила API</li>
+				<li>Настроить обмен с бэком и старым кодом на Date</li>
+				<li>Проверить поддержку; polyfill добавит вес</li>
+			</ul>
+		</article>
 	</div>
-	<p class="callout">Более точные инструменты. Ответственность остаётся у нас.</p>
-	<div class="slide-footer"><span>41 / 48</span></div>
+	<p class="callout">Правила подписки, сохранение зоны и точность часов сервера<br>по-прежнему остаются задачами приложения</p>
+	<div class="slide-footer"><span>50 / 57</span></div>
 	
 </section>
-<section class="slide " id="slide-23" aria-label="42. От боли Date к стандарту">
+<section class="slide " id="slide-23" aria-label="51. От боли Date к стандарту">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">04 / Внедрение и code review</div>
 	<h2>От боли Date к стандарту</h2>
@@ -647,13 +800,13 @@ date.toLocaleString(&quot;ru-RU&quot;, { dateStyle: &quot;long&quot; });
 			<h3>Движки</h3>
 			<p>Реализации и совместимость</p></div>
 	</div>
-	<p class="callout">Статус стандарта и поддержка среды — разные вопросы.</p>
+	<p class="callout">Статус стандарта и поддержка среды — разные вопросы</p>
 	<div class="slide-sources"><a class="copyright" href="https://github.com/tc39/proposal-temporal">TC39 / Temporal ·
 		актуальный статус</a></div>
-	<div class="slide-footer"><span>42 / 48</span></div>
+	<div class="slide-footer"><span>51 / 57</span></div>
 	
 </section>
-<section class="slide support-slide dense" id="temporal-support" aria-label="43. Где Temporal уже работает?">
+<section class="slide support-slide dense" id="temporal-support" aria-label="52. Где Temporal уже работает?">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">04 / Внедрение и code review</div>
 	<h2>Где Temporal уже работает?</h2>
@@ -710,9 +863,9 @@ date.toLocaleString(&quot;ru-RU&quot;, { dateStyle: &quot;long&quot; });
 																						  rel="noopener noreferrer">Node.js
 		26</a><a class="copyright" href="https://bun.com/blog/bun-v1.4" target="_blank" rel="noopener noreferrer">Bun
 		1.4</a></div>
-	<div class="slide-footer"><span>43 / 48</span></div>
+	<div class="slide-footer"><span>52 / 57</span></div>
 </section>
-<section class="slide dense" id="slide-24" aria-label="44. Перед внедрением проверьте среду">
+<section class="slide dense" id="slide-24" aria-label="53. Перед внедрением проверьте среду">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">04 / Внедрение и code review</div>
 	<h2>Перед внедрением проверьте среду</h2>
@@ -744,10 +897,10 @@ date.toLocaleString(&quot;ru-RU&quot;, { dateStyle: &quot;long&quot; });
 								  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal#browser_compatibility">Таблица
 		совместимости MDN</a><a class="copyright" href="https://github.com/js-temporal/temporal-polyfill">@js-temporal/polyfill</a>
 	</div>
-	<div class="slide-footer"><span>44 / 48</span></div>
+	<div class="slide-footer"><span>53 / 57</span></div>
 	
 </section>
-<section class="slide " id="slide-25" aria-label="45. Миграция начинается со смысла">
+<section class="slide " id="slide-25" aria-label="54. Миграция начинается со смысла">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">04 / Внедрение и code review</div>
 	<h2>Миграция начинается со смысла</h2>
@@ -759,10 +912,10 @@ const instant = Temporal.Instant.fromEpochMilliseconds(
   legacy.getTime()
 );</code></pre>
 	<p class="callout">Начните с новой функции. Сохраните адаптеры на границах.</p>
-	<div class="slide-footer"><span>45 / 48</span></div>
+	<div class="slide-footer"><span>54 / 57</span></div>
 	
 </section>
-<section class="slide comparison" id="slide-26" aria-label="46. Переписываем: календарная дата">
+<section class="slide comparison" id="slide-26" aria-label="55. Переписываем: календарная дата">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">04 / Внедрение и code review</div>
 	<h2>Переписываем: календарная дата</h2>
@@ -785,11 +938,11 @@ const nextDay =
   date.add({ days: 1 });</code></pre>
 		</div>
 	</div>
-	<p class="callout">Намерение читается прямо из типа.</p>
-	<div class="slide-footer"><span>46 / 48</span></div>
+	<p class="callout">Намерение читается прямо из типа</p>
+	<div class="slide-footer"><span>55 / 57</span></div>
 	
 </section>
-<section class="slide " id="slide-27" aria-label="47. Code review: проверяем смысл">
+<section class="slide " id="slide-27" aria-label="56. Code review: проверяем смысл">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">04 / Внедрение и code review</div>
 	<h2>Code review: проверяем смысл</h2>
@@ -801,20 +954,20 @@ const nextDay =
 		<div><b>05</b><span>Проверены ли границы месяца, года и невалидные даты?</span></div>
 		<div><b>06</b><span>Совпадает ли поведение с бизнес-требованиями?</span></div>
 	</div>
-	<p class="callout">LLM генерирует код. Корректность подтверждают требования и тесты.</p>
-	<div class="slide-footer"><span>47 / 48</span></div>
+	<p class="callout">Ожидаемый результат в тестах должен следовать из требований</p>
+	<div class="slide-footer"><span>56 / 57</span></div>
 	
 
 </section>
-<section class="slide finale" id="slide-28" aria-label="48. Temporal делает намерения явнее">
+<section class="slide finale" id="slide-28" aria-label="57. Temporal делает намерения явнее">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">04 / Внедрение и code review</div>
 	<h2>Temporal делает<br>намерения явнее</h2>
-	<div class="takeaways"><p><b>01</b> Различайте момент времени и календарную дату.</p>
-		<p><b>02</b> Разделяйте календарные дни и прошедшие часы.</p>
-		<p><b>03</b> Проверяйте зоны, границы и код от LLM.</p></div>
+	<div class="takeaways"><p><b>01</b> Различайте момент времени и календарную дату</p>
+		<p><b>02</b> Разделяйте календарные дни и прошедшие часы</p>
+		<p><b>03</b> Проверяйте зоны, границы и неверный ввод</p></div>
 	<p class="thanks">Спасибо! <em>Вопросы?</em></p>
-	<div class="slide-footer"><span>48 / 48</span></div>
+	<div class="slide-footer"><span>57 / 57</span></div>
 	
 </section>
 <div class="progress"></div>

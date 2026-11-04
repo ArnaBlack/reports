@@ -204,3 +204,32 @@
     -webkit-text-stroke: 1px #000;
     paint-order: stroke fill;
 }
+
+:root {
+    --page-background: black;
+}
+
+/* Input formats stay readable alongside each type's examples. */
+.slide.from-formats pre { padding: 20px 25px; margin-bottom: 20px; }
+.slide.from-formats pre code { font-size: 20px; line-height: 1.4; }
+.slide.from-formats .split pre code { font-size: 18px; }
+.slide.from-formats .callout { font-size: 20px; }
+
+/* Six API contracts: schema, JSON round trip, and one takeaway. */
+.slide.api-contract .eyebrow { font-size: 12px; letter-spacing: 1px; margin-bottom: 14px; }
+.slide.api-contract h2 { font-size: 40px; margin-bottom: 16px; }
+.slide.api-contract .api-storage { font-size: 18px; line-height: 1.4; margin-bottom: 14px; }
+.slide.api-contract .api-storage span { color: #b2cbc4; font-size: 16px; }
+.slide.api-contract pre { padding: 16px 22px; margin-bottom: 16px; }
+.slide.api-contract pre code { font-size: 17px; line-height: 1.4; }
+.slide.api-contract .callout { font-size: 18px; }
+
+/* Type selection and adoption tradeoffs summarize the speaker's story. */
+.type-choices span { margin-bottom: 8px; font-size: 20px; }
+.tradeoff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+.tradeoff-grid article { padding: 24px; border: 1px solid #486a61; border-radius: 14px; background: #0d191bdf; }
+.slide .tradeoff-grid h3 { color: #7df5d1; margin-bottom: 18px; }
+.slide .tradeoff-grid ul { margin: 0; padding-left: 22px; font-size: 22px; }
+.slide .tradeoff-grid li { margin-bottom: 12px; }
+.slide .tradeoff-grid li:last-child { margin-bottom: 0; }
+.slide.temporal-tradeoffs .callout { font-size: 20px; }

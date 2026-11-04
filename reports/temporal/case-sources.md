@@ -1,6 +1,6 @@
 # Источники кейсов и совместимости
 
-Кейсы обновлены 30 октября 2026. В докладе четыре JavaScript/TypeScript-кейса: Novu, Medusa, Moment.js и Blockscout, а также учебный пример toISOString. Заметки спикера — только в speaker-notes.md; всего 48 слайдов. Денежные суммы убытков для этих кейсов не подтверждены и не приводятся.
+Кейсы обновлены 30 октября 2026. В докладе четыре JavaScript/TypeScript-кейса: Novu, Medusa, Moment.js и Blockscout, а также учебный пример toISOString. Заметки спикера — только в speaker-notes.md; всего 57 слайдов. Денежные суммы убытков для этих кейсов не подтверждены и не приводятся.
 
 ## Кейсы и происхождение кода
 
@@ -33,3 +33,37 @@ Y2K, Co-op Bank, Azure и Telstra убраны из слайдов: по зап�
 - [MDN: конструктор Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date) — один числовой аргумент означает миллисекунды от Unix epoch; конструктор с компонентами нормализует переполнение. Показаны числовые `0` и `13`, не строки `"0"` и `"13"`.
 - [TC39: PlainDate.from](https://tc39.es/proposal-temporal/docs/plaindate.html#from) — невалидная строка вызывает исключение, для объектов `overflow` по умолчанию равен `constrain`; строгая проверка требует `reject`.
 
+
+## Форматы from()
+
+Проверено 03.11.2026. На слайдах показаны основные формы входа шести рассматриваемых типов; дополнительные преобразования и ограничения — в Markdown-заметках.
+
+- [TC39: instant.from](https://tc39.es/proposal-temporal/docs/instant.html#from)
+- [TC39: plaindate.from](https://tc39.es/proposal-temporal/docs/plaindate.html#from)
+- [TC39: plaintime.from](https://tc39.es/proposal-temporal/docs/plaintime.html#from)
+- [TC39: plaindatetime.from](https://tc39.es/proposal-temporal/docs/plaindatetime.html#from)
+- [TC39: zoneddatetime.from](https://tc39.es/proposal-temporal/docs/zoneddatetime.html#from)
+- [TC39: duration.from](https://tc39.es/proposal-temporal/docs/duration.html#from)
+
+## Преобразования и разница между моментами
+
+- [PlainDateTime.toZonedDateTime](https://tc39.es/proposal-temporal/docs/plaindatetime.html#toZonedDateTime)
+- [ZonedDateTime.withTimeZone](https://tc39.es/proposal-temporal/docs/zoneddatetime.html#withTimeZone)
+- [Instant.until / since](https://tc39.es/proposal-temporal/docs/instant.html#until)
+- [Duration.total](https://tc39.es/proposal-temporal/docs/duration.html#total)
+- [PlainDate.with](https://tc39.es/proposal-temporal/docs/plaindate.html#with)
+
+## Фиксированная зона и регион
+
+[MDN: ZonedDateTime](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/ZonedDateTime): зона может быть именованной или фиксированной. Для строк from() нужна аннотация в квадратных скобках. На слайде сравниваются Europe/Moscow и [+03:00] на 01.07.2010.
+
+## Примеры БД → API → Temporal → API → БД
+
+Шесть практических сценариев спроектированы для доклада; это не исходники компаний и не обещание автоматического соответствия типов ORM. Выбрана PostgreSQL.
+
+- [Типы PostgreSQL](https://www.postgresql.org/docs/current/datatype-datetime.html): date, time, timestamp, timestamptz и interval. timestamptz не сохраняет имя зоны; вывод зависит от зоны сессии.
+- [Temporal: сериализация](https://tc39.es/proposal-temporal/docs/strings.html): на слайдах явные toString() и JSON.stringify().
+- Для Duration выбран ограниченный контракт целых минут и столбец integer. Вход валидируется сервером, запись выполняется параметризованными запросами.
+- Для дат и времени согласовать точность: PostgreSQL time/timestamp — до микросекунд, Temporal — до наносекунд. Примеры используют целые секунды. Для PlainTime контракт исключает допустимое в PostgreSQL 24:00:00; разрешены часы 00–23. Не все значения диапазона PostgreSQL и Temporal взаимно представимы.
+
+Уточнение примера api-duration: API передаёт числовое поле durationMinutes. На фронтенде Duration.from({ minutes: api.durationMinutes }), обратно — число из total({ unit: "minutes" }). Столбец PostgreSQL duration_minutes integer.
