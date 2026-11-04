@@ -233,3 +233,14 @@
 .slide .tradeoff-grid li { margin-bottom: 12px; }
 .slide .tradeoff-grid li:last-child { margin-bottom: 0; }
 .slide.temporal-tradeoffs .callout { font-size: 20px; }
+
+#disambiguation-options h2 { font-size: 41px; margin-bottom: 14px; }
+#disambiguation-options .policy-context { font-size: 19px; color: #b2cbc4; margin-bottom: 16px; }
+#disambiguation-options .disambiguation-table { margin: 0 0 18px; font-size: 21px; }
+#disambiguation-options .disambiguation-table th { font-size: 18px; }
+#disambiguation-options .disambiguation-table td { padding: 10px 14px; }
+#disambiguation-options .callout { font-size: 20px; }
+#disambiguation-options .disambiguation-table { line-height: 1.2; }
+#disambiguation-options .disambiguation-table th,
+#disambiguation-options .disambiguation-table td { padding: 9px 12px; }
+#disambiguation-options .disambiguation-table small { margin-top: 5px; line-height: 1.2; }

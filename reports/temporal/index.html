@@ -661,19 +661,25 @@ date.add({ hours: 24 }).toString();
   { disambiguation: &quot;reject&quot; }
 ); // RangeError: время неоднозначно</code></pre>
 	<p class="callout">disambiguation определяет, как разрешить пропуск или повтор времени</p>
+<div class="slide-sources">
+	<a class="copyright" href="https://lists.iana.org/hyperkitty/list/tz%40iana.org/thread/622OBGR7YPUFP2JUQLOD44RTI6CA7FLM/" target="_blank" rel="noopener noreferrer">IANA · переходы Москвы в 2010 году</a>
+	<a class="copyright" href="https://www.timeanddate.com/time/change/russia/moscow-city?year=2010" target="_blank" rel="noopener noreferrer">Time and Date · Москва, 2010</a>
+</div>
 <div class="slide-footer"><span>43 / 57</span></div>
 	
 </section>
-<section class="slide disambiguation-slide" id="disambiguation-options" aria-label="44. disambiguation: четыре стратегии">
+<section class="slide disambiguation-slide" id="disambiguation-options" aria-label="44. disambiguation: что делать с 02:30?">
 <img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
 <div class="eyebrow">03 / Новая модель Temporal</div>
-<h2>disambiguation: четыре стратегии</h2>
-<table class="disambiguation-table"><thead><tr><th>Значение</th><th>Время повторилось</th><th>Время пропущено</th></tr></thead><tbody>
-<tr><td><code>earlier</code></td><td>Первое наступление</td><td>Сдвиг назад на величину пропуска</td></tr>
-<tr><td><code>later</code></td><td>Второе наступление</td><td>Сдвиг вперёд на величину пропуска</td></tr>
-<tr class="default-policy"><td><code>compatible</code><small>По умолчанию</small></td><td>Как earlier</td><td>Как later</td></tr>
-<tr><td><code>reject</code></td><td>RangeError</td><td>RangeError</td></tr>
-</tbody></table><p class="callout">Если время однозначно, все четыре варианта дают один результат</p>
+<h2>disambiguation: что делать с 02:30?</h2>
+<p class="policy-context">Москва, 2010 год · часы переводят на один час</p>
+<table class="disambiguation-table"><thead><tr><th>Параметр</th><th>Осень: 02:30 было дважды</th><th>Весна: 02:30 не было</th></tr></thead><tbody>
+<tr><td><code>earlier</code></td><td>Первые 02:30<small>До перевода часов назад</small></td><td>01:30<small>На час раньше введённого времени</small></td></tr>
+<tr><td><code>later</code></td><td>Вторые 02:30<small>После перевода часов назад</small></td><td>03:30<small>На час позже введённого времени</small></td></tr>
+<tr class="default-policy"><td><code>compatible</code><small>Если параметр не указан</small></td><td>Первые 02:30</td><td>03:30</td></tr>
+<tr><td><code>reject</code></td><td>Ошибка RangeError</td><td>Ошибка RangeError</td></tr>
+</tbody></table>
+<p class="callout">Нужно отклонить такой ввод? Укажите <code>reject</code><br>По умолчанию Temporal сам выберет результат</p>
 <a class="copyright" href="https://tc39.es/proposal-temporal/docs/timezone.html" target="_blank" rel="noopener noreferrer">Temporal · разрешение неоднозначностей</a>
 <div class="slide-footer"><span>44 / 57</span></div>
 </section>
@@ -696,7 +702,7 @@ date.add({ hours: 24 }).toString();
 <section class="slide " id="slide-19" aria-label="46. Новое значение. Исходное не меняется.">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">03 / Новая модель Temporal</div>
-	<h2>Новое значение. Исходное не меняется.</h2>
+	<h2>Новое значение. Исходное не меняется</h2>
 	<pre><code class="language-javascript">const date = Temporal.PlainDate.from(&quot;2026-10-28&quot;);
 const nextDay = date.add({ days: 1 });
 
