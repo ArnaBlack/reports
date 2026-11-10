@@ -1,20 +1,250 @@
-@font-face { font-family:PT; src:url('../../../src/shower/fonts/pt-sans-regular.woff2'); }
-@font-face { font-family:PT; src:url('../../../src/shower/fonts/pt-sans-bold.woff2'); font-weight:700; }
-* { box-sizing:border-box; }
-body { margin:0; padding:28px; background:#091815; color:#edf7f3; font:17px/1.4 PT,sans-serif; }
-a { color:#99ffdb; } header h1 { font-size:32px; margin:18px 0 2px; } header p { color:#b5cdc4; margin:0 0 26px; }
-main { display:grid; grid-template-columns:280px minmax(0,1fr); gap:28px; align-items:start; }
-aside { padding:20px; background:#112721; border:1px solid #35594d; border-radius:12px; }
-label { display:block; margin:15px 0 6px; } output { float:right; color:#9affdc; }
-input[type=range], textarea { width:100%; accent-color:#79e1bc; } textarea { padding:10px; background:#061612; color:#fff; border:1px solid #517566; border-radius:6px; font:inherit; resize:vertical; }
-button { display:block; width:100%; margin-top:12px; padding:10px; border:1px solid #719e8d; border-radius:6px; background:#c6f8dc; color:#11261b; font:700 16px PT,sans-serif; cursor:pointer; }
-button:disabled { opacity:.45; cursor:not-allowed; } button:focus-visible,input:focus-visible,textarea:focus-visible { outline:3px solid #f6b38e; outline-offset:3px; }
-.check { font-size:15px; } .hint { font-size:14px; color:#b0c9bf; } #status { margin:0; color:#a4efcd; font-size:15px; } #message { color:#f0c69e; min-height:26px; }
-.preview { min-width:0; } .viewport { overflow:auto; border:1px solid #365b4c; border-radius:10px; background:#102820; }
-#poster { display:block; width:960px; height:540px; }
-#title { width:420px; padding:20px; margin:0; font:700 54px/1.12 PT,sans-serif; color:#fff; overflow-wrap:anywhere; background:transparent; }
-#title strong { color:#8ff5c8; } #title:focus { outline:2px dashed #b8ffe3; outline-offset:-2px; }
-#fallback { width:960px; height:540px; padding:42px 80px; background:linear-gradient(145deg,#28564b,#102a25); }
-#fallback span { font-size:18px; letter-spacing:3px; } #fallback-text { font-size:54px; line-height:1.12; font-weight:700; width:420px; margin:50px 0; overflow-wrap:anywhere; }
-[hidden] { display:none !important; }
-@media(max-width:800px) { body { padding:16px; } main { grid-template-columns:1fr; } aside { max-width:none; } }
+@property --100vw {
+  syntax: "<length>";
+  initial-value: 0px;
+  inherits: false;
+}
+
+:root {
+  /* 1. Записываем ширину экрана в зарегистрированную переменную */
+  --100vw: 100vw; 
+  
+  /* 2. Хак ефт-фефт: превращаем 100vw в чистое число (количество пикселей) */
+  --screen-width-pixels: tan(atan2(var(--100vw), 1px));
+  
+  /* 3. Вычисляем коэффициент масштабирования относительно базового дизайна (1920px) */
+  --scale-factor: calc(var(--screen-width-pixels) / 1920);
+}
+
+body {
+  /* 4. Применяем чистый коэффициент к масштабу страницы */
+  transform: scale(var(--scale-factor));
+  transform-origin: top left;
+  
+  /* Компенсируем ширину, чтобы не ломался скролл */
+  width: calc(100% / var(--scale-factor)); 
+}
+
+@font-face {
+    font-family: PT;
+    src: url('../../../src/shower/fonts/pt-sans-regular.woff2');
+}
+
+@font-face {
+    font-family: PT;
+    src: url('../../../src/shower/fonts/pt-sans-bold.woff2');
+    font-weight: 700;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    position: absolute;
+    margin: 0;
+    padding: 28px;
+    background: #091815;
+    color: #edf7f3;
+    font: 17px/1.4 PT, sans-serif;
+}
+
+a {
+    color: #99ffdb;
+}
+
+header h1 {
+    font-size: 32px;
+    margin: 12px 0 2px;
+}
+
+header p {
+    color: #b5cdc4;
+    margin: 0 0 26px;
+}
+
+main {
+    display: grid;
+    grid-template-columns:280px minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+}
+
+aside {
+    padding: 20px;
+    background: #112721;
+    border: 1px solid #35594d;
+    border-radius: 12px;
+}
+
+label {
+    display: block;
+    margin: 15px 0 6px;
+}
+
+output {
+    float: right;
+    color: #9affdc;
+}
+
+input[type=range], textarea {
+    width: 100%;
+    accent-color: #79e1bc;
+}
+
+textarea {
+    padding: 10px;
+    background: #061612;
+    color: #fff;
+    border: 1px solid #517566;
+    border-radius: 6px;
+    font: inherit;
+    resize: vertical;
+}
+
+button {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    padding: 6px;
+    border: 1px solid #719e8d;
+    border-radius: 6px;
+    background: #c6f8dc;
+    color: #11261b;
+    font: 700 16px PT, sans-serif;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 3px solid #f6b38e;
+    outline-offset: 3px;
+}
+
+.check {
+    font-size: 15px;
+}
+
+.hint {
+    font-size: 14px;
+    color: #b0c9bf;
+}
+
+#status {
+    margin: 0;
+    color: #a4efcd;
+    font-size: 15px;
+}
+
+#message {
+    color: #f0c69e;
+    min-height: 26px;
+}
+
+.preview {
+    min-width: 0;
+}
+
+.viewport {
+    position: relative;
+    width: 100%;
+    max-width: 1398px;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid #365b4c;
+    border-radius: 10px;
+    background: #102820;
+}
+
+#poster {
+    display: block;
+    width: 960px;
+    height: 540px;
+}
+
+#title {
+    width: 420px;
+    padding: 20px;
+    margin: 0;
+    font: 700 54px/1.12 PT, sans-serif;
+    color: #fff;
+    overflow-wrap: anywhere;
+    background: transparent;
+}
+
+#title strong {
+    color: #8ff5c8;
+}
+
+#title:focus {
+    outline: 2px dashed #b8ffe3;
+    outline-offset: -2px;
+}
+
+#fallback {
+    width: 960px;
+    height: 540px;
+    padding: 42px 80px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(#071b16aa, #071b16aa),
+        url("../../../src/picture/sb-background/image1.jpeg") center / cover;
+}
+
+#fallback span {
+    font-size: 18px;
+    letter-spacing: 3px;
+}
+
+#fallback-text {
+    font-size: 54px;
+    line-height: 1.12;
+    font-weight: 700;
+    width: 420px;
+    position: absolute;
+    left: 110px;
+    top: 140px;
+    padding: 20px;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 800px) {
+    body {
+        padding: 16px;
+    }
+
+    main {
+        grid-template-columns:1fr;
+    }
+
+    aside {
+        max-width: none;
+    }
+}
+
+/* Scale the whole scene equally in both axes, including pointer geometry. */
+#poster, #fallback {
+    transform: scale(var(--preview-scale, 1));
+    transform-origin: top left;
+}
+#fallback::before {
+    content: '';
+    position: absolute;
+    left: 660px;
+    top: 110px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: #ec9e7d;
+}
+#fallback > * { position: relative; }
+#fallback #fallback-text { position: absolute; }
+#fallback > p { position: absolute; left: 80px; top: 452px; }

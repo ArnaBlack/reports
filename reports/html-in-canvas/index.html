@@ -1,18 +1,34 @@
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HTML-in-Canvas: границы возможного</title>
-    <link rel="stylesheet" href="../../src/shower/styles/styles.css">
-    <link rel="stylesheet" href="../../src/highlight/styles/base16/hardcore.min.css">
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body class="shower list">
-    <header class="caption">
-      <h1>HTML-in-Canvas: границы возможного</h1>
-      <p>Анна Расторгуева · 35–40 минут</p></header>
-<section class="slide hero" id="slide-01" aria-label="1. HTML-in-Canvas: границы возможного"><img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true"><div class="eyebrow">HTML × графика</div><h2>HTML-in-Canvas:<br>границы возможного</h2><div class="hero-copy"><p class="lead">Собираем редактор постера<br>и проверяем, что умеет платформа.</p><p class="byline">Анна Расторгуева</p></div><div class="poster"><span>PLATFORM / 2026</span><strong>HTML<br>ВНУТРИ<br><em>CANVAS</em></strong><small>Текст остаётся HTML.<br>Композиция становится графикой.</small><i></i></div><footer class="notes"><p>Представьте: у нас есть небольшой графический редактор. Мы уже умеем рисовать фон, картинки и фигуры. И тут приходит задача: добавьте текст. Чтобы можно было менять слова, выделять их, делать переносы и сохранять результат в картинку. Звучит как обычная работа для браузера. Но наш редактор рисует всё в canvas, и внезапно задача становится гораздо больше, чем казалась.</p><p>Сегодня разберём HTML-in-Canvas — API, который позволяет использовать свёрстанный HTML внутри графического холста. Пройдём весь путь на одном примере: соберём постер с редактируемым текстом. Посмотрим, какую работу браузер возьмёт на себя и где нам всё равно придётся разбираться самим.</p></footer><div class="slide-footer"><span></span><span>01 / 44</span></div></section>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>HTML-in-Canvas: границы возможного</title>
+	<link rel="stylesheet" href="../../src/shower/styles/styles.css">
+	<link rel="stylesheet" href="../../src/highlight/styles/base16/hardcore.min.css">
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body class="shower list">
+<header class="caption">
+	<h1>HTML-in-Canvas: границы возможного</h1>
+	<p>Анна Расторгуева · 35–40 минут</p></header>
+<section class="slide hero" id="slide-01" aria-label="1. HTML-in-Canvas: границы возможного"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">HTML × графика</div>
+	<h2>HTML-in-Canvas:<br>границы возможного</h2>
+	<div class="hero-copy"><p class="lead">Собираем редактор постера<br>и проверяем, что умеет платформа.</p>
+		<p class="byline">Анна Расторгуева</p></div>
+	<div class="poster"><span>PLATFORM / 2026</span><strong>HTML<br>ВНУТРИ<br><em>CANVAS</em></strong><small>Текст
+		остаётся HTML.<br>Композиция становится графикой.</small><i></i></div>
+	<footer class="notes"><p>Представьте: у нас есть небольшой графический редактор. Мы уже умеем рисовать фон, картинки
+		и фигуры. И тут приходит задача: добавьте текст. Чтобы можно было менять слова, выделять их, делать переносы и
+		сохранять результат в картинку. Звучит как обычная работа для браузера. Но наш редактор рисует всё в canvas, и
+		внезапно задача становится гораздо больше, чем казалась.</p>
+		<p>Сегодня разберём HTML-in-Canvas — API, который позволяет использовать свёрстанный HTML внутри графического
+			холста. Пройдём весь путь на одном примере: соберём постер с редактируемым текстом. Посмотрим, какую работу
+			браузер возьмёт на себя и где нам всё равно придётся разбираться самим.</p></footer>
+	<div class="slide-footer"><span></span><span>01 / 44</span></div>
+</section>
 <section class="slide intro-slide" id="about" aria-label="2. Обо мне">
 	<img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">Знакомство</div>
@@ -23,48 +39,292 @@
 		<li>Люблю котиков</li>
 	</ul>
 	<img class="place bottom right" width="500" src="../../src/picture/three-cat-azh.webp" alt="котики">
-	<footer class="notes"><p>Для начала немного обо мне. Меня зовут Анна Расторгуева. Я Fullstack-разработчик из Сбера, в профессии семь лет. И, как можно понять по этому слайду, люблю котиков.</p><p>В этом докладе мне интересно посмотреть на новую возможность браузера через конкретную задачу. Не только запустить красивый эффект, а понять: зачем это может понадобиться в работе и что произойдёт, когда пользователь начнёт нажимать кнопки и редактировать текст. Поэтому дальше будем постепенно собирать один небольшой редактор.</p></footer><div class="slide-footer"><span>02 / 44</span></div>
-	
+	<footer class="notes"><p>Для начала немного обо мне. Меня зовут Анна Расторгуева. Я Fullstack-разработчик из Сбера,
+		в профессии семь лет. И, как можно понять по этому слайду, люблю котиков.</p>
+		<p>В этом докладе мне интересно посмотреть на новую возможность браузера через конкретную задачу. Не только
+			запустить красивый эффект, а понять: зачем это может понадобиться в работе и что произойдёт, когда
+			пользователь начнёт нажимать кнопки и редактировать текст. Поэтому дальше будем постепенно собирать один
+			небольшой редактор.</p></footer>
+	<div class="slide-footer"><span>02 / 44</span></div>
+
 </section>
-<section class="slide " id="slide-02" aria-label="3. Один постер. Две модели."><img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true"><div class="eyebrow">01 / Задача</div><h2>Один постер. Две модели.</h2><div class="cards"><article><span>01</span><h3>DOM</h3><p>Содержимое, CSS-вёрстка, ввод.</p></article><article><span>02</span><h3>Canvas</h3><p>Координаты, слои, пиксели.</p></article><article><span>03</span><h3>Редактор</h3><p>Пользователь ожидает всё сразу.</p></article></div><p class="callout">Нужно ли нам создавать собственный текстовый движок?</p><footer class="notes"><p>В нашем постере встречаются два привычных способа делать интерфейс.</p><p>Первый — HTML и CSS. Мы описываем содержимое, задаём стили, а браузер решает, как расположить текст и где перенести строку. Если это поле ввода, он ещё и помогает с редактированием.</p><p>Второй — canvas. Здесь мы говорим: нарисуй фигуру в этих координатах, потом картинку, потом текст. У нас больше контроля над общей картинкой, но многие привычные возможности уже не появляются сами собой.</p><p>Пользователю эта разница неинтересна. Он хочет взять надпись, повернуть её, исправить слово и скачать постер. Вот и попробуем совместить эти ожидания. Полную Figma делать не будем — возьмём одну небольшую, но показательную задачу.</p></footer><div class="slide-footer"><span></span><span>03 / 44</span></div></section>
-<section class="slide " id="slide-03" aria-label="4. План доклада"><img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true"><div class="eyebrow">01 / Задача</div><h2>План доклада</h2><div class="cards"><article><span>01</span><h3>Зачем нужен API</h3><p>Редактор, альтернативы, цена текста.</p></article><article><span>02</span><h3>Как он работает</h3><p>DOM → paint → canvas → ввод.</p></article><article><span>03</span><h3>Где его границы</h3><p>Экспорт, 3D, стоимость, внедрение.</p></article></div><footer class="notes"><p>Сначала разберём, зачем вообще понадобилось это API. Ведь текст уже можно написать в HTML, а графику — нарисовать в canvas.</p><p>Потом посмотрим на код: как подготовить HTML, когда браузер разрешает его рисовать и как разместить текст в нашей сцене.</p><p>А дальше начнётся самое интересное: ввод, перекрытия, экспорт и производительность. То есть всё, что отличает красивую картинку от работающего интерфейса.</p><p>По дороге три раза вернёмся к одному демо. Сначала соберём постер, потом проверим неудобные случаи и в конце попробуем сохранить результат.</p></footer><div class="slide-footer"><span></span><span>04 / 44</span></div></section>
-<section class="slide " id="slide-04" aria-label="5. Figma: проблема уже существует"><img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true"><div class="eyebrow">01 / Задача</div><h2>Figma: проблема уже существует</h2><p class="lead">Графический холст использует собственный рендерер.</p><ul><li>Отрисовка сцены через WebGL / WebGPU.</li><li>Браузер не получает семантику из нарисованных пикселей.</li><li>Доступность приходится проектировать отдельно.</li></ul><p class="callout">Наш прототип исследует ту же категорию задач.</p><footer class="notes"><p>Для примера далеко ходить не нужно. У Figma есть графический холст, на котором пользователь работает с текстом, фигурами и изображениями. Команда использует собственный рендерер и рассказывала о переходе к WebGPU.</p><p>При таком подходе браузер видит итоговую графику. Из самих пикселей он не узнает, что перед ним заголовок, кнопка или редактируемый текст. Поэтому привычные возможности, в том числе доступность, приходится отдельно связывать с содержимым редактора.</p><p>Это не значит, что Figma нужно срочно переписать на HTML-in-Canvas. У неё свои требования, например к одинаковому отображению макетов. Но сам класс проблемы очень реальный. Нам нужна общая графическая сцена, а внутри неё — возможности обычного HTML. На меньшем примере мы как раз и исследуем эту задачу.</p></footer><div class="slide-footer"><span><a class="source" href="https://www.figma.com/blog/figma-rendering-powered-by-webgpu/" target="_blank" rel="noopener">Figma · собственный рендерер</a></span><span>05 / 44</span></div></section>
-<section class="slide " id="slide-05" aria-label="6. Техническое задание на демо"><img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true"><div class="eyebrow">01 / Задача</div><h2>Техническое задание на демо</h2><div class="split"><div><ul><li>Фон и фигуры.</li><li>Текст с оформлением и переносами.</li><li>Ширина, позиция и поворот.</li><li>Редактирование и экспорт PNG.</li></ul><p class="callout">Без таймлайна, сервера и совместной работы.</p></div><div class="poster"><span>PLATFORM / 2026</span><strong>HTML<br>ВНУТРИ<br><em>CANVAS</em></strong><small>Текст остаётся HTML.<br>Композиция становится графикой.</small><i></i></div></div><footer class="notes"><p>Вот наше техническое задание. Делаем редактор постера: фон, несколько фигур и один текстовый блок. В тексте можно выделить часть слов цветом. У блока можно менять ширину, положение и угол поворота. В конце весь постер должен сохраниться в PNG.</p><p>Обратите внимание на последнее требование. Недостаточно просто красиво показать текст поверх картинки. Он должен стать частью того файла, который получит пользователь.</p><p>Сложную панель инструментов мы делать не будем. Для положения и угла хватит ползунков. Так мы не потратим половину доклада на устройство редактора и сможем сосредоточиться на самом API. А для ввода отдельно проверим, что происходит, когда текст уже повёрнут или частично закрыт фигурой.</p></footer><div class="slide-footer"><span></span><span>06 / 44</span></div></section>
-<section class="slide " id="slide-06" aria-label="7. Попробуем обычный Canvas 2D"><img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true"><div class="eyebrow">01 / Задача</div><h2>Попробуем обычный Canvas 2D</h2><pre><code class="language-javascript">ctx.font = &#x27;bold 48px sans-serif&#x27;;
+<section class="slide " id="slide-02" aria-label="3. Один постер. Две модели."><img class="cover w slide-background"
+																					src="../../src/picture/sb-background/image1.jpeg"
+																					alt="" aria-hidden="true">
+	<div class="eyebrow">01 / Задача</div>
+	<h2>Один постер. Две модели.</h2>
+	<div class="cards">
+		<article><span>01</span>
+			<h3>DOM</h3>
+			<p>Содержимое, CSS-вёрстка, ввод.</p></article>
+		<article><span>02</span>
+			<h3>Canvas</h3>
+			<p>Координаты, слои, пиксели.</p></article>
+		<article><span>03</span>
+			<h3>Редактор</h3>
+			<p>Пользователь ожидает всё сразу.</p></article>
+	</div>
+	<p class="callout">Нужно ли нам создавать собственный текстовый движок?</p>
+	<footer class="notes"><p>В нашем постере встречаются два привычных способа делать интерфейс.</p>
+		<p>Первый — HTML и CSS. Мы описываем содержимое, задаём стили, а браузер решает, как расположить текст и где
+			перенести строку. Если это поле ввода, он ещё и помогает с редактированием.</p>
+		<p>Второй — canvas. Здесь мы говорим: нарисуй фигуру в этих координатах, потом картинку, потом текст. У нас
+			больше контроля над общей картинкой, но многие привычные возможности уже не появляются сами собой.</p>
+		<p>Пользователю эта разница неинтересна. Он хочет взять надпись, повернуть её, исправить слово и скачать постер.
+			Вот и попробуем совместить эти ожидания. Полную Figma делать не будем — возьмём одну небольшую, но
+			показательную задачу.</p></footer>
+	<div class="slide-footer"><span></span><span>03 / 44</span></div>
+</section>
+<section class="slide " id="slide-03" aria-label="4. План доклада"><img class="cover w slide-background"
+																		src="../../src/picture/sb-background/image1.jpeg"
+																		alt="" aria-hidden="true">
+	<div class="eyebrow">01 / Задача</div>
+	<h2>План доклада</h2>
+	<div class="cards">
+		<article><span>01</span>
+			<h3>Зачем нужен API</h3>
+			<p>Редактор, альтернативы, цена текста.</p></article>
+		<article><span>02</span>
+			<h3>Как он работает</h3>
+			<p>DOM → paint → canvas → ввод.</p></article>
+		<article><span>03</span>
+			<h3>Где его границы</h3>
+			<p>Экспорт, 3D, стоимость, внедрение.</p></article>
+	</div>
+	<footer class="notes"><p>Сначала разберём, зачем вообще понадобилось это API. Ведь текст уже можно написать в HTML,
+		а графику — нарисовать в canvas.</p>
+		<p>Потом посмотрим на код: как подготовить HTML, когда браузер разрешает его рисовать и как разместить текст в
+			нашей сцене.</p>
+		<p>А дальше начнётся самое интересное: ввод, перекрытия, экспорт и производительность. То есть всё, что отличает
+			красивую картинку от работающего интерфейса.</p>
+		<p>По дороге три раза вернёмся к одному демо. Сначала соберём постер, потом проверим неудобные случаи и в конце
+			попробуем сохранить результат.</p></footer>
+	<div class="slide-footer"><span></span><span>04 / 44</span></div>
+</section>
+<section class="slide " id="slide-04" aria-label="5. Figma: проблема уже существует"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">01 / Задача</div>
+	<h2>Figma: проблема уже существует</h2>
+	<p class="lead">Графический холст использует собственный рендерер.</p>
+	<ul>
+		<li>Отрисовка сцены через WebGL / WebGPU.</li>
+		<li>Браузер не получает семантику из нарисованных пикселей.</li>
+		<li>Доступность приходится проектировать отдельно.</li>
+	</ul>
+	<p class="callout">Наш прототип исследует ту же категорию задач.</p>
+	<footer class="notes"><p>Для примера далеко ходить не нужно. У Figma есть графический холст, на котором пользователь
+		работает с текстом, фигурами и изображениями. Команда использует собственный рендерер и рассказывала о переходе
+		к WebGPU.</p>
+		<p>При таком подходе браузер видит итоговую графику. Из самих пикселей он не узнает, что перед ним заголовок,
+			кнопка или редактируемый текст. Поэтому привычные возможности, в том числе доступность, приходится отдельно
+			связывать с содержимым редактора.</p>
+		<p>Это не значит, что Figma нужно срочно переписать на HTML-in-Canvas. У неё свои требования, например к
+			одинаковому отображению макетов. Но сам класс проблемы очень реальный. Нам нужна общая графическая сцена, а
+			внутри неё — возможности обычного HTML. На меньшем примере мы как раз и исследуем эту задачу.</p></footer>
+	<div class="slide-footer"><span><a class="source"
+									   href="https://www.figma.com/blog/figma-rendering-powered-by-webgpu/"
+									   target="_blank" rel="noopener">Figma · собственный рендерер</a></span><span>05 / 44</span>
+	</div>
+</section>
+<section class="slide " id="slide-05" aria-label="6. Техническое задание на демо"><img class="cover w slide-background"
+																					   src="../../src/picture/sb-background/image1.jpeg"
+																					   alt="" aria-hidden="true">
+	<div class="eyebrow">01 / Задача</div>
+	<h2>Техническое задание на демо</h2>
+	<div class="split">
+		<div>
+			<ul>
+				<li>Фон и фигуры.</li>
+				<li>Текст с оформлением и переносами.</li>
+				<li>Ширина, позиция и поворот.</li>
+				<li>Редактирование и экспорт PNG.</li>
+			</ul>
+			<p class="callout">Без таймлайна, сервера и совместной работы.</p></div>
+		<div class="poster"><span>PLATFORM / 2026</span><strong>HTML<br>ВНУТРИ<br><em>CANVAS</em></strong><small>Текст
+			остаётся HTML.<br>Композиция становится графикой.</small><i></i></div>
+	</div>
+	<footer class="notes"><p>Вот наше техническое задание. Делаем редактор постера: фон, несколько фигур и один
+		текстовый блок. В тексте можно выделить часть слов цветом. У блока можно менять ширину, положение и угол
+		поворота. В конце весь постер должен сохраниться в PNG.</p>
+		<p>Обратите внимание на последнее требование. Недостаточно просто красиво показать текст поверх картинки. Он
+			должен стать частью того файла, который получит пользователь.</p>
+		<p>Сложную панель инструментов мы делать не будем. Для положения и угла хватит ползунков. Так мы не потратим
+			половину доклада на устройство редактора и сможем сосредоточиться на самом API. А для ввода отдельно
+			проверим, что происходит, когда текст уже повёрнут или частично закрыт фигурой.</p></footer>
+	<div class="slide-footer"><span></span><span>06 / 44</span></div>
+</section>
+<section class="slide " id="slide-06" aria-label="7. Попробуем обычный Canvas 2D"><img class="cover w slide-background"
+																					   src="../../src/picture/sb-background/image1.jpeg"
+																					   alt="" aria-hidden="true">
+	<div class="eyebrow">01 / Задача</div>
+	<h2>Попробуем обычный Canvas 2D</h2>
+	<pre><code class="language-javascript">ctx.font = &#x27;bold 48px sans-serif&#x27;;
 ctx.fillStyle = &#x27;#7df5d1&#x27;;
 ctx.fillText(&#x27;Встречаемся в браузере&#x27;, 80, 140);
 
 // А где переносы, смешанные стили,
-// выделение и редактирование?</code></pre><p class="callout">Один вызов рисует строку. Интерфейс требует большего.</p><footer class="notes"><p>Начнём с самого очевидного решения. У Canvas 2D есть метод fillText. Задаём шрифт, цвет, координаты — и получаем надпись.</p><p>Для простой подписи этого вполне достаточно. Например, чтобы показать число на графике или название рядом с объектом.</p><p>Но теперь у нас абзац. Одно слово зелёное, другое белое. Пользователь уменьшает ширину блока, и текст должен перенестись. Затем он хочет поставить курсор между буквами, выделить слово и заменить его.</p><p>Вызов fillText сам по себе всего этого не добавляет. Нужно решить, как разбить текст на строки, где находятся его части и как будет работать редактирование. Браузер умеет рисовать буквы, но готовый текстовый блок с поведением редактора из одной команды не получается. Вот здесь небольшая задача начинает расти.</p></footer><div class="slide-footer"><span></span><span>07 / 44</span></div></section>
-<section class="slide " id="slide-07" aria-label="8. Второй путь: HTML поверх холста"><img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true"><div class="eyebrow">01 / Задача</div><h2>Второй путь: HTML поверх холста</h2><pre><code class="language-html">&lt;div class=&quot;workspace&quot;&gt;
+// выделение и редактирование?</code></pre>
+	<p class="callout">Один вызов рисует строку. Интерфейс требует большего.</p>
+	<footer class="notes"><p>Начнём с самого очевидного решения. У Canvas 2D есть метод fillText. Задаём шрифт, цвет,
+		координаты — и получаем надпись.</p>
+		<p>Для простой подписи этого вполне достаточно. Например, чтобы показать число на графике или название рядом с
+			объектом.</p>
+		<p>Но теперь у нас абзац. Одно слово зелёное, другое белое. Пользователь уменьшает ширину блока, и текст должен
+			перенестись. Затем он хочет поставить курсор между буквами, выделить слово и заменить его.</p>
+		<p>Вызов fillText сам по себе всего этого не добавляет. Нужно решить, как разбить текст на строки, где находятся
+			его части и как будет работать редактирование. Браузер умеет рисовать буквы, но готовый текстовый блок с
+			поведением редактора из одной команды не получается. Вот здесь небольшая задача начинает расти.</p></footer>
+	<div class="slide-footer"><span></span><span>07 / 44</span></div>
+</section>
+<section class="slide " id="slide-07" aria-label="8. Второй путь: HTML поверх холста"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">01 / Задача</div>
+	<h2>Второй путь: HTML поверх холста</h2>
+	<pre><code class="language-html">&lt;div class=&quot;workspace&quot;&gt;
   &lt;canvas id=&quot;scene&quot;&gt;&lt;/canvas&gt;
   &lt;div class=&quot;text-layer&quot; contenteditable=&quot;true&quot;&gt;
     Встречаемся &lt;strong&gt;в браузере&lt;/strong&gt;
   &lt;/div&gt;
-&lt;/div&gt;</code></pre><p class="callout">Рабочее решение, пока композиция допускает отдельный DOM-слой.</p><footer class="notes"><p>Есть и другое решение: оставим текст обычным HTML и положим его поверх canvas. На слайде именно такая разметка. Рядом с холстом находится редактируемый div.</p><p>Это вполне рабочий подход. Для формы или панели инструментов я бы с него и начинала. Браузер сам покажет текст, обработает фокус и поможет с вводом.</p><p>Но в нашем постере текст должен участвовать в общей композиции. Например, быть поверх фонового круга, но под другой фигурой. А ещё двигаться вместе со сценой и попадать в сохранённую картинку.</p><p>Часть этих задач можно решить и с отдельным HTML-слоем. Просто тогда нам нужно поддерживать связь между двумя способами отображения. Давайте посмотрим, где именно появляется дополнительная работа.</p></footer><div class="slide-footer"><span></span><span>08 / 44</span></div></section>
-<section class="slide " id="slide-08" aria-label="9. Где возникает цена интеграции"><img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true"><div class="eyebrow">01 / Задача</div><h2>Где возникает цена интеграции</h2><div class="cards"><article><span>01</span><h3>Порядок</h3><p>Текст должен быть между фигурами.</p></article><article><span>02</span><h3>Геометрия</h3><p>Масштаб и поворот должны совпадать.</p></article><article><span>03</span><h3>Экспорт</h3><p>PNG должен включать весь постер.</p></article></div><p class="callout">canvas.toBlob() не захватывает соседний DOM.</p><footer class="notes"><p>Первое — порядок слоёв. Мы хотим, чтобы одна фигура была за текстом, а другая перед ним. Отдельный HTML поверх одного canvas не вклинивается между командами его рисования. Для этого уже нужно менять устройство композиции.</p><p>Второе — координаты. Холст масштабируется или перемещается, и HTML должен точно следовать за ним. Всё это можно написать, но это отдельная логика.</p><p>И третье — экспорт. Если вызвать у canvas метод toBlob, мы получим его изображение. Соседний div туда не попадёт, даже если на экране они выглядят как один постер.</p><p>Можно собирать экспорт отдельно, в браузере или на сервере. Но тогда появляется ещё одна реализация той же картинки. Именно здесь хочется попросить браузер: дай мне использовать уже свёрстанный текст прямо в общей сцене.</p></footer><div class="slide-footer"><span></span><span>09 / 44</span></div></section>
-<section class="slide " id="slide-09" aria-label="10. Что меняет HTML-in-Canvas"><img class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true"><div class="eyebrow">01 / Задача</div><h2>Что меняет HTML-in-Canvas</h2><p class="big">HTML становится источником для рисования.</p><pre><code class="language-javascript">ctx.drawElementImage(title, 80, 120);</code></pre><p class="callout">Текст описан DOM. Его внешний вид участвует в сцене.</p><footer class="notes"><p>HTML-in-Canvas как раз даёт такую возможность. Мы готовим HTML-элемент, а затем передаём его в команду рисования. На слайде это drawElementImage: нарисовать изображение элемента в заданной точке.</p><p>Содержимое при этом остаётся описано в HTML. Мы не переписываем вручную правила переноса строк и оформления каждого слова. Браузер подготавливает внешний вид элемента, а мы используем его в своей композиции.</p><p>Но тут есть условия. Нельзя взять любой кусок любой страницы и считать, что он сразу станет подходящим источником. Элемент нужно подготовить, разместить в нужном месте и дождаться момента, когда его можно рисовать.</p><p>Сейчас пройдём эти шаги. Сначала разметка, потом стили, потом первый кадр. В результате за этим коротким вызовом будет понятная последовательность действий.</p></footer><div class="slide-footer"><span><a class="source" href="https://developer.chrome.com/blog/html-in-canvas" target="_blank" rel="noopener">Chrome · HTML-in-Canvas</a></span><span>10 / 44</span></div></section>
-<section class="slide " id="slide-10" aria-label="11. Зафиксируем версию API"><img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true"><div class="eyebrow">02 / Новое API</div><h2>Зафиксируем версию API</h2><pre><code class="language-html">// Актуальная модель в explainer:
+&lt;/div&gt;</code></pre>
+	<p class="callout">Рабочее решение, пока композиция допускает отдельный DOM-слой.</p>
+	<footer class="notes"><p>Есть и другое решение: оставим текст обычным HTML и положим его поверх canvas. На слайде
+		именно такая разметка. Рядом с холстом находится редактируемый div.</p>
+		<p>Это вполне рабочий подход. Для формы или панели инструментов я бы с него и начинала. Браузер сам покажет
+			текст, обработает фокус и поможет с вводом.</p>
+		<p>Но в нашем постере текст должен участвовать в общей композиции. Например, быть поверх фонового круга, но под
+			другой фигурой. А ещё двигаться вместе со сценой и попадать в сохранённую картинку.</p>
+		<p>Часть этих задач можно решить и с отдельным HTML-слоем. Просто тогда нам нужно поддерживать связь между двумя
+			способами отображения. Давайте посмотрим, где именно появляется дополнительная работа.</p></footer>
+	<div class="slide-footer"><span></span><span>08 / 44</span></div>
+</section>
+<section class="slide " id="slide-08" aria-label="9. Где возникает цена интеграции"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image1.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">01 / Задача</div>
+	<h2>Где возникает цена интеграции</h2>
+	<div class="cards">
+		<article><span>01</span>
+			<h3>Порядок</h3>
+			<p>Текст должен быть между фигурами.</p></article>
+		<article><span>02</span>
+			<h3>Геометрия</h3>
+			<p>Масштаб и поворот должны совпадать.</p></article>
+		<article><span>03</span>
+			<h3>Экспорт</h3>
+			<p>PNG должен включать весь постер.</p></article>
+	</div>
+	<p class="callout">canvas.toBlob() не захватывает соседний DOM.</p>
+	<footer class="notes"><p>Первое — порядок слоёв. Мы хотим, чтобы одна фигура была за текстом, а другая перед ним.
+		Отдельный HTML поверх одного canvas не вклинивается между командами его рисования. Для этого уже нужно менять
+		устройство композиции.</p>
+		<p>Второе — координаты. Холст масштабируется или перемещается, и HTML должен точно следовать за ним. Всё это
+			можно написать, но это отдельная логика.</p>
+		<p>И третье — экспорт. Если вызвать у canvas метод toBlob, мы получим его изображение. Соседний div туда не
+			попадёт, даже если на экране они выглядят как один постер.</p>
+		<p>Можно собирать экспорт отдельно, в браузере или на сервере. Но тогда появляется ещё одна реализация той же
+			картинки. Именно здесь хочется попросить браузер: дай мне использовать уже свёрстанный текст прямо в общей
+			сцене.</p></footer>
+	<div class="slide-footer"><span></span><span>09 / 44</span></div>
+</section>
+<section class="slide " id="slide-09" aria-label="10. Что меняет HTML-in-Canvas"><img class="cover w slide-background"
+																					  src="../../src/picture/sb-background/image1.jpeg"
+																					  alt="" aria-hidden="true">
+	<div class="eyebrow">01 / Задача</div>
+	<h2>Что меняет HTML-in-Canvas</h2>
+	<p class="big">HTML становится источником для рисования.</p>
+	<pre><code class="language-javascript">ctx.drawElementImage(title, 80, 120);</code></pre>
+	<p class="callout">Текст описан DOM. Его внешний вид участвует в сцене.</p>
+	<footer class="notes"><p>HTML-in-Canvas как раз даёт такую возможность. Мы готовим HTML-элемент, а затем передаём
+		его в команду рисования. На слайде это drawElementImage: нарисовать изображение элемента в заданной точке.</p>
+		<p>Содержимое при этом остаётся описано в HTML. Мы не переписываем вручную правила переноса строк и оформления
+			каждого слова. Браузер подготавливает внешний вид элемента, а мы используем его в своей композиции.</p>
+		<p>Но тут есть условия. Нельзя взять любой кусок любой страницы и считать, что он сразу станет подходящим
+			источником. Элемент нужно подготовить, разместить в нужном месте и дождаться момента, когда его можно
+			рисовать.</p>
+		<p>Сейчас пройдём эти шаги. Сначала разметка, потом стили, потом первый кадр. В результате за этим коротким
+			вызовом будет понятная последовательность действий.</p></footer>
+	<div class="slide-footer"><span><a class="source" href="https://developer.chrome.com/blog/html-in-canvas"
+									   target="_blank"
+									   rel="noopener">Chrome · HTML-in-Canvas</a></span><span>10 / 44</span></div>
+</section>
+<section class="slide " id="slide-10" aria-label="11. Зафиксируем версию API"><img class="cover w slide-background"
+																				   src="../../src/picture/sb-background/image6.jpeg"
+																				   alt="" aria-hidden="true">
+	<div class="eyebrow">02 / Новое API</div>
+	<h2>Зафиксируем версию API</h2>
+	<pre><code class="language-html">// Актуальная модель в explainer:
 &lt;canvas content=&quot;drawable&quot;&gt;
   &lt;article drawable&gt;...&lt;/article&gt;
 &lt;/canvas&gt;
 
-// В старых статьях встречается layoutsubtree.</code></pre><p class="callout">Примеры разных поколений нельзя механически смешивать.</p><footer class="notes"><p>Прежде чем копировать код, нужно разобраться с версиями. В старых статьях про HTML-in-Canvas вы встретите атрибут layoutsubtree. В модели, которую мы разбираем сегодня, используются content со значением drawable у canvas и отдельный drawable у элемента.</p><p>Менялась не только разметка. Менялся и способ сообщить браузеру, где находится нарисованный элемент. Поэтому взять HTML из одной статьи, а JavaScript из другой — не всегда хорошая идея. По отдельности оба примера могут быть правильными, но относиться к разным версиям API.</p><p>Здесь я опираюсь на модель из актуального explainer, ссылка есть на слайде. Перед использованием в проекте нужно сверить её с той реализацией браузера, в которой будет работать приложение.</p></footer><div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank" rel="noopener">WICG · актуальный explainer</a></span><span>11 / 44</span></div></section>
-<section class="slide " id="slide-11" aria-label="12. Проверяем нужные возможности"><img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true"><div class="eyebrow">02 / Новое API</div><h2>Проверяем нужные возможности</h2><pre><code class="language-javascript">const native =
+// В старых статьях встречается layoutsubtree.</code></pre>
+	<p class="callout">Примеры разных поколений нельзя механически смешивать.</p>
+	<footer class="notes"><p>Прежде чем копировать код, нужно разобраться с версиями. В старых статьях про
+		HTML-in-Canvas вы встретите атрибут layoutsubtree. В модели, которую мы разбираем сегодня, используются content
+		со значением drawable у canvas и отдельный drawable у элемента.</p>
+		<p>Менялась не только разметка. Менялся и способ сообщить браузеру, где находится нарисованный элемент. Поэтому
+			взять HTML из одной статьи, а JavaScript из другой — не всегда хорошая идея. По отдельности оба примера
+			могут быть правильными, но относиться к разным версиям API.</p>
+		<p>Здесь я опираюсь на модель из актуального explainer, ссылка есть на слайде. Перед использованием в проекте
+			нужно сверить её с той реализацией браузера, в которой будет работать приложение.</p></footer>
+	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
+									   rel="noopener">WICG · актуальный explainer</a></span><span>11 / 44</span></div>
+</section>
+<section class="slide " id="slide-11" aria-label="12. Проверяем нужные возможности"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">02 / Новое API</div>
+	<h2>Проверяем нужные возможности</h2>
+	<pre><code class="language-javascript">const native =
   &#x27;drawElementImage&#x27; in CanvasRenderingContext2D.prototype &amp;&amp;
   &#x27;requestPaint&#x27; in HTMLCanvasElement.prototype &amp;&amp;
   &#x27;updateElementGeometry&#x27; in HTMLCanvasElement.prototype;
 
-if (!native) showFallback();</code></pre><p class="callout">Наличие методов — первый фильтр. Затем проверяем реальную отрисовку.</p><footer class="notes"><p>Начинаем с проверки возможностей. Вместо того чтобы угадывать по названию браузера, смотрим, есть ли нужные нам методы.</p><p>Первый рисует элемент. Второй позволяет попросить новый кадр. Третий нужен для работы с геометрией элемента — к ней мы ещё вернёмся.</p><p>Но такая проверка отвечает только на вопрос: существуют ли эти методы? Она не доказывает, что все детали работают именно так, как мы ожидаем. Поэтому в демо после неё есть ещё попытка реальной отрисовки.</p><p>Если подходящей поддержки нет, показываем обычный HTML-просмотр. При этом честно отключаем возможности, которых в таком режиме нет. Например, экспорт общей композиции. Пользователь должен понимать, что ему доступно, а не выяснять это по кнопке, которая ничего не делает.</p></footer><div class="slide-footer"><span></span><span>12 / 44</span></div></section>
-<section class="slide " id="slide-12" aria-label="13. Подготавливаем HTML"><img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true"><div class="eyebrow">02 / Новое API</div><h2>Подготавливаем HTML</h2><pre><code class="language-html">&lt;canvas id=&quot;poster&quot; content=&quot;drawable&quot;&gt;
+if (!native) showFallback();</code></pre>
+	<p class="callout">Наличие методов — первый фильтр. Затем проверяем реальную отрисовку.</p>
+	<footer class="notes"><p>Начинаем с проверки возможностей. Вместо того чтобы угадывать по названию браузера,
+		смотрим, есть ли нужные нам методы.</p>
+		<p>Первый рисует элемент. Второй позволяет попросить новый кадр. Третий нужен для работы с геометрией элемента —
+			к ней мы ещё вернёмся.</p>
+		<p>Но такая проверка отвечает только на вопрос: существуют ли эти методы? Она не доказывает, что все детали
+			работают именно так, как мы ожидаем. Поэтому в демо после неё есть ещё попытка реальной отрисовки.</p>
+		<p>Если подходящей поддержки нет, показываем обычный HTML-просмотр. При этом честно отключаем возможности,
+			которых в таком режиме нет. Например, экспорт общей композиции. Пользователь должен понимать, что ему
+			доступно, а не выяснять это по кнопке, которая ничего не делает.</p></footer>
+	<div class="slide-footer"><span></span><span>12 / 44</span></div>
+</section>
+<section class="slide " id="slide-12" aria-label="13. Подготавливаем HTML"><img class="cover w slide-background"
+																				src="../../src/picture/sb-background/image6.jpeg"
+																				alt="" aria-hidden="true">
+	<div class="eyebrow">02 / Новое API</div>
+	<h2>Подготавливаем HTML</h2>
+	<pre><code class="language-html">&lt;canvas id=&quot;poster&quot; content=&quot;drawable&quot;&gt;
   &lt;article id=&quot;title&quot; drawable
            contenteditable=&quot;true&quot;
            role=&quot;textbox&quot; aria-multiline=&quot;true&quot;
            aria-label=&quot;Заголовок постера&quot;&gt;
     Встречаемся &lt;strong&gt;в браузере&lt;/strong&gt;
   &lt;/article&gt;
-&lt;/canvas&gt;</code></pre><p class="callout">Один drawable — одна управляемая часть композиции.</p><footer class="notes"><p>Теперь подготовим сам текст. Внутри canvas находится article. Это наш заголовок постера.</p><p>Атрибут content со значением drawable у холста включает специальный режим для его содержимого. А drawable у article отмечает элемент, который мы хотим использовать для рисования.</p><p>Внутри обычный HTML: текст и strong для выделенной части. Contenteditable добавляет возможность редактировать содержимое. Подпись через aria-label объясняет, что это за поле, а aria-multiline указывает, что в нём может быть несколько строк.</p><p>Уже здесь можно заметить пользу подхода: у нас остаётся настоящий элемент со структурой и назначением. Но полноценный текстовый редактор это пока не делает. Например, сохранение форматирования, вставку и историю изменений всё равно нужно продумывать отдельно. Для первого эксперимента этого небольшого блока нам достаточно.</p></footer><div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank" rel="noopener">WICG · актуальный explainer</a></span><span>13 / 44</span></div></section>
-<section class="slide " id="slide-13" aria-label="14. Вёрстку оставляем CSS"><img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true"><div class="eyebrow">02 / Новое API</div><h2>Вёрстку оставляем CSS</h2><pre><code class="language-css">#title {
+&lt;/canvas&gt;</code></pre>
+	<p class="callout">Один drawable — одна управляемая часть композиции.</p>
+	<footer class="notes"><p>Теперь подготовим сам текст. Внутри canvas находится article. Это наш заголовок
+		постера.</p>
+		<p>Атрибут content со значением drawable у холста включает специальный режим для его содержимого. А drawable у
+			article отмечает элемент, который мы хотим использовать для рисования.</p>
+		<p>Внутри обычный HTML: текст и strong для выделенной части. Contenteditable добавляет возможность редактировать
+			содержимое. Подпись через aria-label объясняет, что это за поле, а aria-multiline указывает, что в нём может
+			быть несколько строк.</p>
+		<p>Уже здесь можно заметить пользу подхода: у нас остаётся настоящий элемент со структурой и назначением. Но
+			полноценный текстовый редактор это пока не делает. Например, сохранение форматирования, вставку и историю
+			изменений всё равно нужно продумывать отдельно. Для первого эксперимента этого небольшого блока нам
+			достаточно.</p></footer>
+	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
+									   rel="noopener">WICG · актуальный explainer</a></span><span>13 / 44</span></div>
+</section>
+<section class="slide " id="slide-13" aria-label="14. Вёрстку оставляем CSS"><img class="cover w slide-background"
+																				  src="../../src/picture/sb-background/image6.jpeg"
+																				  alt="" aria-hidden="true">
+	<div class="eyebrow">02 / Новое API</div>
+	<h2>Вёрстку оставляем CSS</h2>
+	<pre><code class="language-css">#title {
   box-sizing: border-box;
   width: 420px;
   padding: 20px;
@@ -72,15 +332,48 @@ if (!native) showFallback();</code></pre><p class="callout">Наличие ме�
   color: white;
   overflow-wrap: anywhere;
 }
-#title strong { color: #7df5d1; }</code></pre><footer class="notes"><p>Со стилями всё гораздо привычнее. Указываем ширину, внутренние отступы, шрифт и цвет. Для strong задаём другой цвет. Длинным словам разрешаем переноситься, чтобы они не вылезали за границы блока.</p><p>Эту работу выполняет обычная CSS-вёрстка. Нам не нужно самостоятельно вычислять позицию каждого слова, чтобы получить абзац нужной ширины.</p><p>И здесь же видна будущая цена. Если мы меняем ширину, браузер должен заново решить, где будут переносы и какой высоты станет блок. HTML-in-Canvas не отменяет эту работу, он позволяет использовать её результат.</p><p>То есть мы получаем удобство браузерной вёрстки вместе с её обычными затратами. Это пригодится нам чуть позже, когда будем говорить о производительности.</p></footer><div class="slide-footer"><span></span><span>14 / 44</span></div></section>
-<section class="slide " id="slide-14" aria-label="15. Размер CSS ≠ размер bitmap"><img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true"><div class="eyebrow">02 / Новое API</div><h2>Размер CSS ≠ размер bitmap</h2><pre><code class="language-javascript">const W = 960, H = 540;
+#title strong { color: #7df5d1; }</code></pre>
+	<footer class="notes"><p>Со стилями всё гораздо привычнее. Указываем ширину, внутренние отступы, шрифт и цвет. Для
+		strong задаём другой цвет. Длинным словам разрешаем переноситься, чтобы они не вылезали за границы блока.</p>
+		<p>Эту работу выполняет обычная CSS-вёрстка. Нам не нужно самостоятельно вычислять позицию каждого слова, чтобы
+			получить абзац нужной ширины.</p>
+		<p>И здесь же видна будущая цена. Если мы меняем ширину, браузер должен заново решить, где будут переносы и
+			какой высоты станет блок. HTML-in-Canvas не отменяет эту работу, он позволяет использовать её результат.</p>
+		<p>То есть мы получаем удобство браузерной вёрстки вместе с её обычными затратами. Это пригодится нам чуть
+			позже, когда будем говорить о производительности.</p></footer>
+	<div class="slide-footer"><span></span><span>14 / 44</span></div>
+</section>
+<section class="slide " id="slide-14" aria-label="15. Размер CSS ≠ размер bitmap"><img class="cover w slide-background"
+																					   src="../../src/picture/sb-background/image6.jpeg"
+																					   alt="" aria-hidden="true">
+	<div class="eyebrow">02 / Новое API</div>
+	<h2>Размер CSS ≠ размер bitmap</h2>
+	<pre><code class="language-javascript">const W = 960, H = 540;
 const dpr = window.devicePixelRatio || 1;
 canvas.width = Math.round(W * dpr);
 canvas.height = Math.round(H * dpr);
 
 // В CSS: canvas { width: 960px; height: 540px; }
-// Рисуем в логических координатах W × H.</code></pre><p class="callout">Плотность пикселей влияет и на чёткость, и на память.</p><footer class="notes"><p>Перед первым кадром разберём одну особенность canvas. У него есть размер на странице и размер изображения, в которое мы рисуем. Эти размеры могут отличаться.</p><p>Например, наш постер занимает девятьсот шестьдесят на пятьсот сорок CSS-пикселей. Но на экране с высокой плотностью на каждый такой пиксель может приходиться несколько физических пикселей. Если изображение слишком маленькое, при показе оно растянется и будет выглядеть размыто.</p><p>Поэтому здесь мы умножаем ширину и высоту изображения на devicePixelRatio. А при рисовании настроим масштаб так, чтобы по-прежнему пользоваться удобными координатами постера.</p><p>В этом примере размер сцены фиксирован. Для изменяемого размера понадобилось бы отслеживать ещё и размеры самого холста. Главное сейчас — не путать размер элемента на странице с разрешением его картинки.</p></footer><div class="slide-footer"><span></span><span>15 / 44</span></div></section>
-<section class="slide " id="slide-15" aria-label="16. Первый кадр: ждём paint"><img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true"><div class="eyebrow">02 / Новое API</div><h2>Первый кадр: ждём paint</h2><pre><code class="language-javascript">const ctx = canvas.getContext(&#x27;2d&#x27;);
+// Рисуем в логических координатах W × H.</code></pre>
+	<p class="callout">Плотность пикселей влияет и на чёткость, и на память.</p>
+	<footer class="notes"><p>Перед первым кадром разберём одну особенность canvas. У него есть размер на странице и
+		размер изображения, в которое мы рисуем. Эти размеры могут отличаться.</p>
+		<p>Например, наш постер занимает девятьсот шестьдесят на пятьсот сорок CSS-пикселей. Но на экране с высокой
+			плотностью на каждый такой пиксель может приходиться несколько физических пикселей. Если изображение слишком
+			маленькое, при показе оно растянется и будет выглядеть размыто.</p>
+		<p>Поэтому здесь мы умножаем ширину и высоту изображения на devicePixelRatio. А при рисовании настроим масштаб
+			так, чтобы по-прежнему пользоваться удобными координатами постера.</p>
+		<p>В этом примере размер сцены фиксирован. Для изменяемого размера понадобилось бы отслеживать ещё и размеры
+			самого холста. Главное сейчас — не путать размер элемента на странице с разрешением его картинки.</p>
+	</footer>
+	<div class="slide-footer"><span></span><span>15 / 44</span></div>
+</section>
+<section class="slide " id="slide-15" aria-label="16. Первый кадр: ждём paint"><img class="cover w slide-background"
+																					src="../../src/picture/sb-background/image6.jpeg"
+																					alt="" aria-hidden="true">
+	<div class="eyebrow">02 / Новое API</div>
+	<h2>Первый кадр: ждём paint</h2>
+	<pre><code class="language-javascript">const ctx = canvas.getContext(&#x27;2d&#x27;);
 
 canvas.addEventListener(&#x27;paint&#x27;, () =&gt; {
   ctx.reset();
@@ -89,9 +382,50 @@ canvas.addEventListener(&#x27;paint&#x27;, () =&gt; {
   ctx.fillRect(0, 0, W, H);
   ctx.drawElementImage(title, 80, 120, boxW, boxH);
 });
-canvas.requestPaint();</code></pre><p class="callout">boxW / boxH — размеры HTML-блока из ResizeObserver.</p><footer class="notes"><p>Вот первый полный проход рисования. Сначала получаем обычный контекст Canvas 2D.</p><p>Потом подписываемся на paint. Это событие говорит нам, что браузер подготовил содержимое, с которым можно работать. Просто вызвать рисование сразу после создания HTML — слишком рано: нужного снимка ещё может не быть.</p><p>Внутри обработчика сначала сбрасываем контекст. Затем задаём масштаб с учётом плотности пикселей. Рисуем фон прямоугольником и поверх него — наш HTML-элемент.</p><p>У drawElementImage здесь указаны координаты и размеры блока. Ширину и высоту мы получим из ResizeObserver, до него скоро дойдём.</p><p>Последняя строка просит браузер прислать paint. Весь пример устроен довольно просто: дождались готового содержимого, очистили предыдущую картинку и собрали новую. Но именно ожидание paint отличает этот код от попытки нарисовать ещё не подготовленный элемент.</p></footer><div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank" rel="noopener">WICG · актуальный explainer</a></span><span>16 / 44</span></div></section>
-<section class="slide " id="slide-16" aria-label="17. Путь одного изменения"><img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true"><div class="eyebrow">03 / Как браузер рисует</div><h2>Путь одного изменения</h2><div class="pipeline"><b>DOM + CSS</b><i>→</i><b>Layout</b><i>→</i><b>Снимок команд</b><i>→</i><b>paint</b><i>→</i><b>Canvas</b></div><p class="lead">Браузер готовит содержимое. Приложение собирает сцену.</p><footer class="notes"><p>Давайте проследим, что происходит до нашего обработчика. Допустим, пользователь изменил текст.</p><p>Сначала браузер видит изменения в HTML и стилях. Потом рассчитывает расположение содержимого: ширину блока, переносы строк, высоту. Этот этап называется layout.</p><p>После этого он подготавливает команды, которые описывают внешний вид элемента. В документации результат называют снимком. Здесь полезно не представлять себе обязательное создание PNG на каждом кадре. Речь о подготовленном представлении отрисовки; как именно выполнить его эффективно, решает браузер.</p><p>Дальше приходит paint, и уже наш код использует этот результат в canvas. Например, кладёт текст поверх фоновой картинки.</p><p>Так обязанности разделяются довольно понятно. Браузер знает, как сверстать элемент. Приложение знает, куда поставить его в общей сцене и что ещё нарисовать рядом.</p></footer><div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank" rel="noopener">WICG · актуальный explainer</a></span><span>17 / 44</span></div></section>
-<section class="slide " id="slide-17" aria-label="18. DOM меняется до отрисовки"><img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true"><div class="eyebrow">03 / Как браузер рисует</div><h2>DOM меняется до отрисовки</h2><pre><code class="language-javascript">widthControl.addEventListener(&#x27;input&#x27;, () =&gt; {
+canvas.requestPaint();</code></pre>
+	<p class="callout">boxW / boxH — размеры HTML-блока из ResizeObserver.</p>
+	<footer class="notes"><p>Вот первый полный проход рисования. Сначала получаем обычный контекст Canvas 2D.</p>
+		<p>Потом подписываемся на paint. Это событие говорит нам, что браузер подготовил содержимое, с которым можно
+			работать. Просто вызвать рисование сразу после создания HTML — слишком рано: нужного снимка ещё может не
+			быть.</p>
+		<p>Внутри обработчика сначала сбрасываем контекст. Затем задаём масштаб с учётом плотности пикселей. Рисуем фон
+			прямоугольником и поверх него — наш HTML-элемент.</p>
+		<p>У drawElementImage здесь указаны координаты и размеры блока. Ширину и высоту мы получим из ResizeObserver, до
+			него скоро дойдём.</p>
+		<p>Последняя строка просит браузер прислать paint. Весь пример устроен довольно просто: дождались готового
+			содержимого, очистили предыдущую картинку и собрали новую. Но именно ожидание paint отличает этот код от
+			попытки нарисовать ещё не подготовленный элемент.</p></footer>
+	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
+									   rel="noopener">WICG · актуальный explainer</a></span><span>16 / 44</span></div>
+</section>
+<section class="slide " id="slide-16" aria-label="17. Путь одного изменения"><img class="cover w slide-background"
+																				  src="../../src/picture/sb-background/image6.jpeg"
+																				  alt="" aria-hidden="true">
+	<div class="eyebrow">03 / Как браузер рисует</div>
+	<h2>Путь одного изменения</h2>
+	<div class="pipeline"><b>DOM + CSS</b><i>→</i><b>Layout</b><i>→</i><b>Снимок
+		команд</b><i>→</i><b>paint</b><i>→</i><b>Canvas</b></div>
+	<p class="lead">Браузер готовит содержимое. Приложение собирает сцену.</p>
+	<footer class="notes"><p>Давайте проследим, что происходит до нашего обработчика. Допустим, пользователь изменил
+		текст.</p>
+		<p>Сначала браузер видит изменения в HTML и стилях. Потом рассчитывает расположение содержимого: ширину блока,
+			переносы строк, высоту. Этот этап называется layout.</p>
+		<p>После этого он подготавливает команды, которые описывают внешний вид элемента. В документации результат
+			называют снимком. Здесь полезно не представлять себе обязательное создание PNG на каждом кадре. Речь о
+			подготовленном представлении отрисовки; как именно выполнить его эффективно, решает браузер.</p>
+		<p>Дальше приходит paint, и уже наш код использует этот результат в canvas. Например, кладёт текст поверх
+			фоновой картинки.</p>
+		<p>Так обязанности разделяются довольно понятно. Браузер знает, как сверстать элемент. Приложение знает, куда
+			поставить его в общей сцене и что ещё нарисовать рядом.</p></footer>
+	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
+									   rel="noopener">WICG · актуальный explainer</a></span><span>17 / 44</span></div>
+</section>
+<section class="slide " id="slide-17" aria-label="18. DOM меняется до отрисовки"><img class="cover w slide-background"
+																					  src="../../src/picture/sb-background/image6.jpeg"
+																					  alt="" aria-hidden="true">
+	<div class="eyebrow">03 / Как браузер рисует</div>
+	<h2>DOM меняется до отрисовки</h2>
+	<pre><code class="language-javascript">widthControl.addEventListener(&#x27;input&#x27;, () =&gt; {
   title.style.width = `${widthControl.value}px`;
 });
 
@@ -100,34 +434,168 @@ new ResizeObserver(([entry]) =&gt; {
   boxW = box.inlineSize;
   boxH = box.blockSize;
   canvas.requestPaint();
-}).observe(title);</code></pre><p class="callout">ResizeObserver сохраняет геометрию, paint использует её.</p><footer class="notes"><p>Теперь добавим ползунок ширины. В его обработчике мы меняем CSS-свойство width у заголовка. Это обычное изменение DOM, которое браузер обработает при обновлении страницы.</p><p>Отдельно ResizeObserver сообщает нам новый размер блока. Мы сохраняем ширину и высоту, а потом просим перерисовать сцену. Эти значения и попадут в drawElementImage.</p><p>Почему не читать размер прямо после каждой записи стиля? Одно такое чтение не означает катастрофу. Но если в большом цикле постоянно чередовать изменение стилей и запрос размеров, браузеру может понадобиться снова и снова пересчитывать расположение элементов.</p><p>Здесь мы пользуемся готовым уведомлением об изменении размера. В одном месте меняем ширину, в другом получаем результат, а в paint используем уже сохранённые числа.</p></footer><div class="slide-footer"><span></span><span>18 / 44</span></div></section>
-<section class="slide " id="slide-18" aria-label="19. Ошибка: менять DOM внутри paint"><img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true"><div class="eyebrow">03 / Как браузер рисует</div><h2>Ошибка: менять DOM внутри paint</h2><pre><code class="language-javascript">canvas.addEventListener(&#x27;paint&#x27;, () =&gt; {
+}).observe(title);</code></pre>
+	<p class="callout">ResizeObserver сохраняет геометрию, paint использует её.</p>
+	<footer class="notes"><p>Теперь добавим ползунок ширины. В его обработчике мы меняем CSS-свойство width у заголовка.
+		Это обычное изменение DOM, которое браузер обработает при обновлении страницы.</p>
+		<p>Отдельно ResizeObserver сообщает нам новый размер блока. Мы сохраняем ширину и высоту, а потом просим
+			перерисовать сцену. Эти значения и попадут в drawElementImage.</p>
+		<p>Почему не читать размер прямо после каждой записи стиля? Одно такое чтение не означает катастрофу. Но если в
+			большом цикле постоянно чередовать изменение стилей и запрос размеров, браузеру может понадобиться снова и
+			снова пересчитывать расположение элементов.</p>
+		<p>Здесь мы пользуемся готовым уведомлением об изменении размера. В одном месте меняем ширину, в другом получаем
+			результат, а в paint используем уже сохранённые числа.</p></footer>
+	<div class="slide-footer"><span></span><span>18 / 44</span></div>
+</section>
+<section class="slide " id="slide-18" aria-label="19. Ошибка: менять DOM внутри paint"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">03 / Как браузер рисует</div>
+	<h2>Ошибка: менять DOM внутри paint</h2>
+	<pre><code class="language-javascript">canvas.addEventListener(&#x27;paint&#x27;, () =&gt; {
   title.textContent = &#x27;Новый текст&#x27;;
   ctx.drawElementImage(title, 0, 0, boxW, boxH);
   // Этот вызов ещё использует подготовленный снимок.
-});</code></pre><p class="callout">Изменение DOM попадёт в следующее обновление рендеринга.</p><footer class="notes"><p>А теперь пример, который выглядит логично, но делает не совсем то, что можно ожидать. Внутри paint меняем текст и сразу рисуем элемент. Кажется, сейчас на холсте должны появиться новые слова.</p><p>Но браузер подготовил снимок до того, как вызвал наш обработчик. Изменение textContent не заменит этот снимок прямо посреди выполнения функции. Новый текст попадёт уже в следующее обновление.</p><p>Поэтому здесь можно увидеть старое содержимое, хотя в коде строка с изменением стоит выше строки с рисованием.</p><p>Для нашего редактора правило простое: пользователь меняет текст или стиль в обработчике ввода. А в paint мы собираем графическую сцену из подготовленного содержимого. Так гораздо легче понимать, какой результат окажется в текущем кадре, и не создавать лишние циклы обновления.</p></footer><div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank" rel="noopener">WICG · актуальный explainer</a></span><span>19 / 44</span></div></section>
-<section class="slide " id="slide-19" aria-label="20. Позиция меняется без нового текста"><img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true"><div class="eyebrow">03 / Как браузер рисует</div><h2>Позиция меняется без нового текста</h2><pre><code class="language-javascript">xControl.addEventListener(&#x27;input&#x27;, () =&gt; {
+});</code></pre>
+	<p class="callout">Изменение DOM попадёт в следующее обновление рендеринга.</p>
+	<footer class="notes"><p>А теперь пример, который выглядит логично, но делает не совсем то, что можно ожидать.
+		Внутри paint меняем текст и сразу рисуем элемент. Кажется, сейчас на холсте должны появиться новые слова.</p>
+		<p>Но браузер подготовил снимок до того, как вызвал наш обработчик. Изменение textContent не заменит этот снимок
+			прямо посреди выполнения функции. Новый текст попадёт уже в следующее обновление.</p>
+		<p>Поэтому здесь можно увидеть старое содержимое, хотя в коде строка с изменением стоит выше строки с
+			рисованием.</p>
+		<p>Для нашего редактора правило простое: пользователь меняет текст или стиль в обработчике ввода. А в paint мы
+			собираем графическую сцену из подготовленного содержимого. Так гораздо легче понимать, какой результат
+			окажется в текущем кадре, и не создавать лишние циклы обновления.</p></footer>
+	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
+									   rel="noopener">WICG · актуальный explainer</a></span><span>19 / 44</span></div>
+</section>
+<section class="slide " id="slide-19" aria-label="20. Позиция меняется без нового текста"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">03 / Как браузер рисует</div>
+	<h2>Позиция меняется без нового текста</h2>
+	<pre><code class="language-javascript">xControl.addEventListener(&#x27;input&#x27;, () =&gt; {
   scene.x = Number(xControl.value);
   canvas.requestPaint();
 });
 
 // requestPaint планирует один paint.
-// Он не включает бесконечный render loop.</code></pre><p class="callout">Содержимое HTML и положение в сцене — разные изменения.</p><footer class="notes"><p>Теперь пользователь двигает блок вправо. Сам текст не изменился. Его ширина тоже осталась прежней, поэтому заново выбирать переносы нам не нужно.</p><p>Мы меняем только координату в состоянии сцены и вызываем requestPaint. Эта функция просит браузер дать нам ещё одну возможность нарисовать сцену, даже если содержимое HTML осталось тем же.</p><p>Важная деталь: один вызов не запускает бесконечную анимацию. Он запрашивает одно обновление. Если пользователь больше ничего не делает, нам не обязательно продолжать рисовать.</p><p>Получается полезное разделение: изменение слов или ширины блока затрагивает HTML. А перемещение готового блока может менять только его положение в графической сцене. Именно так и устроен ползунок в нашем демо.</p></footer><div class="slide-footer"><span></span><span>20 / 44</span></div></section>
-<section class="slide " id="slide-20" aria-label="21. Поворот задаём контексту"><img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true"><div class="eyebrow">03 / Как браузер рисует</div><h2>Поворот задаём контексту</h2><pre><code class="language-javascript">ctx.save();
+// Он не включает бесконечный render loop.</code></pre>
+	<p class="callout">Содержимое HTML и положение в сцене — разные изменения.</p>
+	<footer class="notes"><p>Теперь пользователь двигает блок вправо. Сам текст не изменился. Его ширина тоже осталась
+		прежней, поэтому заново выбирать переносы нам не нужно.</p>
+		<p>Мы меняем только координату в состоянии сцены и вызываем requestPaint. Эта функция просит браузер дать нам
+			ещё одну возможность нарисовать сцену, даже если содержимое HTML осталось тем же.</p>
+		<p>Важная деталь: один вызов не запускает бесконечную анимацию. Он запрашивает одно обновление. Если
+			пользователь больше ничего не делает, нам не обязательно продолжать рисовать.</p>
+		<p>Получается полезное разделение: изменение слов или ширины блока затрагивает HTML. А перемещение готового
+			блока может менять только его положение в графической сцене. Именно так и устроен ползунок в нашем демо.</p>
+	</footer>
+	<div class="slide-footer"><span></span><span>20 / 44</span></div>
+</section>
+<section class="slide " id="slide-20" aria-label="21. Поворот задаём контексту"><img class="cover w slide-background"
+																					 src="../../src/picture/sb-background/image6.jpeg"
+																					 alt="" aria-hidden="true">
+	<div class="eyebrow">03 / Как браузер рисует</div>
+	<h2>Поворот задаём контексту</h2>
+	<pre><code class="language-javascript">ctx.save();
 ctx.translate(scene.x, scene.y);
 ctx.rotate(scene.angle * Math.PI / 180);
 ctx.drawElementImage(title, 0, 0, boxW, boxH);
-ctx.restore();</code></pre><p class="callout">Начало координат блока теперь находится в scene.x / scene.y.</p><footer class="notes"><p>С поворотом используем знакомые методы Canvas 2D. Сначала save — сохраняем текущее состояние контекста. Затем translate — переносим начало координат в точку, где должен находиться блок. После этого rotate — поворачиваем оси вокруг этой точки.</p><p>Теперь рисуем текст в локальных координатах ноль, ноль. Он окажется там, куда мы перенесли начало, и под тем углом, который задали. В конце restore возвращает контекст обратно, чтобы следующая фигура случайно не получила тот же поворот.</p><p>Сам HTML для этого поворачивать через CSS не нужно. Положение его изображения задаётся при рисовании.</p><p>А вот как браузер поймёт, куда попадает клик по повёрнутому тексту, — отдельный вопрос. Сначала посмотрим на картинку, а затем разберём связь между рисованием и взаимодействием.</p></footer><div class="slide-footer"><span></span><span>21 / 44</span></div></section>
-<section class="slide " id="slide-21" aria-label="22. Демо 1 · Собираем постер"><img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true"><div class="eyebrow">03 / Как браузер рисует</div><h2>Демо 1 · Собираем постер</h2><p class="big">Текст → переносы → ширина → позиция → поворот.</p><p class="demo-link"><a href="demo/index.html" target="_blank" rel="noopener">Открыть редактор постера ↗</a></p><p class="callout">Ожидаемый результат: один текстовый блок внутри общей сцены.</p><footer class="notes"><p>Откроем наш маленький редактор. В нём один текстовый блок и несколько простых графических элементов. Панель слева обычная HTML-панель, а постер справа должен собираться в canvas.</p><p>Сначала посмотрим на надпись. В исходном варианте часть слов выделена цветом — это наш strong со своим CSS. Теперь меняю текст через поле слева. В этом простом поле мы заменяем содержимое обычным текстом, поэтому исходное выделение исчезает. Кнопка сброса вернёт его.</p><p>[Заменить текст на «HTML внутри canvas». Слегка уменьшить ширину блока.]</p><p>Теперь уменьшаю ширину. Нас интересует перенос строк: его рассчитывает браузер, а не наш код рисования. Следом двигаю блок и немного поворачиваю.</p><p>[Изменить положение и угол, затем задержаться на результате.]</p><p>На этом этапе мы добились общей картинки. Текст размещён в той же сцене, где рисуются фон и фигуры. Но пока проверили только внешний вид. Дальше посмотрим, можно ли с этим текстом нормально работать.</p></footer><div class="slide-footer"><span></span><span>22 / 44</span></div></section>
-<section class="slide " id="slide-22" aria-label="23. Пиксели ещё не означают кнопку"><img class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true"><div class="eyebrow">04 / Взаимодействие и границы</div><h2>Пиксели ещё не означают кнопку</h2><div class="cards"><article><span>01</span><h3>Рисование</h3><p>Что видит пользователь.</p></article><article><span>02</span><h3>Геометрия</h3><p>Куда попадают указатель и фокус.</p></article><article><span>03</span><h3>Семантика</h3><p>Что понимают браузер и ассистивные технологии.</p></article></div><footer class="notes"><p>В интерфейсе недостаточно просто нарисовать кнопку или поле. Пользователь должен попасть в него мышью, перейти к нему клавиатурой и понять, что это за элемент.</p><p>Поэтому здесь есть три отдельные вещи. Первая — изображение: где видны буквы. Вторая — геометрия: какая область считается областью элемента. Третья — его смысл: например, что это поле для редактирования заголовка.</p><p>HTML помогает сохранить структуру и назначение. Но браузеру ещё нужно знать, где этот HTML оказался после нашего рисования. Иначе текст визуально будет в одном месте, а область взаимодействия — в другом или вообще не будет задана.</p><p>Вот эту связь и нужно поддерживать. При этом наличие настоящего DOM не освобождает нас от проверки клавиатуры, подписей и доступности всего редактора.</p></footer><div class="slide-footer"><span><a class="source" href="https://www.figma.com/blog/building-accessibility-into-a-canvas-based-product/" target="_blank" rel="noopener">Figma · доступность холста</a></span><span>23 / 44</span></div></section>
-<section class="slide " id="slide-23" aria-label="24. В 2D геометрия следует рисованию"><img class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true"><div class="eyebrow">04 / Взаимодействие и границы</div><h2>В 2D геометрия следует рисованию</h2><pre><code class="language-javascript">ctx.drawElementImage(title, x, y, boxW, boxH);
+ctx.restore();</code></pre>
+	<p class="callout">Начало координат блока теперь находится в scene.x / scene.y.</p>
+	<footer class="notes"><p>С поворотом используем знакомые методы Canvas 2D. Сначала save — сохраняем текущее
+		состояние контекста. Затем translate — переносим начало координат в точку, где должен находиться блок. После
+		этого rotate — поворачиваем оси вокруг этой точки.</p>
+		<p>Теперь рисуем текст в локальных координатах ноль, ноль. Он окажется там, куда мы перенесли начало, и под тем
+			углом, который задали. В конце restore возвращает контекст обратно, чтобы следующая фигура случайно не
+			получила тот же поворот.</p>
+		<p>Сам HTML для этого поворачивать через CSS не нужно. Положение его изображения задаётся при рисовании.</p>
+		<p>А вот как браузер поймёт, куда попадает клик по повёрнутому тексту, — отдельный вопрос. Сначала посмотрим на
+			картинку, а затем разберём связь между рисованием и взаимодействием.</p></footer>
+	<div class="slide-footer"><span></span><span>21 / 44</span></div>
+</section>
+<section class="slide " id="slide-21" aria-label="22. Демо 1 · Собираем постер"><img class="cover w slide-background"
+																					 src="../../src/picture/sb-background/image6.jpeg"
+																					 alt="" aria-hidden="true">
+	<div class="eyebrow">03 / Как браузер рисует</div>
+	<h2>Демо 1 · Собираем постер</h2>
+	<p class="big">Текст → переносы → ширина → позиция → поворот.</p>
+	<p class="demo-link"><a href="demo/index.html" target="_blank" rel="noopener">Открыть редактор постера ↗</a></p>
+	<p class="callout">Ожидаемый результат: один текстовый блок внутри общей сцены.</p>
+	<footer class="notes"><p>Откроем наш маленький редактор. В нём один текстовый блок и несколько простых графических
+		элементов. Панель слева обычная HTML-панель, а постер справа должен собираться в canvas.</p>
+		<p>Сначала посмотрим на надпись. В исходном варианте часть слов выделена цветом — это наш strong со своим CSS.
+			Теперь меняю текст через поле слева. В этом простом поле мы заменяем содержимое обычным текстом, поэтому
+			исходное выделение исчезает. Кнопка сброса вернёт его.</p>
+		<p>[Заменить текст на «HTML внутри canvas». Слегка уменьшить ширину блока.]</p>
+		<p>Теперь уменьшаю ширину. Нас интересует перенос строк: его рассчитывает браузер, а не наш код рисования.
+			Следом двигаю блок и немного поворачиваю.</p>
+		<p>[Изменить положение и угол, затем задержаться на результате.]</p>
+		<p>На этом этапе мы добились общей картинки. Текст размещён в той же сцене, где рисуются фон и фигуры. Но пока
+			проверили только внешний вид. Дальше посмотрим, можно ли с этим текстом нормально работать.</p></footer>
+	<div class="slide-footer"><span></span><span>22 / 44</span></div>
+</section>
+<section class="slide " id="slide-22" aria-label="23. Пиксели ещё не означают кнопку"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">04 / Взаимодействие и границы</div>
+	<h2>Пиксели ещё не означают кнопку</h2>
+	<div class="cards">
+		<article><span>01</span>
+			<h3>Рисование</h3>
+			<p>Что видит пользователь.</p></article>
+		<article><span>02</span>
+			<h3>Геометрия</h3>
+			<p>Куда попадают указатель и фокус.</p></article>
+		<article><span>03</span>
+			<h3>Семантика</h3>
+			<p>Что понимают браузер и ассистивные технологии.</p></article>
+	</div>
+	<footer class="notes"><p>В интерфейсе недостаточно просто нарисовать кнопку или поле. Пользователь должен попасть в
+		него мышью, перейти к нему клавиатурой и понять, что это за элемент.</p>
+		<p>Поэтому здесь есть три отдельные вещи. Первая — изображение: где видны буквы. Вторая — геометрия: какая
+			область считается областью элемента. Третья — его смысл: например, что это поле для редактирования
+			заголовка.</p>
+		<p>HTML помогает сохранить структуру и назначение. Но браузеру ещё нужно знать, где этот HTML оказался после
+			нашего рисования. Иначе текст визуально будет в одном месте, а область взаимодействия — в другом или вообще
+			не будет задана.</p>
+		<p>Вот эту связь и нужно поддерживать. При этом наличие настоящего DOM не освобождает нас от проверки
+			клавиатуры, подписей и доступности всего редактора.</p></footer>
+	<div class="slide-footer"><span><a class="source"
+									   href="https://www.figma.com/blog/building-accessibility-into-a-canvas-based-product/"
+									   target="_blank"
+									   rel="noopener">Figma · доступность холста</a></span><span>23 / 44</span></div>
+</section>
+<section class="slide " id="slide-23" aria-label="24. В 2D геометрия следует рисованию"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">04 / Взаимодействие и границы</div>
+	<h2>В 2D геометрия следует рисованию</h2>
+	<pre><code class="language-javascript">ctx.drawElementImage(title, x, y, boxW, boxH);
 // Актуальная модель: геометрия обновляется автоматически.
 
 // Дополнительная копия — только изображение:
 ctx.drawElementImage(title, 600, 40, 200, 100, {
   preserveElementGeometry: true
-});</code></pre><p class="callout">Две картинки одного DOM-узла не создают два независимых редактора.</p><footer class="notes"><p>В актуальной модели для Canvas 2D обычный вызов drawElementImage сам обновляет геометрию элемента. Браузер получает информацию о том, куда мы его нарисовали.</p><p>Но представим, что тот же заголовок нужен ещё и в маленьком предпросмотре в углу. Мы вызываем рисование второй раз. Изображений теперь два, а HTML-элемент по-прежнему один.</p><p>У него не появилось два независимых курсора и два отдельных состояния редактирования. Поэтому важно решить, какая из копий является местом для взаимодействия.</p><p>В примере основной вызов обновляет геометрию. А для миниатюры передаём preserveElementGeometry: true. Так мы просим нарисовать дополнительную картинку, сохранив уже заданное положение интерактивного элемента.</p><p>Это хороший пример того, почему нарисованная копия и новый элемент интерфейса — разные вещи. Отдельный редактор потребовал бы отдельной модели поведения.</p></footer><div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank" rel="noopener">WICG · актуальный explainer</a></span><span>24 / 44</span></div></section>
-<section class="slide " id="slide-24" aria-label="25. Редактор внутри редактора"><img class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true"><div class="eyebrow">04 / Взаимодействие и границы</div><h2>Редактор внутри редактора</h2><pre><code class="language-javascript">title.addEventListener(&#x27;input&#x27;, () =&gt; {
+});</code></pre>
+	<p class="callout">Две картинки одного DOM-узла не создают два независимых редактора.</p>
+	<footer class="notes"><p>В актуальной модели для Canvas 2D обычный вызов drawElementImage сам обновляет геометрию
+		элемента. Браузер получает информацию о том, куда мы его нарисовали.</p>
+		<p>Но представим, что тот же заголовок нужен ещё и в маленьком предпросмотре в углу. Мы вызываем рисование
+			второй раз. Изображений теперь два, а HTML-элемент по-прежнему один.</p>
+		<p>У него не появилось два независимых курсора и два отдельных состояния редактирования. Поэтому важно решить,
+			какая из копий является местом для взаимодействия.</p>
+		<p>В примере основной вызов обновляет геометрию. А для миниатюры передаём preserveElementGeometry: true. Так мы
+			просим нарисовать дополнительную картинку, сохранив уже заданное положение интерактивного элемента.</p>
+		<p>Это хороший пример того, почему нарисованная копия и новый элемент интерфейса — разные вещи. Отдельный
+			редактор потребовал бы отдельной модели поведения.</p></footer>
+	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
+									   rel="noopener">WICG · актуальный explainer</a></span><span>24 / 44</span></div>
+</section>
+<section class="slide " id="slide-24" aria-label="25. Редактор внутри редактора"><img class="cover w slide-background"
+																					  src="../../src/picture/sb-background/image33.jpeg"
+																					  alt="" aria-hidden="true">
+	<div class="eyebrow">04 / Взаимодействие и границы</div>
+	<h2>Редактор внутри редактора</h2>
+	<pre><code class="language-javascript">title.addEventListener(&#x27;input&#x27;, () =&gt; {
   model.text = title.textContent;
 });
 
@@ -136,26 +604,130 @@ title.addEventListener(&#x27;focus&#x27;, () =&gt; {
 });
 title.addEventListener(&#x27;blur&#x27;, () =&gt; {
   editorMode = &#x27;objects&#x27;;
-});</code></pre><p class="callout">Стрелки: переместить объект или двигать курсор?</p><footer class="notes"><p>Есть ещё вопрос, который API за нас не решит. Пользователь нажал стрелку вправо. Он хочет сдвинуть весь текстовый блок или переместить курсор между буквами?</p><p>В графическом редакторе оба действия вполне естественны. Поэтому нам нужны понятные режимы работы. Когда фокус находится в тексте, клавиши должны обслуживать ввод. Когда выбран объект, они могут управлять его положением.</p><p>На слайде показано самое простое переключение состояния при получении и потере фокуса. Это ещё не вся система клавиатурных команд, но видно, где проходит граница ответственности приложения.</p><p>В демо положение меняется внешними ползунками, чтобы не смешивать перемещение и выделение текста. В полноценном редакторе к этому добавились бы история действий, вставка и сочетания клавиш. HTML-in-Canvas помогает с отображением, но не проектирует весь инструмент вместо нас.</p></footer><div class="slide-footer"><span><a class="source" href="https://developer.chrome.com/blog/introducing-editcontext-api" target="_blank" rel="noopener">Chrome · EditContext</a></span><span>25 / 44</span></div></section>
-<section class="slide " id="slide-25" aria-label="26. Перекрытие: проверяем два результата"><img class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true"><div class="eyebrow">04 / Взаимодействие и границы</div><h2>Перекрытие: проверяем два результата</h2><pre><code class="language-javascript">ctx.drawElementImage(title, x, y, boxW, boxH);
+});</code></pre>
+	<p class="callout">Стрелки: переместить объект или двигать курсор?</p>
+	<footer class="notes"><p>Есть ещё вопрос, который API за нас не решит. Пользователь нажал стрелку вправо. Он хочет
+		сдвинуть весь текстовый блок или переместить курсор между буквами?</p>
+		<p>В графическом редакторе оба действия вполне естественны. Поэтому нам нужны понятные режимы работы. Когда
+			фокус находится в тексте, клавиши должны обслуживать ввод. Когда выбран объект, они могут управлять его
+			положением.</p>
+		<p>На слайде показано самое простое переключение состояния при получении и потере фокуса. Это ещё не вся система
+			клавиатурных команд, но видно, где проходит граница ответственности приложения.</p>
+		<p>В демо положение меняется внешними ползунками, чтобы не смешивать перемещение и выделение текста. В
+			полноценном редакторе к этому добавились бы история действий, вставка и сочетания клавиш. HTML-in-Canvas
+			помогает с отображением, но не проектирует весь инструмент вместо нас.</p></footer>
+	<div class="slide-footer"><span><a class="source"
+									   href="https://developer.chrome.com/blog/introducing-editcontext-api"
+									   target="_blank"
+									   rel="noopener">Chrome · EditContext</a></span><span>25 / 44</span></div>
+</section>
+<section class="slide " id="slide-25" aria-label="26. Перекрытие: проверяем два результата"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">04 / Взаимодействие и границы</div>
+	<h2>Перекрытие: проверяем два результата</h2>
+	<pre><code class="language-javascript">ctx.drawElementImage(title, x, y, boxW, boxH);
 ctx.fillStyle = &#x27;#fa977b&#x27;;
 ctx.fillRect(360, 190, 240, 90);
 
 // Фигура закрыла пиксели текста.
-// Но создала ли она область, блокирующую ввод?</code></pre><p class="callout">Порядок пикселей и порядок hit testing — не одно и то же.</p><footer class="notes"><p>Посмотрим на следующий случай. Сначала рисуем текст. Затем вызываем fillRect и кладём прямоугольник поверх его части. На картинке всё ожидаемо: фигура закрыла буквы.</p><p>А теперь вопрос: должен ли клик по этому прямоугольнику перестать попадать в текст?</p><p>[Сделать небольшую паузу, дать аудитории подумать.]</p><p>Из команды fillRect браузер получил пиксели. Мы не создали отдельный DOM-элемент и не объяснили, что эта фигура должна перехватывать взаимодействие. Поэтому нельзя автоматически считать, что визуальное перекрытие задаёт и правила ввода.</p><p>Для редактора это вполне практическая проблема. Пользователь видит фигуру и ожидает выбрать её, а не текст под ней. Значит, правила выбора объектов и работы с закрытыми областями нам нужно определить отдельно. Порядок рисования объясняет картинку, но не все действия пользователя.</p></footer><div class="slide-footer"><span></span><span>26 / 44</span></div></section>
-<section class="slide " id="slide-26" aria-label="27. Обрезка ввода задаётся отдельно"><img class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true"><div class="eyebrow">04 / Взаимодействие и границы</div><h2>Обрезка ввода задаётся отдельно</h2><pre><code class="language-javascript">canvas.updateElementGeometry(title, {
+// Но создала ли она область, блокирующую ввод?</code></pre>
+	<p class="callout">Порядок пикселей и порядок hit testing — не одно и то же.</p>
+	<footer class="notes"><p>Посмотрим на следующий случай. Сначала рисуем текст. Затем вызываем fillRect и кладём
+		прямоугольник поверх его части. На картинке всё ожидаемо: фигура закрыла буквы.</p>
+		<p>А теперь вопрос: должен ли клик по этому прямоугольнику перестать попадать в текст?</p>
+		<p>[Сделать небольшую паузу, дать аудитории подумать.]</p>
+		<p>Из команды fillRect браузер получил пиксели. Мы не создали отдельный DOM-элемент и не объяснили, что эта
+			фигура должна перехватывать взаимодействие. Поэтому нельзя автоматически считать, что визуальное перекрытие
+			задаёт и правила ввода.</p>
+		<p>Для редактора это вполне практическая проблема. Пользователь видит фигуру и ожидает выбрать её, а не текст
+			под ней. Значит, правила выбора объектов и работы с закрытыми областями нам нужно определить отдельно.
+			Порядок рисования объясняет картинку, но не все действия пользователя.</p></footer>
+	<div class="slide-footer"><span></span><span>26 / 44</span></div>
+</section>
+<section class="slide " id="slide-26" aria-label="27. Обрезка ввода задаётся отдельно"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">04 / Взаимодействие и границы</div>
+	<h2>Обрезка ввода задаётся отдельно</h2>
+	<pre><code class="language-javascript">canvas.updateElementGeometry(title, {
   canvasClip: { x: 0, y: 0, width: 200, height: 100 },
   preserveHitTestOrder: true
 });
 
 // Координаты clip — в локальной системе элемента.
-// Это не универсальная маска по пикселям сцены.</code></pre><p class="callout">Прямоугольный clip не описывает отверстие произвольной формы.</p><footer class="notes"><p>У API есть отдельная настройка для ограничения области взаимодействия — canvasClip. В этом примере мы задаём прямоугольник в локальных координатах элемента. То есть говорим, с какой частью элемента можно взаимодействовать.</p><p>Это полезно, если мы действительно показываем только прямоугольный фрагмент текста. Но вспомним предыдущий слайд. Там фигура закрыла кусок в середине. Одним прямоугольником такое отверстие уже не описать.</p><p>То же самое будет со сложной маской или эффектом, который изгибает текст. Возможностей рисования больше, чем может выразить эта простая настройка геометрии.</p><p>Поэтому этот метод не стоит воспринимать как универсальное исправление любых перекрытий. Он решает определённую задачу. А для нашего редактора всё равно нужно продумать, какие объекты получают клик и в каком режиме пользователь с ними работает.</p></footer><div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank" rel="noopener">WICG · актуальный explainer</a></span><span>27 / 44</span></div></section>
-<section class="slide " id="slide-27" aria-label="28. Демо 2 · Ломаем ожидания"><img class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true"><div class="eyebrow">04 / Взаимодействие и границы</div><h2>Демо 2 · Ломаем ожидания</h2><ul><li>Редактируем повёрнутый текст.</li><li>Добавляем перекрывающую фигуру.</li><li>Проверяем клик, выделение и Tab.</li><li>Сравниваем видимую область и область ввода.</li></ul><p class="demo-link"><a href="demo/index.html" target="_blank" rel="noopener">Проверить границы в редакторе ↗</a></p><footer class="notes"><p>Вернёмся к постеру и проверим то, что обычно не видно на красивой демонстрационной картинке.</p><p>[Выставить небольшой угол, примерно двенадцать градусов. Нажать «Редактировать на холсте».]</p><p>Сначала попробуем обычный ввод. Важно проверить, где появляется курсор и совпадает ли он с тем текстом, который мы видим. Затем попробуем выделить несколько слов. Для пользователя это одно привычное действие, а для нашего приложения здесь уже должны согласоваться положение блока, его поворот и поведение браузера.</p><p>[Попробовать ввод и выделение. Затем включить фигуру поверх текста.]</p><p>Теперь часть текста закрыта. Проверим, что произойдёт с кликом по этой области. Сам результат здесь полезнее любого обещания: мы выясняем, какие правила уже обеспечивает браузер, а какие нужно добавить в редактор.</p><p>[Выбрать реплику по реальному результату проверки.]</p><p>Если клик попал в закрытый текст: «Вот эта граница и проявилась: картинка изменилась, но фигура сама по себе не стала преградой для ввода».</p><p>Если клик не попал в текст: «В этой сборке данный сценарий отработал так. Но это ещё не проверка всех перекрытий: другие формы и режимы редактирования нужно исследовать отдельно».</p><p>Главное — проверять интерфейс действиями, а не только смотреть на готовую картинку.</p></footer><div class="slide-footer"><span></span><span>28 / 44</span></div></section>
-<section class="slide " id="slide-28" aria-label="29. HTML в canvas не отменяет безопасность"><img class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true"><div class="eyebrow">04 / Взаимодействие и границы</div><h2>HTML в canvas не отменяет безопасность</h2><ul><li>Это не API для захвата любой вкладки.</li><li>Ресурсы и чувствительное содержимое имеют ограничения.</li><li>Для экспорта нужна origin-clean композиция.</li></ul><pre><code class="language-javascript">const image = new Image();
+// Это не универсальная маска по пикселям сцены.</code></pre>
+	<p class="callout">Прямоугольный clip не описывает отверстие произвольной формы.</p>
+	<footer class="notes"><p>У API есть отдельная настройка для ограничения области взаимодействия — canvasClip. В этом
+		примере мы задаём прямоугольник в локальных координатах элемента. То есть говорим, с какой частью элемента можно
+		взаимодействовать.</p>
+		<p>Это полезно, если мы действительно показываем только прямоугольный фрагмент текста. Но вспомним предыдущий
+			слайд. Там фигура закрыла кусок в середине. Одним прямоугольником такое отверстие уже не описать.</p>
+		<p>То же самое будет со сложной маской или эффектом, который изгибает текст. Возможностей рисования больше, чем
+			может выразить эта простая настройка геометрии.</p>
+		<p>Поэтому этот метод не стоит воспринимать как универсальное исправление любых перекрытий. Он решает
+			определённую задачу. А для нашего редактора всё равно нужно продумать, какие объекты получают клик и в каком
+			режиме пользователь с ними работает.</p></footer>
+	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
+									   rel="noopener">WICG · актуальный explainer</a></span><span>27 / 44</span></div>
+</section>
+<section class="slide " id="slide-27" aria-label="28. Демо 2 · Ломаем ожидания"><img class="cover w slide-background"
+																					 src="../../src/picture/sb-background/image33.jpeg"
+																					 alt="" aria-hidden="true">
+	<div class="eyebrow">04 / Взаимодействие и границы</div>
+	<h2>Демо 2 · Ломаем ожидания</h2>
+	<ul>
+		<li>Редактируем повёрнутый текст.</li>
+		<li>Добавляем перекрывающую фигуру.</li>
+		<li>Проверяем клик, выделение и Tab.</li>
+		<li>Сравниваем видимую область и область ввода.</li>
+	</ul>
+	<p class="demo-link"><a href="demo/index.html" target="_blank" rel="noopener">Проверить границы в редакторе ↗</a>
+	</p>
+	<footer class="notes"><p>Вернёмся к постеру и проверим то, что обычно не видно на красивой демонстрационной
+		картинке.</p>
+		<p>[Выставить небольшой угол, примерно двенадцать градусов. Нажать «Редактировать на холсте».]</p>
+		<p>Сначала попробуем обычный ввод. Важно проверить, где появляется курсор и совпадает ли он с тем текстом,
+			который мы видим. Затем попробуем выделить несколько слов. Для пользователя это одно привычное действие, а
+			для нашего приложения здесь уже должны согласоваться положение блока, его поворот и поведение браузера.</p>
+		<p>[Попробовать ввод и выделение. Затем включить фигуру поверх текста.]</p>
+		<p>Теперь часть текста закрыта. Проверим, что произойдёт с кликом по этой области. Сам результат здесь полезнее
+			любого обещания: мы выясняем, какие правила уже обеспечивает браузер, а какие нужно добавить в редактор.</p>
+		<p>[Выбрать реплику по реальному результату проверки.]</p>
+		<p>Если клик попал в закрытый текст: «Вот эта граница и проявилась: картинка изменилась, но фигура сама по себе
+			не стала преградой для ввода».</p>
+		<p>Если клик не попал в текст: «В этой сборке данный сценарий отработал так. Но это ещё не проверка всех
+			перекрытий: другие формы и режимы редактирования нужно исследовать отдельно».</p>
+		<p>Главное — проверять интерфейс действиями, а не только смотреть на готовую картинку.</p></footer>
+	<div class="slide-footer"><span></span><span>28 / 44</span></div>
+</section>
+<section class="slide " id="slide-28" aria-label="29. HTML в canvas не отменяет безопасность"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">04 / Взаимодействие и границы</div>
+	<h2>HTML в canvas не отменяет безопасность</h2>
+	<ul>
+		<li>Это не API для захвата любой вкладки.</li>
+		<li>Ресурсы и чувствительное содержимое имеют ограничения.</li>
+		<li>Для экспорта нужна origin-clean композиция.</li>
+	</ul>
+	<pre><code class="language-javascript">const image = new Image();
 image.crossOrigin = &#x27;anonymous&#x27;; // до src
 image.src = &#x27;https://cdn.example.org/poster.jpg&#x27;;
-// Сервер тоже должен разрешить CORS.</code></pre><footer class="notes"><p>Ещё одна важная граница — загрузка ресурсов и экспорт. HTML-in-Canvas не даёт права захватывать любое содержимое из интернета.</p><p>Например, в постере может быть картинка с другого сайта. Для её использования с последующим экспортом нужно учитывать правила доступа. В коде мы выставляем crossOrigin до того, как задаём адрес картинки. Но одной этой строки недостаточно: сервер картинки тоже должен разрешать такой доступ.</p><p>Иначе можно получить композицию, которую браузер не позволит прочитать или сохранить ожидаемым способом.</p><p>В нашем демо всё проще: фон лежит рядом с проектом и загружается с того же адреса. Это убирает лишнюю переменную из эксперимента. В реальном редакторе источники изображений нужно проверять отдельно, особенно если пользователь может вставлять свои ссылки.</p></footer><div class="slide-footer"><span></span><span>29 / 44</span></div></section>
-<section class="slide " id="slide-29" aria-label="30. Сохраняем следующий готовый кадр"><img class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true"><div class="eyebrow">05 / Экспорт и другие контексты</div><h2>Сохраняем следующий готовый кадр</h2><pre><code class="language-javascript">let exportPending = false;
+// Сервер тоже должен разрешить CORS.</code></pre>
+	<footer class="notes"><p>Ещё одна важная граница — загрузка ресурсов и экспорт. HTML-in-Canvas не даёт права
+		захватывать любое содержимое из интернета.</p>
+		<p>Например, в постере может быть картинка с другого сайта. Для её использования с последующим экспортом нужно
+			учитывать правила доступа. В коде мы выставляем crossOrigin до того, как задаём адрес картинки. Но одной
+			этой строки недостаточно: сервер картинки тоже должен разрешать такой доступ.</p>
+		<p>Иначе можно получить композицию, которую браузер не позволит прочитать или сохранить ожидаемым способом.</p>
+		<p>В нашем демо всё проще: фон лежит рядом с проектом и загружается с того же адреса. Это убирает лишнюю
+			переменную из эксперимента. В реальном редакторе источники изображений нужно проверять отдельно, особенно
+			если пользователь может вставлять свои ссылки.</p></footer>
+	<div class="slide-footer"><span></span><span>29 / 44</span></div>
+</section>
+<section class="slide " id="slide-29" aria-label="30. Сохраняем следующий готовый кадр"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">05 / Экспорт и другие контексты</div>
+	<h2>Сохраняем следующий готовый кадр</h2>
+	<pre><code class="language-javascript">let exportPending = false;
 exportButton.addEventListener(&#x27;click&#x27;, () =&gt; {
   exportPending = true;
   canvas.requestPaint();
@@ -165,8 +737,27 @@ exportButton.addEventListener(&#x27;click&#x27;, () =&gt; {
 if (exportPending) {
   exportPending = false;
   canvas.toBlob(saveBlob, &#x27;image/png&#x27;);
-}</code></pre><p class="callout">Не экспортируем старый bitmap сразу после изменения DOM.</p><footer class="notes"><p>Теперь самая практичная часть — экспорт. Пользователь исправил слово и сразу нажал «Скачать». Мы хотим сохранить уже новый текст.</p><p>Если просто вызвать toBlob сразу после изменения DOM, можно прочитать старое изображение canvas. Ведь новое содержимое ещё нужно подготовить и нарисовать.</p><p>Поэтому обработчик кнопки здесь только выставляет флаг и запрашивает paint. А сам экспорт выполняется в конце обработчика рисования, когда сцена уже собрана.</p><p>Проверяем флаг, сбрасываем его и вызываем toBlob. Полученный файл передадим в saveBlob — эту небольшую функцию покажу следующим слайдом.</p><p>Отдельно до этого должны загрузиться шрифты и фоновые изображения. Ожидание paint не заменяет всю подготовку приложения. Но оно помогает привязать сохранение к нужной стадии: сначала нарисовали актуальный постер, затем забрали его изображение.</p></footer><div class="slide-footer"><span></span><span>30 / 44</span></div></section>
-<section class="slide " id="slide-30" aria-label="31. От Blob до скачанного PNG"><img class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true"><div class="eyebrow">05 / Экспорт и другие контексты</div><h2>От Blob до скачанного PNG</h2><pre><code class="language-javascript">function saveBlob(blob) {
+}</code></pre>
+	<p class="callout">Не экспортируем старый bitmap сразу после изменения DOM.</p>
+	<footer class="notes"><p>Теперь самая практичная часть — экспорт. Пользователь исправил слово и сразу нажал
+		«Скачать». Мы хотим сохранить уже новый текст.</p>
+		<p>Если просто вызвать toBlob сразу после изменения DOM, можно прочитать старое изображение canvas. Ведь новое
+			содержимое ещё нужно подготовить и нарисовать.</p>
+		<p>Поэтому обработчик кнопки здесь только выставляет флаг и запрашивает paint. А сам экспорт выполняется в конце
+			обработчика рисования, когда сцена уже собрана.</p>
+		<p>Проверяем флаг, сбрасываем его и вызываем toBlob. Полученный файл передадим в saveBlob — эту небольшую
+			функцию покажу следующим слайдом.</p>
+		<p>Отдельно до этого должны загрузиться шрифты и фоновые изображения. Ожидание paint не заменяет всю подготовку
+			приложения. Но оно помогает привязать сохранение к нужной стадии: сначала нарисовали актуальный постер,
+			затем забрали его изображение.</p></footer>
+	<div class="slide-footer"><span></span><span>30 / 44</span></div>
+</section>
+<section class="slide " id="slide-30" aria-label="31. От Blob до скачанного PNG"><img class="cover w slide-background"
+																					  src="../../src/picture/sb-background/image33.jpeg"
+																					  alt="" aria-hidden="true">
+	<div class="eyebrow">05 / Экспорт и другие контексты</div>
+	<h2>От Blob до скачанного PNG</h2>
+	<pre><code class="language-javascript">function saveBlob(blob) {
   if (!blob) return showExportError();
   const url = URL.createObjectURL(blob);
   const link = document.createElement(&#x27;a&#x27;);
@@ -174,54 +765,324 @@ if (exportPending) {
   link.download = &#x27;poster.png&#x27;;
   link.click();
   setTimeout(() =&gt; URL.revokeObjectURL(url), 1000);
-}</code></pre><p class="callout">Экспорт — растр. DOM и редактируемость в PNG не сохраняются.</p><footer class="notes"><p>Функция скачивания уже не связана с новым API. Мы получили Blob, создаём для него временный адрес, делаем ссылку с именем файла и запускаем скачивание. После этого освобождаем временный адрес.</p><p>Есть одна вещь, о которой легко забыть: PNG — это готовое изображение. Внутри не сохранятся наш article, выделенные слова или ползунки. Открыть PNG и продолжить редактирование как документа не получится.</p><p>Для сохранения проекта нужен отдельный формат: текст, оформление, координаты и остальные параметры сцены. А PNG нужен, чтобы поделиться результатом или использовать его где-то ещё.</p><p>То есть экспорт картинки у нас теперь общий, но модель самого редактора по-прежнему остаётся нашей задачей.</p></footer><div class="slide-footer"><span></span><span>31 / 44</span></div></section>
-<section class="slide " id="slide-31" aria-label="32. Демо 3 · Что получилось в файле"><img class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true"><div class="eyebrow">05 / Экспорт и другие контексты</div><h2>Демо 3 · Что получилось в файле</h2><p class="big">Меняем текст → сохраняем PNG → открываем результат.</p><p class="lead">Проверяем переносы, порядок слоёв и поворот.</p><p class="demo-link"><a href="demo/index.html" target="_blank" rel="noopener">Открыть демо для экспорта ↗</a></p><footer class="notes"><p>Теперь проверим, получилось ли то, ради чего мы вообще объединили HTML и canvas.</p><p>[Изменить надпись, оставить небольшой поворот. При желании включить перекрывающую фигуру.]</p><p>На экране сейчас конкретный постер: с этим текстом, этими переносами и таким порядком элементов. Нажимаю «Скачать PNG».</p><p>[Скачать файл и открыть его рядом с демо.]</p><p>Сравним несколько вещей. Есть ли в файле сам текст? Сохранились ли переносы? Остался ли поворот? Там ли находится фигура, которая перекрывает надпись?</p><p>Если всё совпало: «Вот теперь требование выполнено: текст попал в общую картинку вместе с остальной сценой».</p><p>Если есть расхождение: «Здесь видно расхождение. Значит, эту комбинацию настроек и поведения браузера нужно проверить до использования в продукте».</p><p>Мы экспортируем результат рисования, а не снимаем экран целиком. Панель управления слева и остальные элементы страницы в этот файл не входят.</p></footer><div class="slide-footer"><span></span><span>32 / 44</span></div></section>
-<section class="slide " id="slide-32" aria-label="33. Та же идея — для WebGL и WebGPU"><img class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true"><div class="eyebrow">05 / Экспорт и другие контексты</div><h2>Та же идея — для WebGL и WebGPU</h2><div class="pipeline"><b>HTML</b><i>→</i><b>Изображение элемента</b><i>→</i><b>GPU-текстура</b><i>→</i><b>Сцена</b></div><pre><code class="language-javascript">// Имена в актуальном explainer:
+}</code></pre>
+	<p class="callout">Экспорт — растр. DOM и редактируемость в PNG не сохраняются.</p>
+	<footer class="notes"><p>Функция скачивания уже не связана с новым API. Мы получили Blob, создаём для него временный
+		адрес, делаем ссылку с именем файла и запускаем скачивание. После этого освобождаем временный адрес.</p>
+		<p>Есть одна вещь, о которой легко забыть: PNG — это готовое изображение. Внутри не сохранятся наш article,
+			выделенные слова или ползунки. Открыть PNG и продолжить редактирование как документа не получится.</p>
+		<p>Для сохранения проекта нужен отдельный формат: текст, оформление, координаты и остальные параметры сцены. А
+			PNG нужен, чтобы поделиться результатом или использовать его где-то ещё.</p>
+		<p>То есть экспорт картинки у нас теперь общий, но модель самого редактора по-прежнему остаётся нашей
+			задачей.</p></footer>
+	<div class="slide-footer"><span></span><span>31 / 44</span></div>
+</section>
+<section class="slide " id="slide-31" aria-label="32. Демо 3 · Что получилось в файле"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">05 / Экспорт и другие контексты</div>
+	<h2>Демо 3 · Что получилось в файле</h2>
+	<p class="big">Меняем текст → сохраняем PNG → открываем результат.</p>
+	<p class="lead">Проверяем переносы, порядок слоёв и поворот.</p>
+	<p class="demo-link"><a href="demo/index.html" target="_blank" rel="noopener">Открыть демо для экспорта ↗</a></p>
+	<footer class="notes"><p>Теперь проверим, получилось ли то, ради чего мы вообще объединили HTML и canvas.</p>
+		<p>[Изменить надпись, оставить небольшой поворот. При желании включить перекрывающую фигуру.]</p>
+		<p>На экране сейчас конкретный постер: с этим текстом, этими переносами и таким порядком элементов. Нажимаю
+			«Скачать PNG».</p>
+		<p>[Скачать файл и открыть его рядом с демо.]</p>
+		<p>Сравним несколько вещей. Есть ли в файле сам текст? Сохранились ли переносы? Остался ли поворот? Там ли
+			находится фигура, которая перекрывает надпись?</p>
+		<p>Если всё совпало: «Вот теперь требование выполнено: текст попал в общую картинку вместе с остальной
+			сценой».</p>
+		<p>Если есть расхождение: «Здесь видно расхождение. Значит, эту комбинацию настроек и поведения браузера нужно
+			проверить до использования в продукте».</p>
+		<p>Мы экспортируем результат рисования, а не снимаем экран целиком. Панель управления слева и остальные элементы
+			страницы в этот файл не входят.</p></footer>
+	<div class="slide-footer"><span></span><span>32 / 44</span></div>
+</section>
+<section class="slide " id="slide-32" aria-label="33. Та же идея — для WebGL и WebGPU"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">05 / Экспорт и другие контексты</div>
+	<h2>Та же идея — для WebGL и WebGPU</h2>
+	<div class="pipeline"><b>HTML</b><i>→</i><b>Изображение элемента</b><i>→</i><b>GPU-текстура</b><i>→</i><b>Сцена</b>
+	</div>
+	<pre><code class="language-javascript">// Имена в актуальном explainer:
 // WebGL: texElementSubImage2D(...)
 // WebGPU: drawElementImageToTexture(...)
-// Геометрия: canvas.updateElementGeometry(...)</code></pre><p class="callout">Схема API, не готовая настройка графического конвейера.</p><footer class="notes"><p>До сих пор мы работали с Canvas 2D. Но идея HTML-in-Canvas распространяется и на WebGL с WebGPU.</p><p>Там подготовленный HTML используется как источник для текстуры. Если говорить проще, это изображение, которое графический движок может поместить на поверхность объекта. Например, на экран терминала внутри трёхмерной сцены.</p><p>На слайде названия соответствующих методов из текущего explainer. Настройку всего графического движка мы сейчас писать не будем — это отдельная большая тема.</p><p>Но есть важное отличие от нашего плоского примера. В трёхмерной сцене недостаточно знать, куда текст попал внутри текстуры. Нужно ещё понять, где сама поверхность оказалась на экране после движения камеры. Эти сведения приложение должно передать браузеру для взаимодействия. Картинка и область ввода снова должны совпасть.</p></footer><div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank" rel="noopener">WICG · актуальный explainer</a></span><span>33 / 44</span></div></section>
-<section class="slide " id="slide-33" aria-label="34. Где 3D действительно помогает"><img class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true"><div class="eyebrow">05 / Экспорт и другие контексты</div><h2>Где 3D действительно помогает</h2><p class="lead">Терминал в игре: текст, кнопки и события внутри сцены.</p><ul><li>Quest Signal связывает HTML-панели и Godot.</li><li>Копирование кода меняет игровое задание.</li><li>HTML-кнопка создаёт объекты в мире.</li></ul><p class="callout">Работающий прототип ≠ доказательство готовности продукта.</p><footer class="notes"><p>Такой сценарий уже можно посмотреть в работающем прототипе Quest Signal. Авторы связали HTML-панели со сценой на Godot.</p><p>Пользователь может скопировать код с панели, и это меняет состояние задания. Может нажать HTML-кнопку, после чего в сцене появляются объекты. А результат из игры возвращается обратно в интерфейс.</p><p>Мне этот пример нравится тем, что текст участвует в действии, а не просто украшает трёхмерную поверхность. Есть обмен в обе стороны: браузерный интерфейс влияет на сцену, сцена обновляет интерфейс.</p><p>Но это именно прототип. Его существование не означает, что все вопросы совместимости и доступности уже решены. Ссылка оставлена на слайде, если захочется разобрать пример и исходники подробнее.</p></footer><div class="slide-footer"><span><a class="source" href="https://vav-labs.com/case-studies/quest-signal/" target="_blank" rel="noopener">Quest Signal · прототип</a></span><span>34 / 44</span></div></section>
-<section class="slide " id="slide-34" aria-label="35. За кадр платим несколько раз"><img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true"><div class="eyebrow">06 / Производительность</div><h2>За кадр платим несколько раз</h2><div class="cards"><article><span>01</span><h3>DOM</h3><p>Style, layout и подготовка содержимого.</p></article><article><span>02</span><h3>Графика</h3><p>Растеризация, текстуры и сборка сцены.</p></article><article><span>03</span><h3>Интерфейс</h3><p>JS, геометрия и обработка ввода.</p></article></div><p class="callout">«Попало на GPU» не означает «стало бесплатно».</p><footer class="notes"><p>Теперь вопрос, который почти всегда возникает рядом с canvas: станет ли всё это быстрее?</p><p>Само по себе новое API такого обещания не даёт. Браузеру всё ещё нужно обработать HTML и CSS, рассчитать строки и подготовить внешний вид элемента. Затем нужно собрать графическую сцену. Плюс остаётся наш JavaScript и обработка действий пользователя.</p><p>Поэтому важно смотреть, что именно меняется. Если двигаем готовый блок, это один вид работы. Если постоянно меняем его ширину, браузеру приходится заново переносить текст. Если добавляем тяжёлый графический эффект, нагрузка появляется уже в другой части процесса.</p><p>Фраза «это рисуется на GPU» не объясняет всю стоимость. Для нашего редактора польза сначала в том, что мы используем браузерную вёрстку. А вопрос скорости нужно отдельно измерять на конкретной сцене.</p></footer><div class="slide-footer"><span></span><span>35 / 44</span></div></section>
-<section class="slide " id="slide-35" aria-label="36. Площадь × плотность × частота"><img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true"><div class="eyebrow">06 / Производительность</div><h2>Площадь × плотность × частота</h2><pre><code class="language-javascript">const bytes = width * height * dpr ** 2 * 4;
+// Геометрия: canvas.updateElementGeometry(...)</code></pre>
+	<p class="callout">Схема API, не готовая настройка графического конвейера.</p>
+	<footer class="notes"><p>До сих пор мы работали с Canvas 2D. Но идея HTML-in-Canvas распространяется и на WebGL с
+		WebGPU.</p>
+		<p>Там подготовленный HTML используется как источник для текстуры. Если говорить проще, это изображение, которое
+			графический движок может поместить на поверхность объекта. Например, на экран терминала внутри трёхмерной
+			сцены.</p>
+		<p>На слайде названия соответствующих методов из текущего explainer. Настройку всего графического движка мы
+			сейчас писать не будем — это отдельная большая тема.</p>
+		<p>Но есть важное отличие от нашего плоского примера. В трёхмерной сцене недостаточно знать, куда текст попал
+			внутри текстуры. Нужно ещё понять, где сама поверхность оказалась на экране после движения камеры. Эти
+			сведения приложение должно передать браузеру для взаимодействия. Картинка и область ввода снова должны
+			совпасть.</p></footer>
+	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
+									   rel="noopener">WICG · актуальный explainer</a></span><span>33 / 44</span></div>
+</section>
+<section class="slide " id="slide-33" aria-label="34. Где 3D действительно помогает"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">05 / Экспорт и другие контексты</div>
+	<h2>Где 3D действительно помогает</h2>
+	<p class="lead">Терминал в игре: текст, кнопки и события внутри сцены.</p>
+	<ul>
+		<li>Quest Signal связывает HTML-панели и Godot.</li>
+		<li>Копирование кода меняет игровое задание.</li>
+		<li>HTML-кнопка создаёт объекты в мире.</li>
+	</ul>
+	<p class="callout">Работающий прототип ≠ доказательство готовности продукта.</p>
+	<footer class="notes"><p>Такой сценарий уже можно посмотреть в работающем прототипе Quest Signal. Авторы связали
+		HTML-панели со сценой на Godot.</p>
+		<p>Пользователь может скопировать код с панели, и это меняет состояние задания. Может нажать HTML-кнопку, после
+			чего в сцене появляются объекты. А результат из игры возвращается обратно в интерфейс.</p>
+		<p>Мне этот пример нравится тем, что текст участвует в действии, а не просто украшает трёхмерную поверхность.
+			Есть обмен в обе стороны: браузерный интерфейс влияет на сцену, сцена обновляет интерфейс.</p>
+		<p>Но это именно прототип. Его существование не означает, что все вопросы совместимости и доступности уже
+			решены. Ссылка оставлена на слайде, если захочется разобрать пример и исходники подробнее.</p></footer>
+	<div class="slide-footer"><span><a class="source" href="https://vav-labs.com/case-studies/quest-signal/"
+									   target="_blank"
+									   rel="noopener">Quest Signal · прототип</a></span><span>34 / 44</span></div>
+</section>
+<section class="slide " id="slide-34" aria-label="35. За кадр платим несколько раз"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">06 / Производительность</div>
+	<h2>За кадр платим несколько раз</h2>
+	<div class="cards">
+		<article><span>01</span>
+			<h3>DOM</h3>
+			<p>Style, layout и подготовка содержимого.</p></article>
+		<article><span>02</span>
+			<h3>Графика</h3>
+			<p>Растеризация, текстуры и сборка сцены.</p></article>
+		<article><span>03</span>
+			<h3>Интерфейс</h3>
+			<p>JS, геометрия и обработка ввода.</p></article>
+	</div>
+	<p class="callout">«Попало на GPU» не означает «стало бесплатно».</p>
+	<footer class="notes"><p>Теперь вопрос, который почти всегда возникает рядом с canvas: станет ли всё это
+		быстрее?</p>
+		<p>Само по себе новое API такого обещания не даёт. Браузеру всё ещё нужно обработать HTML и CSS, рассчитать
+			строки и подготовить внешний вид элемента. Затем нужно собрать графическую сцену. Плюс остаётся наш
+			JavaScript и обработка действий пользователя.</p>
+		<p>Поэтому важно смотреть, что именно меняется. Если двигаем готовый блок, это один вид работы. Если постоянно
+			меняем его ширину, браузеру приходится заново переносить текст. Если добавляем тяжёлый графический эффект,
+			нагрузка появляется уже в другой части процесса.</p>
+		<p>Фраза «это рисуется на GPU» не объясняет всю стоимость. Для нашего редактора польза сначала в том, что мы
+			используем браузерную вёрстку. А вопрос скорости нужно отдельно измерять на конкретной сцене.</p></footer>
+	<div class="slide-footer"><span></span><span>35 / 44</span></div>
+</section>
+<section class="slide " id="slide-35" aria-label="36. Площадь × плотность × частота"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">06 / Производительность</div>
+	<h2>Площадь × плотность × частота</h2>
+	<pre><code class="language-javascript">const bytes = width * height * dpr ** 2 * 4;
 // 1920 × 1080, DPR 2, RGBA8:
 // ≈ 31.6 MiB на одну несжатую поверхность
 
 // Это нижняя модель одной поверхности,
-// не вся память приложения и GPU.</code></pre><p class="callout">DPR 2 даёт в четыре раза больше пикселей, чем DPR 1.</p><footer class="notes"><p>Есть простая оценка, которая помогает почувствовать масштаб затрат. Возьмём изображение тысяча девятьсот двадцать на тысячу восемьдесят. Если плотность пикселей равна двум, его реальная ширина и высота увеличиваются вдвое.</p><p>То есть пикселей становится не в два, а в четыре раза больше. Если на каждый приходится четыре байта, одна такая несжатая поверхность занимает примерно тридцать два мебибайта.</p><p>Это ещё не вся память приложения. Браузер может хранить дополнительные поверхности, текстуры и промежуточные результаты. Число на слайде — только понятная оценка для одной картинки.</p><p>Поэтому качество и размер нельзя выбирать совсем отдельно от стоимости. Большой холст на экране с высокой плотностью уже заметно дороже маленького. А если часто обновлять всё его содержимое, добавляется ещё и работа на каждом кадре.</p></footer><div class="slide-footer"><span></span><span>36 / 44</span></div></section>
-<section class="slide " id="slide-36" aria-label="37. Не запускаем лишний цикл"><img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true"><div class="eyebrow">06 / Производительность</div><h2>Не запускаем лишний цикл</h2><pre><code class="language-javascript">// Для статичного постера:
+// не вся память приложения и GPU.</code></pre>
+	<p class="callout">DPR 2 даёт в четыре раза больше пикселей, чем DPR 1.</p>
+	<footer class="notes"><p>Есть простая оценка, которая помогает почувствовать масштаб затрат. Возьмём изображение
+		тысяча девятьсот двадцать на тысячу восемьдесят. Если плотность пикселей равна двум, его реальная ширина и
+		высота увеличиваются вдвое.</p>
+		<p>То есть пикселей становится не в два, а в четыре раза больше. Если на каждый приходится четыре байта, одна
+			такая несжатая поверхность занимает примерно тридцать два мебибайта.</p>
+		<p>Это ещё не вся память приложения. Браузер может хранить дополнительные поверхности, текстуры и промежуточные
+			результаты. Число на слайде — только понятная оценка для одной картинки.</p>
+		<p>Поэтому качество и размер нельзя выбирать совсем отдельно от стоимости. Большой холст на экране с высокой
+			плотностью уже заметно дороже маленького. А если часто обновлять всё его содержимое, добавляется ещё и
+			работа на каждом кадре.</p></footer>
+	<div class="slide-footer"><span></span><span>36 / 44</span></div>
+</section>
+<section class="slide " id="slide-36" aria-label="37. Не запускаем лишний цикл"><img class="cover w slide-background"
+																					 src="../../src/picture/sb-background/image13.jpeg"
+																					 alt="" aria-hidden="true">
+	<div class="eyebrow">06 / Производительность</div>
+	<h2>Не запускаем лишний цикл</h2>
+	<pre><code class="language-javascript">// Для статичного постера:
 controls.addEventListener(&#x27;input&#x27;, () =&gt; {
   updateSceneState();
   canvas.requestPaint();
 });
 
 // Плохая идея без анимации:
-// onpaint = () =&gt; { draw(); canvas.requestPaint(); };</code></pre><p class="callout">Перерисовка по изменениям — исходная стратегия демо.</p><footer class="notes"><p>Первое, что можно сделать в нашем случае, — не рисовать без необходимости. Постер стоит на месте, пользователь ничего не меняет. Зачем нам собирать одну и ту же картинку шестьдесят раз в секунду?</p><p>Здесь обработчик инструментов обновляет состояние и запрашивает новый paint. Одно действие — повод для обновления. В покое постоянный цикл нам не нужен.</p><p>Если мы делаем анимацию, ситуация другая. Там последовательность кадров — часть задачи, и цикл оправдан. Но в статичном редакторе его легко добавить по привычке и потом тратить ресурсы без видимой пользы.</p><p>Когда блоков станет много, появятся и другие вопросы: какие из них видны, какие изменились, какие можно пока не обновлять. HTML-in-Canvas предоставляет возможность рисования, но всю стратегию обновления сцены приложение выбирает само.</p></footer><div class="slide-footer"><span></span><span>37 / 44</span></div></section>
-<section class="slide " id="slide-37" aria-label="38. Измеряем, а не угадываем"><img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true"><div class="eyebrow">06 / Производительность</div><h2>Измеряем, а не угадываем</h2><pre><code class="language-javascript">const start = performance.now();
+// onpaint = () =&gt; { draw(); canvas.requestPaint(); };</code></pre>
+	<p class="callout">Перерисовка по изменениям — исходная стратегия демо.</p>
+	<footer class="notes"><p>Первое, что можно сделать в нашем случае, — не рисовать без необходимости. Постер стоит на
+		месте, пользователь ничего не меняет. Зачем нам собирать одну и ту же картинку шестьдесят раз в секунду?</p>
+		<p>Здесь обработчик инструментов обновляет состояние и запрашивает новый paint. Одно действие — повод для
+			обновления. В покое постоянный цикл нам не нужен.</p>
+		<p>Если мы делаем анимацию, ситуация другая. Там последовательность кадров — часть задачи, и цикл оправдан. Но в
+			статичном редакторе его легко добавить по привычке и потом тратить ресурсы без видимой пользы.</p>
+		<p>Когда блоков станет много, появятся и другие вопросы: какие из них видны, какие изменились, какие можно пока
+			не обновлять. HTML-in-Canvas предоставляет возможность рисования, но всю стратегию обновления сцены
+			приложение выбирает само.</p></footer>
+	<div class="slide-footer"><span></span><span>37 / 44</span></div>
+</section>
+<section class="slide " id="slide-37" aria-label="38. Измеряем, а не угадываем"><img class="cover w slide-background"
+																					 src="../../src/picture/sb-background/image13.jpeg"
+																					 alt="" aria-hidden="true">
+	<div class="eyebrow">06 / Производительность</div>
+	<h2>Измеряем, а не угадываем</h2>
+	<pre><code class="language-javascript">const start = performance.now();
 drawScene();
 const jsDuration = performance.now() - start;
 
 // Это время JS-вызовов, не завершённый GPU-кадр.
-// Performance trace: layout, paint, кадры, ввод.</code></pre><p class="callout">Сравнить 1 / 20 / 100 блоков; DPR 1 / 2; движение / перевёрстку.</p><footer class="notes"><p>Как понять, что стало медленно? На слайде самый простой замер: записали время до drawScene, вызвали рисование, посмотрели разницу.</p><p>Это полезно, но так мы измерили только время выполнения этих JavaScript-вызовов. Графическая работа может продолжаться после них. Маленькое число здесь ещё не доказывает, что пользователь получает плавные кадры и быстрый ввод.</p><p>Поэтому дальше нужен профиль в инструментах разработчика. Смотрим расчёт расположения элементов, рисование и поведение кадров. Отдельно проверяем, не запаздывает ли ввод.</p><p>Для сравнения я бы взяла несколько понятных вариантов: один блок, двадцать и сто. Перемещение блока и изменение его ширины. Плотность пикселей один и два. Всё это — на одном устройстве, с уже загруженными ресурсами и несколькими повторами. Тогда мы сравниваем условия, а не случайные числа.</p></footer><div class="slide-footer"><span></span><span>38 / 44</span></div></section>
-<section class="slide " id="slide-38" aria-label="39. Worker переносит не весь браузер"><img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true"><div class="eyebrow">06 / Производительность</div><h2>Worker переносит не весь браузер</h2><pre><code class="language-javascript">// Main thread, внутри paint:
+// Performance trace: layout, paint, кадры, ввод.</code></pre>
+	<p class="callout">Сравнить 1 / 20 / 100 блоков; DPR 1 / 2; движение / перевёрстку.</p>
+	<footer class="notes"><p>Как понять, что стало медленно? На слайде самый простой замер: записали время до drawScene,
+		вызвали рисование, посмотрели разницу.</p>
+		<p>Это полезно, но так мы измерили только время выполнения этих JavaScript-вызовов. Графическая работа может
+			продолжаться после них. Маленькое число здесь ещё не доказывает, что пользователь получает плавные кадры и
+			быстрый ввод.</p>
+		<p>Поэтому дальше нужен профиль в инструментах разработчика. Смотрим расчёт расположения элементов, рисование и
+			поведение кадров. Отдельно проверяем, не запаздывает ли ввод.</p>
+		<p>Для сравнения я бы взяла несколько понятных вариантов: один блок, двадцать и сто. Перемещение блока и
+			изменение его ширины. Плотность пикселей один и два. Всё это — на одном устройстве, с уже загруженными
+			ресурсами и несколькими повторами. Тогда мы сравниваем условия, а не случайные числа.</p></footer>
+	<div class="slide-footer"><span></span><span>38 / 44</span></div>
+</section>
+<section class="slide " id="slide-38" aria-label="39. Worker переносит не весь браузер"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">06 / Производительность</div>
+	<h2>Worker переносит не весь браузер</h2>
+	<pre><code class="language-javascript">// Main thread, внутри paint:
 const snapshot = canvas.captureElementImage(title);
 worker.postMessage({ snapshot }, [snapshot]);
 
 // Worker, после получения OffscreenCanvas:
 self.onmessage = ({ data }) =&gt; {
   ctx.drawElementImage(data.snapshot, 0, 0);
-};</code></pre><p class="callout">Фрагмент передачи снимка. DOM и layout остаются на main thread.</p><footer class="notes"><p>Ещё один возможный шаг — вынести часть графической работы в worker. Но важно понимать, какую именно часть.</p><p>Живой DOM-элемент нельзя просто отправить в другой поток и продолжить там обычную работу со страницей. У worker нет такого же доступа к DOM.</p><p>В этой модели сначала на основном потоке получаем подготовленный снимок элемента через captureElementImage. Затем передаём этот снимок в worker. Там его можно использовать для рисования в OffscreenCanvas.</p><p>На слайде только сама передача. Создание worker и настройка его холста оставлены за кадром.</p><p>Вёрстка HTML при этом не переехала в worker. Её по-прежнему делает браузер на основной стороне. А ещё нужно следить, чтобы новые снимки не накапливались быстрее, чем их успевают рисовать. Поэтому worker — полезный инструмент, но не кнопка «сделать всё быстро».</p></footer><div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank" rel="noopener">WICG · актуальный explainer</a></span><span>39 / 44</span></div></section>
-<section class="slide " id="slide-39" aria-label="40. Что проверяем перед релизом"><img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true"><div class="eyebrow">07 / Внедрение</div><h2>Что проверяем перед релизом</h2><ul><li>Реальный ввод: IME, выделение, вставка, undo.</li><li>Клавиатура и экранный диктор.</li><li>Масштаб, DPR, шрифты, изменение размеров.</li><li>Перекрытия, несколько копий, экспорт.</li><li>Поддержка API и понятный запасной режим.</li></ul><footer class="notes"><p>Допустим, картинка нас устраивает и по скорости всё хорошо. Что проверять перед тем, как показывать такой редактор пользователям?</p><p>В первую очередь обычные действия с текстом. Ввод, выделение, вставку, отмену. Не только английские буквы: разные способы ввода могут вести себя по-разному.</p><p>Потом клавиатуру и доступность. Можно ли добраться до нужного элемента? Понятно ли, что сейчас редактируется? Не конфликтуют ли команды редактора с вводом текста?</p><p>Дальше размеры, масштаб, шрифты, перекрытия и экспорт. Всё то, что мы попробовали на одном блоке, придётся проверить для реальных сценариев приложения.</p><p>Наше демо намеренно маленькое. Оно показывает устройство подхода, но успешное прохождение нескольких действий ещё не означает, что у нас получился готовый редактор документов.</p></footer><div class="slide-footer"><span></span><span>40 / 44</span></div></section>
-<section class="slide " id="slide-40" aria-label="41. Fallback — отдельный продуктовый выбор"><img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true"><div class="eyebrow">07 / Внедрение</div><h2>Fallback — отдельный продуктовый выбор</h2><pre><code class="language-javascript">if (supportsNativePath) {
+};</code></pre>
+	<p class="callout">Фрагмент передачи снимка. DOM и layout остаются на main thread.</p>
+	<footer class="notes"><p>Ещё один возможный шаг — вынести часть графической работы в worker. Но важно понимать,
+		какую именно часть.</p>
+		<p>Живой DOM-элемент нельзя просто отправить в другой поток и продолжить там обычную работу со страницей. У
+			worker нет такого же доступа к DOM.</p>
+		<p>В этой модели сначала на основном потоке получаем подготовленный снимок элемента через captureElementImage.
+			Затем передаём этот снимок в worker. Там его можно использовать для рисования в OffscreenCanvas.</p>
+		<p>На слайде только сама передача. Создание worker и настройка его холста оставлены за кадром.</p>
+		<p>Вёрстка HTML при этом не переехала в worker. Её по-прежнему делает браузер на основной стороне. А ещё нужно
+			следить, чтобы новые снимки не накапливались быстрее, чем их успевают рисовать. Поэтому worker — полезный
+			инструмент, но не кнопка «сделать всё быстро».</p></footer>
+	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
+									   rel="noopener">WICG · актуальный explainer</a></span><span>39 / 44</span></div>
+</section>
+<section class="slide " id="slide-39" aria-label="40. Что проверяем перед релизом"><img class="cover w slide-background"
+																						src="../../src/picture/sb-background/image13.jpeg"
+																						alt="" aria-hidden="true">
+	<div class="eyebrow">07 / Внедрение</div>
+	<h2>Что проверяем перед релизом</h2>
+	<ul>
+		<li>Реальный ввод: IME, выделение, вставка, undo.</li>
+		<li>Клавиатура и экранный диктор.</li>
+		<li>Масштаб, DPR, шрифты, изменение размеров.</li>
+		<li>Перекрытия, несколько копий, экспорт.</li>
+		<li>Поддержка API и понятный запасной режим.</li>
+	</ul>
+	<footer class="notes"><p>Допустим, картинка нас устраивает и по скорости всё хорошо. Что проверять перед тем, как
+		показывать такой редактор пользователям?</p>
+		<p>В первую очередь обычные действия с текстом. Ввод, выделение, вставку, отмену. Не только английские буквы:
+			разные способы ввода могут вести себя по-разному.</p>
+		<p>Потом клавиатуру и доступность. Можно ли добраться до нужного элемента? Понятно ли, что сейчас редактируется?
+			Не конфликтуют ли команды редактора с вводом текста?</p>
+		<p>Дальше размеры, масштаб, шрифты, перекрытия и экспорт. Всё то, что мы попробовали на одном блоке, придётся
+			проверить для реальных сценариев приложения.</p>
+		<p>Наше демо намеренно маленькое. Оно показывает устройство подхода, но успешное прохождение нескольких действий
+			ещё не означает, что у нас получился готовый редактор документов.</p></footer>
+	<div class="slide-footer"><span></span><span>40 / 44</span></div>
+</section>
+<section class="slide " id="slide-40" aria-label="41. Fallback — отдельный продуктовый выбор"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">07 / Внедрение</div>
+	<h2>Fallback — отдельный продуктовый выбор</h2>
+	<pre><code class="language-javascript">if (supportsNativePath) {
   startCanvasEditor();
 } else {
   showDOMPreview();
   exportButton.disabled = true;
   showMessage(&#x27;Доступен просмотр и правка текста&#x27;);
-}</code></pre><p class="callout">Не называем DOM-просмотр эквивалентом всей графической сцены.</p><footer class="notes"><p>Нужно заранее решить и то, что будет в браузере без подходящей реализации API. В нашем примере ответ простой: показываем текст обычным HTML и позволяем его менять. Но выключаем экспорт и инструменты, которые зависят от общей canvas-сцены.</p><p>Это ограниченный режим, и интерфейс прямо об этом сообщает.</p><p>Для настоящего продукта решение может быть другим. Например, отдельный серверный экспорт или другой способ отображения. Важно выбрать его под задачу, а не только написать условие if.</p><p>Сам факт наличия запасной ветки не делает все функции одинаково доступными во всех браузерах. Нужно проверить, какую задачу пользователь сможет выполнить в каждом режиме. Тогда отсутствие нового API будет понятным ограничением, а не неожиданной поломкой посреди работы.</p></footer><div class="slide-footer"><span></span><span>41 / 44</span></div></section>
-<section class="slide " id="slide-41" aria-label="42. Когда API оправдан"><img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true"><div class="eyebrow">07 / Внедрение</div><h2>Когда API оправдан</h2><div class="cards"><article><span>01</span><h3>Да</h3><p>HTML должен стать частью графики и экспорта.</p></article><article><span>02</span><h3>Возможно</h3><p>Много сложного контента внутри canvas-сцены.</p></article><article><span>03</span><h3>Обычно нет</h3><p>Обычная форма или панель поверх приложения.</p></article></div><footer class="notes"><p>Так когда стоит брать HTML-in-Canvas?</p><p>Для нашего постера есть конкретный аргумент: сложный HTML-текст должен стать частью общей графической композиции и попасть в экспорт. Здесь браузерная вёрстка действительно снимает часть работы.</p><p>Похожие задачи могут появиться в редакторах, визуализациях и трёхмерных сценах. Но сам по себе факт, что на странице есть canvas, ещё не повод переносить в него весь интерфейс.</p><p>Если нужна обычная форма, меню или панель настроек рядом с холстом, обычный HTML часто будет проще. Не нужно усложнять такую задачу только ради нового API.</p><p>Я бы начинала с требования: что именно мы не можем удобно сделать существующим способом? И уже после этого оценивала бы, насколько новая возможность оправдывает поддержку и дополнительные проверки.</p></footer><div class="slide-footer"><span></span><span>42 / 44</span></div></section>
-<section class="slide finale" id="slide-42" aria-label="43. Границы возможного"><img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true"><div class="eyebrow">07 / Внедрение</div><h2>Границы возможного</h2><p class="big">Браузеру — вёрстка.<br>Canvas — композиция.<br>Приложению — согласованность.</p><p class="lead">HTML-in-Canvas сокращает работу,<br>но не превращается в готовый редактор.</p><footer class="notes"><p>Вернёмся к вопросу в начале. Нужно ли нам писать собственный текстовый движок, чтобы добавить оформленный текст в маленький canvas-редактор?</p><p>Для нашего сценария HTML-in-Canvas позволяет отдать вёрстку браузеру. Мы описываем содержимое и стили, а в canvas решаем, как собрать итоговую картинку.</p><p>Но между ними остаётся работа приложения. Нужно согласовать ввод и положение текста, продумать перекрытия, дождаться правильного кадра для экспорта и проверить стоимость обновлений.</p><p>Вот для меня и проходят границы возможного: API убирает часть сложной работы, но не превращается в готовую Figma. Чем точнее мы понимаем свою задачу и эти границы, тем легче решить, стоит ли его использовать.</p></footer><div class="slide-footer"><span></span><span>43 / 44</span></div></section>
-<section class="slide " id="slide-43" aria-label="44. Код, источники, вопросы"><img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true"><div class="eyebrow">07 / Внедрение</div><h2>Код, источники, вопросы</h2><ul><li><a href="demo/index.html" target="_blank" rel="noopener">Наш редактор постера</a></li>
-  <li><a href="sources.md">Источники и версия API</a></li><li><a href="https://chrome.dev/html-in-canvas/">Коллекция демо Chrome</a></li></ul><p class="big">Какое поведение вы проверили бы первым?</p><footer class="notes"><p>На последнем слайде оставила ссылки на наш редактор, код и источники. Можно открыть пример и попробовать те же действия самостоятельно: изменить ширину текста, повернуть блок, добавить перекрытие и проверить сохранённую картинку.</p><p>Спасибо! Буду рада вопросам. И мне интересно, какое поведение вы проверили бы первым, если бы добавляли такой текст в свой редактор.</p></footer><div class="slide-footer"><span></span><span>44 / 44</span></div></section>
+}</code></pre>
+	<p class="callout">Не называем DOM-просмотр эквивалентом всей графической сцены.</p>
+	<footer class="notes"><p>Нужно заранее решить и то, что будет в браузере без подходящей реализации API. В нашем
+		примере ответ простой: показываем текст обычным HTML и позволяем его менять. Но выключаем экспорт и инструменты,
+		которые зависят от общей canvas-сцены.</p>
+		<p>Это ограниченный режим, и интерфейс прямо об этом сообщает.</p>
+		<p>Для настоящего продукта решение может быть другим. Например, отдельный серверный экспорт или другой способ
+			отображения. Важно выбрать его под задачу, а не только написать условие if.</p>
+		<p>Сам факт наличия запасной ветки не делает все функции одинаково доступными во всех браузерах. Нужно
+			проверить, какую задачу пользователь сможет выполнить в каждом режиме. Тогда отсутствие нового API будет
+			понятным ограничением, а не неожиданной поломкой посреди работы.</p></footer>
+	<div class="slide-footer"><span></span><span>41 / 44</span></div>
+</section>
+<section class="slide " id="slide-41" aria-label="42. Когда API оправдан"><img class="cover w slide-background"
+																			   src="../../src/picture/sb-background/image13.jpeg"
+																			   alt="" aria-hidden="true">
+	<div class="eyebrow">07 / Внедрение</div>
+	<h2>Когда API оправдан</h2>
+	<div class="cards">
+		<article><span>01</span>
+			<h3>Да</h3>
+			<p>HTML должен стать частью графики и экспорта.</p></article>
+		<article><span>02</span>
+			<h3>Возможно</h3>
+			<p>Много сложного контента внутри canvas-сцены.</p></article>
+		<article><span>03</span>
+			<h3>Обычно нет</h3>
+			<p>Обычная форма или панель поверх приложения.</p></article>
+	</div>
+	<footer class="notes"><p>Так когда стоит брать HTML-in-Canvas?</p>
+		<p>Для нашего постера есть конкретный аргумент: сложный HTML-текст должен стать частью общей графической
+			композиции и попасть в экспорт. Здесь браузерная вёрстка действительно снимает часть работы.</p>
+		<p>Похожие задачи могут появиться в редакторах, визуализациях и трёхмерных сценах. Но сам по себе факт, что на
+			странице есть canvas, ещё не повод переносить в него весь интерфейс.</p>
+		<p>Если нужна обычная форма, меню или панель настроек рядом с холстом, обычный HTML часто будет проще. Не нужно
+			усложнять такую задачу только ради нового API.</p>
+		<p>Я бы начинала с требования: что именно мы не можем удобно сделать существующим способом? И уже после этого
+			оценивала бы, насколько новая возможность оправдывает поддержку и дополнительные проверки.</p></footer>
+	<div class="slide-footer"><span></span><span>42 / 44</span></div>
+</section>
+<section class="slide finale" id="slide-42" aria-label="43. Границы возможного"><img class="cover w slide-background"
+																					 src="../../src/picture/sb-background/image13.jpeg"
+																					 alt="" aria-hidden="true">
+	<div class="eyebrow">07 / Внедрение</div>
+	<h2>Границы возможного</h2>
+	<p class="big">Браузеру — вёрстка.<br>Canvas — композиция.<br>Приложению — согласованность.</p>
+	<p class="lead">HTML-in-Canvas сокращает работу,<br>но не превращается в готовый редактор.</p>
+	<footer class="notes"><p>Вернёмся к вопросу в начале. Нужно ли нам писать собственный текстовый движок, чтобы
+		добавить оформленный текст в маленький canvas-редактор?</p>
+		<p>Для нашего сценария HTML-in-Canvas позволяет отдать вёрстку браузеру. Мы описываем содержимое и стили, а в
+			canvas решаем, как собрать итоговую картинку.</p>
+		<p>Но между ними остаётся работа приложения. Нужно согласовать ввод и положение текста, продумать перекрытия,
+			дождаться правильного кадра для экспорта и проверить стоимость обновлений.</p>
+		<p>Вот для меня и проходят границы возможного: API убирает часть сложной работы, но не превращается в готовую
+			Figma. Чем точнее мы понимаем свою задачу и эти границы, тем легче решить, стоит ли его использовать.</p>
+	</footer>
+	<div class="slide-footer"><span></span><span>43 / 44</span></div>
+</section>
+<section class="slide " id="slide-43" aria-label="44. Код, источники, вопросы"><img class="cover w slide-background"
+																					src="../../src/picture/sb-background/image13.jpeg"
+																					alt="" aria-hidden="true">
+	<div class="eyebrow">07 / Внедрение</div>
+	<h2>Код, источники, вопросы</h2>
+	<ul>
+		<li><a href="demo/index.html" target="_blank" rel="noopener">Наш редактор постера</a></li>
+		<li><a href="sources.md">Источники и версия API</a></li>
+		<li><a href="https://chrome.dev/html-in-canvas/">Коллекция демо Chrome</a></li>
+	</ul>
+	<p class="big">Какое поведение вы проверили бы первым?</p>
+	<footer class="notes"><p>На последнем слайде оставила ссылки на наш редактор, код и источники. Можно открыть пример
+		и попробовать те же действия самостоятельно: изменить ширину текста, повернуть блок, добавить перекрытие и
+		проверить сохранённую картинку.</p>
+		<p>Спасибо! Буду рада вопросам. И мне интересно, какое поведение вы проверили бы первым, если бы добавляли такой
+			текст в свой редактор.</p></footer>
+	<div class="slide-footer"><span></span><span>44 / 44</span></div>
+</section>
 <div class="progress"></div>
 <script src="../../src/shower/shower.js"></script>
 <script src="../../src/highlight/highlight.min.js"></script>

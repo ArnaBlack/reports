@@ -4,6 +4,10 @@ const canvas = $('poster');
 const title = $('title');
 const ctx = canvas.getContext('2d');
 const W = 960, H = 540;
+const viewport = document.querySelector('.viewport');
+new ResizeObserver(([entry]) => {
+  viewport.style.setProperty('--preview-scale', entry.contentRect.width / W);
+}).observe(viewport);
 const scene = { x:110, y:140, angle:0, occlusion:false };
 let boxW = 420, boxH = 180;
 let native = false, ready = false, exportPending = false;
