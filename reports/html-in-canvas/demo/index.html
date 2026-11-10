@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Редактор постера · HTML-in-Canvas</title><link rel="stylesheet" href="styles.css"></head>
+<body><header><a href="../index.html#slide-21">← К слайдам</a><h1>Редактор постера</h1><p>HTML-текст в графической композиции</p></header>
+<main><aside aria-label="Инструменты постера">
+<p id="status" role="status">Проверяем поддержку…</p>
+<label for="copy">Текст заголовка</label><textarea id="copy" rows="3">Встречаемся в браузере</textarea>
+<label for="width">Ширина блока <output id="width-value">420</output></label><input id="width" type="range" min="240" max="600" value="420">
+<label for="x">По горизонтали <output id="x-value">110</output></label><input id="x" type="range" min="20" max="320" value="110">
+<label for="y">По вертикали <output id="y-value">140</output></label><input id="y" type="range" min="60" max="260" value="140">
+<label for="angle">Поворот <output id="angle-value">0</output>°</label><input id="angle" type="range" min="-20" max="20" value="0">
+<label class="check"><input id="occlusion" type="checkbox"> Фигура поверх текста</label>
+<button id="focus" type="button">Редактировать на холсте</button><button id="export" type="button" disabled>Скачать PNG</button><button id="reset" type="button">Сбросить</button>
+<p class="hint">Попробуйте выделить текст после поворота. Фигура перекрывает изображение, но её пиксели не задают область блокировки ввода.</p>
+</aside><section class="preview" aria-label="Предпросмотр постера"><div class="viewport"><canvas id="poster" content="drawable" width="960" height="540"><article id="title" drawable contenteditable="true" role="textbox" aria-multiline="true" aria-label="Заголовок постера" spellcheck="false">Встречаемся <strong>в браузере</strong></article></canvas><div id="fallback" hidden><span>PLATFORM / 2026</span><div id="fallback-text"></div><p>HTML · CSS · Графика</p></div></div><p id="message" role="status"></p><p class="hint">Сцена 960 × 540. PNG содержит bitmap, а не редактируемый документ. Изменения остаются только в этой вкладке.</p></section></main>
+<script src="app.js"></script></body></html>
