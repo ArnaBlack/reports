@@ -64,7 +64,7 @@ header p {
 
 main {
     display: grid;
-    grid-template-columns:280px minmax(0, 1fr);
+    grid-template-columns:302px minmax(0, 1fr);
     gap: 28px;
     align-items: start;
 }
@@ -151,7 +151,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
 .viewport {
     position: relative;
     width: 100%;
-    max-width: 1398px;
+    max-width: 1360px;
     aspect-ratio: 16 / 9;
     overflow: hidden;
     border: 1px solid #365b4c;
