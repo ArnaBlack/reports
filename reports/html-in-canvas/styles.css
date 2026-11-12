@@ -409,3 +409,62 @@
 }
 
 #slide-23 .geometry-preview img { height: 280px; }
+
+/* Three distinct API responsibilities, with readable method names. */
+#webgl-webgpu-methods .api-method-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 32px;
+}
+#webgl-webgpu-methods .api-method-card {
+    padding: 20px 16px;
+    border: 1px solid #42665b;
+    border-top: 3px solid #7df5d1;
+    border-radius: 14px;
+    background: #091815;
+    box-shadow: 0 12px 28px #0005;
+}
+#webgl-webgpu-methods .api-method-card:nth-child(2) { border-top-color: #92c9ff; }
+#webgl-webgpu-methods .api-method-card:nth-child(3) { border-top-color: #f2b993; }
+#webgl-webgpu-methods .api-method-label { color: #c7dcd8; font-size: 16px; }
+#webgl-webgpu-methods .api-method-card h3 { font-size: 23px; margin: 17px 0 20px; }
+#webgl-webgpu-methods .api-method-card pre {
+    padding: 14px 10px;
+    min-height: 74px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: none;
+}
+#webgl-webgpu-methods .api-method-card pre code { font-size: 13px; line-height: 1.7; }
+#webgl-webgpu-methods .api-method-name { color: #7df5d1; }
+#webgl-webgpu-methods .api-method-card:nth-child(2) .api-method-name { color: #92c9ff; }
+#webgl-webgpu-methods .api-method-card:nth-child(3) .api-method-name { color: #f2b993; }
+#webgl-webgpu-methods .api-method-object { color: #92c9ff; }
+#webgl-webgpu-methods .api-method-punctuation { color: #f4f9f8; }
+#webgl-webgpu-methods .api-method-card p { font-size: 20px; line-height: 1.4; margin: 0; }
+#webgl-webgpu-methods .api-method-caption { margin-top: 16px; font-size: 16px; color: #c7dcd8; }
+
+/* Pixel count and memory, followed by the separate cost of repainting. */
+#slide-35 .pixel-budget {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin: 30px 0 14px;
+}
+#slide-35 .pixel-budget article {
+    padding: 20px;
+    background: #091815;
+    border: 1px solid #486a61;
+    border-radius: 14px;
+}
+#slide-35 .pixel-budget h3 { font-size: 20px; margin: 0 0 20px; color: #c7dcd8; }
+#slide-35 .pixel-budget strong { display: block; font-size: 32px; color: #7df5d1; white-space: nowrap; }
+#slide-35 .pixel-budget p { font-size: 19px; margin: 12px 0 0; }
+#slide-35 .pixel-budget-note { font-size: 17px; color: #c7dcd8; margin-bottom: 24px; }
+#slide-35 .refresh-budget { padding: 18px 22px; background: #091815; border-left: 3px solid #7df5d1; border-radius: 0 10px 10px 0; }
+#slide-35 .refresh-budget strong { font-size: 23px; }
+#slide-35 .refresh-budget p { font-size: 20px; margin: 8px 0 0; color: #c7dcd8; }
+
+#slide-36 .repaint-explanation { font-size: 18px; color: #c7dcd8; }
