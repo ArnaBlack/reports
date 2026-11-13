@@ -133,9 +133,12 @@
     position: absolute;
     bottom: 20px;
     left: 60px;
-    right: 60px;
+    right: 35px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 22px;
+    text-align: right;
     color: #b2cbc4;
     font-size: 13px;
 }
@@ -468,3 +471,108 @@
 #slide-35 .refresh-budget p { font-size: 20px; margin: 8px 0 0; color: #c7dcd8; }
 
 #slide-36 .repaint-explanation { font-size: 18px; color: #c7dcd8; }
+
+#slide-38 .worker-example h3 { font-size: 22px; margin: 12px 0 10px; }
+#slide-38 .worker-example pre { padding: 12px 20px; margin-bottom: 12px; }
+#slide-38 .worker-example pre code { font-size: 17px; line-height: 1.4; }
+#slide-38 .callout { margin: 16px 0 8px; }
+#slide-38 .worker-example-note { font-size: 16px; color: #c7dcd8; }
+
+#slide-38 .worker-example {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin: 24px 0;
+}
+#slide-38 .worker-example > div { min-width: 0; }
+#slide-38 .worker-example h3 { min-height: 56px; }
+#slide-38 .worker-example pre { padding: 16px; min-height: 130px; }
+#slide-38 .worker-example pre code { font-size: 14px; white-space: pre-wrap; overflow-wrap: anywhere; }
+
+
+.chrome-video-slide .video-frame { height: 340px; margin-top: 20px; }
+.chrome-video-slide h2 { font-size: 36px; }
+#slide-43 .closing-columns { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 40px; align-items: start; margin-top: 30px; }
+#slide-43 .closing-columns ul { margin: 0;}
+#slide-43 .closing-qr { margin: 0; text-align: center; }
+#slide-43 .closing-qr img { display: block; width: 240px; height: 240px; margin: 0 auto; }
+#slide-43 .closing-qr figcaption { margin-top: 12px; color: #c7dcd8; font-size: 19px; }
+
+/* Closing summary: three cards matching the API methods slide. */
+#slide-42 h2 { margin-bottom: 22px; }
+#slide-42 .finale-roles {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 32px;
+}
+#slide-42 .finale-role {
+    padding: 20px 16px;
+    border: 1px solid #42665b;
+    border-top: 3px solid #7df5d1;
+    border-radius: 14px;
+    background: #091815;
+    box-shadow: 0 12px 28px #0005;
+}
+#slide-42 .finale-role:nth-child(2) { border-top-color: #92c9ff; }
+#slide-42 .finale-role:nth-child(3) { border-top-color: #f2b993; }
+#slide-42 .finale-role-name { display: block; color: #7df5d1; font-size: 18px; margin-bottom: 20px; }
+#slide-42 .finale-role:nth-child(2) .finale-role-name { color: #92c9ff; }
+#slide-42 .finale-role:nth-child(3) .finale-role-name { color: #f2b993; }
+#slide-42 .finale-role strong { display: block; min-height: 60px; font-size: 25px; line-height: 1.2; }
+#slide-42 .finale-role p { margin: 16px 0 0; font-size: 20px; line-height: 1.4; color: #c7dcd8; }
+#slide-42 .finale-takeaway {
+    margin: 24px 0 0;
+    padding: 14px 22px;
+    border-left: 3px solid #7df5d1;
+    border-radius: 0 10px 10px 0;
+    background: #091815;
+    color: #c7dcd8;
+    font-size: 23px;
+    line-height: 1.35;
+}
+#slide-42 .finale-takeaway strong { color: #f4f9f8; }
+
+.slide-footer > span:empty { display: none; }
+
+/* Source links read upward along the right edge. */
+.slide-footer > span:first-child:has(a) {
+    position: absolute;
+    right: -30px;
+    bottom: 60px;
+    white-space: nowrap;
+    transform-origin: left bottom;
+    transform: translateX(100%) rotate(-90deg);
+}
+
+/* Keep source links secondary to the slide content. */
+.slide .slide-footer a {
+    color: #91aaa3;
+    text-decoration-color: #91aaa366;
+}
+.slide .slide-footer a:hover,
+.slide .slide-footer a:focus-visible {
+    color: #c7dcd8;
+    text-decoration-color: currentColor;
+}
+
+#browser-support .browser-support-table { width: 100%; border-collapse: collapse; margin: 20px 0 16px; font-size: 21px; }
+#browser-support .browser-support-table th { color: #a9dad0; font-size: 17px; text-align: left; }
+#browser-support .browser-support-table th,
+#browser-support .browser-support-table td { padding: 10px 12px; border-bottom: 1px solid #42665b; }
+#browser-support .browser-support-table td { background: #091815bb; }
+#browser-support .support-yes { color: #7df5d1; }
+#browser-support .support-detail { font-size: 17px; color: #c7dcd8; margin-bottom: 16px; }
+#browser-support .callout { font-size: 21px; }
+
+#browser-support .browser-support-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin: 26px 0 20px; }
+#browser-support .browser-support-card { padding: 22px 16px 18px; border: 1px solid #42665b; border-radius: 16px; background: #091815; text-align: center; }
+#browser-support .browser-support-card.chrome { border-color: #7df5d1; }
+#browser-support .browser-logo { display: block; width: 68px; height: 68px; object-fit: contain; margin: 0 auto 18px; }
+#browser-support .browser-devices { display: flex; justify-content: center; gap: 18px; margin-bottom: 22px; }
+#browser-support .browser-devices span { display: flex; align-items: center; gap: 6px; font-size: 16px; color: #c7dcd8; }
+#browser-support .browser-devices img { width: 24px; height: 24px; }
+#browser-support .browser-status { display: block; font-size: 32px; line-height: 1.2; color: #c7dcd8; }
+#browser-support .chrome .browser-status { color: #7df5d1; }
+#browser-support .browser-support-card p { font-size: 17px; margin: 8px 0 0; color: #a9bdb7; }
+#browser-support .support-detail { font-size: 16px; line-height: 1.5; margin-bottom: 14px; }
