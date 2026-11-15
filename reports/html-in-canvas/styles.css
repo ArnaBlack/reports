@@ -489,13 +489,13 @@
 #slide-38 .worker-example pre { padding: 16px; min-height: 130px; }
 #slide-38 .worker-example pre code { font-size: 14px; white-space: pre-wrap; overflow-wrap: anywhere; }
 
-
-.chrome-video-slide .video-frame { height: 340px; margin-top: 20px; }
-.chrome-video-slide h2 { font-size: 36px; }
+.chrome-video-slide h2 { font-size: 36px;     margin-bottom: 5px; }
 #slide-43 .closing-columns { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 40px; align-items: start; margin-top: 30px; }
 #slide-43 .closing-columns ul { margin: 0;}
 #slide-43 .closing-qr { margin: 0; text-align: center; }
-#slide-43 .closing-qr img { display: block; width: 240px; height: 240px; margin: 0 auto; }
+#slide-43 .closing-qr img { display: block; width: 240px; height: 240px; margin: 0 auto;     object-fit: contain;
+    border: 1px solid #42665b;
+    border-radius: 16px;}
 #slide-43 .closing-qr figcaption { margin-top: 12px; color: #c7dcd8; font-size: 19px; }
 
 /* Closing summary: three cards matching the API methods slide. */
@@ -576,3 +576,8 @@
 #browser-support .chrome .browser-status { color: #7df5d1; }
 #browser-support .browser-support-card p { font-size: 17px; margin: 8px 0 0; color: #a9bdb7; }
 #browser-support .support-detail { font-size: 16px; line-height: 1.5; margin-bottom: 14px; }
+
+.video-frame.chrome-collection {
+    width: 840px;
+    overflow: hidden;
+}
