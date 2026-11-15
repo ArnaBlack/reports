@@ -489,7 +489,7 @@
 #slide-38 .worker-example pre { padding: 16px; min-height: 130px; }
 #slide-38 .worker-example pre code { font-size: 14px; white-space: pre-wrap; overflow-wrap: anywhere; }
 
-.chrome-video-slide h2 { font-size: 36px;     margin-bottom: 5px; }
+.chrome-video-slide h2 { font-size: 36px; margin-bottom: 5px; }
 #slide-43 .closing-columns { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 40px; align-items: start; margin-top: 30px; }
 #slide-43 .closing-columns ul { margin: 0;}
 #slide-43 .closing-qr { margin: 0; text-align: center; }
