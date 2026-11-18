@@ -581,3 +581,15 @@
     width: 840px;
     overflow: hidden;
 }
+
+#browser-support .standards-path { display: grid; grid-template-columns: 1fr 24px 1fr 24px 1fr; gap: 10px; align-items: stretch; margin: 26px 0 20px; }
+#browser-support .standards-path article { background: #091815; border: 1px solid #42665b; border-radius: 14px; padding: 18px; }
+#browser-support .standards-path article > span { color: #a9dad0; font-size: 15px; }
+#browser-support .standards-path h3 { font-size: 25px; min-height: 58px; margin: 12px 0; }
+#browser-support .standards-path p { font-size: 19px; margin: 0; color: #c7dcd8; }
+#browser-support .standards-arrow { align-self: center; color: #7df5d1; }
+#browser-support .standards-current { border-left: 3px solid #7df5d1; padding: 14px 20px; background: #091815; }
+#browser-support .standards-current > span { color: #7df5d1; font-size: 16px; display: block; }
+#browser-support .standards-current strong { display: block; font-size: 27px; margin: 4px 0; }
+#browser-support .standards-current p { font-size: 18px; margin: 0; }
+#browser-support .standards-note { font-size: 15px; color: #c7dcd8; margin-top: 12px; }

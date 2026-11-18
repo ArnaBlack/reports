@@ -29,3 +29,10 @@
 - [Chrome · координаты, плотность пикселей и сглаживание](https://developer.chrome.com/docs/web-platform/html-in-canvas/concepts)
 
 Загрузка шрифта и масштаб влияют на результат рисования. Общего утверждения, что кастомные шрифты или жирное начертание в canvas работают неправильно, в докладе нет. HTML-in-Canvas также не гарантирует совпадение субпиксельного сглаживания с обычным DOM (см. ограничения в WICG explainer).
+
+## Статус предложения
+
+Сверено 18 ноября 2026: репозиторий WICG описывает HTML-in-Canvas как living explainer. Выпуск реализации не означает завершённую стандартизацию.
+
+- [WICG · как предложения переходят к стандартизации](https://wicg.github.io/admin/charter.html)
+- [WHATWG · обсуждение HTML-in-Canvas](https://github.com/whatwg/html/issues/10650)

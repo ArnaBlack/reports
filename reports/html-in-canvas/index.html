@@ -778,25 +778,21 @@ self.onmessage = ({ data }) =&gt; {
     </div>
 	<div class="slide-footer"><span></span><span>47 / 49</span></div>
 </section>
-<section class="slide" id="browser-support" aria-label="48. Поддержка браузеров">
+<section class="slide" id="browser-support" aria-label="48. От идеи к стандарту">
     <img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
-    <div class="eyebrow">Поддержка / 13 ноября 2026</div>
-    <h2>Где API уже доступен</h2>
-    <div class="browser-support-cards"><article class="browser-support-card chrome">
-    <img class="browser-logo" src="images/browsers/chrome.svg" alt="Chrome" title="Chrome">
-    <div class="browser-devices"><span><img src="images/browsers/desktop.svg" alt="Компьютер">Desktop</span><span><img src="images/browsers/mobile.svg" alt="Мобильное устройство">Android</span></div>
-    <strong class="browser-status">157+</strong><p>Без флагов</p>
-</article><article class="browser-support-card firefox">
-    <img class="browser-logo" src="images/browsers/firefox.svg" alt="Firefox" title="Firefox">
-    <div class="browser-devices"><span><img src="images/browsers/desktop.svg" alt="Компьютер">Desktop</span><span><img src="images/browsers/mobile.svg" alt="Мобильное устройство">Android</span></div>
-    <strong class="browser-status">Пока нет</strong>
-</article><article class="browser-support-card safari">
-    <img class="browser-logo" src="images/browsers/safari.svg" alt="Safari" title="Safari">
-    <div class="browser-devices"><span><img src="images/browsers/desktop.svg" alt="Компьютер">macOS</span><span><img src="images/browsers/mobile.svg" alt="Мобильное устройство">iOS / iPadOS</span></div>
-    <strong class="browser-status">Пока нет</strong>
-</article></div>
-    <p class="support-detail">На iOS браузеры на WebKit, включая Chrome, пока без поддержки<br>Другие Chromium-браузеры и WebView — проверяем нужные методы API</p>
-    <div class="slide-footer"><span><a href="https://developer.chrome.com/blog/html-in-canvas" target="_blank" rel="noopener">Chrome 157</a> · <a href="https://github.com/mdn/browser-compat-data/blob/main/api/CanvasRenderingContext2D.json" target="_blank" rel="noopener">MDN: совместимость</a></span><span>48 / 49</span></div>
+    <div class="eyebrow">Статус предложения / 18 ноября 2026</div>
+    <h2>От идеи к стандарту</h2>
+    <div class="standards-path">
+        <article><span>Идея</span><h3>Explainer</h3><p>Задача, сценарии и предлагаемый API</p></article>
+        <span class="standards-arrow" aria-hidden="true">→</span>
+        <article><span>Проверка</span><h3>Обсуждение и опыт</h3><p>Реализации, отзывы и уточнение поведения</p></article>
+        <span class="standards-arrow" aria-hidden="true">→</span>
+        <article><span>Стандартизация</span><h3>Спецификация</h3><p>Нормативные правила и тесты совместимости</p></article>
+    </div>
+    <div class="standards-current"><span>HTML-in-Canvas сейчас</span><strong>Living explainer в WICG</strong><p>Обсуждение в WHATWG · Реализация уже выпущена</p></div>
+    <p class="standards-note">Упрощённая схема: работа идёт параллельно. Выпуск API ≠ завершение стандартизации.</p>
+    <footer class="notes"><p>И в конце уточню статус самого API. Документ, на который мы ссылались, — explainer: он объясняет задачу и предлагаемое решение. Это ещё не готовый веб-стандарт.</p><p>Обычно сначала описывают идею, затем обсуждают её и проверяют в реализациях. По результатам уточняют поведение API, готовят нормативное описание и тесты для включения в соответствующий стандарт. Это не строгая лестница: обсуждение, разработка и тестирование могут идти одновременно.</p><p>HTML-in-Canvas сейчас описан в WICG как living explainer — документ, который продолжает меняться по обратной связи. Предложение также обсуждается в WHATWG. При этом рабочая реализация уже выпущена в Chrome 157.</p><p>То есть реализация в браузере и статус стандарта — разные вещи. Использовать API уже можно там, где он поддерживается, но за изменениями предложения нужно следить.</p></footer>
+    <div class="slide-footer"><span><a href="https://github.com/WICG/html-in-canvas" target="_blank" rel="noopener">WICG: статус</a> · <a href="https://github.com/whatwg/html/issues/10650" target="_blank" rel="noopener">WHATWG</a></span><span>48 / 49</span></div>
 </section>
 <section class="slide " id="slide-43" aria-label="49. Код и материалы"><img class="cover w slide-background"
 																					src="../../src/picture/sb-background/image13.jpeg"
