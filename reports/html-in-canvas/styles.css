@@ -593,3 +593,9 @@
 #browser-support .standards-current strong { display: block; font-size: 27px; margin: 4px 0; }
 #browser-support .standards-current p { font-size: 18px; margin: 0; }
 #browser-support .standards-note { font-size: 15px; color: #c7dcd8; margin-top: 12px; }
+
+#html-in-canvas-benefits .benefits-cards article { padding: 22px 18px; background: #091815; border-top: 3px solid #7df5d1; }
+#html-in-canvas-benefits .benefits-cards article:nth-child(2) { border-top-color: #92c9ff; }
+#html-in-canvas-benefits .benefits-cards article:nth-child(3) { border-top-color: #f2b993; }
+#html-in-canvas-benefits .benefits-cards h3 { font-size: 26px; min-height: 60px; margin: 18px 0; }
+#html-in-canvas-benefits .benefits-cards p { font-size: 21px; }
