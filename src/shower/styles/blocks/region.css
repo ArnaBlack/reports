@@ -16,7 +16,7 @@
 /* Full */
 
 .shower.full .region {
-    display: block;
+    display: none;
 }
 
 /* Print */
