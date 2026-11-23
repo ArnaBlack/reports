@@ -599,3 +599,20 @@
 #html-in-canvas-benefits .benefits-cards article:nth-child(3) { border-top-color: #f2b993; }
 #html-in-canvas-benefits .benefits-cards h3 { font-size: 26px; min-height: 60px; margin: 18px 0; }
 #html-in-canvas-benefits .benefits-cards p { font-size: 21px; }
+
+/* Coordinate guide for the first fillText example. */
+#slide-06 .canvas-example-columns pre { margin-bottom: 12px; }
+#slide-06 .canvas-coordinate-diagram { margin: 0 0 12px; }
+#slide-06 .canvas-coordinate-diagram img { display: block; width: 100%; height: 155px; }
+#slide-06 .callout { font-size: 22px; }
+
+#slide-09 .html-canvas-steps article { background: #091815; border-top: 3px solid #7df5d1; }
+#slide-09 .html-canvas-steps article:nth-child(2) { border-top-color: #92c9ff; }
+#slide-09 .html-canvas-steps article:nth-child(3) { border-top-color: #f2b993; }
+#slide-09 .html-canvas-steps h3 { font-size: 27px; }
+
+#draw-html-element .canvas-element-coordinate-diagram { margin: 0; }
+#draw-html-element .canvas-element-coordinate-diagram img { display: block; width: 100%; height: 190px; }
+#draw-html-element .lead { font-size: 24px; margin-bottom: 16px; }
+
+#slide-20 .control-screenshot img { height: 300px; }

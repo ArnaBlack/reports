@@ -21,7 +21,7 @@
 		<p class="byline">Анна Расторгуева</p></div>
 	<div class="poster"><span>PLATFORM / 2026</span><strong>HTML<br>ВНУТРИ<br><em>CANVAS</em></strong><small>Текст
 		остаётся HTML.<br>Композиция становится графикой</small><i></i></div>
-	<div class="slide-footer"><span></span><span>01 / 50</span></div>
+	<div class="slide-footer"><span></span><span>01 / 52</span></div>
 </section>
 <!-- about 2-->
 <section class="slide intro-slide" id="about" aria-label="2. Обо мне">
@@ -34,7 +34,7 @@
 		<li>Люблю котиков</li>
 	</ul>
 	<img class="place bottom right" width="500" src="../../src/picture/four_cats.jpeg" alt="котики">
-	<div class="slide-footer"><span>02 / 50</span></div>
+	<div class="slide-footer"><span>02 / 52</span></div>
 
 </section>
 <!-- slide-02 3-->
@@ -55,7 +55,7 @@
 			<h3>Где его границы</h3>
 			<p>Экспорт, 3D, стоимость, внедрение</p></article>
 	</div>
-	<div class="slide-footer"><span></span><span>03 / 50</span></div>
+	<div class="slide-footer"><span></span><span>03 / 52</span></div>
 </section>
 <!-- slide-04 5-->
 <section class="slide " id="slide-04" aria-label="4. Figma: проблема уже существует"><img
@@ -77,7 +77,7 @@
      Figma · собственный рендерер
       </a>
     </span>
-		<span>04 / 50</span>
+		<span>04 / 52</span>
 	</div>
 </section>
 <!-- slide-05 6-->
@@ -98,7 +98,7 @@
 		<div class="poster"><span>PLATFORM / 2026</span><strong>HTML<br>ВНУТРИ<br><em>CANVAS</em></strong><small>Текст
 			остаётся HTML.<br>Композиция становится графикой</small><i></i></div>
 	</div>
-	<div class="slide-footer"><span></span><span>05 / 50</span></div>
+	<div class="slide-footer"><span></span><span>05 / 52</span></div>
 </section>
 <!-- demo-overview 7-->
 <section class="slide demo-overview" id="demo-overview" aria-label="6. Вот что будем собирать">
@@ -109,7 +109,7 @@
         <img src="demo/preview.webp" alt="Редактор постера: слева поле текста и ползунки ширины, положения и поворота, справа заголовок и персиковый круг на тёмном фоне">
         <figcaption>Слева — инструменты, справа — постер. На снимке — DOM-просмотр</figcaption>
     </figure>
-    <div class="slide-footer"><span></span><span>06 / 50</span></div>
+    <div class="slide-footer"><span></span><span>06 / 52</span></div>
 </section>
 <!-- slide-06 8-->
 <section class="slide " id="slide-06" aria-label="7. Попробуем обычный Canvas 2D"><img class="cover w slide-background"
@@ -123,11 +123,13 @@ const ctx = canvas.getContext(&#x27;2d&#x27;);
 
 ctx.font = &#x27;bold 48px sans-serif&#x27;;
 ctx.fillStyle = &#x27;#7df5d1&#x27;;
-ctx.fillText(&#x27;Встречаемся в браузере&#x27;, 80, 140);</code></pre></div>
+ctx.fillText(&#x27;Встречаемся в браузере&#x27;, 110, 140);</code></pre></div>
 <div><h3>HTML</h3><pre><code class="language-html">&lt;canvas id=&quot;poster&quot; width=&quot;960&quot; height=&quot;540&quot;&gt;&lt;/canvas&gt;</code></pre></div>
 </div>
-	<p class="callout">Один вызов рисует строку. Интерфейс требует большего</p>
-	<div class="slide-footer"><span></span><span>07 / 50</span></div>
+    <figure class="canvas-coordinate-diagram">
+        <img src="images/canvas-text-coordinates.svg" alt="Начало координат — верхний левый угол canvas. Ось X направлена вправо, ось Y — вниз. Текст начинается на 110 пикселей правее начала, а его базовая линия проходит на 140 пикселей ниже верхнего края.">
+    </figure>
+	<div class="slide-footer"><span></span><span>07 / 52</span></div>
 </section>
 <!-- slide-07 9-->
 <section class="slide " id="slide-07" aria-label="8. Второй путь: HTML поверх холста"><img
@@ -141,7 +143,7 @@ ctx.fillText(&#x27;Встречаемся в браузере&#x27;, 80, 140);</
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 	<p class="callout">Рабочее решение, пока композиция допускает отдельный DOM-слой</p>
-	<div class="slide-footer"><span></span><span>08 / 50</span></div>
+	<div class="slide-footer"><span></span><span>08 / 52</span></div>
 </section>
 <!-- slide-08 10-->
 <section class="slide " id="slide-08" aria-label="9. Что усложняет HTML поверх canvas"><img
@@ -160,7 +162,7 @@ ctx.fillText(&#x27;Встречаемся в браузере&#x27;, 80, 140);</
 			<p>PNG должен включать весь постер</p></article>
 	</div>
 	<p class="callout">canvas.toBlob() не захватывает соседний DOM</p>
-	<div class="slide-footer"><span></span><span>09 / 50</span></div>
+	<div class="slide-footer"><span></span><span>09 / 52</span></div>
 </section>
 <!-- slide-09 11-->
 <section class="slide " id="slide-09" aria-label="10. Что меняет HTML-in-Canvas"><img class="cover w slide-background"
@@ -168,47 +170,24 @@ ctx.fillText(&#x27;Встречаемся в браузере&#x27;, 80, 140);</
 																					  alt="" aria-hidden="true">
 	<div class="eyebrow">01 / Задача</div>
 	<h2>Что меняет HTML-in-Canvas</h2>
-	<p class="big">HTML становится источником для рисования</p>
-	<pre><code class="language-javascript">
-    const title = document.getElementById(&#x27;title&#x27;);
-    ctx.drawElementImage(title, 80, 120);
-  </code></pre>
-	<p class="callout">Текст описан DOM. Его внешний вид участвует в сцене</p>
+    <div class="cards html-canvas-steps">
+        <article><span>01 / HTML + CSS</span>
+            <h3>Описываем блок</h3>
+            <p>Текст, оформление и ширина</p></article>
+        <article><span>02 / Браузер</span>
+            <h3>Получаем вёрстку</h3>
+            <p>Размеры блока и переносы строк рассчитывает браузер</p></article>
+        <article><span>03 / Наш код</span>
+            <h3>Рисуем на canvas</h3>
+            <p>Изображение блока — вместе с фоном и фигурами</p></article>
+    </div>
+    <p class="callout">HTML становится частью общей картинки</p>
 	<div class="slide-footer"><span><a class="source" href="https://developer.chrome.com/blog/html-in-canvas"
 									   target="_blank"
-									   rel="noopener">Chrome · HTML-in-Canvas</a></span><span>10 / 50</span></div>
-</section>
-<!-- slide-10 12-->
-<section class="slide " id="slide-10" aria-label="11. Зафиксируем версию API"><img class="cover w slide-background"
-																				   src="../../src/picture/sb-background/image6.jpeg"
-																				   alt="" aria-hidden="true">
-	<div class="eyebrow">02 / Новое API</div>
-	<h2>Зафиксируем версию API</h2>
-	<pre><code class="language-html">// Актуальная модель в explainer:
-&lt;canvas content=&quot;drawable&quot;&gt;
-  &lt;article drawable&gt;...&lt;/article&gt;
-&lt;/canvas&gt;
-
-// В старых статьях встречается layoutsubtree</code></pre>
-	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
-									   rel="noopener">WICG · актуальный explainer</a></span><span>11 / 50</span></div>
-</section>
-<!-- slide-11 13-->
-<section class="slide " id="slide-11" aria-label="12. Проверяем нужные возможности"><img
-		class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
-	<div class="eyebrow">02 / Новое API</div>
-	<h2>Проверяем нужные возможности</h2>
-	<pre><code class="language-javascript">const isSupportsNativePath =
-  &#x27;drawElementImage&#x27; in CanvasRenderingContext2D.prototype &amp;&amp;
-  &#x27;requestPaint&#x27; in HTMLCanvasElement.prototype &amp;&amp;
-  &#x27;updateElementGeometry&#x27; in HTMLCanvasElement.prototype;
-
-if (!isSupportsNativePath) showFallback();</code></pre>
-	<p class="callout">Наличие методов — первый фильтр. Затем проверяем реальную отрисовку</p>
-	<div class="slide-footer"><span></span><span>12 / 50</span></div>
+									   rel="noopener">Chrome · HTML-in-Canvas</a></span><span>10 / 52</span></div>
 </section>
 <!-- slide-12 14-->
-<section class="slide " id="slide-12" aria-label="13. Подготавливаем HTML"><img class="cover w slide-background"
+<section class="slide " id="slide-12" aria-label="11. Подготавливаем HTML"><img class="cover w slide-background"
 																				src="../../src/picture/sb-background/image6.jpeg"
 																				alt="" aria-hidden="true">
 	<div class="eyebrow">02 / Новое API</div>
@@ -221,12 +200,13 @@ if (!isSupportsNativePath) showFallback();</code></pre>
     Встречаемся &lt;strong&gt;в браузере&lt;/strong&gt;
   &lt;/article&gt;
 &lt;/canvas&gt;</code></pre>
-	<p class="callout">Один drawable — одна управляемая часть композиции</p>
+	<p class="callout"><code>content="drawable"</code> — подготовить HTML внутри canvas<br>
+		<code>drawable</code> — отметить элемент для рисования</p>
 	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
-									   rel="noopener">WICG · актуальный explainer</a></span><span>13 / 50</span></div>
+									   rel="noopener">WICG · актуальный explainer</a></span><span>11 / 52</span></div>
 </section>
 <!-- slide-13 15-->
-<section class="slide " id="slide-13" aria-label="14. Вёрстку оставляем CSS"><img class="cover w slide-background"
+<section class="slide " id="slide-13" aria-label="12. Вёрстку оставляем CSS"><img class="cover w slide-background"
 																				  src="../../src/picture/sb-background/image6.jpeg"
 																				  alt="" aria-hidden="true">
 	<div class="eyebrow">02 / Новое API</div>
@@ -240,14 +220,14 @@ if (!isSupportsNativePath) showFallback();</code></pre>
   overflow-wrap: anywhere;
 }
 #title strong { color: #7df5d1; }</code></pre>
-	<div class="slide-footer"><span></span><span>14 / 50</span></div>
+	<div class="slide-footer"><span></span><span>12 / 52</span></div>
 </section>
 <!-- slide-14 16-->
-<section class="slide " id="slide-14" aria-label="15. Размер CSS ≠ размер bitmap"><img class="cover w slide-background"
+<section class="slide " id="slide-14" aria-label="13. Чтобы текст на canvas был чётким"><img class="cover w slide-background"
 																					   src="../../src/picture/sb-background/image6.jpeg"
 																					   alt="" aria-hidden="true">
 	<div class="eyebrow">02 / Новое API</div>
-	<h2>Размер CSS ≠ размер bitmap</h2>
+	<h2>Чтобы текст на canvas был чётким</h2>
 	<pre><code class="language-javascript">const W = 960, H = 540;
 const dpr = window.devicePixelRatio || 1;
 canvas.width = Math.round(W * dpr);
@@ -255,8 +235,37 @@ canvas.height = Math.round(H * dpr);
 
 // В CSS: canvas { width: 960px; height: 540px; }
 // Рисуем в логических координатах W × H</code></pre>
-	<p class="callout">Плотность пикселей влияет и на чёткость, и на память</p>
-	<div class="slide-footer"><span></span><span>15 / 50</span></div>
+	<p class="callout">Больше пикселей внутри canvas — тот же размер на странице</p>
+	<div class="slide-footer"><span></span><span>13 / 52</span></div>
+</section>
+<section class="slide" id="draw-html-element" aria-label="14. Рисуем HTML на canvas">
+    <img class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
+    <div class="eyebrow">02 / Новое API</div>
+    <h2>Рисуем HTML на canvas</h2>
+    <pre><code class="language-javascript">// title — HTML-элемент с оформлением и переносами строк
+const title = document.getElementById('title');
+
+// Когда браузер подготовил содержимое:
+ctx.drawElementImage(title, 110, 140);</code></pre>
+    <figure class="canvas-element-coordinate-diagram">
+        <img src="images/canvas-element-coordinates.svg" alt="Начало координат — верхний левый угол canvas. X направлен вправо, Y вниз. Точка 110, 140 задаёт верхний левый угол HTML-блока, включая отступы вокруг текста.">
+    </figure>
+    <div class="slide-footer"><span></span><span>14 / 52</span></div>
+</section>
+<!-- slide-10 12-->
+<section class="slide " id="slide-10" aria-label="15. Зафиксируем версию API"><img class="cover w slide-background"
+																				   src="../../src/picture/sb-background/image6.jpeg"
+																				   alt="" aria-hidden="true">
+	<div class="eyebrow">02 / Новое API</div>
+	<h2>Зафиксируем версию API</h2>
+	<pre><code class="language-html">// Актуальная модель в explainer:
+&lt;canvas content=&quot;drawable&quot;&gt;
+  &lt;article drawable&gt;...&lt;/article&gt;
+&lt;/canvas&gt;
+
+// В старых статьях встречается layoutsubtree</code></pre>
+	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
+									   rel="noopener">WICG · актуальный explainer</a></span><span>15 / 52</span></div>
 </section>
 <!-- slide-15 17-->
 <section class="slide " id="slide-15" aria-label="16. Первый кадр: ждём paint"><img class="cover w slide-background"
@@ -271,12 +280,11 @@ canvas.addEventListener(&#x27;paint&#x27;, () =&gt; {
   ctx.scale(dpr, dpr);
   ctx.fillStyle = &#x27;#102b26&#x27;;
   ctx.fillRect(0, 0, W, H);
-  ctx.drawElementImage(title, 80, 120, boxW, boxH);
+  ctx.drawElementImage(title, 110, 140);
 });
 canvas.requestPaint()</code></pre>
-	<p class="callout">boxW / boxH — размеры HTML-блока из ResizeObserver</p>
 	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
-									   rel="noopener">WICG · актуальный explainer</a></span><span>16 / 50</span></div>
+									   rel="noopener">WICG · актуальный explainer</a></span><span>16 / 52</span></div>
 </section>
 <!-- slide-16 18-->
 <section class="slide " id="slide-16" aria-label="17. Путь одного изменения"><img class="cover w slide-background"
@@ -288,14 +296,14 @@ canvas.requestPaint()</code></pre>
 		команд</b><i>→</i><b>paint</b><i>→</i><b>Canvas</b></div>
 	<p class="lead">Браузер готовит изображение HTML-элемента. <br/> Наш код рисует его на canvas</p>
 	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
-									   rel="noopener">WICG · актуальный explainer</a></span><span>17 / 50</span></div>
+									   rel="noopener">WICG · актуальный explainer</a></span><span>17 / 52</span></div>
 </section>
 <!-- slide-17 19-->
 <section class="slide " id="slide-17" aria-label="18. DOM меняется до отрисовки"><img class="cover w slide-background"
 																					  src="../../src/picture/sb-background/image6.jpeg"
 																					  alt="" aria-hidden="true">
 	<div class="eyebrow">03 / Как браузер рисует</div>
-	<h2>DOM меняется до отрисовки</h2>
+	<h2>Меняем ширину — получаем новые размеры</h2>
 	<div class="control-example-columns">
 <pre><code class="language-javascript">widthControl.addEventListener(&#x27;input&#x27;, () =&gt; {
   title.style.width = `${widthControl.value}px`;
@@ -306,31 +314,20 @@ new ResizeObserver(([entry]) =&gt; {
   boxW = box.inlineSize;
   boxH = box.blockSize;
   canvas.requestPaint();
-}).observe(title);</code></pre>
+}).observe(title);
+
+// В обработчике paint: задаём ширину и высоту
+ctx.drawElementImage(title, 110, 140, boxW, boxH);</code></pre>
     <figure class="control-screenshot">
         <img src="./images/control-width.png" alt="Изменение ширины блока">
         <figcaption>Изменение ширины блока</figcaption>
     </figure>
 </div>
-	<p class="callout">ResizeObserver сохраняет геометрию, paint использует её</p>
-	<div class="slide-footer"><span></span><span>18 / 50</span></div>
-</section>
-<!-- slide-18 20-->
-<section class="slide " id="slide-18" aria-label="19. Ошибка: менять DOM внутри paint"><img
-		class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
-	<div class="eyebrow">03 / Как браузер рисует</div>
-	<h2>Ошибка: менять DOM внутри paint</h2>
-	<pre><code class="language-javascript">canvas.addEventListener(&#x27;paint&#x27;, () =&gt; {
-  title.textContent = &#x27;Новый текст&#x27;;
-  ctx.drawElementImage(title, 0, 0, boxW, boxH);
-  // Этот вызов ещё использует подготовленный снимок
-});</code></pre>
-	<p class="callout">Изменение DOM попадёт в следующее обновление рендеринга</p>
-	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
-									   rel="noopener">WICG · актуальный explainer</a></span><span>19 / 50</span></div>
+	<p class="callout">boxW, boxH — ширина и высота изображения блока</p>
+	<div class="slide-footer"><span></span><span>18 / 52</span></div>
 </section>
 <!-- slide-19 21-->
-<section class="slide " id="slide-19" aria-label="20. Позиция меняется без нового текста"><img
+<section class="slide " id="slide-19" aria-label="19. Позиция меняется без нового текста"><img
 		class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">03 / Как браузер рисует</div>
 	<h2>Позиция меняется без нового текста</h2>
@@ -348,10 +345,10 @@ xControl.addEventListener(&#x27;input&#x27;, () =&gt; {
     </figure>
 </div>
 	<p class="callout">scene хранит положение и поворот блока. Это наш объект, не API браузера</p>
-	<div class="slide-footer"><span></span><span>20 / 50</span></div>
+	<div class="slide-footer"><span></span><span>19 / 52</span></div>
 </section>
 <!-- slide-20 22-->
-<section class="slide " id="slide-20" aria-label="21. Поворот задаём контексту"><img class="cover w slide-background"
+<section class="slide " id="slide-20" aria-label="20. Поворот задаём контексту"><img class="cover w slide-background"
 																					 src="../../src/picture/sb-background/image6.jpeg"
 																					 alt="" aria-hidden="true">
 	<div class="eyebrow">03 / Как браузер рисует</div>
@@ -363,15 +360,15 @@ ctx.rotate(scene.angle * Math.PI / 180);
 ctx.drawElementImage(title, 0, 0, boxW, boxH);
 ctx.restore();</code></pre>
     <figure class="control-screenshot">
-        <img src="./images/control-angle.png" alt="Поворот блока">
-        <figcaption>Поворот блока</figcaption>
+        <img src="images/canvas-translate-origin.svg" alt="Translate переносит начало координат в точку 110, 140 — верхний левый угол текстового блока.">
+        <figcaption>Новое начало координат — угол блока</figcaption>
     </figure>
 </div>
-	<p class="callout">Начало координат блока теперь находится в scene.x / scene.y.</p>
-	<div class="slide-footer"><span></span><span>21 / 50</span></div>
+	<p class="callout">translate задаёт угол блока, вокруг которого работает rotate</p>
+	<div class="slide-footer"><span></span><span>20 / 52</span></div>
 </section>
 <!-- slide-21 23-->
-<section class="slide slide-video" id="slide-21" aria-label="22. Демо 1 · Собираем постер"><img class="cover w slide-background"
+<section class="slide slide-video" id="slide-21" aria-label="21. Демо 1 · Собираем постер"><img class="cover w slide-background"
 																					 src="../../src/picture/sb-background/image6.jpeg"
 																					 alt="" aria-hidden="true">
 	<div class="eyebrow">03 / Как браузер рисует</div>
@@ -380,34 +377,42 @@ ctx.restore();</code></pre>
         <video src="./video/demo-1.mp4" autoplay muted loop playsinline></video>
     </div>
 	
-  <div class="slide-footer"><span></span><span>22 / 50</span></div>
+  <div class="slide-footer"><span></span><span>21 / 52</span></div>
 </section>
-<!-- slide-22 24-->
-<section class="slide " id="slide-22" aria-label="23. Как взаимодействовать с текстом на canvas"><img
+<!-- slide-23 25-->
+<section class="slide " id="slide-23" aria-label="22. Как взаимодействовать с текстом на canvas"><img
 		class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">04 / Взаимодействие и границы</div>
 	<h2>Как взаимодействовать с текстом на canvas</h2>
-	<div class="cards">
-		<article><span>01</span>
-			<h3>Рисование</h3>
-			<p>Что видит пользователь</p></article>
-		<article><span>02</span>
-			<h3>Геометрия</h3>
-			<p>Куда попадают указатель и фокус</p></article>
-		<article><span>03</span>
-			<h3>Семантика</h3>
-			<p>Что понимают браузер и ассистивные технологии</p></article>
-	</div>
-	<div class="slide-footer"><span><a class="source"
-									   href="https://www.figma.com/blog/building-accessibility-into-a-canvas-based-product/"
-									   target="_blank"
-									   rel="noopener">Figma · доступность холста</a></span><span>23 / 50</span></div>
+	<div class="control-example-columns">
+<pre><code class="language-javascript">// Положение и поворот учитываются при рисовании
+ctx.drawElementImage(title, 110, 140, boxW, boxH);</code></pre>
+    <figure class="control-screenshot geometry-preview">
+        <img src="images/element-hit-area.svg" alt="HTML-блок с пунктирной областью нажатия.">
+        <figcaption>Пунктир — область нажатия, а не рамка текста</figcaption>
+    </figure>
+</div>
+	<p class="callout">Область нажатия следует за изображением HTML-блока</p>
+	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
+									   rel="noopener">WICG · актуальный explainer</a></span><span>22 / 52</span></div>
 </section>
-<!-- slide-23 25-->
-<section class="slide " id="slide-23" aria-label="24. В 2D геометрия следует рисованию"><img
+<section class="slide" id="paint-after-input" aria-label="23. От ввода текста к paint">
+<img class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
+<div class="eyebrow">04 / Взаимодействие и границы</div>
+<h2>От ввода текста к paint</h2>
+<div class="cards">
+<article><span>01 / Ввод</span><h3>Меняем текст</h3><p>Редактируем article через contenteditable</p></article>
+<article><span>02 / Браузер</span><h3>Готовит новый вид</h3><p>Обновляет снимок элемента и вызывает paint</p></article>
+<article><span>03 / Наш код</span><h3>Рисует постер</h3><p>В обработчике paint используем drawElementImage</p></article>
+</div>
+<p class="callout">Изменили текст или оформление article → браузер вызывает paint
+	<br>Изменили координаты в scene → сами вызываем requestPaint()</p>
+<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas#3-the-paint-event" target="_blank" rel="noopener">WICG · paint</a></span><span>23 / 52</span></div>
+</section>
+<section class="slide " id="element-copies" aria-label="24. Один элемент — два изображения"><img
 		class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">04 / Взаимодействие и границы</div>
-	<h2>В 2D геометрия следует рисованию</h2>
+	<h2>Один элемент — два изображения</h2>
 	<div class="control-example-columns">
 <pre><code class="language-javascript">ctx.drawElementImage(title, x, y, boxW, boxH);
 // ① Обновляем изображение и геометрию
@@ -423,7 +428,7 @@ ctx.drawElementImage(title, 600, 40, 200, 100, {
 </div>
 	<p class="callout">Две картинки одного DOM-узла не создают два независимых редактора</p>
 	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
-									   rel="noopener">WICG · актуальный explainer</a></span><span>24 / 50</span></div>
+									   rel="noopener">WICG · актуальный explainer</a></span><span>24 / 52</span></div>
 </section>
 <!-- demo-text-editing 26-->
 <section class="slide slide-video" id="demo-text-editing" aria-label="25. Редактируем текст прямо на canvas">
@@ -433,7 +438,7 @@ ctx.drawElementImage(title, 600, 40, 200, 100, {
     <div class="video-frame">
         <video src="./video/demo-2.mp4" autoplay muted loop playsinline></video>
     </div>
-    <div class="slide-footer"><span></span><span>25 / 50</span></div>
+    <div class="slide-footer"><span></span><span>25 / 52</span></div>
 </section>
 <!-- slide-24 27-->
 <section class="slide " id="slide-24" aria-label="26. HTML-элемент сохраняет свои события"><img class="cover w slide-background"
@@ -448,10 +453,24 @@ title.addEventListener(&#x27;input&#x27;, () =&gt; {
   textarea.value = title.textContent;
 });</code></pre>
 	<p class="callout">Редактируем article на постере → обновляем textarea слева</p>
-	<div class="slide-footer"><span></span><span>26 / 50</span></div>
+	<div class="slide-footer"><span></span><span>26 / 52</span></div>
+</section>
+<!-- slide-18 20-->
+<section class="slide " id="slide-18" aria-label="27. Ошибка: менять DOM внутри paint"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">03 / Как браузер рисует</div>
+	<h2>Ошибка: менять DOM внутри paint</h2>
+	<pre><code class="language-javascript">canvas.addEventListener(&#x27;paint&#x27;, () =&gt; {
+  title.textContent = &#x27;Новый текст&#x27;;
+  ctx.drawElementImage(title, 0, 0, boxW, boxH);
+  // 👆 Использует снимок, сделанный до вызова paint
+});</code></pre>
+	<p class="callout">Изменения DOM применятся только на следующем кадре</p>
+	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
+									   rel="noopener">WICG · актуальный explainer</a></span><span>27 / 52</span></div>
 </section>
 <!-- slide-25 28-->
-<section class="slide " id="slide-25" aria-label="27. Перекрытие: проверяем два результата"><img
+<section class="slide " id="slide-25" aria-label="28. Перекрытие: проверяем два результата"><img
 		class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">04 / Взаимодействие и границы</div>
 	<h2>Перекрытие: проверяем два результата</h2>
@@ -462,20 +481,20 @@ ctx.fillRect(360, 190, 240, 90);
 // Фигура закрыла пиксели текста
 // Но создала ли она область, блокирующую ввод?</code></pre>
 	<p class="callout">Порядок пикселей и порядок hit testing — не одно и то же</p>
-	<div class="slide-footer"><span></span><span>27 / 50</span></div>
+	<div class="slide-footer"><span></span><span>28 / 52</span></div>
 </section>
 <!-- demo-occlusion 29-->
-<section class="slide slide-video" id="demo-occlusion" aria-label="28. Проверяем клик под перекрытием">
+<section class="slide slide-video" id="demo-occlusion" aria-label="29. Проверяем клик под перекрытием">
     <img class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
     <div class="eyebrow">04 / Взаимодействие и границы</div>
     <h2 class="video-slide-title">Проверяем клик под перекрытием</h2>
     <div class="video-frame">
         <video src="./video/demo-3.mp4" autoplay muted loop playsinline></video>
     </div>
-    <div class="slide-footer"><span></span><span>28 / 50</span></div>
+    <div class="slide-footer"><span></span><span>29 / 52</span></div>
 </section>
 <!-- slide-26 30-->
-<section class="slide " id="slide-26" aria-label="29. Ограничение области ввода задаётся отдельно"><img
+<section class="slide " id="slide-26" aria-label="30. Ограничение области ввода задаётся отдельно"><img
 		class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">04 / Взаимодействие и границы</div>
 	<h2>Ограничение области ввода задаётся отдельно</h2>
@@ -487,29 +506,32 @@ ctx.fillRect(360, 190, 240, 90);
 // Область нажатия: 200 × 100 от левого верхнего угла блока
 // Само изображение текста не обрезается</code></pre>
 	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
-									   rel="noopener">WICG · актуальный explainer</a></span><span>29 / 50</span></div>
+									   rel="noopener">WICG · актуальный explainer</a></span><span>30 / 52</span></div>
 </section>
 <!-- slide-29 31-->
-<section class="slide " id="slide-29" aria-label="30. Сохраняем следующий готовый кадр"><img
+<section class="slide " id="slide-29" aria-label="31. Сохраняем следующий готовый кадр"><img
 		class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">05 / Экспорт и другие контексты</div>
 	<h2>Сохраняем следующий готовый кадр</h2>
-	<pre><code class="language-javascript">let exportPending = false;
+	<pre><code class="language-javascript" style="font-size: 16px;">let exportPending = false;
 exportButton.addEventListener(&#x27;click&#x27;, () =&gt; {
   exportPending = true;
   canvas.requestPaint();
 });
 
-// В конце обработчика paint, после drawScene():
-if (exportPending) {
-  exportPending = false;
-  canvas.toBlob(saveBlob, &#x27;image/png&#x27;);
-}</code></pre>
-	<p class="callout">Не экспортируем старый bitmap сразу после изменения DOM</p>
-	<div class="slide-footer"><span></span><span>30 / 50</span></div>
+canvas.addEventListener('paint', () => {
+	// ...
+	if (exportPending) {
+  		exportPending = false;
+  		canvas.toBlob(saveBlob, &#x27;image/png&#x27;);
+	}
+});
+</code></pre>
+	<p class="callout">Ждём завершения paint, чтобы не сохранить старый кадр</p>
+	<div class="slide-footer"><span></span><span>31 / 52</span></div>
 </section>
 <!-- slide-30 32-->
-<section class="slide " id="slide-30" aria-label="31. От Blob до скачанного PNG"><img class="cover w slide-background"
+<section class="slide " id="slide-30" aria-label="32. От Blob до скачанного PNG"><img class="cover w slide-background"
 																					  src="../../src/picture/sb-background/image33.jpeg"
 																					  alt="" aria-hidden="true">
 	<div class="eyebrow">05 / Экспорт и другие контексты</div>
@@ -523,21 +545,21 @@ if (exportPending) {
   link.click();
   setTimeout(() =&gt; URL.revokeObjectURL(url), 1000);
 }</code></pre>
-	<p class="callout">В одном PNG — текст, фон и фигуры.</p>
-	<div class="slide-footer"><span></span><span>31 / 50</span></div>
+	<p class="callout">В одном PNG — текст, фон и фигуры</p>
+	<div class="slide-footer"><span></span><span>32 / 52</span></div>
 </section>
 <!-- slide-31 33-->
- <section class="slide slide-video" id="slide-31" aria-label="32. Проверяем переносы, порядок слоёв и поворот">
+ <section class="slide slide-video" id="slide-31" aria-label="33. Проверяем переносы, порядок слоёв и поворот">
     <img class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
    <div class="eyebrow">05 / Экспорт и другие контексты</div>
     <h2 class="video-slide-title">Проверяем переносы, порядок слоёв и поворот</h2>
     <div class="video-frame">
         <video src="./video/demo-4.mp4" autoplay muted loop playsinline></video>
     </div>
-    <div class="slide-footer"><span></span><span>32 / 50</span></div>
+    <div class="slide-footer"><span></span><span>33 / 52</span></div>
 </section>
 <!-- slide-31 34-->
-<section class="slide " id="slide-32" aria-label="33. Та же идея — для WebGL и WebGPU"><img
+<section class="slide " id="slide-32" aria-label="34. Та же идея — для WebGL и WebGPU"><img
 		class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">05 / Экспорт и другие контексты</div>
 	<h2>Та же идея — для WebGL и WebGPU</h2>
@@ -545,10 +567,10 @@ if (exportPending) {
 	</div>
 	<p class="lead">Текстура — изображение на поверхности 3D-объекта</p>
 	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
-									   rel="noopener">WICG · актуальный explainer</a></span><span>33 / 50</span></div>
+									   rel="noopener">WICG · актуальный explainer</a></span><span>34 / 52</span></div>
 </section>
 <!-- webgl-webgpu-methods 35-->
-<section class="slide" id="webgl-webgpu-methods" aria-label="34. Методы для WebGL и WebGPU">
+<section class="slide" id="webgl-webgpu-methods" aria-label="35. Методы для WebGL и WebGPU">
     <img class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
     <div class="eyebrow">05 / Экспорт и другие контексты</div>
     <h2>Методы для WebGL и WebGPU</h2>
@@ -574,10 +596,10 @@ if (exportPending) {
         </article>
     </div>
     <div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank" rel="noopener">WICG · актуальный explainer</a></span>
-		<span>34 / 50</span></div>
+		<span>35 / 52</span></div>
 </section>
 <!-- slide-33 36-->
-<section class="slide " id="slide-33" aria-label="35. Где 3D действительно помогает"><img
+<section class="slide " id="slide-33" aria-label="36. Где 3D действительно помогает"><img
 		class="cover w slide-background" src="../../src/picture/sb-background/image33.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">05 / Экспорт и другие контексты</div>
 	<h2>Где 3D действительно помогает</h2>
@@ -587,10 +609,10 @@ if (exportPending) {
         <article><span>03 / Выставка</span><h3>Карточка экспоната</h3><p>Описание и выбор языка рядом с 3D-объектом</p></article>
     </div>
     <p class="callout">Интерфейс — часть 3D-окружения. Для панели поверх сцены проще обычный HTML</p>
-	<div class="slide-footer"><span></span><span>35 / 50</span></div>
+	<div class="slide-footer"><span></span><span>36 / 52</span></div>
 </section>
 <!-- slide-34 37-->
-<section class="slide " id="slide-34" aria-label="36. За кадр платим несколько раз"><img
+<section class="slide " id="slide-34" aria-label="37. За кадр платим несколько раз"><img
 		class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">06 / Производительность</div>
 	<h2>За кадр платим несколько раз</h2>
@@ -606,10 +628,10 @@ if (exportPending) {
 			<p>JS, геометрия и обработка ввода</p></article>
 	</div>
 	<p class="callout">«Попало на GPU» не означает «стало бесплатно»</p>
-	<div class="slide-footer"><span></span><span>36 / 50</span></div>
+	<div class="slide-footer"><span></span><span>37 / 52</span></div>
 </section>
 <!-- slide-35 38-->
-<section class="slide " id="slide-35" aria-label="37. Площадь × плотность × частота"><img
+<section class="slide " id="slide-35" aria-label="38. Площадь × плотность × частота"><img
 		class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">06 / Производительность</div>
 	<h2>Площадь × плотность × частота</h2>
@@ -630,15 +652,15 @@ if (exportPending) {
             <p>По 4 байта на пиксель:<br>цвет и прозрачность</p>
         </article>
     </div>
-    <p class="pixel-budget-note">Одно несжатое изображение в памяти — не PNG и не все затраты браузер.</p>
+    <p class="pixel-budget-note">Одно несжатое изображение в памяти — не PNG и не все затраты браузера</p>
     <div class="refresh-budget">
         <strong>Обновлять после изменения или 60 раз в секунду?</strong>
         <p>Размер картинки тот же. Чем чаще рисуем, тем больше работы</p>
     </div>
-	<div class="slide-footer"><span></span><span>37 / 50</span></div>
+	<div class="slide-footer"><span></span><span>38 / 52</span></div>
 </section>
 <!-- slide-36 39-->
-<section class="slide " id="slide-36" aria-label="38. Не запускаем лишний цикл"><img class="cover w slide-background"
+<section class="slide " id="slide-36" aria-label="39. Не запускаем лишний цикл"><img class="cover w slide-background"
 																					 src="../../src/picture/sb-background/image13.jpeg"
 																					 alt="" aria-hidden="true">
 	<div class="eyebrow">06 / Производительность</div>
@@ -651,10 +673,10 @@ if (exportPending) {
 
 </code></pre>
 	<p class="callout">Постер изменился — перерисовываем. Ничего не меняется — ждём</p>
-	<div class="slide-footer"><span></span><span>38 / 50</span></div>
+	<div class="slide-footer"><span></span><span>39 / 52</span></div>
 </section>
 <!-- slide-37 40-->
-<section class="slide " id="slide-37" aria-label="39. Измеряем, а не угадываем"><img class="cover w slide-background"
+<section class="slide " id="slide-37" aria-label="40. Измеряем, а не угадываем"><img class="cover w slide-background"
 																					 src="../../src/picture/sb-background/image13.jpeg"
 																					 alt="" aria-hidden="true">
 	<div class="eyebrow">06 / Производительность</div>
@@ -666,11 +688,11 @@ const jsDuration = performance.now() - start;
 // Время выполнения функции, в миллисекундах
 // Функция завершилась, но браузер ещё может дорисовывать кадр</code></pre>
 	<p class="callout">Performance: записываем движение и изменение ширины
-		<br>Смотрим, где уходит время: код, вёрстка или отрисовка</p>
-	<div class="slide-footer"><span></span><span>39 / 50</span></div>
+		<br>Смотрим, на что уходит время: код, вёрстка или отрисовка</p>
+	<div class="slide-footer"><span></span><span>40 / 52</span></div>
 </section>
 <!-- slide-38 41-->
-<section class="slide " id="slide-38" aria-label="40. Что можно перенести в worker"><img
+<section class="slide " id="slide-38" aria-label="41. Что можно перенести в worker"><img
 		class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">06 / Производительность</div>
 	<h2>Что можно перенести в worker</h2>
@@ -684,10 +706,10 @@ self.onmessage = ({ data }) =&gt; {
 	<p class="worker-example-note">* OffscreenCanvas — холст для рисования в worker. Результат можно показывать в canvas на странице</p>
 	<div class="slide-footer"><span><a class="source" href="https://github.com/WICG/html-in-canvas" target="_blank"
 									   rel="noopener">WICG · актуальный explainer</a></span>
-									   <span>40 / 50</span></div>
+									   <span>41 / 52</span></div>
 </section>
 <!-- slide-39 42-->
-<section class="slide " id="slide-39" aria-label="41. Что проверяем перед релизом"><img class="cover w slide-background"
+<section class="slide " id="slide-39" aria-label="42. Что проверяем перед релизом"><img class="cover w slide-background"
 																						src="../../src/picture/sb-background/image13.jpeg"
 																						alt="" aria-hidden="true">
 	<div class="eyebrow">07 / Внедрение</div>
@@ -699,10 +721,24 @@ self.onmessage = ({ data }) =&gt; {
 		<li>Перекрытия, несколько копий, экспорт</li>
 		<li>Поддержка API и понятный запасной режим</li>
 	</ul>
-	<div class="slide-footer"><span></span><span>41 / 50</span></div>
+	<div class="slide-footer"><span></span><span>42 / 52</span></div>
+</section>
+<!-- slide-11 13-->
+<section class="slide " id="slide-11" aria-label="43. Проверяем нужные возможности"><img
+		class="cover w slide-background" src="../../src/picture/sb-background/image6.jpeg" alt="" aria-hidden="true">
+	<div class="eyebrow">06 / Внедрение</div>
+	<h2>Проверяем нужные возможности</h2>
+	<pre><code class="language-javascript">const isSupportsNativePath =
+  &#x27;drawElementImage&#x27; in CanvasRenderingContext2D.prototype &amp;&amp;
+  &#x27;requestPaint&#x27; in HTMLCanvasElement.prototype &amp;&amp;
+  &#x27;updateElementGeometry&#x27; in HTMLCanvasElement.prototype;
+
+if (!isSupportsNativePath) showFallback();</code></pre>
+	<p class="callout">Наличие методов — первый фильтр. Затем проверяем реальную отрисовку</p>
+	<div class="slide-footer"><span></span><span>43 / 52</span></div>
 </section>
 <!-- slide-40 43-->
-<section class="slide " id="slide-40" aria-label="42. Fallback — отдельный продуктовый выбор"><img
+<section class="slide " id="slide-40" aria-label="44. Fallback — отдельный продуктовый выбор"><img
 		class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
 	<div class="eyebrow">07 / Внедрение</div>
 	<h2>Fallback — отдельный продуктовый выбор</h2>
@@ -713,10 +749,10 @@ self.onmessage = ({ data }) =&gt; {
   exportButton.disabled = true;
   showMessage(&#x27;Доступен просмотр и правка текста&#x27;);
 }</code></pre>
-	<div class="slide-footer"><span></span><span>42 / 50</span></div>
+	<div class="slide-footer"><span></span><span>44 / 52</span></div>
 </section>
 <!-- slide-41 44-->
-<section class="slide " id="slide-41" aria-label="43. Когда API оправдан"><img class="cover w slide-background"
+<section class="slide " id="slide-41" aria-label="45. Когда API оправдан"><img class="cover w slide-background"
 																			   src="../../src/picture/sb-background/image13.jpeg"
 																			   alt="" aria-hidden="true">
 	<div class="eyebrow">07 / Внедрение</div>
@@ -732,10 +768,10 @@ self.onmessage = ({ data }) =&gt; {
 			<h3>Обычно нет</h3>
 			<p>Обычная форма <br/>или панель поверх приложения</p></article>
 	</div>
-	<div class="slide-footer"><span></span><span>43 / 50</span></div>
+	<div class="slide-footer"><span></span><span>45 / 52</span></div>
 </section>
 <!-- chrome-worker-demo 45-->
-<section aria-label="44. Ещё возможности: рисование в worker" class="slide chrome-video-slide" id="chrome-worker-demo">
+<section aria-label="46. Ещё возможности: рисование в worker" class="slide chrome-video-slide" id="chrome-worker-demo">
     <img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
     <div class="eyebrow">Ещё возможности / Демо Chrome</div>
     <h2>Ещё возможности: рисование в worker</h2>
@@ -743,10 +779,10 @@ self.onmessage = ({ data }) =&gt; {
         <video src="./video/chrome-worker.mp4" muted loop playsinline aria-label="Видеопревью: Ещё возможности: рисование в worker"></video>
     </div>
     <div class="slide-footer"><span><a href="https://chrome.dev/html-in-canvas/demos/offscreen-html-in-canvas.html" target="_blank" rel="noopener">Открыть демо</a></span>
-		<span>44 / 50</span></div>
+		<span>46 / 52</span></div>
 </section>
 <!-- chrome-worker-demo 46-->
-<section aria-label="45. Ещё возможности: интерактивная форма" class="slide chrome-video-slide" id="chrome-form-demo">
+<section aria-label="47. Ещё возможности: интерактивная форма" class="slide chrome-video-slide" id="chrome-form-demo">
     <img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
     <div class="eyebrow">Ещё возможности / Демо Chrome</div>
     <h2>Ещё возможности: интерактивная форма</h2>
@@ -754,18 +790,18 @@ self.onmessage = ({ data }) =&gt; {
         <video src="./video/chrome-form.mp4" muted loop playsinline aria-label="Видеопревью: Ещё возможности: интерактивная форма"></video>
     </div>
     <div class="slide-footer"><span><a href="https://chrome.dev/html-in-canvas/demos/text-input.html" target="_blank" rel="noopener">Открыть демо</a></span>
-		<span>45 / 50</span></div>
+		<span>47 / 52</span></div>
 </section>
-<section aria-label="46. Что ещё умеет HTML-in-Canvas" class="slide chrome-video-slide" id="chrome-demo-collection">
+<section aria-label="48. Что ещё умеет HTML-in-Canvas" class="slide chrome-video-slide" id="chrome-demo-collection">
     <img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
     <div class="eyebrow">Ещё возможности / Демо Chrome</div>
     <h2>Что ещё умеет HTML-in-Canvas</h2>
     <div class="video-frame chrome-collection">
         <video src="./video/chrome-collection.mp4" muted loop playsinline aria-label="Видеопревью: Что ещё умеет HTML-in-Canvas"></video>
     </div>
-    <div class="slide-footer"><span><a href="https://chrome.dev/html-in-canvas/" target="_blank" rel="noopener">Открыть демо</a></span><span>46 / 50</span></div>
+    <div class="slide-footer"><span><a href="https://chrome.dev/html-in-canvas/" target="_blank" rel="noopener">Открыть демо</a></span><span>48 / 52</span></div>
 </section>
-<section class="slide finale" id="slide-42" aria-label="47. Границы возможного"><img class="cover w slide-background"
+<section class="slide finale" id="slide-42" aria-label="49. Границы возможного"><img class="cover w slide-background"
 																					 src="../../src/picture/sb-background/image13.jpeg"
 																					 alt="" aria-hidden="true">
 	<div class="eyebrow">07 / Внедрение</div>
@@ -775,9 +811,9 @@ self.onmessage = ({ data }) =&gt; {
         <div class="finale-role"><span class="finale-role-name">Canvas</span><div><strong>Собирает изображение</strong><p>Фон, фигуры и HTML в одной картинке</p></div></div>
         <div class="finale-role"><span class="finale-role-name">Приложение</span><div><strong>Связывает всё вместе</strong><p>Ввод, положение элементов, обновления и экспорт</p></div></div>
     </div>
-	<div class="slide-footer"><span></span><span>47 / 50</span></div>
+	<div class="slide-footer"><span></span><span>49 / 52</span></div>
 </section>
-<section class="slide" id="html-in-canvas-benefits" aria-label="48. Что мы получаем">
+<section class="slide" id="html-in-canvas-benefits" aria-label="50. Что мы получаем">
     <img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
     <div class="eyebrow">07 / Внедрение</div>
     <h2>Что мы получаем</h2>
@@ -788,9 +824,9 @@ self.onmessage = ({ data }) =&gt; {
     </div>
     <p class="callout">Привычные возможности HTML внутри графического интерфейса</p>
     <footer class="notes"><p>Мы разобрали ограничения. Теперь соберём главное: какую работу HTML-in-Canvas снимает с нас.</p><p>Нам не нужно самостоятельно раскладывать текст по строкам и рассчитывать положение каждого слова. Описываем содержимое и оформление через HTML и CSS — вёрстку делает браузер.</p><p>При этом текст становится частью общей графики. Его можно поворачивать, сочетать с фигурами, применять к его изображению эффекты и сохранять результат в один файл.</p><p>И за этой картинкой остаётся HTML-элемент. Мы можем обрабатывать его события, редактировать текст и передавать информацию о нём программам чтения с экрана.</p><p>Получаем привычные возможности HTML там, где раньше рисовали только графику. Но прежде чем выбирать этот подход для продукта, важно уточнить статус самого API.</p></footer>
-    <div class="slide-footer"><span><a href="https://developer.chrome.com/blog/html-in-canvas" target="_blank" rel="noopener">Chrome · возможности HTML-in-Canvas</a></span><span>48 / 50</span></div>
+    <div class="slide-footer"><span><a href="https://developer.chrome.com/blog/html-in-canvas" target="_blank" rel="noopener">Chrome · возможности HTML-in-Canvas</a></span><span>50 / 52</span></div>
 </section>
-<section class="slide" id="browser-support" aria-label="49. От идеи к стандарту">
+<section class="slide" id="browser-support" aria-label="51. От идеи к стандарту">
     <img class="cover w slide-background" src="../../src/picture/sb-background/image13.jpeg" alt="" aria-hidden="true">
     <div class="eyebrow">Статус предложения / 18 ноября 2026</div>
     <h2>От идеи к стандарту</h2>
@@ -804,9 +840,9 @@ self.onmessage = ({ data }) =&gt; {
     <div class="standards-current"><span>HTML-in-Canvas сейчас</span><strong>Living explainer в WICG</strong><p>Обсуждение в WHATWG · Реализация уже выпущена</p></div>
     <p class="standards-note">Упрощённая схема: работа идёт параллельно. Выпуск API ≠ завершение стандартизации</p>
     <footer class="notes"><p>И в конце уточню статус самого API. Документ, на который мы ссылались, — explainer: он объясняет задачу и предлагаемое решение. Это ещё не готовый веб-стандарт.</p><p>Обычно сначала описывают идею, затем обсуждают её и проверяют в реализациях. По результатам уточняют поведение API, готовят нормативное описание и тесты для включения в соответствующий стандарт. Это не строгая лестница: обсуждение, разработка и тестирование могут идти одновременно.</p><p>HTML-in-Canvas сейчас описан в WICG как living explainer — документ, который продолжает меняться по обратной связи. Предложение также обсуждается в WHATWG. При этом рабочая реализация уже выпущена в Chrome 157.</p><p>То есть реализация в браузере и статус стандарта — разные вещи. Использовать API уже можно там, где он поддерживается, но за изменениями предложения нужно следить.</p></footer>
-    <div class="slide-footer"><span><a href="https://github.com/WICG/html-in-canvas" target="_blank" rel="noopener">WICG: статус</a> · <a href="https://github.com/whatwg/html/issues/10650" target="_blank" rel="noopener">WHATWG</a></span><span>49 / 50</span></div>
+    <div class="slide-footer"><span><a href="https://github.com/WICG/html-in-canvas" target="_blank" rel="noopener">WICG: статус</a> · <a href="https://github.com/whatwg/html/issues/10650" target="_blank" rel="noopener">WHATWG</a></span><span>51 / 52</span></div>
 </section>
-<section class="slide " id="slide-43" aria-label="50. Код и материалы"><img class="cover w slide-background"
+<section class="slide " id="slide-43" aria-label="52. Код и материалы"><img class="cover w slide-background"
 																					src="../../src/picture/sb-background/image13.jpeg"
 																					alt="" aria-hidden="true">
 	<div class="eyebrow">07 / Внедрение</div>
@@ -818,7 +854,7 @@ self.onmessage = ({ data }) =&gt; {
 	</ul><figure class="closing-qr">
 		<img src="./images/qr-code.png" alt="Место для QR-кода"><figcaption>Материалы доклада</figcaption></figure></div>
 	
-	<div class="slide-footer"><span></span><span>50 / 50</span></div>
+	<div class="slide-footer"><span></span><span>52 / 52</span></div>
 </section>
 <div class="progress"></div>
 <script src="../../src/shower/shower.js"></script>

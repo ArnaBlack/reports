@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="904" height="155" viewBox="0 0 904 155">
+  <title>Откуда отсчитываются координаты fillText</title>
+  <desc>Без трансформаций начало координат находится в верхнем левом углу canvas. X растёт вправо, Y вниз. При стандартном выравнивании 110 задаёт начало текста по горизонтали, 140 — базовую линию по вертикали. Схема не в масштабе.</desc>
+  <defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7" fill="none" stroke="#a9dad0"/></marker></defs>
+  <rect x=".5" y=".5" width="903" height="154" rx="14" fill="#091815" stroke="#3b504a"/>
+  <g font-family="PT Sans, Arial, sans-serif" font-size="17" fill="#edf5f2">
+    <path d="M54 132V28H545" fill="none" stroke="#a9dad0" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <path d="M54 28V136" fill="none" stroke="#a9dad0" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <circle cx="54" cy="28" r="4" fill="#7df5d1"/>
+    <text x="14" y="20">0, 0</text><text x="554" y="34">X →</text><text x="22" y="140">Y</text>
+    <path d="M153 28V103M54 103H528" fill="none" stroke="#a9dad0" stroke-dasharray="4 5"/>
+    <text x="92" y="49" fill="#a9dad0">110</text><text x="65" y="83" fill="#a9dad0">140</text>
+    <text x="153" y="103" fill="#7df5d1" font-size="31" font-weight="700"><tspan fill="#ffffff">Встречаемся</tspan> в браузере</text>
+    <circle cx="153" cy="103" r="4" fill="#ffcca5"/>
+    <text x="604" y="39">Отсчёт — от верхнего левого угла</text>
+    <text x="604" y="65">X — вправо, Y — вниз</text>
+    <text x="604" y="104" fill="#ffcca5">110, 140 — начало базовой</text>
+    <text x="604" y="130" fill="#ffcca5">линии текста</text>
+  </g>
+</svg>

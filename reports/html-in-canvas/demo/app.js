@@ -8,6 +8,7 @@ const viewport = document.querySelector('.viewport');
 new ResizeObserver(([entry]) => {
   viewport.style.setProperty('--preview-scale', entry.contentRect.width / W);
 }).observe(viewport);
+
 const scene = { x:110, y:140, angle:0, occlusion:false };
 let boxW = 420, boxH = 180;
 let native = false, ready = false, exportPending = false;
@@ -74,6 +75,7 @@ function saveBlob(blob) {
   setTimeout(() => URL.revokeObjectURL(url),1000);
   message.textContent = `PNG готов: ${canvas.width} × ${canvas.height} пикселей.`;
 }
+
 canvas.addEventListener('paint', () => {
   if (!native || !ready) return;
   try {
@@ -93,10 +95,12 @@ canvas.addEventListener('paint', () => {
     fallback(`Проба отрисовки не прошла: ${error.message}`);
   }
 });
+
 new ResizeObserver(([entry]) => {
   const box = entry.borderBoxSize[0];
   boxW = box.inlineSize; boxH = box.blockSize;
   requestFrame();
+
 }).observe(title);
 for (const name of ['width','x','y','angle']) {
   $(name).addEventListener('input', () => {
@@ -109,21 +113,26 @@ for (const name of ['width','x','y','angle']) {
     requestFrame();
   });
 }
+
 // Safe text insertion; no untrusted HTML is parsed.
 $('copy').addEventListener('input', () => {
   title.textContent = $('copy').value;
   $('fallback-text').textContent = $('copy').value;
   requestFrame();
 });
+
 title.addEventListener('input', () => { $('copy').value = title.textContent; });
+
 $('occlusion').addEventListener('change', () => {
   scene.occlusion = $('occlusion').checked;
   requestFrame();
 });
+
 $('focus').addEventListener('click', () => {
   title.focus();
   message.textContent = 'Попробуйте ввод, выделение, Tab и клик по перекрытому участку.';
 });
+
 $('export').addEventListener('click', () => {
   if (!native) return;
   title.blur();
@@ -131,6 +140,7 @@ $('export').addEventListener('click', () => {
   $('export').disabled = true;
   requestFrame();
 });
+
 $('reset').addEventListener('click', () => {
   title.replaceChildren('Встречаемся ');
   const strong = document.createElement('strong');
@@ -144,6 +154,7 @@ $('reset').addEventListener('click', () => {
   $('fallback-text').textContent = title.textContent;
   message.textContent = ''; requestFrame();
 });
+
 async function start() {
   if (location.protocol === 'file:') {
     fallback('Демо открыто с диска. Для работы с изображениями и экспорта откройте его через локальный сервер.');
@@ -173,4 +184,5 @@ async function start() {
   probeTimer = setTimeout(() => fallback('Браузер не прислал paint для текущей разметки.'),4000);
   requestFrame();
 }
+
 start().catch(error => fallback(error.message));

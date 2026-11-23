@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="320" viewBox="0 0 440 320">
+<title>Перенос начала координат в угол текстового блока</title>
+<desc>Translate переносит начало координат canvas в точку 110, 140. Здесь будет верхний левый угол HTML-блока и локальная точка 0, 0. Схема до поворота, не в масштабе.</desc>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7" fill="none" stroke="#a9dad0"/></marker><marker id="move" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7" fill="none" stroke="#ffcca5"/></marker></defs>
+<g font-family="PT Sans, Arial, sans-serif" font-size="17" fill="#edf5f2">
+<text x="20" y="27">translate(110, 140) — до поворота</text>
+<path d="M45 65H397M45 65V277" fill="none" stroke="#57776e"/>
+<circle cx="45" cy="65" r="4" fill="#a9dad0"/>
+<text x="19" y="53">0, 0</text>
+<path d="M53 75Q65 134 144 151" fill="none" stroke="#ffcca5" stroke-width="2" marker-end="url(#move)"/>
+<text x="65" y="100" fill="#ffcca5">Перенос</text>
+<path d="M155 65V155M45 155H155" stroke="#57776e" stroke-dasharray="4 5"/>
+<text x="91" y="60" fill="#a9dad0">110</text><text x="13" y="119" fill="#a9dad0">140</text>
+<rect x="155" y="155" width="226" height="91" fill="#15352e" stroke="#7df5d1" stroke-dasharray="5 4"/>
+<text x="171" y="193" font-size="25" font-weight="700">Встречаемся</text>
+<text x="171" y="225" font-size="25" font-weight="700" fill="#7df5d1">в браузере</text>
+<path d="M155 155H407M155 155V275" stroke="#a9dad0" fill="none" marker-end="url(#arrow)"/>
+<text x="408" y="148">X</text><text x="137" y="280">Y</text>
+<circle cx="155" cy="155" r="5" fill="#ffcca5"/>
+<text x="163" y="140" fill="#ffcca5">Новое начало: 0, 0</text>
+<text x="20" y="306">Вокруг этой точки rotate повернёт блок</text>
+</g></svg>
